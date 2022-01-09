@@ -45,7 +45,12 @@ function App() {
 
   return (
     <div>
-      <Keyboard onChar={onChar} onDelete={onDelete} onEnter={onEnter} />
+      <Keyboard
+        onChar={onChar}
+        onDelete={onDelete}
+        onEnter={onEnter}
+        guesses={guesses}
+      />
       <WinModal
         isOpen={isWinModalOpen}
         handleClose={() => setIsWinModalOpen(false)}

@@ -1,13 +1,14 @@
 import { ReactNode } from "react";
 import classnames from "classnames";
-import { CharStatus, CharValue } from "../../lib/keyboard";
+import { KeyValue } from "../../lib/keyboard";
+import { CharStatus } from "../../lib/statuses";
 
 type Props = {
-  children: ReactNode;
-  value: CharValue;
+  children?: ReactNode;
+  value: KeyValue;
   width?: number;
   status?: CharStatus;
-  onClick: (value: CharValue) => void;
+  onClick: (value: KeyValue) => void;
 };
 
 export const Key = ({
@@ -35,7 +36,7 @@ export const Key = ({
       className={classes}
       onClick={() => onClick(value)}
     >
-      <span>{children}</span>
+      {children || value}
     </div>
   );
 };

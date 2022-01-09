@@ -5,7 +5,7 @@ export const isWordInWordList = (word: string) => {
 };
 
 export const isWinningWord = (word: string) => {
-  return solution === word.toLowerCase();
+  return solution === word;
 };
 
 export const getWordOfDay = () => {
@@ -15,7 +15,7 @@ export const getWordOfDay = () => {
   const msInDay = 86400000;
   const index = Math.floor((now - epochMs) / msInDay);
 
-  return WORDS[index];
+  return WORDS[index].toUpperCase();
 };
 
 export const solution = getWordOfDay();
