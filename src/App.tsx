@@ -73,6 +73,7 @@ function App() {
       <WinModal
         isOpen={isWinModalOpen}
         handleClose={() => setIsWinModalOpen(false)}
+        guesses={guesses}
       />
     </div>
   );

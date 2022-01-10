@@ -1,13 +1,15 @@
 import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/outline";
+import { MiniGrid } from "../mini-grid/MiniGrid";
 
 type Props = {
   isOpen: boolean;
   handleClose: () => void;
+  guesses: string[];
 };
 
-export const WinModal = ({ isOpen, handleClose }: Props) => {
+export const WinModal = ({ isOpen, handleClose, guesses }: Props) => {
   return (
     <Transition.Root show={isOpen} as={Fragment}>
       <Dialog
@@ -57,13 +59,11 @@ export const WinModal = ({ isOpen, handleClose }: Props) => {
                     as="h3"
                     className="text-lg leading-6 font-medium text-gray-900"
                   >
-                    Payment successful
+                    You won!
                   </Dialog.Title>
                   <div className="mt-2">
-                    <p className="text-sm text-gray-500">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Consequatur amet labore.
-                    </p>
+                    <MiniGrid guesses={guesses}/>
+                    <p className="text-sm text-gray-500">Great job.</p>
                   </div>
                 </div>
               </div>
@@ -73,7 +73,7 @@ export const WinModal = ({ isOpen, handleClose }: Props) => {
                   className="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
                   onClick={handleClose}
                 >
-                  Go back to dashboard
+                  Exit
                 </button>
               </div>
             </div>
