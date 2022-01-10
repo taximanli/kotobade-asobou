@@ -54,9 +54,20 @@ export const AboutModal = ({ isOpen, handleClose }: Props) => {
                   </Dialog.Title>
                   <div className="mt-2">
                     <p className="text-sm text-gray-500">
-                      - loved playing Wordle - decided to try writing it with
-                      React, Typescript, and Tailwind - code is open source and
-                      available here [link]
+                      This is an open source clone of the game Wordle -{" "}
+                      <a
+                        href="https://github.com/hannahcode/wordle"
+                        className="underline font-bold"
+                      >
+                        check out the code here
+                      </a>{" "}
+                      and{" "}
+                      <a
+                        href="https://www.powerlanguage.co.uk/wordle/"
+                        className="underline font-bold"
+                      >
+                        play the original here
+                      </a>
                     </p>
                   </div>
                 </div>
