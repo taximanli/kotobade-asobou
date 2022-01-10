@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/outline";
 import { MiniGrid } from "../mini-grid/MiniGrid";
@@ -62,7 +62,7 @@ export const WinModal = ({ isOpen, handleClose, guesses }: Props) => {
                     You won!
                   </Dialog.Title>
                   <div className="mt-2">
-                    <MiniGrid guesses={guesses}/>
+                    <MiniGrid guesses={guesses} />
                     <p className="text-sm text-gray-500">Great job.</p>
                   </div>
                 </div>
