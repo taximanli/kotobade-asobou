@@ -1,10 +1,23 @@
-word that updates as you type within the active row
-once entered, you want to store the whole word in an array full of all the guesses so far. 
-["treat", "races", "", "", "", "" ] 
-currentRow = 0 and increments
-once you guess a word, the status of the letters is stored. That updates the appearance of the keyboard, and also the color of the cell in the word row.
-after you guess a word, the next row is "unlocked" or the active row that you are now working in. You can input letters starting at the furthest left, as the row is filled, the "active" cell moves one to the right. 
-If you delete a letter, the cell to the left is emptied and becomes the current cell. 
-If you hit enter before all cells are filled, it errors out
-If you guess a word that isn't in the words list, it errors out. 
+# Wordle Clone
 
+_Inspiration_
+This game is an open source clone of the immensely popular online word guessing game Wordle. Like many others all over the world, I saw the signature pattern of green, yellow, and white squares popping up all over social media and the web and had to check it out. After a few days of play, I decided it would be great for my learning to try to rebuild Wordle in React!
+
+_Design Decisions_
+I used a combination of React, Typescript, and Tailwind to build this Wordle Clone. When examining the original Wordle, I assumed the list might come from an external API or database, but after investigating in chrome dev tools I found that the list of words is simply stored in an array on the front end. I'm using the same list as the OG Wordle uses, but watch out for spoilers if you go find the file in this repo! The word match functionality is simple: the word array index increments each day from a fixed game epoch timestamp (only one puzzle per day!) roughly like so:
+
+```
+WORDS[Math.floor((NOW_IN_MS - GAME_EPOCH_IN_MS) / ONE_DAY_IN_MS)]
+```
+
+React enabled me to componentize the littlest parts of the game - keys and letter cells - and use them as the building blocks for the keyboard, word grid, and winning solution graphic. As for handling state, I used the built in useState and useEffect hooks to track guesses, whether the game is won, and to conditionally render popups.
+
+In addition to other things, Typescript helped ensure type safety for the statuses of each guessed letter, which were used in many areas of the app and needed to be accurate for the game to work correctly.
+
+I implemented Tailwind mostly because I wanted to learn how to use Tailwind CSS, but I also took advantage of [Tailwind UI](https://tailwindui.com/) with their [headless package](https://headlessui.dev/) to build the modals and notifications. This was such an easy way to build simple popups for how to play, winning the game, and invalid words.
+
+_To Run Locally_
+Clone the repository and perform the following command line actions:
+
+- npm init
+- npm run start
