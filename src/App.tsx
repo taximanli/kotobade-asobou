@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
+import { Grid } from "./components/grid/Grid";
 import { Keyboard } from "./components/keyboard/Keyboard";
 import { WinModal } from "./components/win-modal/WinModal";
+import { getGuessStatuses } from "./lib/statuses";
 import { solution, isWordInWordList, isWinningWord } from "./lib/words";
 
 function App() {
@@ -39,12 +41,9 @@ function App() {
     }
   };
 
-  console.log(currentGuess);
-  console.log(guesses);
-  console.log(solution);
-
   return (
     <div>
+      <Grid guesses={guesses} currentGuess={currentGuess} />
       <Keyboard
         onChar={onChar}
         onDelete={onDelete}
