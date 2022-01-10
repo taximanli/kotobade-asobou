@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
+import { Alert } from "./components/alerts/Alert";
 import { Grid } from "./components/grid/Grid";
 import { Keyboard } from "./components/keyboard/Keyboard";
 import { WinModal } from "./components/win-modal/WinModal";
-import { getGuessStatuses } from "./lib/statuses";
-import { solution, isWordInWordList, isWinningWord } from "./lib/words";
+import { isWordInWordList, isWinningWord } from "./lib/words";
 
 function App() {
   const [guesses, setGuesses] = useState<string[]>([]);
   const [currentGuess, setCurrentGuess] = useState("");
   const [isGameWon, setIsGameWon] = useState(false);
   const [isWinModalOpen, setIsWinModalOpen] = useState(false);
+  const [isWordNotFoundAlertOpen, setIsWordNotFoundAlertOpen] = useState(false);
 
   useEffect(() => {
     if (isGameWon) {
@@ -29,8 +30,10 @@ function App() {
 
   const onEnter = () => {
     if (!isWordInWordList(currentGuess)) {
-      return console.error("not in word list");
-      // TODO add messaging for user
+      setIsWordNotFoundAlertOpen(true);
+      setTimeout(() => {
+        setIsWordNotFoundAlertOpen(false);
+      }, 2000);
     }
     if (currentGuess.length === 5 && guesses.length < 6 && !isGameWon) {
       if (isWinningWord(currentGuess)) {
@@ -42,7 +45,8 @@ function App() {
   };
 
   return (
-    <div>
+    <div className="py-8 max-w-7xl mx-auto sm:px-6 lg:px-8">
+      <Alert message="Word not found" isOpen={isWordNotFoundAlertOpen} />
       <Grid guesses={guesses} currentGuess={currentGuess} />
       <Keyboard
         onChar={onChar}
