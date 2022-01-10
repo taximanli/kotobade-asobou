@@ -25,3 +25,6 @@ Clone the repository and perform the following command line actions:
 
 - npm init
 - npm run start
+
+### I'm looking for a junior developer role
+Please feel free to contact me on [linkedin](https://www.linkedin.com/in/hannahpark1000/) and learn more about me [here](https://www.hannahmariepark.com/)
