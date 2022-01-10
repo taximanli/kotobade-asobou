@@ -31,7 +31,7 @@ function App() {
   const onEnter = () => {
     if (!isWordInWordList(currentGuess)) {
       setIsWordNotFoundAlertOpen(true);
-      setTimeout(() => {
+      return setTimeout(() => {
         setIsWordNotFoundAlertOpen(false);
       }, 2000);
     }
