@@ -1,6 +1,7 @@
 import { KeyValue } from "../../lib/keyboard";
 import { getStatuses } from "../../lib/statuses";
 import { Key } from "./Key";
+import {useEffect} from "react";
 
 type Props = {
   onChar: (value: string) => void;
@@ -11,17 +12,35 @@ type Props = {
 
 export const Keyboard = ({ onChar, onDelete, onEnter, guesses }: Props) => {
   const charStatuses = getStatuses(guesses);
-  console.log(charStatuses);
 
   const onClick = (value: KeyValue) => {
     if (value === "ENTER") {
-      return onEnter();
+      onEnter();
+    } else if (value === "DELETE") {
+      onDelete();
+    } else {
+      onChar(value);
     }
-    if (value === "DELETE") {
-      return onDelete();
-    }
-    return onChar(value);
   };
+
+  useEffect(() => {
+    const listener = (e:KeyboardEvent) => {
+      if(e.code === "Enter") {
+        onEnter();
+      } else if(e.code === "Backspace") {
+        onDelete();
+      } else {
+        const key = e.key.toUpperCase();
+        if(key.length === 1 && key >= "A" && key <= "Z") {
+          onChar(key);
+        }
+      }
+    };
+    window.addEventListener("keyup", listener);
+    return () => {
+      window.removeEventListener("keyup", listener);
+    };
+  }, [onEnter, onDelete, onChar]);
 
   return (
     <div>
