@@ -7,9 +7,15 @@ import { AboutModal } from "./components/modals/AboutModal";
 import { InfoModal } from "./components/modals/InfoModal";
 import { WinModal } from "./components/modals/WinModal";
 import { isWordInWordList, isWinningWord, solution } from "./lib/words";
+import {
+  loadGameStateFromLocalStorage,
+  saveGameStateToLocalStorage,
+} from "./lib/localStorage";
 
 function App() {
-  const [guesses, setGuesses] = useState<string[]>([]);
+  const [guesses, setGuesses] = useState<string[]>(
+    loadGameStateFromLocalStorage()?.guesses || []
+  );
   const [currentGuess, setCurrentGuess] = useState("");
   const [isGameWon, setIsGameWon] = useState(false);
   const [isWinModalOpen, setIsWinModalOpen] = useState(false);
@@ -17,6 +23,11 @@ function App() {
   const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
   const [isWordNotFoundAlertOpen, setIsWordNotFoundAlertOpen] = useState(false);
   const [isGameLost, setIsGameLost] = useState(false);
+  const [shareComplete, setShareComplete] = useState(false);
+
+  useEffect(() => {
+    saveGameStateToLocalStorage(guesses);
+  }, [guesses]);
 
   useEffect(() => {
     if (isGameWon) {
@@ -68,6 +79,11 @@ function App() {
         message={`You lost, the word was ${solution}`}
         isOpen={isGameLost}
       />
+      <Alert
+        message="Game copied to clipboard"
+        isOpen={shareComplete}
+        variant="success"
+      />
       <div className="flex w-80 mx-auto items-center mb-8">
         <h1 className="text-xl grow font-bold">Not Wordle</h1>
         <InformationCircleIcon
@@ -86,6 +102,13 @@ function App() {
         isOpen={isWinModalOpen}
         handleClose={() => setIsWinModalOpen(false)}
         guesses={guesses}
+        handleShare={() => {
+          setIsWinModalOpen(false);
+          setShareComplete(true);
+          return setTimeout(() => {
+            setShareComplete(false);
+          }, 2000);
+        }}
       />
       <InfoModal
         isOpen={isInfoModalOpen}

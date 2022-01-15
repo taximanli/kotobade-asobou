@@ -2,14 +2,21 @@ import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/outline";
 import { MiniGrid } from "../mini-grid/MiniGrid";
+import { shareStatus } from "../../lib/share";
 
 type Props = {
   isOpen: boolean;
   handleClose: () => void;
   guesses: string[];
+  handleShare: () => void;
 };
 
-export const WinModal = ({ isOpen, handleClose, guesses }: Props) => {
+export const WinModal = ({
+  isOpen,
+  handleClose,
+  guesses,
+  handleShare,
+}: Props) => {
   return (
     <Transition.Root show={isOpen} as={Fragment}>
       <Dialog
@@ -71,9 +78,12 @@ export const WinModal = ({ isOpen, handleClose, guesses }: Props) => {
                 <button
                   type="button"
                   className="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
-                  onClick={handleClose}
+                  onClick={() => {
+                    shareStatus(guesses);
+                    handleShare();
+                  }}
                 >
-                  Exit
+                  Share
                 </button>
               </div>
             </div>
