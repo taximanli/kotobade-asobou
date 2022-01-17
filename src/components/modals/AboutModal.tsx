@@ -1,10 +1,10 @@
-import { Fragment } from "react";
-import { Dialog, Transition } from "@headlessui/react";
+import { Fragment } from 'react'
+import { Dialog, Transition } from '@headlessui/react'
 
 type Props = {
-  isOpen: boolean;
-  handleClose: () => void;
-};
+  isOpen: boolean
+  handleClose: () => void
+}
 
 export const AboutModal = ({ isOpen, handleClose }: Props) => {
   return (
@@ -54,14 +54,14 @@ export const AboutModal = ({ isOpen, handleClose }: Props) => {
                   </Dialog.Title>
                   <div className="mt-2">
                     <p className="text-sm text-gray-500">
-                      This is an open source clone of the game Wordle -{" "}
+                      This is an open source clone of the game Wordle -{' '}
                       <a
                         href="https://github.com/hannahcode/wordle"
                         className="underline font-bold"
                       >
                         check out the code here
-                      </a>{" "}
-                      and{" "}
+                      </a>{' '}
+                      and{' '}
                       <a
                         href="https://www.powerlanguage.co.uk/wordle/"
                         className="underline font-bold"
@@ -77,5 +77,5 @@ export const AboutModal = ({ isOpen, handleClose }: Props) => {
         </div>
       </Dialog>
     </Transition.Root>
-  );
-};
+  )
+}
