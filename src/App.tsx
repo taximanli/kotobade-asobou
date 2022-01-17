@@ -1,77 +1,77 @@
-import { InformationCircleIcon } from "@heroicons/react/outline";
-import { useState, useEffect } from "react";
-import { Alert } from "./components/alerts/Alert";
-import { Grid } from "./components/grid/Grid";
-import { Keyboard } from "./components/keyboard/Keyboard";
-import { AboutModal } from "./components/modals/AboutModal";
-import { InfoModal } from "./components/modals/InfoModal";
-import { WinModal } from "./components/modals/WinModal";
-import { isWordInWordList, isWinningWord, solution } from "./lib/words";
+import { InformationCircleIcon } from '@heroicons/react/outline'
+import { useState, useEffect } from 'react'
+import { Alert } from './components/alerts/Alert'
+import { Grid } from './components/grid/Grid'
+import { Keyboard } from './components/keyboard/Keyboard'
+import { AboutModal } from './components/modals/AboutModal'
+import { InfoModal } from './components/modals/InfoModal'
+import { WinModal } from './components/modals/WinModal'
+import { isWordInWordList, isWinningWord, solution } from './lib/words'
 import {
   loadGameStateFromLocalStorage,
   saveGameStateToLocalStorage,
-} from "./lib/localStorage";
+} from './lib/localStorage'
 
 function App() {
   const [guesses, setGuesses] = useState<string[]>(() => {
-    const loaded = loadGameStateFromLocalStorage();
-    return loaded?.solution === solution ? loaded.guesses : [];
-  });
-  const [currentGuess, setCurrentGuess] = useState("");
-  const [isGameWon, setIsGameWon] = useState(false);
-  const [isWinModalOpen, setIsWinModalOpen] = useState(false);
-  const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
-  const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
-  const [isWordNotFoundAlertOpen, setIsWordNotFoundAlertOpen] = useState(false);
-  const [isGameLost, setIsGameLost] = useState(false);
-  const [shareComplete, setShareComplete] = useState(false);
+    const loaded = loadGameStateFromLocalStorage()
+    return loaded?.solution === solution ? loaded.guesses : []
+  })
+  const [currentGuess, setCurrentGuess] = useState('')
+  const [isGameWon, setIsGameWon] = useState(false)
+  const [isWinModalOpen, setIsWinModalOpen] = useState(false)
+  const [isInfoModalOpen, setIsInfoModalOpen] = useState(false)
+  const [isAboutModalOpen, setIsAboutModalOpen] = useState(false)
+  const [isWordNotFoundAlertOpen, setIsWordNotFoundAlertOpen] = useState(false)
+  const [isGameLost, setIsGameLost] = useState(false)
+  const [shareComplete, setShareComplete] = useState(false)
 
   useEffect(() => {
-    saveGameStateToLocalStorage({ guesses, solution });
-  }, [guesses]);
+    saveGameStateToLocalStorage({ guesses, solution })
+  }, [guesses])
 
   useEffect(() => {
     if (isGameWon) {
-      setIsWinModalOpen(true);
+      setIsWinModalOpen(true)
     }
-  }, [isGameWon]);
+  }, [isGameWon])
 
   const onChar = (value: string) => {
     if (currentGuess.length < 5 && guesses.length < 6) {
-      setCurrentGuess(`${currentGuess}${value}`);
+      setCurrentGuess(`${currentGuess}${value}`)
     }
-  };
+  }
 
   const onDelete = () => {
-    setCurrentGuess(currentGuess.slice(0, -1));
-  };
+    setCurrentGuess(currentGuess.slice(0, -1))
+  }
 
   const onEnter = () => {
     if (!isWordInWordList(currentGuess)) {
-      setIsWordNotFoundAlertOpen(true);
+      setIsWordNotFoundAlertOpen(true)
       return setTimeout(() => {
-        setIsWordNotFoundAlertOpen(false);
-      }, 2000);
+        setIsWordNotFoundAlertOpen(false)
+      }, 2000)
     }
 
-    const winningWord = isWinningWord(currentGuess);
+    const winningWord = isWinningWord(currentGuess)
 
     if (currentGuess.length === 5 && guesses.length < 6 && !isGameWon) {
-      setGuesses([...guesses, currentGuess]);
-      setCurrentGuess("");
+      setGuesses([...guesses, currentGuess])
+      setCurrentGuess('')
 
       if (winningWord) {
-        return setIsGameWon(true);
+        return setIsGameWon(true)
       }
 
       if (guesses.length === 5) {
-        setIsGameLost(true);
+        setIsGameLost(true)
         return setTimeout(() => {
-          setIsGameLost(false);
-        }, 2000);
+          setIsGameLost(false)
+        }, 2000)
       }
     }
-  };
+  }
 
   return (
     <div className="py-8 max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -104,11 +104,11 @@ function App() {
         handleClose={() => setIsWinModalOpen(false)}
         guesses={guesses}
         handleShare={() => {
-          setIsWinModalOpen(false);
-          setShareComplete(true);
+          setIsWinModalOpen(false)
+          setShareComplete(true)
           return setTimeout(() => {
-            setShareComplete(false);
-          }, 2000);
+            setShareComplete(false)
+          }, 2000)
         }}
       />
       <InfoModal
@@ -128,7 +128,7 @@ function App() {
         About this game
       </button>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

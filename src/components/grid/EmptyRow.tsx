@@ -1,7 +1,7 @@
-import { Cell } from "./Cell";
+import { Cell } from './Cell'
 
 export const EmptyRow = () => {
-  const emptyCells = Array.from(Array(5));
+  const emptyCells = Array.from(Array(5))
 
   return (
     <div className="flex justify-center mb-1">
@@ -9,5 +9,5 @@ export const EmptyRow = () => {
         <Cell key={i} />
       ))}
     </div>
-  );
-};
+  )
+}

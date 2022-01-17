@@ -1,8 +1,8 @@
-import { MiniCompletedRow } from "./MiniCompletedRow";
+import { MiniCompletedRow } from './MiniCompletedRow'
 
 type Props = {
-  guesses: string[];
-};
+  guesses: string[]
+}
 
 export const MiniGrid = ({ guesses }: Props) => {
   return (
@@ -11,5 +11,5 @@ export const MiniGrid = ({ guesses }: Props) => {
         <MiniCompletedRow key={i} guess={guess} />
       ))}
     </div>
-  );
-};
+  )
+}
