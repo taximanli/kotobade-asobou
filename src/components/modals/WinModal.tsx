@@ -3,6 +3,7 @@ import { Dialog, Transition } from '@headlessui/react'
 import { CheckIcon } from '@heroicons/react/outline'
 import { MiniGrid } from '../mini-grid/MiniGrid'
 import { shareStatus } from '../../lib/share'
+import { XCircleIcon } from '@heroicons/react/outline'
 
 type Props = {
   isOpen: boolean
@@ -36,7 +37,7 @@ export const WinModal = ({
           >
             <Dialog.Overlay className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
           </Transition.Child>
-
+          
           {/* This element is to trick the browser into centering the modal contents. */}
           <span
             className="hidden sm:inline-block sm:align-middle sm:h-screen"
@@ -54,6 +55,12 @@ export const WinModal = ({
             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
             <div className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
+              <div className="absolute right-4 top-4">
+                <XCircleIcon
+                  className="h-6 w-6 cursor-pointer"
+                  onClick={() => handleClose()}
+                />
+              </div>
               <div>
                 <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100">
                   <CheckIcon
