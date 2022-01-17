@@ -13,10 +13,6 @@ import {
 } from './lib/localStorage'
 
 function App() {
-  const [guesses, setGuesses] = useState<string[]>(() => {
-    const loaded = loadGameStateFromLocalStorage()
-    return loaded?.solution === solution ? loaded.guesses : []
-  })
   const [currentGuess, setCurrentGuess] = useState('')
   const [isGameWon, setIsGameWon] = useState(false)
   const [isWinModalOpen, setIsWinModalOpen] = useState(false)
@@ -25,6 +21,16 @@ function App() {
   const [isWordNotFoundAlertOpen, setIsWordNotFoundAlertOpen] = useState(false)
   const [isGameLost, setIsGameLost] = useState(false)
   const [shareComplete, setShareComplete] = useState(false)
+  const [guesses, setGuesses] = useState<string[]>(() => {
+    const loaded = loadGameStateFromLocalStorage()
+    if (loaded?.solution !== solution) {
+      return []
+    }
+    if (loaded.guesses.includes(solution)) {
+      setIsGameWon(true)
+    }
+    return loaded.guesses
+  })
 
   useEffect(() => {
     saveGameStateToLocalStorage({ guesses, solution })
