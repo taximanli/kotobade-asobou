@@ -3,6 +3,10 @@ import { Dialog, Transition } from '@headlessui/react'
 import { XCircleIcon } from '@heroicons/react/outline'
 import { trys, successRate, currentStreak, bestStreak } from '../../lib/stats'
 
+//const boxItem = ( label: string, value: string ) => {
+//  return ()
+// }
+
 type Props = {
   isOpen: boolean
   handleClose: () => void
@@ -63,23 +67,50 @@ export const StatsModal = ({ isOpen, handleClose, stats }: Props) => {
                   >
                     Statistics
                   </Dialog.Title>
-                  <div className="mt-2">
-                    <p>trys = {String(trys(stats))}</p>
-                    <p>success rate = {String(successRate(stats))}%</p>
-                    <p>Best streak is {String(bestStreak(stats))} currently {String(currentStreak(stats))}</p>
+                  <div className="flex justify-center m-1">          
+                    <div className="items-center justify-center m-1 w-1/4 bg-blue-300">
+                      <div className="text-3xl font-bold">{String(trys(stats))} </div>
+                      <div className="text-sm">Total trys</div>
+                    </div>
+                    <div className="items-center justify-center m-1 w-1/4 bg-blue-300">
+                      <div className="text-3xl font-bold">{String(successRate(stats))}% </div>
+                      <div className="text-sm">Success rate</div>
+                    </div>
+                    <div className="items-center justify-center m-1 w-1/4 bg-blue-300">
+                      <div className="text-3xl font-bold">{String(currentStreak(stats))}</div>
+                      <div className="text-sm">Current streak</div>
+                    </div>
+                    <div className="items-center justify-center m-1 w-1/4 bg-blue-300">
+                      <div className="text-3xl font-bold">{String(bestStreak(stats))}</div>
+                      <div className="text-sm">Best streak</div>
+                    </div>
                   </div>
                   <Dialog.Title
                     as="h3"
                     className="text-lg leading-6 font-medium text-gray-900"
                   >
-                  Distribution
+                  Guess Distribution
                   </Dialog.Title>
-                    <p>1 {String(stats[0])}</p>
-                    <p>2 {String(stats[1])}</p>
-                    <p>3 {String(stats[2])}</p>
-                    <p>4 {String(stats[3])}</p>
-                    <p>5 {String(stats[4])}</p>
-                    <p>6 {String(stats[5])}</p>
+                  <div className="columns-1 justify-left m-2 bg-blue-300 text-sm">
+                    <div className="flex justify-left m-1 bg-blue-200">
+                      <div>1 {String(stats[0])}</div>
+                    </div>
+                    <div className="flex justify-left m-1 bg-blue-200">
+                      <div>2 {String(stats[1])}</div>
+                    </div>
+                    <div className="flex justify-left m-1 bg-blue-200">
+                      <div>3 {String(stats[2])}</div>
+                    </div>
+                    <div className="flex justify-left m-1 bg-blue-200">
+                      <div>4 {String(stats[3])}</div>
+                    </div>
+                    <div className="flex justify-left m-1 bg-blue-200">
+                      <div>5 {String(stats[4])}</div>
+                    </div>
+                    <div className="flex justify-left m-1 bg-blue-200">
+                      <div>6 {String(stats[5])}</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
