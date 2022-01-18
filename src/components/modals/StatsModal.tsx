@@ -1,14 +1,15 @@
 import { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XCircleIcon } from '@heroicons/react/outline'
-import { trysStat, successRateStat, bestStreakStat, currentStreakStat } from '../../lib/stats'
+import { trys, successRate, currentStreak, bestStreak } from '../../lib/stats'
 
 type Props = {
   isOpen: boolean
   handleClose: () => void
+  stats: number[]
 }
 
-export const StatsModal = ({ isOpen, handleClose }: Props) => {
+export const StatsModal = ({ isOpen, handleClose, stats }: Props) => {
   return (
     <Transition.Root show={isOpen} as={Fragment}>
       <Dialog
@@ -63,10 +64,22 @@ export const StatsModal = ({ isOpen, handleClose }: Props) => {
                     Statistics
                   </Dialog.Title>
                   <div className="mt-2">
-                    <p>trys = {trysStat}</p>
-                    <p>success rate = {successRateStat}</p>
-                    <p>Best streak is {bestStreakStat} currently {currentStreakStat}</p>
+                    <p>trys = {String(trys(stats))}</p>
+                    <p>success rate = {String(successRate(stats))}%</p>
+                    <p>Best streak is {String(bestStreak(stats))} currently {String(currentStreak(stats))}</p>
                   </div>
+                  <Dialog.Title
+                    as="h3"
+                    className="text-lg leading-6 font-medium text-gray-900"
+                  >
+                  Distribution
+                  </Dialog.Title>
+                    <p>1 {String(stats[0])}</p>
+                    <p>2 {String(stats[1])}</p>
+                    <p>3 {String(stats[2])}</p>
+                    <p>4 {String(stats[3])}</p>
+                    <p>5 {String(stats[4])}</p>
+                    <p>6 {String(stats[5])}</p>
                 </div>
               </div>
             </div>
