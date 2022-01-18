@@ -1,6 +1,7 @@
 import { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XCircleIcon } from '@heroicons/react/outline'
+import { trysStat, successRateStat, bestStreakStat, currentStreakStat } from '../../lib/stats'
 
 type Props = {
   isOpen: boolean
@@ -62,6 +63,9 @@ export const StatsModal = ({ isOpen, handleClose }: Props) => {
                     Statistics
                   </Dialog.Title>
                   <div className="mt-2">
+                    <p>trys = {trysStat}</p>
+                    <p>success rate = {successRateStat}</p>
+                    <p>Best streak is {bestStreakStat} currently {currentStreakStat}</p>
                   </div>
                 </div>
               </div>
