@@ -1,7 +1,5 @@
 /**
 ** An attempt at a statistics object and its interface
-** 
-** James Sturgis 18/1/2022
 **/
 
 import {
