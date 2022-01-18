@@ -6,10 +6,13 @@ import { Keyboard } from './components/keyboard/Keyboard'
 import { AboutModal } from './components/modals/AboutModal'
 import { InfoModal } from './components/modals/InfoModal'
 import { WinModal } from './components/modals/WinModal'
+import { StatsModal } from './components/modals/StatsModal'
 import { isWordInWordList, isWinningWord, solution } from './lib/words'
 import {
   loadGameStateFromLocalStorage,
   saveGameStateToLocalStorage,
+  loadStatsFromLocalStorage,
+  saveStatsToLocalStorage
 } from './lib/localStorage'
 
 function App() {
@@ -36,6 +39,13 @@ function App() {
     saveGameStateToLocalStorage({ guesses, solution })
   }, [guesses])
 
+  const maxStreak     = 7
+  const currentStreak = 8
+  const [stats, setStats ] = useState<number[]>(() => {
+    const loaded = loadStatsFromLocalStorage()
+    return loaded
+  })
+  
   useEffect(() => {
     if (isGameWon) {
       setIsWinModalOpen(true)
@@ -67,10 +77,18 @@ function App() {
       setCurrentGuess('')
 
       if (winningWord) {
+        stats[currentStreak]++
+        stats[guesses.length + 1]++
+        if( stats[currentStreak] > stats[maxStreak] ){
+          stats[maxStreak] = stats[currentStreak] }
+        saveStatsToLocalStorage({ stats })
         return setIsGameWon(true)
       }
 
       if (guesses.length === 5) {
+        stats[currentStreak] = 0
+        stats[guesses.length + 1]++
+        saveStatsToLocalStorage({ stats })
         setIsGameLost(true)
         return setTimeout(() => {
           setIsGameLost(false)
