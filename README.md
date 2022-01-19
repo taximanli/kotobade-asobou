@@ -30,7 +30,6 @@ $ npm run start
 
 _To build/run docker container:_
 ```bash
-$ cd wordle
 $ docker build -t notwordle .
 $ docker run -d -p 3000:3000 notwordle
 ```
