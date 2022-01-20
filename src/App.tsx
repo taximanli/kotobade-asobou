@@ -18,6 +18,7 @@ function App() {
   const [isWinModalOpen, setIsWinModalOpen] = useState(false)
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false)
   const [isAboutModalOpen, setIsAboutModalOpen] = useState(false)
+  const [isNotEnoughLetters, setIsNotEnoughLetters] = useState(false)
   const [isWordNotFoundAlertOpen, setIsWordNotFoundAlertOpen] = useState(false)
   const [isGameLost, setIsGameLost] = useState(false)
   const [shareComplete, setShareComplete] = useState(false)
@@ -53,6 +54,13 @@ function App() {
   }
 
   const onEnter = () => {
+    if (!(currentGuess.length === 5)) {
+      setIsNotEnoughLetters(true)
+      return setTimeout(() => {
+        setIsNotEnoughLetters(false)
+      }, 2000)
+    }
+  
     if (!isWordInWordList(currentGuess)) {
       setIsWordNotFoundAlertOpen(true)
       return setTimeout(() => {
@@ -81,6 +89,7 @@ function App() {
 
   return (
     <div className="py-8 max-w-7xl mx-auto sm:px-6 lg:px-8">
+      <Alert message="Not enough letters" isOpen={isNotEnoughLetters} />
       <Alert message="Word not found" isOpen={isWordNotFoundAlertOpen} />
       <Alert
         message={`You lost, the word was ${solution}`}
