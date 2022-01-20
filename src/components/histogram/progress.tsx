@@ -7,7 +7,7 @@ type Props = {
 
 export const Progress = ( {index, size, label}: Props ) => {
   return(
-    <div className="flex justify-left m-1 bg-blue-200">
+    <div className="flex justify-left m-1">
       <div className="items-center justify-center w-10%">{index+1}</div>
       <div className="bg-gray-200 rounded-full w-full ml-2">
         <div
