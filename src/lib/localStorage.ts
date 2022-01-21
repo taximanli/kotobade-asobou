@@ -16,17 +16,20 @@ export const loadGameStateFromLocalStorage = () => {
 
 const gameStatKey = 'gameStats'
 
-type StoredGameStats = {
-  distribution: number[]
-  current: number
-  best: number
+export type GameStats = {
+  winDistribution: number[]
+  gamesFailed: number
+  currentStreak: number
+  bestStreak: number
+  totalGames: number
+  successRate: number
 }
 
-export const saveStatsToLocalStorage = ( gameStats: StoredGameStats) => {
+export const saveStatsToLocalStorage = (gameStats: GameStats) => {
   localStorage.setItem(gameStatKey, JSON.stringify(gameStats))
 }
 
 export const loadStatsFromLocalStorage = () => {
   const stats = localStorage.getItem(gameStatKey)
-  return stats ? (JSON.parse(stats) as StoredGameStats) : null
+  return stats ? (JSON.parse(stats) as GameStats) : null
 }

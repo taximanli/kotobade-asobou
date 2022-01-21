@@ -9,7 +9,7 @@ import { InfoModal } from './components/modals/InfoModal'
 import { WinModal } from './components/modals/WinModal'
 import { StatsModal } from './components/modals/StatsModal'
 import { isWordInWordList, isWinningWord, solution } from './lib/words'
-import { addEvent, loadStats } from './lib/stats'
+import { addStatsForCompletedGame, loadStats } from './lib/stats'
 import {
   loadGameStateFromLocalStorage,
   saveGameStateToLocalStorage,
@@ -37,15 +37,12 @@ function App() {
     return loaded.guesses
   })
 
-  const [stats, setStats] = useState<number[]>(() => {
-    const  loaded = loadStats()
-    return loaded
-  })
-  
+  const [stats, setStats] = useState(() => loadStats())
+
   useEffect(() => {
     saveGameStateToLocalStorage({ guesses, solution })
   }, [guesses])
- 
+
   useEffect(() => {
     if (isGameWon) {
       setIsWinModalOpen(true)
@@ -69,7 +66,7 @@ function App() {
         setIsNotEnoughLetters(false)
       }, 2000)
     }
-  
+
     if (!isWordInWordList(currentGuess)) {
       setIsWordNotFoundAlertOpen(true)
       return setTimeout(() => {
@@ -84,12 +81,12 @@ function App() {
       setCurrentGuess('')
 
       if (winningWord) {
-        setStats(addEvent(stats, guesses.length))
+        setStats(addStatsForCompletedGame(stats, guesses.length))
         return setIsGameWon(true)
       }
 
       if (guesses.length === 5) {
-        setStats(addEvent(stats, guesses.length + 1))
+        setStats(addStatsForCompletedGame(stats, guesses.length + 1))
         setIsGameLost(true)
         return setTimeout(() => {
           setIsGameLost(false)
@@ -148,7 +145,7 @@ function App() {
       <StatsModal
         isOpen={isStatsModalOpen}
         handleClose={() => setIsStatsModalOpen(false)}
-        stats={stats}
+        gameStats={stats}
       />
       <AboutModal
         isOpen={isAboutModalOpen}

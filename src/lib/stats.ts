@@ -1,67 +1,56 @@
-/**
-** An attempt at a statistics object and its interface
-**/
-
 import {
+  GameStats,
   loadStatsFromLocalStorage,
-  saveStatsToLocalStorage
+  saveStatsToLocalStorage,
 } from './localStorage'
 
 // In stats array elements 0-5 are successes in 1-6 trys
-// stats[6] is the number of failures
-// stats[7] is the currentStreak
-// stats[8] is the bestStreak
 
-export const failures      = (stats: number[] ) => { return stats[6] }
-export const currentStreak = (stats: number[] ) => { return stats[7] }
-export const bestStreak    = (stats: number[] ) => { return stats[8] }
+export const addStatsForCompletedGame = (
+  gameStats: GameStats,
+  count: number
+) => {
+  // Count is number of incorrect guesses before end.
+  const stats = { ...gameStats }
 
-export const addEvent = (stats: number[], count: number) => {
-                                        // Count is number of incorrect guesses before end.
-  if(count < 0) { count = 0 }           // Should not really need this
-  if( count > 5 ){                      // A fail situation
-    stats[7] = 0                        // End current streak
-    stats[6] += 1                       // Increase number of fails
+  stats.totalGames += 1
+
+  if (count > 5) {
+    // A fail situation
+    stats.currentStreak = 0
+    stats.gamesFailed += 1
   } else {
-    stats[count] += 1                   // Increase counters
-    stats[7] += 1
-    if( bestStreak(stats) < currentStreak(stats) ){
-      stats[8] = currentStreak(stats)
+    stats.winDistribution[count] += 1
+    stats.currentStreak += 1
+
+    if (stats.bestStreak < stats.currentStreak) {
+      stats.bestStreak = stats.currentStreak
     }
   }
-  saveStats(stats)
+
+  stats.successRate = getSuccessRate(stats)
+
+  saveStatsToLocalStorage(stats)
   return stats
 }
 
-export const resetStats = () => {
-  return [0,0,0,0,0,0,0,0,0]
-}
-
-export const saveStats = (stats: number[]) => {
-  const distribution = stats.slice(0,7)
-  const current = currentStreak(stats)
-  const best = bestStreak(stats)
-  saveStatsToLocalStorage({ distribution , current, best })
+const defaultStats: GameStats = {
+  winDistribution: [0, 0, 0, 0, 0, 0],
+  gamesFailed: 0,
+  currentStreak: 0,
+  bestStreak: 0,
+  totalGames: 0,
+  successRate: 0,
 }
 
 export const loadStats = () => {
-  const loaded = loadStatsFromLocalStorage()
-  var stats  = resetStats()
-  if( loaded ){
-    stats = loaded.distribution
-    stats[7] = loaded.current
-    stats[8] = loaded.best
-  }
-  return ( stats )
+  return loadStatsFromLocalStorage() || defaultStats
 }
 
-export const trys = (stats: number[] ) => {
-  return(stats.slice(0,7).reduce((a,b) => a+b , 0 ))
+const getSuccessRate = (gameStats: GameStats) => {
+  const { totalGames, gamesFailed } = gameStats
+
+  return Math.round(
+    (100 * (totalGames - gamesFailed)) / Math.max(totalGames, 1)
+  )
 }
-
-export const successRate = (stats: number[] ) => {
-  return(Math.round((100*(trys(stats) - failures(stats)))/Math.max(trys(stats),1)))
-}
-
-
-
