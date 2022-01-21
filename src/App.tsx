@@ -1,4 +1,5 @@
 import { InformationCircleIcon } from '@heroicons/react/outline'
+import { ChartBarIcon } from '@heroicons/react/outline'
 import { useState, useEffect } from 'react'
 import { Alert } from './components/alerts/Alert'
 import { Grid } from './components/grid/Grid'
@@ -6,7 +7,9 @@ import { Keyboard } from './components/keyboard/Keyboard'
 import { AboutModal } from './components/modals/AboutModal'
 import { InfoModal } from './components/modals/InfoModal'
 import { WinModal } from './components/modals/WinModal'
+import { StatsModal } from './components/modals/StatsModal'
 import { isWordInWordList, isWinningWord, solution } from './lib/words'
+import { addEvent, loadStats } from './lib/stats'
 import {
   loadGameStateFromLocalStorage,
   saveGameStateToLocalStorage,
@@ -19,6 +22,7 @@ function App() {
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false)
   const [isAboutModalOpen, setIsAboutModalOpen] = useState(false)
   const [isNotEnoughLetters, setIsNotEnoughLetters] = useState(false)
+  const [isStatsModalOpen, setIsStatsModalOpen] = useState(false)
   const [isWordNotFoundAlertOpen, setIsWordNotFoundAlertOpen] = useState(false)
   const [isGameLost, setIsGameLost] = useState(false)
   const [shareComplete, setShareComplete] = useState(false)
@@ -33,10 +37,15 @@ function App() {
     return loaded.guesses
   })
 
+  const [stats, setStats] = useState<number[]>(() => {
+    const  loaded = loadStats()
+    return loaded
+  })
+  
   useEffect(() => {
     saveGameStateToLocalStorage({ guesses, solution })
   }, [guesses])
-
+ 
   useEffect(() => {
     if (isGameWon) {
       setIsWinModalOpen(true)
@@ -75,10 +84,12 @@ function App() {
       setCurrentGuess('')
 
       if (winningWord) {
+        setStats(addEvent(stats, guesses.length))
         return setIsGameWon(true)
       }
 
       if (guesses.length === 5) {
+        setStats(addEvent(stats, guesses.length + 1))
         setIsGameLost(true)
         return setTimeout(() => {
           setIsGameLost(false)
@@ -106,6 +117,10 @@ function App() {
           className="h-6 w-6 cursor-pointer"
           onClick={() => setIsInfoModalOpen(true)}
         />
+        <ChartBarIcon
+          className="h-6 w-6 cursor-pointer"
+          onClick={() => setIsStatsModalOpen(true)}
+        />
       </div>
       <Grid guesses={guesses} currentGuess={currentGuess} />
       <Keyboard
@@ -129,6 +144,11 @@ function App() {
       <InfoModal
         isOpen={isInfoModalOpen}
         handleClose={() => setIsInfoModalOpen(false)}
+      />
+      <StatsModal
+        isOpen={isStatsModalOpen}
+        handleClose={() => setIsStatsModalOpen(false)}
+        stats={stats}
       />
       <AboutModal
         isOpen={isAboutModalOpen}
