@@ -31,12 +31,12 @@ export const Key = ({
   )
 
   return (
-    <div
+    <button
       style={{ width: `${width}px`, height: '58px' }}
       className={classes}
       onClick={() => onClick(value)}
     >
       {children || value}
-    </div>
+    </button>
   )
 }
