@@ -31,8 +31,12 @@ function App() {
     if (loaded?.solution !== solution) {
       return []
     }
-    if (loaded.guesses.includes(solution)) {
+    const gameWasWon = loaded.guesses.includes(solution)
+    if (gameWasWon) {
       setIsGameWon(true)
+    }
+    if (loaded.guesses.length === 6 && !gameWasWon) {
+      setIsGameLost(true)
     }
     return loaded.guesses
   })
@@ -60,7 +64,7 @@ function App() {
   }
 
   const onEnter = () => {
-    if (!(currentGuess.length === 5)) {
+    if (!(currentGuess.length === 5) && !isGameLost) {
       setIsNotEnoughLetters(true)
       return setTimeout(() => {
         setIsNotEnoughLetters(false)
@@ -88,26 +92,12 @@ function App() {
       if (guesses.length === 5) {
         setStats(addStatsForCompletedGame(stats, guesses.length + 1))
         setIsGameLost(true)
-        return setTimeout(() => {
-          setIsGameLost(false)
-        }, 2000)
       }
     }
   }
 
   return (
     <div className="py-8 max-w-7xl mx-auto sm:px-6 lg:px-8">
-      <Alert message="Not enough letters" isOpen={isNotEnoughLetters} />
-      <Alert message="Word not found" isOpen={isWordNotFoundAlertOpen} />
-      <Alert
-        message={`You lost, the word was ${solution}`}
-        isOpen={isGameLost}
-      />
-      <Alert
-        message="Game copied to clipboard"
-        isOpen={shareComplete}
-        variant="success"
-      />
       <div className="flex w-80 mx-auto items-center mb-8">
         <h1 className="text-xl grow font-bold">Not Wordle</h1>
         <InformationCircleIcon
@@ -159,6 +149,18 @@ function App() {
       >
         About this game
       </button>
+
+      <Alert message="Not enough letters" isOpen={isNotEnoughLetters} />
+      <Alert message="Word not found" isOpen={isWordNotFoundAlertOpen} />
+      <Alert
+        message={`You lost, the word was ${solution}`}
+        isOpen={isGameLost}
+      />
+      <Alert
+        message="Game copied to clipboard"
+        isOpen={shareComplete}
+        variant="success"
+      />
     </div>
   )
 }
