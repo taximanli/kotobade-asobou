@@ -2,10 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-.cellAnimation {
+.cell-animation {
   animation: revealCharCell linear;
   animation-duration: 0.15s;
-  border-color: black;
 }
 
 @keyframes revealCharCell {
