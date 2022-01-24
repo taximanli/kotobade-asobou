@@ -1742,7 +1742,7 @@
   header .title {\n  
     font-weight: 700;\n  
     font-size: 24px;\n  
-    text-transform: uppercase;\n  
+    text-transform: none;\n  
     letter-spacing: 0.2rem;\n  
     text-align: center;\n  
     position: absolute;\n  
