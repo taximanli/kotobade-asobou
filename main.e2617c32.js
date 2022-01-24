@@ -1742,8 +1742,8 @@
   header .title {\n  
     font-weight: 700;\n  
     font-size: 24px;\n  
-    text-transform: none;\n  
-    letter-spacing: 0.2rem;\n  
+    text-transform: uppercase;\n  
+    /*letter-spacing: 0.2rem;*/\n  
     text-align: center;\n  
     position: absolute;\n  
     left: 0;\n  
@@ -1797,7 +1797,7 @@
           </button>\n  
         </div>\n  
         <div class="title">\n  
-          <small><small>Kotoba Asobou</small></small> 言葉遊ボウ\n  
+          <small>Kotoba Asobou</small> 言葉遊ボウ\n  
         </div>\n  
         <div class="menu">\n  
           <button id="statistics-button" class="icon" aria-label="statistics">\n  
@@ -2065,7 +2065,7 @@
                       this.$board
                         .querySelectorAll("game-row")
                         [this.rowIndex].setAttribute("invalid", ""),
-                      void this.addToast("Not enough letters. 4仮名を入力してください。")
+                      void this.addToast("Not enough letters. 仮名４字を入力してください。")
                     );
                   this.evaluateRow();
                 }
@@ -2435,13 +2435,11 @@
         ["-","-","れ","-","め","へ","ね","て","せ","け","え"],
         ["-","を","ろ","よ","も","ほ","の","と","そ","こ","お"],
 
-        ["-","-","-","ゃ","ぱ","ば","-","だ","ざ","が","ぁ"],
-        ["-","-","-","-","ぴ","び","-","ぢ","じ","ぎ","ぃ"],
-        ["ゔ","-","-","ゅ","ぷ","ぶ","っ","づ","ず","ぐ","ぅ"],
-        ["-","-","-","-","ぺ","べ","-","で","ぜ","げ","ぇ"],
-        ["-","-","-","ょ","ぽ","ぼ","-","ど","ぞ","ご","ぉ"],        
-
-        ["â†µ","-","-","-","-","-","â†"],
+        ["-","-","-","-","ぱ","ば","-","だ","ざ","が","-"],
+        ["-","-","-","-","ぴ","び","-","ぢ","じ","ぎ","-"],
+        ["ゔ","-","-","-","ぷ","ぶ","-","づ","ず","ぐ","-"],
+        ["-","-","-","-","ぺ","べ","-","で","ぜ","げ","-"],
+        ["â†µ","-","-","-","ぽ","ぼ","-","ど","ぞ","ご","â†"],        
 
       ],
       us = (function (e) {
@@ -2530,8 +2528,11 @@
                 "む" == e || "め" == e || "も" == e || "ゃ" == e || "や" == e || "ゅ" == e || "ゆ" == e || "ょ" == e || "よ" == e || "ら" == e || "り" == e || "る" == e || "れ" == e || "ろ" == e || "ゎ" == e || "わ" == e ||
                 "ゐ" == e || "ゑ" == e || "を" == e || "ん" == e || "ゔ" == e || "ゕ" == e || "ゖ" == e || "ー" == e ||
 
-                          "â†" === e ||
-                          "â†µ" === e
+                // "⌫" === e ||
+                // "⏎" === e ||
+
+                "â†" === e ||
+                "â†µ" === e
                         ) {
                           if (
                             
@@ -2544,13 +2545,13 @@
                           ) {
                             var t = document.createElement("game-icon");
                             t.setAttribute("icon", "backspace"),
-                              (a.textContent = ""),
-                              a.appendChild(t),
-                              a.classList.add("one-and-a-half");
+                              (a.textContent = "⌫"),
+                              //a.appendChild(t),
+                              a.classList.add("one");
                           }
                           "â†µ" == e &&
-                            ((a.textContent = "enter"),
-                            a.classList.add("one-and-a-half"));
+                            ((a.textContent = "⏎"),
+                            a.classList.add("one"));
                         } else (a = ls.content.cloneNode(!0).firstElementChild).classList.add(1 === e.length ? "one" : "one");
                         s.appendChild(a);
                       }),
@@ -3160,7 +3161,7 @@
                                   }),
                                   (d += "\n"));
                               }),
-                              { text: "".concat(l, "\n(Game ゲーム https:\/\/taximanli.github.io\/kotobaasobou\/)\n").concat(d.trimEnd()) }
+                              { text: "".concat(l, "\nhttps:\/\/taximanli.github.io\/kotobaasobou\/\n").concat(d.trimEnd()) }
                             );
                           })({
                             evaluations: e.gameApp.evaluations,
@@ -3171,7 +3172,7 @@
                           }),
                           function () {
                             e.gameApp.addToast(
-                              "Copied results to clipboard",
+                              "Copied results to clipboard. 成績をクリップボードにコピーしました。",
                               2e3,
                               !0
                             );
@@ -3274,14 +3275,14 @@
           <p>Guess the word of the day in 12 tries.</p>\n  
           <p>Each guess must be a valid 4-kana word. Hit the enter button to submit.</p>\n  
           <p>After each guess, the colour of the tiles will change to show how close your guess was to the word.</p>\n  
-          <p>今日の単語を12回以内に推測してください。各答えは4仮名の正しい単語である必要があります。入力ボタンを押して答えを送信してください。答えるたびに、正方形の色が変わり、次の推測のヒントになります。</p>\n  
+          <p>今日の単語を１２回以内に推測してください。各答えは仮名４字の単語である必要があります。入力ボタンを押して答えを送信してください。答えるたびに、正方形の色が変わり、次の推測のヒントになります。</p>\n  
           <div class="examples">\n  
             <p><strong>Examples 例</strong></p>\n  
             <div class="example">\n  
               <div class="row">\n  
                 <game-tile letter="ち" evaluation="correct" reveal></game-tile>\n  
-                <game-tile letter="ょ"></game-tile>\n  
-                <game-tile letter="っ"></game-tile>\n  
+                <game-tile letter="よ"></game-tile>\n  
+                <game-tile letter="つ"></game-tile>\n  
                 <game-tile letter="と"></game-tile>\n  
               </div>\n  
               <p>The kana <strong>ち</strong> is in the word and in the correct spot.<br>仮名「ち」は単語の中にあり、単語の正しい位置にあります。</p>\n  
@@ -3300,14 +3301,14 @@
                 <game-tile letter="ぱ"></game-tile>\n  
                 <game-tile letter="ー"></game-tile>\n  
                 <game-tile letter="て" evaluation="absent" reveal></game-tile>\n  
-                <game-tile letter="ぃ"></game-tile>\n  
+                <game-tile letter="い"></game-tile>\n  
               </div>\n  
               <p>The kana <strong>て</strong> is not in the word in any spot.<br>仮名「て」はどの位置でも単語に含まれていません。</p>\n  
             </div>\n  
           </div>\n  
           <p><strong>A new word will be available each day!<br>毎日新しい単語があります！</strong></p>\n  
           <p>This game was designed by Josh Wardle and it was adapted into Japanese by Desmond Lee.</p>\n  
-          <p>このゲームは Josh Wardle によって設計され、Desmond Lee によって日本語に適合されました。</p>\n  
+          <p>このゲームは Josh Wardle によって設計され、Desmond Lee によって日本語に作り替えられました。</p>\n  
        </div>\n  
           </div>\n  
       </div>\n  
