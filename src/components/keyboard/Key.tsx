@@ -19,7 +19,7 @@ export const Key = ({
   onClick,
 }: Props) => {
   const classes = classnames(
-    'flex items-center justify-center rounded mx-0.5 text-xs font-bold cursor-pointer',
+    'flex items-center justify-center rounded mx-0.5 text-xs font-bold cursor-pointer select-none',
     {
       'bg-slate-200 hover:bg-slate-300 active:bg-slate-400': !status,
       'bg-slate-400 text-white': status === 'absent',
@@ -31,12 +31,12 @@ export const Key = ({
   )
 
   return (
-    <div
+    <button
       style={{ width: `${width}px`, height: '58px' }}
       className={classes}
       onClick={() => onClick(value)}
     >
       {children || value}
-    </div>
+    </button>
   )
 }
