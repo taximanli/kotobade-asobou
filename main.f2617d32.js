@@ -1449,7 +1449,7 @@
             <div class="title">Feedback フィードバック</div>\n  
           </div>\n  
           <div class="control">\n  
-            <a href="mailto:sumomo_nagamoto@yahoo.com?subject=Feedback for Kotoba Asobou">Email</a>\n  
+            <a href="https://twitter.com/taximanli" target="blank" >Twitter</a>\n  
             |\n  
             <a href="https://github.com/taximanli/kotobaasobou" target="blank" >GitHub</a>\n  
           </div>\n  
@@ -1457,7 +1457,7 @@
       </section>\n  
     </div>\n  
     <div id="footnote">\n  
-      <div id="copyright">Copyright Josh Wardle 2021-2022. All Rights Reserved.<br>Adaption into Japanese by Desmond Lee.</div>\n  
+      <div id="copyright">Copyright Josh Wardle 2021-2022. All Rights Reserved.<br>Adaptation into Japanese by Desmond Lee.</div>\n  
       <div>\n  
         <div id="puzzle-number"></div>\n  
         <div id="hash"></div>\n  

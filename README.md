@@ -1,6 +1,6 @@
 This game was designed by Josh Wardle and it was adapted into Japanese by Desmond Lee.
 
-このゲームは Josh Wardle によって設計され、Desmond Lee によって日本語に適合されました。
+このゲームは Josh Wardle によって設計され、Desmond Lee によって日本語に作り替えられました。
 
 HOW TO PLAY
 
