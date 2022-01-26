@@ -1418,8 +1418,8 @@
       <section>\n  
         <div class="setting">\n  
           <div class="text">\n  
-            <div class="title">Hard Mode 難しいモード</div>\n  
-            <div class="description">Any revealed hints must be used in subsequent guesses.<br>後続の推測では、明らかにされたヒントを使用する必要があります。</div>\n  
+            <div class="title">`+Mui["Hard Mode"]+`</div>\n  
+            <div class="description">`+Mui["Any revealed hints must be used in subsequent guesses"]+`</div>\n  
           </div>\n  
           <div class="control">\n  
             <game-switch id="hard-mode" name="hard-mode"></game-switch>\n  
@@ -1427,7 +1427,7 @@
         </div>\n  
         <div class="setting">\n  
           <div class="text">\n  
-            <div class="title">Dark Theme 暗いテーマ</div>\n  
+            <div class="title">`+Mui["Dark Theme"]+`</div>\n  
           </div>\n  
           <div class="control">\n  
             <game-switch id="dark-theme" name="dark-theme"></game-switch>\n  
@@ -1435,8 +1435,8 @@
         </div>\n  
         <div class="setting">\n  
           <div class="text">\n  
-            <div class="title">Colour Blind Mode 色覚特性モード</div>\n  
-            <div class="description">High contrast colours<br>高コントラストの色</div>\n  
+            <div class="title">`+Mui["Colour Blind Mode"]+`</div>\n  
+            <div class="description">`+Mui["High contrast colours"]+`</div>\n  
           </div>\n  
           <div class="control">\n  
             <game-switch id="color-blind-theme" name="color-blind-theme"></game-switch>\n  
@@ -1446,7 +1446,7 @@
       <section>\n  
         <div class="setting">\n  
           <div class="text">\n  
-            <div class="title">Feedback フィードバック</div>\n  
+            <div class="title">`+Mui["Feedback"]+`</div>\n  
           </div>\n  
           <div class="control">\n  
             <a href="https://twitter.com/taximanli" target="blank" >Twitter</a>\n  
@@ -1455,7 +1455,7 @@
       </section>\n  
     </div>\n  
     <div id="footnote">\n  
-      <div id="copyright">Copyright Josh Wardle 2021-2022. All Rights Reserved.<br>Adapted into Japanese by Desmond Lee.</div>\n  
+      <div id="copyright">`+Mui["Copyright"]+`</div>\n  
       <div>\n  
         <div id="puzzle-number"></div>\n  
         <div id="hash"></div>\n  
@@ -1713,7 +1713,18 @@
     }
     var Ka = document.createElement("template");
     Ka.innerHTML =
-      "\n  <style>\n  .toaster {\n    position: absolute;\n    top: 10%;\n    left: 50%;\n    transform: translate(-50%, 0);\n    pointer-events: none;\n    width: fit-content;\n  }\n  #game-toaster {\n    z-index: "
+    `\n
+    <style>\n
+    .toaster {\n
+      position: absolute;\n
+      top: 10%;\n
+      left: 50%;\n
+      transform: translate(-50%, 0);\n
+      pointer-events: none;\n
+      width: fit-content;\n
+    }\n
+    #game-toaster {\n
+      z-index: `        
         .concat(1e3, ";\n  }\n  #system-toaster {\n    z-index: ")
         .concat(
           4e3,
@@ -1795,7 +1806,7 @@
           </button>\n  
         </div>\n  
         <div class="title">\n  
-          <small>Kotoba Asobou</small> 言葉遊ボウ\n  
+          `+Mui["gametitle"]+`\n  
         </div>\n  
         <div class="menu">\n  
           <button id="statistics-button" class="icon" aria-label="statistics">\n  
@@ -1827,21 +1838,6 @@
     var Za = "IN_PROGRESS",
       es = "WIN",
       as = "FAIL",
-	  // CHANGE THIS
-      ss = [
-        "You are a genius! 天才ですよ！",
-        "You are a genius! 天才ですよ！",
-        "Magnificent! 素晴らしい！",
-        "Magnificent! 素晴らしい！",
-        "Impressive! 立派！",
-        "Impressive! 立派！",
-        "Splendid! 素敵！",
-        "Splendid! 素敵！",
-        "Great! すごい！",
-        "Great! すごい！",
-        "Phew! よし！",
-        "Phew! よし！",
-      ],
       ts = (function (e) {
         r(t, e);
         var a = h(t);
@@ -1911,7 +1907,7 @@
                   if (((e = s), !Ta.includes(e) && !La.includes(e)))
                     return (
                       a.setAttribute("invalid", ""),
-                      void this.addToast("Not in word list. この単語はリストにありません。")
+                      void this.addToast(Mui["Not in word list"])
                     );
                   if (this.hardMode) {
                     var t = (function (e, a, s) {
@@ -1934,9 +1930,7 @@
                           if ((r[i] || 0) < o[i])
                             return {
                               validGuess: !1,
-                              errorMessage: "Guess must contain ".concat(
-                                i.toUpperCase()
-                              ).concat(". この答えには ").concat(i.toUpperCase()).concat(" が含まれている必要があります。"),
+                              errorMessage: Mui["Guess must contain"].replace(/###text###/g, i.toUpperCase()),
                             };
                         return { validGuess: !0 };
                       })(
@@ -1949,7 +1943,7 @@
                     if (!o)
                       return (
                         a.setAttribute("invalid", ""),
-                        void this.addToast(n || "Not valid in hard mode. 難しいモードでは使用できません。")
+                        void this.addToast(n || Mui["Not valid in hard mode"])
                       );
                   }
                   var r = (function (e, a) {
@@ -2063,7 +2057,7 @@
                       this.$board
                         .querySelectorAll("game-row")
                         [this.rowIndex].setAttribute("invalid", ""),
-                      void this.addToast("Not enough letters. 仮名４字を入力してください。")
+                      void this.addToast(Mui["Not enough letters"])
                     );
                   this.evaluateRow();
                 }
@@ -2189,7 +2183,7 @@
                         case "hard-mode":
                           return void (n
                             ? e.addToast(
-                                "困難模式淨係可以一開頭度開",
+                                Mui["Hard mode can only be enabled at the start of a round"],
                                 1500,
                                 !0
                               )
@@ -2201,7 +2195,7 @@
                     .getElementById("settings-button")
                     .addEventListener("click", function (a) {
                       var s = e.$game.querySelector("game-page"),
-                        t = document.createTextNode("Settings 設定");
+                        t = document.createTextNode(Mui["Settings"]);
                       s.appendChild(t);
                       var o = document.createElement("game-settings");
                       o.setAttribute("slot", "content"),
@@ -2213,7 +2207,7 @@
                     .getElementById("help-button")
                     .addEventListener("click", function (a) {
                       var s = e.$game.querySelector("game-page"),
-                        t = document.createTextNode("How to play 遊び方");
+                        t = document.createTextNode(Mui["How to play"]);
                       s.appendChild(t);
                       var o = document.createElement("game-help");
                       o.setAttribute("page", ""),
@@ -2421,27 +2415,8 @@
     is.innerHTML = "\n  <button>key</button>\n";
     var ls = document.createElement("template");
     ls.innerHTML = '\n  <div class="spacer">　</div>\n';
-	// CHANGE THIS
-    var ds = [
-        /*[ "手", "田", "水", "口", "廿", "卜", "山", "戈", "人", "心"],
-        [ "-", "日", "尸", "木", "火", "土", "竹", "十", "大", "中", "-"],
-        ["-", "â†µ", "難", "金", "女", "月", "弓", "一",  "â†", "-"],*/
 
-        ["ん","わ","ら","や","ま","は","な","た","さ","か","あ"],
-        ["-","-","り","-","み","ひ","に","ち","し","き","い"],
-        ["ー","-","る","ゆ","む","ふ","ぬ","つ","す","く","う"],
-        ["-","-","れ","-","め","へ","ね","て","せ","け","え"],
-        ["-","を","ろ","よ","も","ほ","の","と","そ","こ","お"],
-        [],
-        [],
-        ["-","-","-","-","ぱ","ば","-","だ","ざ","が","-"],
-        ["-","-","-","-","ぴ","び","-","ぢ","じ","ぎ","-"],
-        ["-","-","-","-","ぷ","ぶ","-","づ","ず","ぐ","ゔ"],
-        ["-","-","-","-","ぺ","べ","-","で","ぜ","げ","-"],
-        ["â†µ","-","-","-","ぽ","ぼ","-","ど","ぞ","ご","â†"],        
-
-      ],
-      us = (function (e) {
+    var us = (function (e) {
         r(t, e);
         var a = h(t);
         function t() {
@@ -2514,24 +2489,9 @@
                         var a;
 						// CHANGE THIS
                         if (
-
-					      /*"日" == e || "月" == e || "金" == e || "木" == e || "水" == e || "火" == e || "土" == e ||
-					      "竹" == e || "戈" == e || "十" == e || "大" == e || "中" == e || "一" == e || "弓" == e ||
-					      "人" == e || "心" == e || "手" == e || "口" == e ||
-					      "尸" == e || "廿" == e || "山" == e || "女" == e || "田" == e || "難" == e || "卜" == e ||*/
-
-                "ぁ" == e || "あ" == e || "ぃ" == e || "い" == e || "ぅ" == e || "う" == e || "ぇ" == e || "え" == e || "ぉ" == e || "お" == e || "か" == e || "が" == e || "き" == e || "ぎ" == e || "く" == e ||
-                "ぐ" == e || "け" == e || "げ" == e || "こ" == e || "ご" == e || "さ" == e || "ざ" == e || "し" == e || "じ" == e || "す" == e || "ず" == e || "せ" == e || "ぜ" == e || "そ" == e || "ぞ" == e || "た" == e ||
-                "だ" == e || "ち" == e || "ぢ" == e || "っ" == e || "つ" == e || "づ" == e || "て" == e || "で" == e || "と" == e || "ど" == e || "な" == e || "に" == e || "ぬ" == e || "ね" == e || "の" == e || "は" == e ||
-                "ば" == e || "ぱ" == e || "ひ" == e || "び" == e || "ぴ" == e || "ふ" == e || "ぶ" == e || "ぷ" == e || "へ" == e || "べ" == e || "ぺ" == e || "ほ" == e || "ぼ" == e || "ぽ" == e || "ま" == e || "み" == e ||
-                "む" == e || "め" == e || "も" == e || "ゃ" == e || "や" == e || "ゅ" == e || "ゆ" == e || "ょ" == e || "よ" == e || "ら" == e || "り" == e || "る" == e || "れ" == e || "ろ" == e || "ゎ" == e || "わ" == e ||
-                "ゐ" == e || "ゑ" == e || "を" == e || "ん" == e || "ゔ" == e || "ゕ" == e || "ゖ" == e || "ー" == e ||
-
-                // "⌫" === e ||
-                // "⏎" === e ||
-
-                "â†" === e ||
-                "â†µ" === e
+                          Ba.indexOf(e) >= 0
+                          || "â†" === e
+                          || "â†µ" === e
                         ) {
                           if (
                             
@@ -2787,6 +2747,7 @@
             if (((t = e["text/plain"]), ws.clipboardData.setData("Text", t)))
               return [2, !0];
             throw new Error(
+              // CHANGE THIS
               "Copying failed, possibly because the user rejected it."
             );
           }
@@ -2993,9 +2954,9 @@
       }\n  
     </style>\n\n  
     <div class="container">\n  
-      <h1>Statistics 統計情報</h1>\n  
+      <h1>`+Mui["Statistics"]+`</h1>\n  
       <div id="statistics"></div>\n  
-      <h1>Guess Distribution 推測数の分布</h1>\n  
+      <h1>`+Mui["Guess Distribution"]+`</h1>\n  
       <div id="guess-distribution"></div>\n  
       <div class="footer"></div>\n  
     </div>\n`;    
@@ -3011,7 +2972,7 @@
     Is.innerHTML = 
     `\n  
     <div class="countdown">\n  
-      <h1>Next Game<br>次のゲームまで</h1>\n  
+      <h1>`+Mui["Next Game"]+`</h1>\n  
       <div id="timer">\n  
         <div class="statistic-container">\n  
           <div class="statistic timer">\n  
@@ -3022,20 +2983,12 @@
     </div>\n  
     <div class="share">\n  
       <button id="share-button">\n  
-        Share シェア <game-icon icon="share"></game-icon>\n  
+        `+Mui["Share"]+` <game-icon icon="share"></game-icon>\n  
       </button>\n  
     </div>\n`;    
 
 	// CHANGE THIS
-    var Ms = {
-        currentStreak: "Current Streak 現在のストリーク",
-        maxStreak: "Max Streak 最大ストリーク",
-        winPercentage: "Win 勝利 %",
-        gamesPlayed: "Played 回遊びました",
-        gamesWon: "Won 回勝ちました。",
-        averageGuesses: "Average Guesses 推測の平均数",
-      },
-      Os = (function (e) {
+    var Os = (function (e) {
         r(t, e);
         var a = h(t);
         function t() {
@@ -3069,7 +3022,7 @@
                 ) {
                   var o = document.createElement("div");
                   o.classList.add("no-data"),
-                    (o.innerText = "No Data データがありません"),
+                    (o.innerText = Mui["No Data"]),
                     s.appendChild(o);
                 } else
                   for (
@@ -3129,7 +3082,7 @@
                               n = e.isWin,
                               r = JSON.parse(window.localStorage.getItem(j)),
                               i = JSON.parse(window.localStorage.getItem(S)),
-                              l = "Kotoba Asobou 言葉遊ボウ ".concat(s);
+                              l = Mui["gamename"].concat(" ").concat(s);
                             (l += " ".concat(n ? t : "X", "/").concat(12)),
                               o && (l += "*");
                             var d = "";
@@ -3160,7 +3113,7 @@
                                   }),
                                   (d += "\n"));
                               }),
-                              { text: "".concat(l, "\nhttps:\/\/taximanli.github.io\/kotobaasobou\/\n").concat(d.trimEnd()) }
+                              { text: "".concat(l, Mui["gamesharelink"]).concat(d.trimEnd()) }
                             );
                           })({
                             evaluations: e.gameApp.evaluations,
@@ -3171,13 +3124,13 @@
                           }),
                           function () {
                             e.gameApp.addToast(
-                              "Copied results to clipboard. 成績をクリップボードにコピーしました。",
+                              Mui["Copied results to clipboard"],
                               2e3,
                               !0
                             );
                           },
                           function () {
-                            e.gameApp.addToast("Share failed", 2e3, !0);
+                            e.gameApp.addToast(Mui["Share failed"], 2e3, !0);
                           }
                         );
                       });
@@ -3268,50 +3221,7 @@
         padding: 16px;\n  
         padding-top: 0px;\n  
       }\n\n  
-      </style>\n  
-      <section>\n  
-        <div class="instructions">\n  
-          <p>Guess the word of the day in 12 tries.</p>\n  
-          <p>Each guess must be a valid 4-kana word. Hit the enter button to submit.</p>\n  
-          <p>After each guess, the colour of the tiles will change to show how close your guess was to the word.</p>\n  
-          <p>今日の単語を１２回以内に推測してください。各答えは仮名４字の単語である必要があります。入力ボタンを押して答えを送信してください。答えるたびに、正方形の色が変わり、次の推測のヒントになります。</p>\n  
-          <div class="examples">\n  
-            <p><strong>Examples 例</strong></p>\n  
-            <div class="example">\n  
-              <div class="row">\n  
-                <game-tile letter="ち" evaluation="correct" reveal></game-tile>\n  
-                <game-tile letter="よ"></game-tile>\n  
-                <game-tile letter="つ"></game-tile>\n  
-                <game-tile letter="と"></game-tile>\n  
-              </div>\n  
-              <p>The kana <strong>ち</strong> is in the word and in the correct spot.<br>仮名「ち」は単語の中にあり、単語の正しい位置にあります。</p>\n  
-            </div>\n  
-            <div class="example">\n  
-              <div class="row">\n  
-                <game-tile letter="す"></game-tile>\n  
-                <game-tile letter="ぽ" evaluation="present" reveal></game-tile>\n  
-                <game-tile letter="ー"></game-tile>\n  
-                <game-tile letter="つ"></game-tile>\n  
-              </div>\n  
-              <p>The kana <strong>ぽ</strong> is in the word but in the wrong spot.<br>仮名「ぽ」は単語の中にありますが、単語の間違った位置にあります。</p>\n  
-            </div>\n  
-            <div class="example">\n  
-              <div class="row">\n  
-                <game-tile letter="ぱ"></game-tile>\n  
-                <game-tile letter="ー"></game-tile>\n  
-                <game-tile letter="て" evaluation="absent" reveal></game-tile>\n  
-                <game-tile letter="い"></game-tile>\n  
-              </div>\n  
-              <p>The kana <strong>て</strong> is not in the word in any spot.<br>仮名「て」はどの位置でも単語に含まれていません。</p>\n  
-            </div>\n  
-          </div>\n  
-          <p><strong>A new word will be available each day!<br>毎日新しい単語があります！</strong></p>\n  
-          <p>This game was designed by Josh Wardle and it was adapted into Japanese by Desmond Lee.</p>\n  
-          <p>このゲームは Josh Wardle によって設計され、Desmond Lee によって日本語に作り替えられました。</p>\n  
-       </div>\n  
-          </div>\n  
-      </div>\n  
-      </section>\n`;
+      </style>\n`+Mui['gameinstruction'];
 
     var Hs = (function (e) {
       r(t, e);
