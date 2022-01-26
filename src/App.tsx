@@ -15,7 +15,7 @@ import {
   saveGameStateToLocalStorage,
 } from './lib/localStorage'
 
-const ALERT_TIME_MS = 2000;
+const ALERT_TIME_MS = 2000
 
 function App() {
   const [currentGuess, setCurrentGuess] = useState('')
@@ -50,16 +50,18 @@ function App() {
 
   useEffect(() => {
     if (isGameWon) {
-      setSuccessAlert(WIN_MESSAGES[Math.floor(Math.random()*WIN_MESSAGES.length)]);
+      setSuccessAlert(
+        WIN_MESSAGES[Math.floor(Math.random() * WIN_MESSAGES.length)]
+      )
       setTimeout(() => {
-        setSuccessAlert('');
-        setIsStatsModalOpen(true);
-      }, ALERT_TIME_MS);
+        setSuccessAlert('')
+        setIsStatsModalOpen(true)
+      }, ALERT_TIME_MS)
     }
     if (isGameLost) {
       setTimeout(() => {
-        setIsStatsModalOpen(true);
-      }, ALERT_TIME_MS);
+        setIsStatsModalOpen(true)
+      }, ALERT_TIME_MS)
     }
   }, [isGameWon, isGameLost])
 
@@ -74,7 +76,9 @@ function App() {
   }
 
   const onEnter = () => {
-    if (isGameWon || isGameLost) { return; }
+    if (isGameWon || isGameLost) {
+      return
+    }
     if (!(currentGuess.length === 5)) {
       setIsNotEnoughLetters(true)
       return setTimeout(() => {
@@ -139,8 +143,8 @@ function App() {
         isGameLost={isGameLost}
         isGameWon={isGameWon}
         handleShare={() => {
-            setSuccessAlert("Game copied to clipboard");
-            return setTimeout(() => setSuccessAlert(''), ALERT_TIME_MS);
+          setSuccessAlert('Game copied to clipboard')
+          return setTimeout(() => setSuccessAlert(''), ALERT_TIME_MS)
         }}
       />
       <AboutModal
@@ -158,13 +162,10 @@ function App() {
 
       <Alert message="Not enough letters" isOpen={isNotEnoughLetters} />
       <Alert message="Word not found" isOpen={isWordNotFoundAlertOpen} />
-      <Alert
-        message={`The word was ${solution}`}
-        isOpen={isGameLost}
-      />
+      <Alert message={`The word was ${solution}`} isOpen={isGameLost} />
       <Alert
         message={successAlert}
-        isOpen={successAlert!==''}
+        isOpen={successAlert !== ''}
         variant="success"
       />
     </div>
