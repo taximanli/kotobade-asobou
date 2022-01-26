@@ -4,20 +4,20 @@ var Mui = {
     "gamename": "Kotoba Asobou 言葉遊ボウ",
     "gamesharelink": "\nhttps:\/\/taximanli.github.io\/kotobaasobou\/\n",
 
-    "Hard Mode": "Hard Mode 難しいモード",
-    "Any revealed hints must be used in subsequent guesses": "Any revealed hints must be used in subsequent guesses.<br>後続の推測では、明らかにされたヒントを使用する必要があります。",
-    "Dark Theme": "Dark Theme 暗いテーマ",
+    "Hard Mode": "Hard Mode ハードモード",
+    "Any revealed hints must be used in subsequent guesses": "Any revealed hints must be used in subsequent guesses.<br>開示されたすべてのヒントを満たす単語だけが入力できます",
+    "Dark Theme": "Dark Theme ダークテーマ",
     "Colour Blind Mode": "Colour Blind Mode 色覚特性モード",
-    "High contrast colours": "High contrast colours 高コントラストの色",
+    "High contrast colours": "High contrast colours 色がハイコントラストになります",
     "Feedback": "Feedback フィードバック",
     "Copyright": "Copyright Josh Wardle 2021-"+(new Date().getFullYear())+". All Rights Reserved.<br>Adapted into Japanese by Desmond Lee.",
 
-    "Guess must contain": "Guess must contain ###text###. この答えには ###text### が含まれている必要があります。",
+    "Guess must contain": "Guess must contain ###text###. ###text### を答えに含める必要があります。",
 
     "Not in word list": "Not in word list この答えは単語リストにありません",
-    "Not valid in hard mode": "Not valid in hard mode 難しいモードでは使用できません",
-    "Not enough letters": "Not enough letters ４文字を入力してください",
-    "Hard mode can only be enabled at the start of a round": "Hard mode can only be enabled at the start of a round",
+    "Not valid in hard mode": "Not valid in hard mode ハードモードでは使用できません",
+    "Not enough letters": "Not enough letters ４文字入力してください",
+    "Hard mode can only be enabled at the start of a round": "Hard mode can only be enabled at the start of a round ハードモードは、ゲーム開始時にのみオンにすることができます",
     "Copied results to clipboard": "Copied results to clipboard 成績をクリップボードにコピーしました",
     "Share failed": "Share failed",
 
@@ -40,7 +40,7 @@ Mui["gameinstruction"] =
   <p>Guess the word of the day in 12 tries.</p>\n  
   <p>Each guess must be a valid 4-kana word. Hit the enter button to submit.</p>\n  
   <p>After each guess, the colour of the tiles will change to show how close your guess was to the word.</p>\n  
-  <p>今日の単語を１２回以内に推測してください。各答えは仮名４字の単語である必要があります。入力ボタンを押して答えを送信してください。答えるたびに、正方形の色が変わり、次の推測のヒントになります。</p>\n  
+  <p>今日の単語を12回以内に当ててください。それぞれの答えはひらがな４文字の単語である必要があります。入力ボタンを押して答えを決定してください。答えるたびに正方形の色が変わり、それが次のヒントになります。</p>\n  
   <div class="examples">\n  
     <p><strong>Examples 例</strong></p>\n  
     <div class="example">\n  
@@ -50,7 +50,7 @@ Mui["gameinstruction"] =
         <game-tile letter="つ"></game-tile>\n  
         <game-tile letter="と"></game-tile>\n  
       </div>\n  
-      <p>The kana <strong>ち</strong> is in the word and in the correct spot.<br>仮名「ち」は単語の中にあり、単語の正しい位置にあります。</p>\n  
+      <p>The kana <strong>ち</strong> is in the word and in the correct spot.<br>仮名「ち」は単語の中にあり、正しい位置にあります。</p>\n  
     </div>\n  
     <div class="example">\n  
       <div class="row">\n  
@@ -59,7 +59,7 @@ Mui["gameinstruction"] =
         <game-tile letter="ー"></game-tile>\n  
         <game-tile letter="つ"></game-tile>\n  
       </div>\n  
-      <p>The kana <strong>ぽ</strong> is in the word but in the wrong spot.<br>仮名「ぽ」は単語の中にありますが、単語の間違った位置にあります。</p>\n  
+      <p>The kana <strong>ぽ</strong> is in the word but in the wrong spot.<br>仮名「ぽ」は単語の中にありますが、違う位置にあります。</p>\n  
     </div>\n  
     <div class="example">\n  
       <div class="row">\n  
@@ -68,29 +68,29 @@ Mui["gameinstruction"] =
         <game-tile letter="て" evaluation="absent" reveal></game-tile>\n  
         <game-tile letter="い"></game-tile>\n  
       </div>\n  
-      <p>The kana <strong>て</strong> is not in the word in any spot.<br>仮名「て」はどの位置でも単語に含まれていません。</p>\n  
+      <p>The kana <strong>て</strong> is not in the word in any spot.<br>仮名「て」は単語のどこにも含まれていません。</p>\n  
     </div>\n  
   </div>\n  
-  <p><strong>A new word will be available each day!<br>毎日新しい単語があります！</strong></p>\n  
+  <p><strong>A new word will be available each day!<br>単語は日替わりです!</strong></p>\n  
   <p>This game was designed by Josh Wardle and it was adapted into Japanese by Desmond Lee.</p>\n  
-  <p>このゲームは Josh Wardle によって設計され、Desmond Lee によって日本語に作り替えられました。</p>\n  
+  <p>このゲームは Josh Wardle が開発し、Desmond Lee が日本語版を作りました。</p>\n  
 </div>\n  
   </div>\n  
 </div>\n  
 </section>\n`;
 
 var Ms = {
-    currentStreak: "Current Streak 現在のストリーク",
-    maxStreak: "Max Streak 最大ストリーク",
-    winPercentage: "Win 勝利 %",
-    gamesPlayed: "Played 回遊びました",
-    gamesWon: "Won 回勝ちました。",
-    averageGuesses: "Average Guesses 推測の平均数",
+    currentStreak: "Current Streak 現在の連続正解回数",
+    maxStreak: "Max Streak 最大連続回数",
+    winPercentage: "Win 勝率",
+    gamesPlayed: "Played プレイ回数",
+    gamesWon: "Won 勝利数",
+    averageGuesses: "Average Guesses 平均推測回数",
 };
 
 var ss = [
-    "You are a genius! 天才ですよ！",
-    "You are a genius! 天才ですよ！",
+    "You are a genius! 天才！",
+    "You are a genius! 天才！",
     "Magnificent! 素晴らしい！",
     "Magnificent! 素晴らしい！",
     "Impressive! 立派！",
@@ -99,8 +99,8 @@ var ss = [
     "Splendid! 素敵！",
     "Great! すごい！",
     "Great! すごい！",
-    "Phew! よし！",
-    "Phew! よし！",
+    "Phew! セーフ！",
+    "Phew! セーフ！",
   ];
 
 var ds = [
