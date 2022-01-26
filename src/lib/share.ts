@@ -4,7 +4,7 @@ import { solutionIndex } from './words'
 export const shareStatus = (guesses: string[], lost: boolean) => {
   navigator.clipboard.writeText(
     `Not Wordle ${solutionIndex} ${lost?"X":guesses.length}/6\n\n` +
-    generateEmojiGrid(guesses)
+      generateEmojiGrid(guesses)
   )
 }
 
