@@ -82,7 +82,7 @@ Mui["gameinstruction"] =
 var Ms = {
     currentStreak: "Current Streak 現在の連続正解回数",
     maxStreak: "Max Streak 最大連続回数",
-    winPercentage: "Win 勝率",
+    winPercentage: "Win % 勝率",
     gamesPlayed: "Played プレイ回数",
     gamesWon: "Won 勝利数",
     averageGuesses: "Average Guesses 平均推測回数",
