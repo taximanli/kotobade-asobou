@@ -1,6 +1,6 @@
 This game was designed by Josh Wardle and it was adapted into Japanese by Desmond Lee.
 
-このゲームは Josh Wardle によって設計され、Desmond Lee によって日本語に作り替えられました。
+このゲームは Josh Wardle が開発し、Desmond Lee が日本語版を作りました。
 
 HOW TO PLAY
 
@@ -10,6 +10,6 @@ A new word will be available each day!
 
 遊び方
 
-今日の単語を12回以内に推測してください。各答えは4仮名の正しい単語である必要があります。入力ボタンを押して答えを送信してください。答えるたびに、正方形の色が変わり、次の推測のヒントになります。
+今日の単語を12回以内に当ててください。それぞれの答えはひらがな４文字の単語である必要があります。入力ボタンを押して答えを決定してください。答えるたびに正方形の色が変わり、それが次のヒントになります。
 
-毎日新しい単語があります！
+単語は日替わりです！

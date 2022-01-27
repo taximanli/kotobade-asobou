@@ -71,7 +71,7 @@ Mui["gameinstruction"] =
       <p>The kana <strong>て</strong> is not in the word in any spot.<br>仮名「て」は単語のどこにも含まれていません。</p>\n  
     </div>\n  
   </div>\n  
-  <p><strong>A new word will be available each day!<br>単語は日替わりです!</strong></p>\n  
+  <p><strong>A new word will be available each day!<br>単語は日替わりです！</strong></p>\n  
   <p>This game was designed by Josh Wardle and it was adapted into Japanese by Desmond Lee.</p>\n  
   <p>このゲームは Josh Wardle が開発し、Desmond Lee が日本語版を作りました。</p>\n  
 </div>\n  
@@ -89,8 +89,8 @@ var Ms = {
 };
 
 var ss = [
-    "You are a genius! 天才！",
-    "You are a genius! 天才！",
+    "Genius! 天才！",
+    "Genius! 天才！",
     "Magnificent! 素晴らしい！",
     "Magnificent! 素晴らしい！",
     "Impressive! 立派！",
