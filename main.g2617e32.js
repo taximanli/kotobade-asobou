@@ -1918,7 +1918,11 @@
                               validGuess: !1,
                               errorMessage: ""
                                 .concat(Pa(t + 1), " letter must be ")
-                                .concat(a[t].toUpperCase()),
+                                .concat(a[t].toUpperCase())
+                                .concat(" ")
+                                .concat((t + 1) + " 文字目は「")
+                                .concat(a[t].toUpperCase())
+                                .concat("」でないといけません"),
                             };
                         for (var o = {}, n = 0; n < s.length; n++)
                           [Ma, Ia].includes(s[n]) &&
