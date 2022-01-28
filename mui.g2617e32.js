@@ -40,7 +40,9 @@ Mui["gameinstruction"] =
   <p>Guess the word of the day in 12 tries.</p>\n  
   <p>Each guess must be a valid 4-kana word. Hit the enter button to submit.</p>\n  
   <p>After each guess, the colour of the tiles will change to show how close your guess was to the word.</p>\n  
-  <p>今日の単語を12回以内に当ててください。それぞれの答えはひらがな４文字の単語である必要があります。入力ボタンを押して答えを決定してください。答えるたびに正方形の色が変わり、それが次のヒントになります。</p>\n  
+  <p>今日の単語を１２回以内に当ててください。</p>\n  
+  <p>それぞれの答えはひらがな４文字の単語である必要があります。入力ボタンを押して答えを決定してください。</p>\n  
+  <p>答えるたびに正方形の色が変わり、それが次のヒントになります。</p>\n  
   <div class="examples">\n  
     <p><strong>Examples 例</strong></p>\n  
     <div class="example">\n  
