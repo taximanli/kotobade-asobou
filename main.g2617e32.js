@@ -3099,12 +3099,12 @@
                                       switch (e) {
                                         case Ma:
                                           a = (function (e) {
-                                            return e ? "🟩" : "🟩";
+                                            return e ? "🟧" : "🟩";
                                           })(i);
                                           break;
                                         case Ia:
                                           a = (function (e) {
-                                            return e ? "🟨" : "🟨";
+                                            return e ? "🟦" : "🟨";
                                           })(i);
                                           break;
                                         case Oa:
