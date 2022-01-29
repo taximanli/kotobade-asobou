@@ -1,8 +1,8 @@
 var Mui = {
 
-    "gametitle": "<small>Kotoba Asobou</small> 言葉遊ボウ",
-    "gamename": "Kotoba Asobou 言葉遊ボウ",
-    "gamesharelink": "\nhttps:\/\/taximanli.github.io\/kotobaasobou\/\n",
+    "gametitle": "<small>Kotobade Asobou</small> 言葉で遊ぼう",
+    "gamename": "Kotobade Asobou 言葉で遊ぼう",
+    "gamesharelink": "\nhttps:\/\/taximanli.github.io\/kotobade-asobou\/\n",
 
     "Hard Mode": "Hard Mode ハードモード",
     "Any revealed hints must be used in subsequent guesses": "Any revealed hints must be used in subsequent guesses.<br>開示されたすべてのヒントを満たす単語だけが入力できます",

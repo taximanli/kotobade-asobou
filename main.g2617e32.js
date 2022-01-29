@@ -1755,7 +1755,7 @@
     /*letter-spacing: 0.2rem;*/\n  
     text-align: center;\n  
     position: absolute;\n  
-    left: 0;\n  
+    left: -32px;\n  
     right: 0;\n  
     pointer-events: none;\n  
   }\n\n  
