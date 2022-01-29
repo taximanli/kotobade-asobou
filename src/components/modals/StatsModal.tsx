@@ -9,6 +9,7 @@ import {
   STATISTICS_TITLE,
   GUESS_DISTRIBUTION_TEXT,
   NEW_WORD_TEXT,
+  SHARE_TEXT,
 } from '../../constants/strings'
 
 type Props = {
@@ -70,7 +71,7 @@ export const StatsModal = ({
               handleShare()
             }}
           >
-            Share
+            {SHARE_TEXT}
           </button>
         </div>
       )}
