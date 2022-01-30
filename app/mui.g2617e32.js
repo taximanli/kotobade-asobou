@@ -19,7 +19,7 @@ var Mui = {
     "Not enough letters": "Not enough letters ４文字入力してください",
     "Hard mode can only be enabled at the start of a round": "Hard mode can only be enabled at the start of a round ハードモードは、ゲーム開始時にのみオンにすることができます",
     "Copied results to clipboard": "Copied results to clipboard 成績をクリップボードにコピーしました",
-    "Share failed": "Share failed",
+    "Share failed": "Share failed シェアに失敗しました",
 
     "Settings": "Settings 設定",
     "How to play": "How to play 遊び方",
