@@ -1,3 +1,6 @@
+// The launch date of Kotobade Asobou
+var Ha = new Date(2021, 12, 23, 0, 0, 0, 0);
+
 lang["ja"] = {
 
     "gametitle": "<small>Kotobade Asobou</small> 言葉で遊ぼう",
