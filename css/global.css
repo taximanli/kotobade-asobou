@@ -1,4 +1,3 @@
-
 /* Global Styles & Colors */
 :root {
   --green: #6aaa64;
@@ -13,9 +12,6 @@
   /* Colorblind colors */
   --orange: #f5793a;
   --blue: #85c0f9;
-  /*font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;*/
-  font-family: "Noto Sans JP", "Noto Sans CJK JP", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, メイリオ, Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", "ＭＳ ゴシック" , "MS Gothic", TakaoPGothic, sans-serif;
-  font-size: 16px;
   --header-height: 50px;
   --keyboard-height: 200px;
   --game-max-width: 500px;

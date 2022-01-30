@@ -1610,18 +1610,12 @@
     customElements.define("game-toast", Aa),
       (window.dataLayer = window.dataLayer || []),
       Ca("js", new Date());
-    Ca("config", "G-2SSGMHY3NP", {
+    Ca("config", "G-WXHTK361QZ", {
       app_version:
         null === (Ea = window.wordle) || void 0 === Ea ? void 0 : Ea.hash,
       debug_mode: !1,
     });
     var
-      /*La = [
-        "ちいさな",
-      ],
-      Ta = [
-        "あかるい",
-      ],*/
       Ia = "present",
       Ma = "correct",
       Oa = "absent";
@@ -1660,10 +1654,7 @@
     function Ga(e) {
       return Na(Ha, e);
     }
-	//var Ba = "abcdefghijklmnopqrstuvwxyzàìòùè",
-	// CHANGE THIS
-    var Ba = "ぁあぃいぅうぇえぉおかがきぎくぐけげこごさざしじすずせぜそぞただちぢっつづてでとどなにぬねのはばぱひびぴふぶぷへべぺほぼぽまみむめもゃやゅゆょよらりるれろゎわゐゑをんゔゕゖー",
-      Fa = [].concat(g(Ba.split("").slice(44)), g(Ba.split("").slice(0, 44)));
+    var Fa = [].concat(g(Ba.split("").slice(Ba.length % 2)), g(Ba.split("").slice(0, Ba.length % 2)));
     function Wa(e) {
       for (var a = "", s = 0; s < e.length; s++) {
         var t = Ba.indexOf(e[s]);
@@ -2491,7 +2482,6 @@
                     s.classList.add("row"),
                       a.forEach(function (e) {
                         var a;
-						// CHANGE THIS
                         if (
                           Ba.indexOf(e) >= 0
                           || "â†" === e

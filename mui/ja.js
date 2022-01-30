@@ -1,40 +1,47 @@
-var Mui = {
+lang["ja"] = {
 
     "gametitle": "<small>Kotobade Asobou</small> 言葉で遊ぼう",
     "gamename": "Kotobade Asobou 言葉で遊ぼう",
     "gamesharelink": "\nhttps:\/\/taximanli.github.io\/kotobade-asobou\/\n",
 
-    "Hard Mode": "Hard Mode ハードモード",
-    "Any revealed hints must be used in subsequent guesses": "Any revealed hints must be used in subsequent guesses.<br>開示されたすべてのヒントを満たす単語だけが入力できます",
-    "Dark Theme": "Dark Theme ダークテーマ",
-    "Colour Blind Mode": "Colour Blind Mode 色覚特性モード",
-    "High contrast colours": "High contrast colours 色がハイコントラストになります",
-    "Feedback": "Feedback フィードバック",
-    "Copyright": "Copyright Josh Wardle 2021-"+(new Date().getFullYear())+". All Rights Reserved.<br>Adapted into Japanese by Desmond Lee.",
+    "Hard Mode": "ハードモード",
+    "Any revealed hints must be used in subsequent guesses": "開示されたすべてのヒントを満たす単語だけが入力できます",
+    "Dark Theme": "ダークテーマ",
+    "Colour Blind Mode": "色覚特性モード",
+    "High contrast colours": "色がハイコントラストになります",
+    "Feedback": "フィードバック",
+    "Copyright": "",
 
-    "Guess must contain": "Guess must contain ###text###. ###text### を答えに含める必要があります。",
+    "Guess must contain": "###text### を答えに含める必要があります。",
 
-    "Not in word list": "Not in word list この答えは単語リストにありません",
-    "Not valid in hard mode": "Not valid in hard mode ハードモードでは使用できません",
-    "Not enough letters": "Not enough letters ４文字入力してください",
-    "Hard mode can only be enabled at the start of a round": "Hard mode can only be enabled at the start of a round ハードモードは、ゲーム開始時にのみオンにすることができます",
-    "Copied results to clipboard": "Copied results to clipboard 成績をクリップボードにコピーしました",
-    "Share failed": "Share failed シェアに失敗しました",
+    "Not in word list": "この答えは単語リストにありません",
+    "Not valid in hard mode": "ハードモードでは使用できません",
+    "Not enough letters": "４文字入力してください",
+    "Hard mode can only be enabled at the start of a round": "ハードモードは、ゲーム開始時にのみオンにすることができます",
+    "Copied results to clipboard": "成績をクリップボードにコピーしました",
+    "Share failed": "シェアに失敗しました",
 
-    "Settings": "Settings 設定",
-    "How to play": "How to play 遊び方",
+    "Settings": "設定",
+    "How to play": "遊び方",
 
-    "Statistics": "Statistics 統計情報",
-    "Guess Distribution": "Guess Distribution 推測数の分布",
+    "Statistics": "統計情報",
+    "Guess Distribution": "推測数の分布",
 
-    "Next Game": "Next Game<br>次のゲームまで",
-    "Share": "Share シェア",
+    "Next Game": "次のゲームまで",
+    "Share": "シェア",
 
-    "No Data" :"No Data データがありません",
+    "No Data" :"データがありません",
+
+    currentStreak: "現在の連続正解回数",
+    maxStreak: "最大連続回数",
+    winPercentage: "勝率",
+    gamesPlayed: "プレイ回数",
+    gamesWon: "勝利数",
+    averageGuesses: "平均推測回数",   
     
 };
 
-Mui["gameinstruction"] =
+lang["ja"]["gameinstruction"] =
 `<section>\n  
 <div class="instructions">\n  
   <p>Guess the word of the day in 12 tries.</p>\n  
@@ -81,15 +88,6 @@ Mui["gameinstruction"] =
 </div>\n  
 </section>\n`;
 
-var Ms = {
-    currentStreak: "Current Streak 現在の連続正解回数",
-    maxStreak: "Max Streak 最大連続回数",
-    winPercentage: "Win % 勝率",
-    gamesPlayed: "Played プレイ回数",
-    gamesWon: "Won 勝利数",
-    averageGuesses: "Average Guesses 平均推測回数",
-};
-
 var ss = [
     "Genius! 天才！",
     "Genius! 天才！",
@@ -103,21 +101,4 @@ var ss = [
     "Great! すごい！",
     "Phew! セーフ！",
     "Phew! セーフ！",
-  ];
-
-var ds = [
-
-    ["ん","わ","ら","や","ま","は","な","た","さ","か","あ"],
-    ["-","-","り","-","み","ひ","に","ち","し","き","い"],
-    ["ー","-","る","ゆ","む","ふ","ぬ","つ","す","く","う"],
-    ["-","-","れ","-","め","へ","ね","て","せ","け","え"],
-    ["-","を","ろ","よ","も","ほ","の","と","そ","こ","お"],
-    [],
-    [],
-    ["-","-","-","-","ぱ","ば","-","だ","ざ","が","-"],
-    ["-","-","-","-","ぴ","び","-","ぢ","じ","ぎ","-"],
-    ["-","-","-","-","ぷ","ぶ","-","づ","ず","ぐ","ゔ"],
-    ["-","-","-","-","ぺ","べ","-","で","ぜ","げ","-"],
-    ["â†µ","-","-","-","ぽ","ぼ","-","ど","ぞ","ご","â†"],        
-
   ];
