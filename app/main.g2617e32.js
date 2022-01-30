@@ -526,11 +526,11 @@
                 this.shadowRoot.appendChild(w.content.cloneNode(!0)),
                   (this.$row = this.shadowRoot.querySelector(".row"));
                 for (
-                  var a = function (a) {e._letters = "あそぼう";
+                  var a = function (a) {
                       var s = document.createElement("game-tile"),
                         t = e._letters[a];
                       (t && s.setAttribute("letter", t), e._evaluation[a]) &&
-                        (s.setAttribute("evaluation", 'present'),
+                        (s.setAttribute("evaluation", e._evaluation[a]),
                         setTimeout(function () {
                           s.setAttribute("reveal", "");
                         }, 100 * a));
