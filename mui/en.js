@@ -14,6 +14,7 @@ lang["en"] = {
     "Feedback": "Feedback",
     "Copyright": "Copyright Josh Wardle 2021-"+(new Date().getFullYear())+". All Rights Reserved.<br>Adapted into Japanese by Desmond Lee.",
 
+    "letter must be": "###text1### letter must be ###text2###.",
     "Guess must contain": "Guess must contain ###text###.",
 
     "Not in word list": "Not in word list",

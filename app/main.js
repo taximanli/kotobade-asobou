@@ -1718,8 +1718,6 @@
         .concat(1e3, ";\n  }\n  #system-toaster {\n    z-index: ")
         .concat(
           4e3,
-		// CHANGE THIS
-
     `;\n  
   }\n\n  
   #game {\n  
@@ -1906,13 +1904,7 @@
                           if (s[t] === Ma && e[t] !== a[t])
                             return {
                               validGuess: !1,
-                              errorMessage: ""
-                                .concat(Pa(t + 1), " letter must be ")
-                                .concat(a[t].toUpperCase())
-                                .concat(" ")
-                                .concat((t + 1) + " 文字目は「")
-                                .concat(a[t].toUpperCase())
-                                .concat("」でないといけません"),
+                              errorMessage: Mui["letter must be"].replace(/###text1###/g, Pa(t + 1)).replace(/###text2###/g, a[t].toUpperCase()).replace(/###text3###/g, (t + 1)).replace(/###text4###/g, a[t].toUpperCase()),
                             };
                         for (var o = {}, n = 0; n < s.length; n++)
                           [Ma, Ia].includes(s[n]) &&
