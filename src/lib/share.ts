@@ -15,12 +15,12 @@ export const generateEmojiGrid = (guesses: string[]) => {
       const status = getGuessStatuses(guess)
       return guess
         .split('')
-        .map((letter, i) => {
+        .map((_, i) => {
           switch (status[i]) {
             case 'correct':
-              return '🟩'
+              return '🟦'
             case 'present':
-              return '🟨'
+              return '🟧'
             default:
               return '⬜'
           }
