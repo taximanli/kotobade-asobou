@@ -19,7 +19,7 @@ import {
   WORD_NOT_FOUND_MESSAGE,
   CORRECT_WORD_MESSAGE,
 } from './constants/strings'
-import { MAX_WORD_LENGTH, MAX_CHALLENGES } from './constants/numbers'
+import { MAX_WORD_LENGTH, MAX_CHALLENGES } from './constants/settings'
 import { isWordInWordList, isWinningWord, solution } from './lib/words'
 import { addStatsForCompletedGame, loadStats } from './lib/stats'
 import {

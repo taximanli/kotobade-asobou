@@ -1,4 +1,4 @@
-import { MAX_CHALLENGES } from '../constants/numbers'
+import { MAX_CHALLENGES } from '../constants/settings'
 import {
   GameStats,
   loadStatsFromLocalStorage,
