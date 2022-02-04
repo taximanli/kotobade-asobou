@@ -30,6 +30,6 @@ _To create a version in a different language:_
 - Add a list of goal words in the language to `src/constants/wordlist.ts`, replacing the English words
 - Update the "About" modal in `src/components/modals/AboutModel.tsx`
 - Update the "Info" modal in `src/components/modals/InfoModal.tsx`
-- If the language has letters that are not present in English, add them to the `CharValue` type in `src/lib/statuses.ts` and update the keyboard in `src/lib/components/keyboard/Keyboard.tsx`
+- If the language has letters that are not present in English, add them to the `CharValue` type in `src/lib/statuses.ts` and update the keyboard in `src/components/keyboard/Keyboard.tsx`
 - If the language's letters are made of multiple unicode characters, use a grapheme splitter at various points throughout the app or normalize the input so that all of the letters are made of a single character
 - If the language is written right-to-left, add `dir="rtl"` to the HTML tag in `public/index.html` and prepend `\u202E` (the unicode right-to-left override character) to the return statement of the inner function in `generateEmojiGrid` in `src/lib/share.ts`
