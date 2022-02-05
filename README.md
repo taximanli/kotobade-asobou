@@ -20,6 +20,14 @@ $> docker run -d -p 3000:3000 game
 
 open [http://localhost:3000](http://localhost:3000) in browser.
 
+## Projects built using this repo:
+- https://www.taylordle.com/
+- https://converged.yt/primel/
+- https://nezza.github.io/syscordle/
+- https://www.mathler.com/
+
+_If your site was listed in error, let us know. All the sites listed appear to be created with this code but it's possible they similarities are uncanny!_
+
 ## FAQ
 
 ### How can I change the length of a guess?
