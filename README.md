@@ -2,7 +2,10 @@
 
 This is a clone project of that popular word guessing game we all know and love. Made using React, Typescript, and Tailwind.
 
-_To Run Locally:_
+[**Try out the demo!**](https://word-guessing-game-cwackerfuss.vercel.app/)
+
+## Build and run
+### To Run Locally:
 Clone the repository and perform the following command line actions:
 
 ```bash
@@ -11,14 +14,14 @@ $> npm install
 $> npm run start
 ```
 
-_To build/run docker container:_
+### To build/run docker container:
 
 ```bash
 $> docker build -t game .
 $> docker run -d -p 3000:3000 game
 ```
 
-open [http://localhost:3000](http://localhost:3000) in browser.
+Open [http://localhost:3000](http://localhost:3000) in browser.
 
 ## Projects built using this repo:
 - https://www.taylordle.com/
