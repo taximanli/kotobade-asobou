@@ -31,8 +31,12 @@ Open [http://localhost:3000](http://localhost:3000) in browser.
 
 - [Latindictionary.io](https://wordle.latindictionary.io/): Latin
 - [Kelmaly](https://kelmaly.com/): Arabic
+- [Arwordle](https://arwordle.netlify.app/): Arabic
 - [Wörtchen](https://woertchen.sofacoach.de): German
 - [Vārdulis](wordle.lielakeda.lv/): Latvian
+- [꼬들 - 한국어](https://belorin.github.io/): Korean
+- [한글 풀어쓰기 5자](https://nakosung.github.io/wordle/): Korean
+- [Urdle](https://urdle.chaoticity.com/): Urdu
 
 ### Fun themes
 
