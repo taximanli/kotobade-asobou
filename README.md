@@ -1,6 +1,6 @@
-# Word Guessing Game
+# React Wordle
 
-This is a clone project of that popular word guessing game we all know and love. Made using React, Typescript, and Tailwind.
+This is a clone project of the popular word guessing game we all know and love. Made using React, Typescript, and Tailwind.
 
 [**Try out the demo!**](https://word-guessing-game-cwackerfuss.vercel.app/)
 

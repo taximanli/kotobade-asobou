@@ -20,7 +20,11 @@ import {
   WORD_NOT_FOUND_MESSAGE,
   CORRECT_WORD_MESSAGE,
 } from './constants/strings'
-import { MAX_WORD_LENGTH, MAX_CHALLENGES } from './constants/settings'
+import {
+  MAX_WORD_LENGTH,
+  MAX_CHALLENGES,
+  ALERT_TIME_MS,
+} from './constants/settings'
 import { isWordInWordList, isWinningWord, solution } from './lib/words'
 import { addStatsForCompletedGame, loadStats } from './lib/stats'
 import {
@@ -29,8 +33,6 @@ import {
 } from './lib/localStorage'
 
 import './App.css'
-
-const ALERT_TIME_MS = 2000
 
 function App() {
   const prefersDarkMode = window.matchMedia(
@@ -159,8 +161,8 @@ function App() {
   }
 
   return (
-    <div className="py-8 max-w-7xl mx-auto sm:px-6 lg:px-8">
-      <div className="flex w-80 mx-auto items-center mb-8 mt-12">
+    <div className="pt-2 pb-8 max-w-7xl mx-auto sm:px-6 lg:px-8">
+      <div className="flex w-80 mx-auto items-center mb-8 mt-4">
         <h1 className="text-xl ml-2.5 grow font-bold dark:text-white">
           {GAME_TITLE}
         </h1>
