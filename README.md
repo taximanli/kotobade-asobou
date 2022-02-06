@@ -11,7 +11,7 @@ This is a clone project of the popular word guessing game we all know and love. 
 Clone the repository and perform the following command line actions:
 
 ```bash
-$> cd word-guessing-game
+$> cd react-wordle
 $> npm install
 $> npm run start
 ```
