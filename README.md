@@ -50,8 +50,6 @@ Open [http://localhost:3000](http://localhost:3000) in browser.
 - [Stockle](https://stockle.win/): Guess the stock or ETF
 - [AI-powered](https://github.com/asirota/wordle-ai): Includes an AI component
 
-_If your site was listed in error, let us know. All the sites listed appear to be created with this code but it's possible they similarities are uncanny!_
-
 ## FAQ
 
 ### How can I change the length of a guess?
