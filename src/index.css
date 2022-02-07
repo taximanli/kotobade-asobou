@@ -4,11 +4,11 @@
 
 .cell-fill-animation {
   animation: onTypeCell linear;
-  animation-duration: 0.5s;
+  animation-duration: 0.25s;
 }
 
 .cell-reveal {
-  animation-duration: 0.5s;
+  animation-duration: 0.25s;
   animation-timing-function: linear;
   animation-fill-mode: backwards;
 }
@@ -26,7 +26,7 @@
 }
 
 .cell-reveal > .letter-container {
-  animation: offsetLetterFlip 0.5s linear;
+  animation: offsetLetterFlip 0.25s linear;
   animation-fill-mode: backwards;
 }
 

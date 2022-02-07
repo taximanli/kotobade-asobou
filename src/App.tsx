@@ -24,6 +24,7 @@ import {
   MAX_WORD_LENGTH,
   MAX_CHALLENGES,
   ALERT_TIME_MS,
+  REVEAL_TIME_MS,
 } from './constants/settings'
 import { isWordInWordList, isWinningWord, solution } from './lib/words'
 import { addStatsForCompletedGame, loadStats } from './lib/stats'
@@ -55,7 +56,7 @@ function App() {
       : false
   )
   const [successAlert, setSuccessAlert] = useState('')
-  const [revealing, setRevealing] = useState(false)
+  const [isRevealing, setIsRevealing] = useState(false)
   const [guesses, setGuesses] = useState<string[]>(() => {
     const loaded = loadGameStateFromLocalStorage()
     if (loaded?.solution !== solution) {
@@ -92,13 +93,16 @@ function App() {
 
   useEffect(() => {
     if (isGameWon) {
-      setSuccessAlert(
-        WIN_MESSAGES[Math.floor(Math.random() * WIN_MESSAGES.length)]
-      )
       setTimeout(() => {
-        setSuccessAlert('')
-        setIsStatsModalOpen(true)
-      }, ALERT_TIME_MS)
+        setSuccessAlert(
+          WIN_MESSAGES[Math.floor(Math.random() * WIN_MESSAGES.length)]
+        )
+
+        setTimeout(() => {
+          setSuccessAlert('')
+          setIsStatsModalOpen(true)
+        }, ALERT_TIME_MS)
+      }, REVEAL_TIME_MS * MAX_WORD_LENGTH)
     }
     if (isGameLost) {
       setTimeout(() => {
@@ -139,7 +143,12 @@ function App() {
       }, ALERT_TIME_MS)
     }
 
-    setRevealing(true)
+    setIsRevealing(true)
+    // turn this back off after all
+    // chars have been revealed
+    setTimeout(() => {
+      setIsRevealing(false)
+    }, REVEAL_TIME_MS * MAX_WORD_LENGTH)
 
     const winningWord = isWinningWord(currentGuess)
 
@@ -192,13 +201,14 @@ function App() {
       <Grid
         guesses={guesses}
         currentGuess={currentGuess}
-        revealing={revealing}
+        isRevealing={isRevealing}
       />
       <Keyboard
         onChar={onChar}
         onDelete={onDelete}
         onEnter={onEnter}
         guesses={guesses}
+        isRevealing={isRevealing}
       />
       <InfoModal
         isOpen={isInfoModalOpen}
@@ -234,16 +244,11 @@ function App() {
         message={WORD_NOT_FOUND_MESSAGE}
         isOpen={isWordNotFoundAlertOpen}
       />
-      <Alert
-        message={CORRECT_WORD_MESSAGE(solution)}
-        isOpen={isGameLost}
-        delay
-      />
+      <Alert message={CORRECT_WORD_MESSAGE(solution)} isOpen={isGameLost} />
       <Alert
         message={successAlert}
         isOpen={successAlert !== ''}
         variant="success"
-        delay
       />
     </div>
   )

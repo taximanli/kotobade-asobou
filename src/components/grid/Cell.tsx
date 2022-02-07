@@ -5,20 +5,20 @@ import { REVEAL_TIME_MS } from '../../constants/settings'
 type Props = {
   value?: string
   status?: CharStatus
-  revealing?: boolean
-  completed?: boolean
+  isRevealing?: boolean
+  isCompleted?: boolean
   position?: number
 }
 
 export const Cell = ({
   value,
   status,
-  revealing,
-  completed,
+  isRevealing,
+  isCompleted,
   position = 0,
 }: Props) => {
-  const isFilled = value && !completed
-  const shouldReveal = revealing && completed
+  const isFilled = value && !isCompleted
+  const shouldReveal = isRevealing && isCompleted
   const animationDelay = `${position * REVEAL_TIME_MS}ms`
 
   const classes = classnames(

@@ -3,10 +3,10 @@ import { Cell } from './Cell'
 
 type Props = {
   guess: string
-  revealing?: boolean
+  isRevealing?: boolean
 }
 
-export const CompletedRow = ({ guess, revealing }: Props) => {
+export const CompletedRow = ({ guess, isRevealing }: Props) => {
   const statuses = getGuessStatuses(guess)
 
   return (
@@ -17,8 +17,8 @@ export const CompletedRow = ({ guess, revealing }: Props) => {
           value={letter}
           status={statuses[i]}
           position={i}
-          revealing={revealing}
-          completed
+          isRevealing={isRevealing}
+          isCompleted
         />
       ))}
     </div>
