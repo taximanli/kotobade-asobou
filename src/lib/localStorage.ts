@@ -17,6 +17,16 @@ export const loadGameStateFromLocalStorage = () => {
 const inheritedGameStatKey = 'statistics'
 const gameStatKey = 'gameStats'
 
+export type inheritedStatsType = {
+  currentStreak: number
+  maxStreak: number
+  guesses: {[key: string]: number;}
+  winPercentage: number
+  gamesPlayed: number
+  gamesWon: number
+  averageGuesses: number
+}
+
 export type GameStats = {
   winDistribution: number[]
   gamesFailed: number
@@ -35,42 +45,33 @@ export const loadStatsFromLocalStorage = () => {
   if (stats) {
     return (JSON.parse(stats) as GameStats)
   } else {
-
-    type inheritedStatsType = {
-      currentStreak: number
-      maxStreak: number
-      guesses: {[key: string]: number;}
-      winPercentage: number
-      gamesPlayed: number
-      gamesWon: number
-      averageGuesses: number
-    }
-
-    const inheritedStats = (JSON.parse(localStorage.getItem(inheritedGameStatKey)) as inheritedStatsType)
-
+    const inheritedStats = localStorage.getItem(inheritedGameStatKey)
     if (inheritedStats) {
-      let inheritedWinDistribution = [
-        inheritedStats['guesses']['1'],
-        inheritedStats['guesses']['2'],
-        inheritedStats['guesses']['3'],
-        inheritedStats['guesses']['4'],
-        inheritedStats['guesses']['5'],
-        inheritedStats['guesses']['6'],
-        inheritedStats['guesses']['7'],
-        inheritedStats['guesses']['8'],
-        inheritedStats['guesses']['9'],
-        inheritedStats['guesses']['10'],
-        inheritedStats['guesses']['11'],
-        inheritedStats['guesses']['12'],
-      ]
-      return ({
-        winDistribution: inheritedWinDistribution,
-        gamesFailed: (inheritedStats['gamesPlayed'] - inheritedStats['gamesWon']),
-        currentStreak: inheritedStats['currentStreak'],
-        bestStreak: inheritedStats['maxStreak'],
-        totalGames: inheritedStats['gamesPlayed'],
-        successRate: inheritedStats['winPercentage']
-      } as GameStats)
+      let parsedInheritedStats = (JSON.parse(inheritedStats) as inheritedStatsType)
+      if (parsedInheritedStats) {
+        let inheritedWinDistribution = [
+          parsedInheritedStats['guesses']['1'],
+          parsedInheritedStats['guesses']['2'],
+          parsedInheritedStats['guesses']['3'],
+          parsedInheritedStats['guesses']['4'],
+          parsedInheritedStats['guesses']['5'],
+          parsedInheritedStats['guesses']['6'],
+          parsedInheritedStats['guesses']['7'],
+          parsedInheritedStats['guesses']['8'],
+          parsedInheritedStats['guesses']['9'],
+          parsedInheritedStats['guesses']['10'],
+          parsedInheritedStats['guesses']['11'],
+          parsedInheritedStats['guesses']['12'],
+        ]
+        return ({
+          winDistribution: inheritedWinDistribution,
+          gamesFailed: (parsedInheritedStats['gamesPlayed'] - parsedInheritedStats['gamesWon']),
+          currentStreak: parsedInheritedStats['currentStreak'],
+          bestStreak: parsedInheritedStats['maxStreak'],
+          totalGames: parsedInheritedStats['gamesPlayed'],
+          successRate: parsedInheritedStats['winPercentage']
+        } as GameStats)
+      }
     } else {
       return null
     }
