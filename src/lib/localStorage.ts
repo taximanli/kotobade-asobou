@@ -14,6 +14,7 @@ export const loadGameStateFromLocalStorage = () => {
   return state ? (JSON.parse(state) as StoredGameState) : null
 }
 
+const inheritedGameStatKey = 'statistics'
 const gameStatKey = 'gameStats'
 
 export type GameStats = {
@@ -30,8 +31,48 @@ export const saveStatsToLocalStorage = (gameStats: GameStats) => {
 }
 
 export const loadStatsFromLocalStorage = () => {
-  const backwardCompatibleStats = localStorage.getItem('statistics')
-  alert(backwardCompatibleStats)
   const stats = localStorage.getItem(gameStatKey)
-  return stats ? (JSON.parse(stats) as GameStats) : null
+  if (stats) {
+    return (JSON.parse(stats) as GameStats)
+  } else {
+
+    type inheritedStatsType = {
+      currentStreak: number
+      maxStreak: number
+      guesses: {[key: string]: number;}
+      winPercentage: number
+      gamesPlayed: number
+      gamesWon: number
+      averageGuesses: number
+    }
+
+    const inheritedStats = (JSON.parse(localStorage.getItem(inheritedGameStatKey)) as inheritedStatsType)
+
+    if (inheritedStats) {
+      let inheritedWinDistribution = [
+        inheritedStats['guesses']['1'],
+        inheritedStats['guesses']['2'],
+        inheritedStats['guesses']['3'],
+        inheritedStats['guesses']['4'],
+        inheritedStats['guesses']['5'],
+        inheritedStats['guesses']['6'],
+        inheritedStats['guesses']['7'],
+        inheritedStats['guesses']['8'],
+        inheritedStats['guesses']['9'],
+        inheritedStats['guesses']['10'],
+        inheritedStats['guesses']['11'],
+        inheritedStats['guesses']['12'],
+      ]
+      return ({
+        winDistribution: inheritedWinDistribution,
+        gamesFailed: (inheritedStats['gamesPlayed'] - inheritedStats['gamesWon']),
+        currentStreak: inheritedStats['currentStreak'],
+        bestStreak: inheritedStats['maxStreak'],
+        totalGames: inheritedStats['gamesPlayed'],
+        successRate: inheritedStats['winPercentage']
+      } as GameStats)
+    } else {
+      return null
+    }
+  }
 }
