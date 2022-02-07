@@ -30,6 +30,8 @@ export const saveStatsToLocalStorage = (gameStats: GameStats) => {
 }
 
 export const loadStatsFromLocalStorage = () => {
+  const backwardCompatibleStats = localStorage.getItem('statistics')
+  alert(backwardCompatibleStats)
   const stats = localStorage.getItem(gameStatKey)
   return stats ? (JSON.parse(stats) as GameStats) : null
 }
