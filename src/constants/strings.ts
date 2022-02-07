@@ -1,4 +1,4 @@
-export const GAME_TITLE = 'Reactle'
+export const GAME_TITLE = 'Kotobade Asobou 言葉で遊ぼう'
 
 export const WIN_MESSAGES = ['Great Job!', 'Awesome', 'Well done!']
 export const GAME_COPIED_MESSAGE = 'Game copied to clipboard'
