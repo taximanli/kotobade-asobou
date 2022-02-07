@@ -25,7 +25,7 @@ export const Key = ({
   const classes = classnames(
     'flex items-center justify-center rounded mx-0.5 text-xs font-bold cursor-pointer select-none dark:text-white',
     {
-      [`transition ease-in-out delay-[${keyDelayMs}ms]`]: isRevealing,
+      'transition ease-in-out': isRevealing,
       'bg-slate-200 dark:bg-slate-600 hover:bg-slate-300 active:bg-slate-400':
         !status,
       'bg-slate-400 dark:bg-slate-800 text-white': status === 'absent',
@@ -36,17 +36,19 @@ export const Key = ({
     }
   )
 
+  const styles = {
+    transitionDelay: isRevealing ? `${keyDelayMs}ms` : 'none',
+    width: `${width}px`,
+    height: '58px',
+  }
+
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = (event) => {
     onClick(value)
     event.currentTarget.blur()
   }
 
   return (
-    <button
-      style={{ width: `${width}px`, height: '58px' }}
-      className={classes}
-      onClick={handleClick}
-    >
+    <button style={styles} className={classes} onClick={handleClick}>
       {children || value}
     </button>
   )
