@@ -2,6 +2,7 @@ import { getStatuses } from '../../lib/statuses'
 import { Key } from './Key'
 import { useEffect } from 'react'
 import { ENTER_TEXT, DELETE_TEXT } from '../../constants/strings'
+import { KEY_WIDTH } from '../../constants/settings'
 
 type Props = {
   onChar: (value: string) => void
@@ -63,7 +64,7 @@ export const Keyboard = ({
         ))}
       </div>
       <div className="flex justify-center mb-1">
-        {['-','-','り','-','み','ひ','に','ち','し','き','い'].map((key) => (
+        {['','','り','','み','ひ','に','ち','し','き','い'].map((key) => (
           <Key
             value={key}
             key={key}
@@ -74,7 +75,7 @@ export const Keyboard = ({
         ))}
       </div>
       <div className="flex justify-center mb-1">
-        {['ー','-','る','ゆ','む','ふ','ぬ','つ','す','く','う'].map((key) => (
+        {['ー','','る','ゆ','む','ふ','ぬ','つ','す','く','う'].map((key) => (
           <Key
             value={key}
             key={key}
@@ -85,7 +86,7 @@ export const Keyboard = ({
         ))}
       </div>
       <div className="flex justify-center mb-1">
-        {['-','-','れ','-','め','へ','ね','て','せ','け','え'].map((key) => (
+        {['','','れ','','め','へ','ね','て','せ','け','え'].map((key) => (
           <Key
             value={key}
             key={key}
@@ -96,7 +97,7 @@ export const Keyboard = ({
         ))}
       </div>
       <div className="flex justify-center mb-3">
-        {['-','を','ろ','よ','も','ほ','の','と','そ','こ','お'].map((key) => (
+        {['','を','ろ','よ','も','ほ','の','と','そ','こ','お'].map((key) => (
           <Key
             value={key}
             key={key}
@@ -107,7 +108,7 @@ export const Keyboard = ({
         ))}
       </div>
       <div className="flex justify-center mb-1">
-        {['-','-','-','-','ぱ','ば','-','だ','ざ','が','-'].map((key) => (
+        {['','','','','ぱ','ば','','だ','ざ','が',''].map((key) => (
           <Key
             value={key}
             key={key}
@@ -118,7 +119,7 @@ export const Keyboard = ({
         ))}
       </div>
       <div className="flex justify-center mb-1">
-        {['-','-','-','-','ぴ','び','-','ぢ','じ','ぎ','-'].map((key) => (
+        {['','','','','ぴ','び','','ぢ','じ','ぎ',''].map((key) => (
           <Key
             value={key}
             key={key}
@@ -129,7 +130,7 @@ export const Keyboard = ({
         ))}
       </div>
       <div className="flex justify-center mb-1">
-        {['-','-','-','-','ぷ','ぶ','-','づ','ず','ぐ','ゔ'].map((key) => (
+        {['','','','','ぷ','ぶ','','づ','ず','ぐ','ゔ'].map((key) => (
           <Key
             value={key}
             key={key}
@@ -140,7 +141,7 @@ export const Keyboard = ({
         ))}
       </div>
       <div className="flex justify-center mb-1">
-        {['-','-','-','-','ぺ','べ','-','で','ぜ','げ','-'].map((key) => (
+        {['','','','','ぺ','べ','','で','ぜ','げ',''].map((key) => (
           <Key
             value={key}
             key={key}
@@ -151,10 +152,10 @@ export const Keyboard = ({
         ))}
       </div>
       <div className="flex justify-center">
-        <Key width={65.4} value="ENTER" onClick={onClick}>
+        <Key width={KEY_WIDTH} value="ENTER" onClick={onClick}>
           {ENTER_TEXT}
         </Key>
-        {['-','-','-','ぽ','ぼ','-','ど','ぞ','ご'].map((key) => (
+        {['','','','ぽ','ぼ','','ど','ぞ','ご'].map((key) => (
           <Key
             value={key}
             key={key}
@@ -163,7 +164,7 @@ export const Keyboard = ({
             isRevealing={isRevealing}
           />
         ))}
-        <Key width={65.4} value="DELETE" onClick={onClick}>
+        <Key width={KEY_WIDTH} value="DELETE" onClick={onClick}>
           {DELETE_TEXT}
         </Key>
       </div>

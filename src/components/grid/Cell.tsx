@@ -22,16 +22,16 @@ export const Cell = ({
   const animationDelay = `${position * REVEAL_TIME_MS}ms`
 
   const classes = classnames(
-    'w-14 h-14 border-solid border-2 flex items-center justify-center mx-0.5 text-4xl font-bold rounded dark:text-white',
+    'w-14 h-14 border-solid border-2 flex items-center justify-center mx-0.5 text-4xl cell-font font-bold rounded dark:text-white',
     {
-      'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-600':
+      'bg-white dark:bg-stone-900 border-stone-200 dark:border-stone-600':
         !status,
-      'border-black dark:border-slate-100': value && !status,
-      'absent shadowed bg-slate-400 dark:bg-slate-700 text-white border-slate-400 dark:border-slate-700':
+      'border-black dark:border-stone-100': value && !status,
+      'absent bg-stone-400 dark:bg-stone-700 text-white border-stone-400 dark:border-stone-700':
         status === 'absent',
-      'correct shadowed bg-green-500 text-white border-green-500':
+      'correct bg-emerald-500 text-white border-emerald-500':
         status === 'correct',
-      'present shadowed bg-yellow-500 text-white border-yellow-500':
+      'present bg-amber-500 text-white border-amber-500':
         status === 'present',
       'cell-fill-animation': isFilled,
       'cell-reveal': shouldReveal,

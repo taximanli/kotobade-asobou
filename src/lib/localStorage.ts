@@ -15,7 +15,6 @@ export const loadGameStateFromLocalStorage = () => {
 }
 
 const inheritedGameStatKey = 'statistics'
-const gameStatKey = 'gameStats'
 
 export type inheritedStatsType = {
   currentStreak: number
@@ -26,6 +25,8 @@ export type inheritedStatsType = {
   gamesWon: number
   averageGuesses: number
 }
+
+const gameStatKey = 'gameStats'
 
 export type GameStats = {
   winDistribution: number[]
