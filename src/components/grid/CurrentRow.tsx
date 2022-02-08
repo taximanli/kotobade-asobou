@@ -10,7 +10,7 @@ export const CurrentRow = ({ guess }: Props) => {
   const emptyCells = Array.from(Array(MAX_WORD_LENGTH - splitGuess.length))
 
   return (
-    <div className="flex justify-center mb-1">
+    <div className="flex justify-center mb-1 mx-1">
       {splitGuess.map((letter, i) => (
         <Cell key={i} value={letter} />
       ))}

@@ -22,8 +22,12 @@ export const Key = ({
 }: Props) => {
   const keyDelayMs = REVEAL_TIME_MS * MAX_WORD_LENGTH
 
-  const classes = classnames(
-    'flex items-center justify-center rounded mx-0.5 text-xl key-font font-bold cursor-pointer select-none dark:text-white',
+  const dummyKeyClasses = classnames(
+    'w-7 xs:w-8 sm:w-10 h-7 xs:h-8 sm:h-10 rounded mx-0.5 select-none'
+  )
+
+  const keyClasses = classnames(
+    'w-7 xs:w-8 sm:w-10 h-7 xs:h-8 sm:h-10 flex items-center justify-center rounded mx-0.5 text-lg sm:text-xl key-font font-bold cursor-pointer select-none dark:text-white',
     {
       'transition ease-in-out': isRevealing,
       'bg-stone-200 dark:bg-stone-600 hover:bg-stone-300 active:bg-stone-400':
@@ -38,8 +42,8 @@ export const Key = ({
 
   const styles = {
     transitionDelay: isRevealing ? `${keyDelayMs}ms` : 'unset',
-    width: `${width}px`,
-    height: `${width}px`,
+    // width: `${width}px`,
+    // height: `${width}px`,
   }
 
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = (event) => {
@@ -49,13 +53,13 @@ export const Key = ({
 
   if (value === '') {
     return (
-      <button style={styles} className="mx-0.5">
+      <button style={styles} className={dummyKeyClasses}>
         {children || value}
       </button>
     )      
   } else {
     return (
-      <button style={styles} className={classes} onClick={handleClick}>
+      <button style={styles} className={keyClasses} onClick={handleClick}>
         {children || value}
       </button>
     )  

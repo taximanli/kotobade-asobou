@@ -16,18 +16,20 @@ export const Grid = ({ guesses, currentGuess, isRevealing }: Props) => {
       : []
 
   return (
-    <div className="pb-6">
-      {guesses.map((guess, i) => (
-        <CompletedRow
-          key={i}
-          guess={guess}
-          isRevealing={isRevealing && guesses.length - 1 === i}
-        />
-      ))}
-      {guesses.length < MAX_CHALLENGES && <CurrentRow guess={currentGuess} />}
-      {empties.map((_, i) => (
-        <EmptyRow key={i} />
-      ))}
+    <div className='flex justify-center pb-6'>
+      <div className="grid grid-rows-6 grid-flow-col">
+        {guesses.map((guess, i) => (
+          <CompletedRow
+            key={i}
+            guess={guess}
+            isRevealing={isRevealing && guesses.length - 1 === i}
+          />
+        ))}
+        {guesses.length < MAX_CHALLENGES && <CurrentRow guess={currentGuess} />}
+        {empties.map((_, i) => (
+          <EmptyRow key={i} />
+        ))}
+      </div>
     </div>
   )
 }
