@@ -14,11 +14,11 @@ export const WIN_MESSAGES = [
 'Splendid! 素敵！',
 'Great! すごい！',
 'Great! すごい！',
-//'Phew! セーフ！',
-//'Phew! セーフ！',
+// 'Phew! セーフ！',
+// 'Phew! セーフ！',
 ]
 export const GAME_COPIED_MESSAGE = 'Copied results to clipboard 成績をクリップボードにコピーしました'
-export const ABOUT_GAME_MESSAGE = 'About this game'
+// export const ABOUT_GAME_MESSAGE = 'About this game'
 export const NOT_ENOUGH_LETTERS_MESSAGE = 'Not enough letters 4文字入力してください'
 export const WORD_NOT_FOUND_MESSAGE = 'Not in word list この答えは単語リストにありません'
 export const CORRECT_WORD_MESSAGE = (solution: string) =>
