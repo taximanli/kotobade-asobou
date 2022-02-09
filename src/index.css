@@ -97,6 +97,7 @@
   text-shadow: 1px 1px 1px #000000;
 }
 
+.heading-font,
 .cell-font,
 .key-font {
   font-family: 'Noto Sans JP', 'Noto Sans CJK JP', 'ヒラギノ角ゴ Pro W3',

@@ -1,4 +1,5 @@
 export const GAME_TITLE = 'Kotobade Asobou 言葉で遊ぼう'
+export const GAME_HEADING = ['Kotobade Asobou', '言葉で遊ぼう']
 
 export const WIN_MESSAGES = ['Great Job!', 'Awesome', 'Well done!']
 export const GAME_COPIED_MESSAGE = 'Game copied to clipboard'

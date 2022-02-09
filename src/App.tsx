@@ -13,6 +13,7 @@ import { InfoModal } from './components/modals/InfoModal'
 import { StatsModal } from './components/modals/StatsModal'
 import {
   GAME_TITLE,
+  GAME_HEADING,
   WIN_MESSAGES,
   GAME_COPIED_MESSAGE,
   ABOUT_GAME_MESSAGE,
@@ -174,10 +175,18 @@ function App() {
 
   return (
     <div className="pt-2 pb-8 max-w-7xl mx-auto sm:px-6 lg:px-8">
-      <div className="flex w-96 mx-auto items-center mb-8 mt-4">
-        <h1 className="text-xl ml-2.5 grow font-bold dark:text-white">
-          {GAME_TITLE}
-        </h1>
+      <div className="flex max-w-lg mx-auto items-center mb-2 md:mb-3 mt-0 md:mt-3">
+        <h1 className="hidden">{GAME_TITLE}</h1>
+        <InformationCircleIcon
+          className="h-6 w-6 ml-3 cursor-pointer dark:stroke-white"
+          onClick={() => setIsInfoModalOpen(true)}
+        />
+        <span className="heading-font text-xs sm:text-sm md:text-base lg:text-lg font-bold uppercase ml-2.5 shrink dark:text-white">
+          {GAME_HEADING[0]}
+        </span>
+        <span className="heading-font text-xl sm:text-2xl font-bold ml-2.5 grow dark:text-white">
+          {GAME_HEADING[1]}
+        </span>
         {isDarkMode ? (
           <SunIcon
             className="h-6 w-6 mr-2 cursor-pointer dark:stroke-white"
@@ -189,10 +198,6 @@ function App() {
             onClick={() => handleDarkMode(!isDarkMode)}
           />
         )}
-        <InformationCircleIcon
-          className="h-6 w-6 mr-2 cursor-pointer dark:stroke-white"
-          onClick={() => setIsInfoModalOpen(true)}
-        />
         <ChartBarIcon
           className="h-6 w-6 mr-3 cursor-pointer dark:stroke-white"
           onClick={() => setIsStatsModalOpen(true)}
