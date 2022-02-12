@@ -10,12 +10,13 @@ import { Keyboard } from './components/keyboard/Keyboard'
 import { AboutModal } from './components/modals/AboutModal'
 import { InfoModal } from './components/modals/InfoModal'
 import { StatsModal } from './components/modals/StatsModal'
+import { SettingsModal } from './components/modals/SettingsModal'
 import {
   GAME_TITLE,
   GAME_HEADING,
   WIN_MESSAGES,
   GAME_COPIED_MESSAGE,
-  // ABOUT_GAME_MESSAGE,
+  ABOUT_GAME_MESSAGE,
   NOT_ENOUGH_LETTERS_MESSAGE,
   WORD_NOT_FOUND_MESSAGE,
   CORRECT_WORD_MESSAGE,
@@ -25,8 +26,14 @@ import {
   MAX_CHALLENGES,
   ALERT_TIME_MS,
   REVEAL_TIME_MS,
+  GAME_LOST_INFO_DELAY,
 } from './constants/settings'
-import { isWordInWordList, isWinningWord, solution } from './lib/words'
+import {
+  isWordInWordList,
+  isWinningWord,
+  solution,
+  findFirstUnusedReveal,
+} from './lib/words'
 import { addStatsForCompletedGame, loadStats } from './lib/stats'
 import {
   loadGameStateFromLocalStorage,
@@ -46,6 +53,7 @@ function App() {
   const [isAboutModalOpen, setIsAboutModalOpen] = useState(false)
   const [isNotEnoughLetters, setIsNotEnoughLetters] = useState(false)
   const [isStatsModalOpen, setIsStatsModalOpen] = useState(false)
+  const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false)
   const [isWordNotFoundAlertOpen, setIsWordNotFoundAlertOpen] = useState(false)
   const [isGameLost, setIsGameLost] = useState(false)
   const [isDarkMode, setIsDarkMode] = useState(
@@ -53,6 +61,11 @@ function App() {
       ? localStorage.getItem('theme') === 'dark'
       : prefersDarkMode
       ? true
+      : false
+  )
+  const [isHighContrastMode, setIsHighConstrastMode] = useState(
+    localStorage.getItem('contrast')
+      ? localStorage.getItem('contrast') === 'high'
       : false
   )
   const [successAlert, setSuccessAlert] = useState('')
@@ -74,17 +87,42 @@ function App() {
 
   const [stats, setStats] = useState(() => loadStats())
 
+  const [isHardMode, setIsHardMode] = useState(
+    localStorage.getItem('gameMode')
+      ? localStorage.getItem('gameMode') === 'hard'
+      : false
+  )
+
+  const [isMissingPreviousLetters, setIsMissingPreviousLetters] =
+    useState(false)
+  const [missingLetterMessage, setIsMissingLetterMessage] = useState('')
+
   useEffect(() => {
     if (isDarkMode) {
       document.documentElement.classList.add('dark')
     } else {
       document.documentElement.classList.remove('dark')
     }
-  }, [isDarkMode])
+    if (isHighContrastMode) {
+      document.documentElement.classList.add('high-contrast')
+    } else {
+      document.documentElement.classList.remove('high-contrast')
+    }
+  }, [isDarkMode, isHighContrastMode])
 
   const handleDarkMode = (isDark: boolean) => {
     setIsDarkMode(isDark)
     localStorage.setItem('theme', isDark ? 'dark' : 'light')
+  }
+
+  const handleHardMode = (isHard: boolean) => {
+    setIsHardMode(isHard)
+    localStorage.setItem('gameMode', isHard ? 'hard' : 'normal')
+  }
+
+  const handleHighConstrastMode = (isHighContrast: boolean) => {
+    setIsHighConstrastMode(isHighContrast)
+    localStorage.setItem('contrast', isHighContrast ? 'high' : 'low')
   }
 
   useEffect(() => {
@@ -107,7 +145,7 @@ function App() {
     if (isGameLost) {
       setTimeout(() => {
         setIsStatsModalOpen(true)
-      }, ALERT_TIME_MS)
+      }, GAME_LOST_INFO_DELAY)
     }
   }, [isGameWon, isGameLost])
 
@@ -141,6 +179,18 @@ function App() {
       return setTimeout(() => {
         setIsWordNotFoundAlertOpen(false)
       }, ALERT_TIME_MS)
+    }
+
+    // enforce hard mode - all guesses must contain all previously revealed letters
+    if (isHardMode) {
+      const firstMissingReveal = findFirstUnusedReveal(currentGuess, guesses)
+      if (firstMissingReveal) {
+        setIsMissingLetterMessage(firstMissingReveal)
+        setIsMissingPreviousLetters(true)
+        return setTimeout(() => {
+          setIsMissingPreviousLetters(false)
+        }, ALERT_TIME_MS)
+      }
     }
 
     setIsRevealing(true)
@@ -192,7 +242,7 @@ function App() {
         />
         <CogIcon
           className="h-6 w-6 mr-3 cursor-pointer dark:stroke-white"
-          onClick={() => setIsAboutModalOpen(true)}
+          onClick={() => setIsSettingsModalOpen(true)}
         />
       </div>
       <Grid
@@ -222,24 +272,37 @@ function App() {
           setSuccessAlert(GAME_COPIED_MESSAGE)
           return setTimeout(() => setSuccessAlert(''), ALERT_TIME_MS)
         }}
+        isHardMode={isHardMode}
       />
       <AboutModal
         isOpen={isAboutModalOpen}
-        isDark={isDarkMode}
-        handleDark={(dark: boolean) => handleDarkMode(dark)}
         handleClose={() => setIsAboutModalOpen(false)}
       />
-
+      <SettingsModal
+        isOpen={isSettingsModalOpen}
+        handleClose={() => setIsSettingsModalOpen(false)}
+        isHardMode={isHardMode}
+        handleHardMode={handleHardMode}
+        isDarkMode={isDarkMode}
+        handleDarkMode={handleDarkMode}
+        isHighContrastMode={isHighContrastMode}
+        handleHighConstrastMode={handleHighConstrastMode}
+      />
       <Alert message={NOT_ENOUGH_LETTERS_MESSAGE} isOpen={isNotEnoughLetters} />
       <Alert
         message={WORD_NOT_FOUND_MESSAGE}
         isOpen={isWordNotFoundAlertOpen}
       />
-      <Alert message={CORRECT_WORD_MESSAGE(solution)} isOpen={isGameLost} />
+      <Alert message={missingLetterMessage} isOpen={isMissingPreviousLetters} />
+      <Alert
+        message={CORRECT_WORD_MESSAGE(solution)}
+        isOpen={isGameLost && !isRevealing}
+      />
       <Alert
         message={successAlert}
         isOpen={successAlert !== ''}
         variant="success"
+        topMost={true}
       />
     </div>
   )

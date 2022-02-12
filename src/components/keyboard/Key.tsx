@@ -33,10 +33,14 @@ export const Key = ({
       'bg-stone-200 dark:bg-stone-600 hover:bg-stone-300 active:bg-stone-400':
         !status,
       'bg-stone-400 dark:bg-stone-800 text-white': status === 'absent',
-      'bg-emerald-500 hover:bg-emerald-600 active:bg-emerald-700 text-white':
-        status === 'correct',
-      'bg-amber-500 hover:bg-amber-600 active:bg-amber-700 text-white':
-        status === 'present',
+      'bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white':
+        status === 'correct' && localStorage.getItem('contrast') === 'high',
+      'bg-cyan-500 hover:bg-cyan-600 active:bg-cyan-700 text-white':
+        status === 'present' && localStorage.getItem('contrast') === 'high',
+      'bg-green-500 hover:bg-green-600 active:bg-green-700 text-white':
+        status === 'correct' && !(localStorage.getItem('contrast') === 'high'),
+      'bg-yellow-500 hover:bg-yellow-600 active:bg-yellow-700 text-white':
+        status === 'present' && !(localStorage.getItem('contrast') === 'high'),
     }
   )
 

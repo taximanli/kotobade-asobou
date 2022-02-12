@@ -29,10 +29,14 @@ export const Cell = ({
       'border-black dark:border-stone-100': value && !status,
       'absent bg-stone-400 dark:bg-stone-700 text-white border-stone-400 dark:border-stone-700':
         status === 'absent',
-      'correct bg-emerald-500 text-white border-emerald-500':
-        status === 'correct',
-      'present bg-amber-500 text-white border-amber-500':
-        status === 'present',
+      'correct bg-orange-500 text-white border-orange-500':
+        status === 'correct' && localStorage.getItem('contrast') === 'high',
+      'present bg-cyan-500 text-white border-cyan-500':
+        status === 'present' && localStorage.getItem('contrast') === 'high',
+      'correct bg-green-500 text-white border-green-500':
+        status === 'correct' && !(localStorage.getItem('contrast') === 'high'),
+      'present bg-yellow-500 text-white border-yellow-500':
+        status === 'present' && !(localStorage.getItem('contrast') === 'high'),
       'cell-fill-animation': isFilled,
       'cell-reveal': shouldReveal,
     }

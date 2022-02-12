@@ -1,4 +1,4 @@
-export const GAME_TITLE = 'Kotobade Asobou 言葉で遊ぼう'
+export const GAME_TITLE = process.env.REACT_APP_GAME_NAME!
 export const GAME_HEADING = ['Kotobade Asobou', '言葉で遊ぼう']
 export const GAME_LINK = 'https://taximanli.github.io/kotobade-asobou'
 
@@ -18,7 +18,7 @@ export const WIN_MESSAGES = [
 // 'Phew! セーフ！',
 ]
 export const GAME_COPIED_MESSAGE = 'Copied results to clipboard 成績をクリップボードにコピーしました'
-// export const ABOUT_GAME_MESSAGE = 'About this game'
+export const ABOUT_GAME_MESSAGE = 'About this game'
 export const NOT_ENOUGH_LETTERS_MESSAGE = 'Not enough letters 4文字入力してください'
 export const WORD_NOT_FOUND_MESSAGE = 'Not in word list この答えは単語リストにありません'
 export const CORRECT_WORD_MESSAGE = (solution: string) =>
