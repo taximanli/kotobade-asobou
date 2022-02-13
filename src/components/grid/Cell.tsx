@@ -24,10 +24,10 @@ export const Cell = ({
   const classes = classnames(
     'w-10 xs:w-11 sm:w-14 h-10 xs:h-11 sm:h-14 border-solid border-2 flex items-center justify-center mx-0.5 text-3xl md:text-4xl cell-font font-bold rounded dark:text-white',
     {
-      'bg-white dark:bg-stone-900 border-stone-200 dark:border-stone-600':
+      'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-600':
         !status,
-      'border-black dark:border-stone-100': value && !status,
-      'absent bg-stone-400 dark:bg-stone-700 text-white border-stone-400 dark:border-stone-700':
+      'border-black dark:border-slate-100': value && !status,
+      'absent bg-slate-400 dark:bg-slate-700 text-white border-slate-400 dark:border-slate-700':
         status === 'absent',
       'correct bg-orange-500 text-white border-orange-500':
         status === 'correct' && localStorage.getItem('contrast') === 'high',

@@ -20,14 +20,14 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
       </p>
 
       <div className="flex justify-center mb-1 mt-2 md:mt-4">
-        <Cell value="ち" status="correct" />
-        <Cell value="い" />
-        <Cell value="さ" />
-        <Cell value="な" />
+        <Cell value="て" status="correct" />
+        <Cell value="り" />
+        <Cell value="や" />
+        <Cell value="き" />
       </div>
       <p className="text-sm text-gray-500 dark:text-gray-300">
-        The kana ち is in the word and in the correct spot.<br />
-        <span className='text-font'>「ち」は単語の中にあり、正しい位置にあります。</span>
+        The kana て is in the word and in the correct spot.<br />
+        <span className='text-font'>「て」は単語の中にあり、正しい位置にあります。</span>
       </p>
 
       <div className="flex justify-center mb-1 mt-2 md:mt-4">
@@ -50,6 +50,13 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
       <p className="text-sm text-gray-500 dark:text-gray-300">
         The kana び is not in the word in any spot.<br />
         <span className='text-font'>「び」は単語のどこにも含まれていません。</span>
+      </p>
+
+      <hr className="mt-4 mb-4" />
+
+      <p className="text-left text-sm font-bold text-gray-500 dark:text-gray-300 pb-2">
+        A new word will be available each day!<br />
+        <span className='text-font'>単語は日替わりです！</span>
       </p>
     </BaseModal>
   )

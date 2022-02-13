@@ -5,18 +5,17 @@
 :root {
   --animation-speed: 1000ms;
   --animation-speed-fast: 500ms;
-  --default-cell-bg-color: theme('colors.stone.400');
-  --correct-cell-bg-color: theme('colors.green.400');
-  --present-cell-bg-color: theme('colors.yellow.400');
+  --default-cell-bg-color: theme('colors.white');
+  --default-cell-border-color: theme('colors.black');
+  --default-cell-text-color: theme('colors.black');
+  --absent-cell-bg-color: theme('colors.slate.400');
 }
 
 .dark {
-  --default-cell-bg-color: theme('colors.stone.700');
-}
-
-.high-contrast {
-  --correct-cell-bg-color: theme('colors.orange.400');
-  --present-cell-bg-color: theme('colors.cyan.400');
+  --default-cell-bg-color: theme('colors.slate.900');
+  --default-cell-border-color: theme('colors.white');
+  --default-cell-text-color: theme('colors.white');
+  --absent-cell-bg-color: theme('colors.slate.700');
 }
 
 .cell-fill-animation {
@@ -56,12 +55,13 @@ svg:hover {
   0% {
     transform: rotateX(0deg);
     background-color: var(--default-cell-bg-color);
-    border-color: var(--default-cell-bg-color);
+    border-color: var(--default-cell-border-color);
+    color: var(--default-cell-text-color);
   }
   100% {
     transform: rotateX(180deg);
-    background-color: var(--default-cell-bg-color);
-    border-color: var(--default-cell-bg-color);
+    background-color: var(--absent-cell-bg-color);
+    border-color: var(--absent-cell-bg-color);
   }
 }
 
@@ -69,12 +69,13 @@ svg:hover {
   0% {
     transform: rotateX(0deg);
     background-color: var(--default-cell-bg-color);
-    border-color: var(--default-cell-bg-color);
+    border-color: var(--default-cell-border-color);
+    color: var(--default-cell-text-color);
   }
   100% {
     transform: rotateX(180deg);
-    background-color: var(--correct-cell-bg-color);
-    border-color: var(--correct-cell-bg-color);
+    background-color: theme('colors.green.400');
+    border-color: theme('colors.green.400');
   }
 }
 
@@ -82,12 +83,13 @@ svg:hover {
   0% {
     transform: rotateX(0deg);
     background-color: var(--default-cell-bg-color);
-    border-color: var(--default-cell-bg-color);
+    border-color: var(--default-cell-border-color);
+    color: var(--default-cell-text-color);
   }
   100% {
     transform: rotateX(180deg);
-    background-color: var(--present-cell-bg-color);
-    border-color: var(--present-cell-bg-color);
+    background-color: theme('colors.yellow.400');
+    border-color: theme('colors.yellow.400');
   }
 }
 

@@ -36,12 +36,12 @@ export const Keyboard = ({
         onEnter()
       } else if (e.code === 'Backspace') {
         onDelete()
-      } else {
+      } /*else {
         const key = e.key.toUpperCase()
         if (key.length === 1 && key >= 'A' && key <= 'Z') {
           onChar(key)
         }
-      }
+      }*/
     }
     window.addEventListener('keyup', listener)
     return () => {

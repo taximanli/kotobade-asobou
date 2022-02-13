@@ -30,9 +30,9 @@ export const Key = ({
     'w-10 h-7 xs:h-8 sm:h-10 flex items-center justify-center rounded mx-0.5 text-lg sm:text-xl key-font font-bold cursor-pointer select-none dark:text-white',
     {
       'transition ease-in-out': isRevealing,
-      'bg-stone-200 dark:bg-stone-600 hover:bg-stone-300 active:bg-stone-400':
+      'bg-slate-200 dark:bg-slate-600 hover:bg-slate-300 active:bg-slate-400':
         !status,
-      'bg-stone-400 dark:bg-stone-800 text-white': status === 'absent',
+      'bg-slate-400 dark:bg-slate-800 text-white': status === 'absent',
       'bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white':
         status === 'correct' && localStorage.getItem('contrast') === 'high',
       'bg-cyan-500 hover:bg-cyan-600 active:bg-cyan-700 text-white':

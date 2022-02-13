@@ -24,7 +24,7 @@ export const SettingsToggle = ({ settingName, settingDescription, flag, handleFl
 
   let settingDescriptionJSX
   if (settingDescription !== '') {
-    const settingDescriptionClassNames = [classnames('text-sm text-gray-500 dark:text-gray-400'), classnames('text-font text-sm text-gray-500 dark:text-gray-400')]
+    const settingDescriptionClassNames = [classnames('text-xs text-gray-500 dark:text-gray-400'), classnames('text-font text-xs text-gray-500 dark:text-gray-400')]
     let splittedSettingDescription = []
     splittedSettingDescription = settingDescription.split('|')
     settingDescriptionJSX = (
@@ -37,9 +37,9 @@ export const SettingsToggle = ({ settingName, settingDescription, flag, handleFl
   }
 
   return (
-    <div className="flex justify-between items-start gap-8 mt-3">
+    <div className="flex justify-between items-start gap-8 mt-3 mb-4">
       <div className="text-left">
-        <h2 className="text-font text-lg text-gray-600 dark:text-gray-300">{settingName}</h2>
+        <h2 className="text-font text-base text-gray-600 dark:text-gray-300">{settingName}</h2>
         {settingDescription === '' ? '' : settingDescriptionJSX}
       </div>
       <div className='w-14'>
