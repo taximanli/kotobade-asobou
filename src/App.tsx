@@ -6,6 +6,7 @@ import {
 import { useState, useEffect } from 'react'
 import { Alert } from './components/alerts/Alert'
 import { Grid } from './components/grid/Grid'
+import { WordForm } from './components/forms/WordForm'
 import { Keyboard } from './components/keyboard/Keyboard'
 import { AboutModal } from './components/modals/AboutModal'
 import { InfoModal } from './components/modals/InfoModal'
@@ -16,7 +17,7 @@ import {
   GAME_HEADING,
   WIN_MESSAGES,
   GAME_COPIED_MESSAGE,
-  ABOUT_GAME_MESSAGE,
+  // ABOUT_GAME_MESSAGE,
   NOT_ENOUGH_LETTERS_MESSAGE,
   WORD_NOT_FOUND_MESSAGE,
   CORRECT_WORD_MESSAGE,
@@ -249,6 +250,11 @@ function App() {
         guesses={guesses}
         currentGuess={currentGuess}
         isRevealing={isRevealing}
+      />
+      <WordForm
+        onEnter={onEnter}
+        currentGuess={currentGuess}
+        setCurrentGuess={setCurrentGuess}
       />
       <Keyboard
         onChar={onChar}

@@ -16,7 +16,7 @@ export const Grid = ({ guesses, currentGuess, isRevealing }: Props) => {
       : []
 
   return (
-    <div className='flex justify-center pb-2 md:pb-3'>
+    <div className='flex justify-center pb-1 md:pb-2'>
       <div className="grid grid-rows-6 grid-flow-col">
         {guesses.map((guess, i) => (
           <CompletedRow

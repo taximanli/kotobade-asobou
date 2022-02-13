@@ -47,7 +47,7 @@ export const Keyboard = ({
     return () => {
       window.removeEventListener('keyup', listener)
     }
-  }, [onEnter, onDelete, onChar])
+  }, [onEnter, onDelete/*, onChar*/])
 
   return (
     <div>
@@ -95,7 +95,7 @@ export const Keyboard = ({
           />
         ))}
       </div>
-      <div className="flex justify-center mb-3">
+      <div className="flex justify-center mb-2">
         {['','を','ろ','よ','も','ほ','の','と','そ','こ','お'].map((key) => (
           <Key
             value={key}
