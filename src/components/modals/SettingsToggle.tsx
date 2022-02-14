@@ -1,4 +1,5 @@
 import classnames from 'classnames'
+import { getStoredIsHighContrastMode } from '../../lib/localStorage'
 
 type Props = {
   settingName: string
@@ -8,11 +9,12 @@ type Props = {
 }
 
 export const SettingsToggle = ({ settingName, settingDescription, flag, handleFlag }: Props) => {
+  const isHighContrast = getStoredIsHighContrastMode()
   const toggleHolder = classnames(
     'w-14 h-8 flex items-center bg-gray-300 rounded-full p-1 duration-300 ease-in-out cursor-pointer',
     {
-      'bg-orange-400': flag && localStorage.getItem('contrast') === 'high',
-      'bg-green-400': flag && !(localStorage.getItem('contrast') === 'high'),
+      'bg-orange-400': flag && isHighContrast,
+      'bg-green-400': flag && !isHighContrast,
     }
   )
   const toggleButton = classnames(
@@ -24,7 +26,7 @@ export const SettingsToggle = ({ settingName, settingDescription, flag, handleFl
 
   let settingDescriptionJSX
   if (settingDescription !== '') {
-    const settingDescriptionClassNames = [classnames('text-xs text-gray-500 dark:text-gray-400'), classnames('text-font text-xs text-gray-500 dark:text-gray-400')]
+    const settingDescriptionClassNames = [classnames('text-xs text-gray-500 dark:text-gray-400'), classnames('local-font text-xs text-gray-500 dark:text-gray-400')]
     let splittedSettingDescription = []
     splittedSettingDescription = settingDescription.split('|')
     settingDescriptionJSX = (
@@ -39,7 +41,7 @@ export const SettingsToggle = ({ settingName, settingDescription, flag, handleFl
   return (
     <div className="flex justify-between items-start gap-8 mt-3 mb-4">
       <div className="text-left">
-        <h2 className="text-font text-base text-gray-600 dark:text-gray-300">{settingName}</h2>
+        <h2 className="local-font text-base text-gray-600 dark:text-gray-300">{settingName}</h2>
         {settingDescription === '' ? '' : settingDescriptionJSX}
       </div>
       <div className='w-14'>

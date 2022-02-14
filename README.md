@@ -17,13 +17,19 @@ $> npm run start
 ```
 
 ### To build/run docker container:
-
+#### Development
 ```bash
-$> docker build -t game .
-$> docker run -d -p 3000:3000 game
+$> docker build -t game:dev .
+$> docker run -d -p 3000:3000 game:dev
 ```
-
 Open [http://localhost:3000](http://localhost:3000) in browser.
+
+#### Production
+```bash
+$> docker build --target=prod -t game:prod .
+$> docker run -d -p 80:80 game:prod
+```
+Open [http://localhost](http://localhost) in browser.
 
 ## Projects built using this repo
 
@@ -47,6 +53,7 @@ Open [http://localhost:3000](http://localhost:3000) in browser.
 - [Rudle](https://rudle.vercel.app): Russian
 - [Keclap](https://keclap.xyz/): Sundanese
 - [kelma.mt](https://kelma.mt): Maltese
+- [Wordle (BOS)](https://elahmo.github.io/wordle/): Bosnian
 
 ### Fun themes
 
@@ -96,6 +103,7 @@ _Want to add one to the list? Just make a pull request or [let us know via a com
 - Update the strings in [src/constants/strings.ts](src/constants/strings.ts)
 - Add all of the five letter words in the language to [src/constants/validGuesses.ts](src/constants/validGuesses.ts), replacing the English words
 - Add a list of goal words in the language to [src/constants/wordlist.ts](src/constants/wordlist.ts), replacing the English words
+- Update the "Settings" modal in [src/components/modals/SettingsModal.tsx](src/components/modals/SettingsModal.tsx)
 - Update the "About" modal in [src/components/modals/AboutModal.tsx](src/components/modals/AboutModal.tsx)
 - Update the "Info" modal in [src/components/modals/InfoModal.tsx](src/components/modals/InfoModal.tsx)
 - If the language has letters that are not present in English update the keyboard in [src/components/keyboard/Keyboard.tsx](src/components/keyboard/Keyboard.tsx)
@@ -104,5 +112,9 @@ _Want to add one to the list? Just make a pull request or [let us know via a com
 
 ### How can I add usage tracking?
 
+This repository includes support for Google Analytics, but, by default, this is disabled. To enable Google Analytics:
+
 - Create a Google Analytics 4 property and obtain the measurement ID (of the format `G-XXXXXXXXXX`)
 - In [.env](.env), add `REACT_APP_GOOGLE_MEASUREMENT_ID=G-XXXXXXXXXX`
+
+Keep in mind that your region might have legislation about obtaining a user's consent before enabling trackers. This is up to downstream repos to implement.

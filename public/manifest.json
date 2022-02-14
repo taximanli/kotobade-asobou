@@ -1,5 +1,5 @@
 {
-  "short_name": "Kotobade Asobou",
+  "short_name": "言葉で遊ぼう",
   "name": "Kotobade Asobou 言葉で遊ぼう",
   "icons": [
     {
@@ -16,11 +16,6 @@
       "src": "kotobade-asobou_logo_192x192",
       "type": "image/png",
       "sizes": "192x192"
-    },
-    {
-      "src": "kotobade-asobou_card_600x314",
-      "type": "image/png",
-      "sizes": "600x314"
     }
   ],
   "start_url": ".",

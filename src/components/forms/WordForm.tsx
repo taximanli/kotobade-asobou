@@ -32,7 +32,7 @@ export const WordForm = ({
         <input 
             type="text"
             name="word"
-            className="bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-600 border-solid border-2 mx-0.5 pl-2 text-lg sm:text-xl text-font rounded dark:text-white"
+            className="bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-600 border-solid border-2 mx-0.5 pl-2 text-lg sm:text-xl local-font rounded dark:text-white"
             size={MAX_WORD_LENGTH * 3}
             maxLength={MAX_WORD_LENGTH}
             placeholder="キーボード入力用"
@@ -42,7 +42,7 @@ export const WordForm = ({
         />
         <input 
             type="submit" 
-            className="w-10 h-8 bg-slate-200 dark:bg-slate-600 hover:bg-slate-300 active:bg-slate-400 rounded mx-0.5 text-lg sm:text-xl key-font font-bold cursor-pointer select-none dark:text-white"
+            className="w-10 h-8 bg-slate-200 dark:bg-slate-600 hover:bg-slate-300 active:bg-slate-400 rounded mx-0.5 text-lg sm:text-xl local-font font-bold cursor-pointer select-none dark:text-white"
             value={ENTER_TEXT}
         />
         </form>

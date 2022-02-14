@@ -39,6 +39,8 @@ import { addStatsForCompletedGame, loadStats } from './lib/stats'
 import {
   loadGameStateFromLocalStorage,
   saveGameStateToLocalStorage,
+  setStoredIsHighContrastMode,
+  getStoredIsHighContrastMode,
 } from './lib/localStorage'
 
 import './App.css'
@@ -55,7 +57,9 @@ function App() {
   const [isNotEnoughLetters, setIsNotEnoughLetters] = useState(false)
   const [isStatsModalOpen, setIsStatsModalOpen] = useState(false)
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false)
+  const [isHardModeAlertOpen, setIsHardModeAlertOpen] = useState(false)
   const [isWordNotFoundAlertOpen, setIsWordNotFoundAlertOpen] = useState(false)
+  const [currentRowClass, setCurrentRowClass] = useState('')
   const [isGameLost, setIsGameLost] = useState(false)
   const [isDarkMode, setIsDarkMode] = useState(
     localStorage.getItem('theme')
@@ -64,10 +68,8 @@ function App() {
       ? true
       : false
   )
-  const [isHighContrastMode, setIsHighConstrastMode] = useState(
-    localStorage.getItem('contrast')
-      ? localStorage.getItem('contrast') === 'high'
-      : false
+  const [isHighContrastMode, setIsHighContrastMode] = useState(
+    getStoredIsHighContrastMode()
   )
   const [successAlert, setSuccessAlert] = useState('')
   const [isRevealing, setIsRevealing] = useState(false)
@@ -104,6 +106,7 @@ function App() {
     } else {
       document.documentElement.classList.remove('dark')
     }
+
     if (isHighContrastMode) {
       document.documentElement.classList.add('high-contrast')
     } else {
@@ -117,13 +120,20 @@ function App() {
   }
 
   const handleHardMode = (isHard: boolean) => {
-    setIsHardMode(isHard)
-    localStorage.setItem('gameMode', isHard ? 'hard' : 'normal')
+    if (guesses.length === 0 || localStorage.getItem('gameMode') === 'hard') {
+      setIsHardMode(isHard)
+      localStorage.setItem('gameMode', isHard ? 'hard' : 'normal')
+    } else {
+      setIsHardModeAlertOpen(true)
+      return setTimeout(() => {
+        setIsHardModeAlertOpen(false)
+      }, ALERT_TIME_MS)
+    }
   }
 
-  const handleHighConstrastMode = (isHighContrast: boolean) => {
-    setIsHighConstrastMode(isHighContrast)
-    localStorage.setItem('contrast', isHighContrast ? 'high' : 'low')
+  const handleHighContrastMode = (isHighContrast: boolean) => {
+    setIsHighContrastMode(isHighContrast)
+    setStoredIsHighContrastMode(isHighContrast)
   }
 
   useEffect(() => {
@@ -170,15 +180,19 @@ function App() {
     }
     if (!(currentGuess.length === MAX_WORD_LENGTH)) {
       setIsNotEnoughLetters(true)
+      setCurrentRowClass('jiggle')
       return setTimeout(() => {
         setIsNotEnoughLetters(false)
+        setCurrentRowClass('')
       }, ALERT_TIME_MS)
     }
 
     if (!isWordInWordList(currentGuess)) {
       setIsWordNotFoundAlertOpen(true)
+      setCurrentRowClass('jiggle')
       return setTimeout(() => {
         setIsWordNotFoundAlertOpen(false)
+        setCurrentRowClass('')
       }, ALERT_TIME_MS)
     }
 
@@ -188,8 +202,10 @@ function App() {
       if (firstMissingReveal) {
         setIsMissingLetterMessage(firstMissingReveal)
         setIsMissingPreviousLetters(true)
+        setCurrentRowClass('jiggle')
         return setTimeout(() => {
           setIsMissingPreviousLetters(false)
+          setCurrentRowClass('')
         }, ALERT_TIME_MS)
       }
     }
@@ -231,10 +247,10 @@ function App() {
           className="h-6 w-6 ml-3 cursor-pointer dark:stroke-white"
           onClick={() => setIsInfoModalOpen(true)}
         />
-        <span className="heading-font text-xs sm:text-sm md:text-base lg:text-lg font-bold uppercase ml-2.5 shrink dark:text-white">
+        <span className="local-font text-xs sm:text-sm md:text-base lg:text-lg font-bold uppercase ml-2.5 shrink dark:text-white">
           {GAME_HEADING[0]}
         </span>
-        <span className="heading-font text-xl sm:text-2xl font-bold ml-2.5 grow dark:text-white">
+        <span className="local-font text-xl sm:text-2xl font-bold ml-2.5 grow dark:text-white">
           {GAME_HEADING[1]}
         </span>
         <ChartBarIcon
@@ -250,6 +266,7 @@ function App() {
         guesses={guesses}
         currentGuess={currentGuess}
         isRevealing={isRevealing}
+        currentRowClassName={currentRowClass}
       />
       <WordForm
         onEnter={onEnter}
@@ -291,8 +308,9 @@ function App() {
         handleHardMode={handleHardMode}
         isDarkMode={isDarkMode}
         handleDarkMode={handleDarkMode}
+        isHardModeErrorModalOpen={isHardModeAlertOpen}
         isHighContrastMode={isHighContrastMode}
-        handleHighConstrastMode={handleHighConstrastMode}
+        handleHighContrastMode={handleHighContrastMode}
       />
       <Alert message={NOT_ENOUGH_LETTERS_MESSAGE} isOpen={isNotEnoughLetters} />
       <Alert

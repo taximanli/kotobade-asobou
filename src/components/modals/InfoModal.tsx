@@ -14,7 +14,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
         Guess the word of the day in {MAX_CHALLENGES} tries. Each guess must be a valid 4-kana word. Hit the enter button to submit.
         After each guess, the colour of the tiles will change to show how close your guess was to the word.
       </p>
-      <p className="text-left text-font text-sm text-gray-500 dark:text-gray-300 pb-2">
+      <p className="text-left local-font text-sm text-gray-500 dark:text-gray-300 pb-2">
         今日の単語を{MAX_CHALLENGES}回以内に当ててください。それぞれの答えはひらがな4文字の単語である必要があります。入力ボタンを押して答えを決定してください。
         答えるたびに正方形の色が変わり、それが次のヒントになります。
       </p>
@@ -27,7 +27,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
       </div>
       <p className="text-sm text-gray-500 dark:text-gray-300">
         The kana て is in the word and in the correct spot.<br />
-        <span className='text-font'>「て」は単語の中にあり、正しい位置にあります。</span>
+        <span className='local-font'>「て」は単語の中にあり、正しい位置にあります。</span>
       </p>
 
       <div className="flex justify-center mb-1 mt-2 md:mt-4">
@@ -38,7 +38,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
       </div>
       <p className="text-sm text-gray-500 dark:text-gray-300">
         The kana む is in the word but in the wrong spot.<br />
-        <span className='text-font'>「む」は単語の中にありますが、違う位置にあります。</span>
+        <span className='local-font'>「む」は単語の中にありますが、違う位置にあります。</span>
       </p>
 
       <div className="flex justify-center mb-1 mt-2 md:mt-4">
@@ -49,14 +49,14 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
       </div>
       <p className="text-sm text-gray-500 dark:text-gray-300">
         The kana び is not in the word in any spot.<br />
-        <span className='text-font'>「び」は単語のどこにも含まれていません。</span>
+        <span className='local-font'>「び」は単語のどこにも含まれていません。</span>
       </p>
 
       <hr className="mt-4 mb-4" />
 
       <p className="text-left text-sm font-bold text-gray-500 dark:text-gray-300 pb-2">
         A new word will be available each day!<br />
-        <span className='text-font'>単語は日替わりです！</span>
+        <span className='local-font'>単語は日替わりです！</span>
       </p>
     </BaseModal>
   )

@@ -51,7 +51,7 @@ export const StatsModal = ({
       handleClose={handleClose}
     >
       <StatBar gameStats={gameStats} />
-      <h4 className="text-font text-base leading-6 font-medium text-gray-900 dark:text-gray-100">
+      <h4 className="local-font text-base leading-6 font-medium text-gray-900 dark:text-gray-100">
         {GUESS_DISTRIBUTION_TEXT}
       </h4>
       <Histogram gameStats={gameStats} />
@@ -60,7 +60,7 @@ export const StatsModal = ({
           <div>
             <h5>{NEW_WORD_TEXT}</h5>
             <Countdown
-              className="text-font text-lg font-medium text-gray-900 dark:text-gray-100"
+              className="local-font text-lg font-medium text-gray-900 dark:text-gray-100"
               date={tomorrow}
               daysInHours={true}
             />
@@ -68,7 +68,7 @@ export const StatsModal = ({
           <div>
             <button
               type="button"
-              className="mt-2 w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-font text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
+              className="mt-2 w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 local-font text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
               onClick={() => {
                 shareStatus(guesses, isGameLost, isHardMode)
                 handleShare()

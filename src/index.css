@@ -4,11 +4,13 @@
 
 :root {
   --animation-speed: 1000ms;
-  --animation-speed-fast: 500ms;
+  --animation-speed-fast: 250ms;
   --default-cell-bg-color: theme('colors.white');
   --default-cell-border-color: theme('colors.black');
   --default-cell-text-color: theme('colors.black');
   --absent-cell-bg-color: theme('colors.slate.400');
+  --correct-cell-bg-color: theme('colors.green.400');
+  --present-cell-bg-color: theme('colors.yellow.400');
 }
 
 .dark {
@@ -16,6 +18,11 @@
   --default-cell-border-color: theme('colors.white');
   --default-cell-text-color: theme('colors.white');
   --absent-cell-bg-color: theme('colors.slate.700');
+}
+
+.high-contrast {
+  --correct-cell-bg-color: theme('colors.orange.400');
+  --present-cell-bg-color: theme('colors.cyan.400');
 }
 
 .cell-fill-animation {
@@ -51,6 +58,11 @@ svg:hover {
   animation-duration: var(--animation-speed);
 }
 
+.jiggle {
+  animation: jiggle linear;
+  animation-duration: var(--animation-speed-fast);
+}
+
 @keyframes revealAbsentCharCell {
   0% {
     transform: rotateX(0deg);
@@ -74,8 +86,8 @@ svg:hover {
   }
   100% {
     transform: rotateX(180deg);
-    background-color: theme('colors.green.400');
-    border-color: theme('colors.green.400');
+    background-color: var(--correct-cell-bg-color);
+    border-color: var(--correct-cell-bg-color);
   }
 }
 
@@ -88,8 +100,8 @@ svg:hover {
   }
   100% {
     transform: rotateX(180deg);
-    background-color: theme('colors.yellow.400');
-    border-color: theme('colors.yellow.400');
+    background-color: var(--present-cell-bg-color);
+    border-color: var(--present-cell-bg-color);
   }
 }
 
@@ -133,10 +145,25 @@ svg:hover {
   }
 }
 
-.heading-font,
-.text-font,
-.cell-font,
-.key-font {
+@keyframes jiggle {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-0.5rem, 0);
+  }
+  50% {
+    transform: translate(0.5rem, 0);
+  }
+  75% {
+    transform: translate(-0.5rem, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.local-font {
   font-family: 'Noto Sans JP', 'Noto Sans CJK JP', 'ヒラギノ角ゴ Pro W3',
     'Hiragino Kaku Gothic Pro', Osaka, メイリオ, Meiryo, 'ＭＳ Ｐゴシック',
     'MS PGothic', 'ＭＳ ゴシック', 'MS Gothic', TakaoPGothic, sans-serif;

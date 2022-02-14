@@ -1,5 +1,7 @@
+import { Alert } from '../alerts/Alert'
 import { BaseModal } from './BaseModal'
 import { SettingsToggle } from './SettingsToggle'
+import { HARD_MODE_ALERT_MESSAGE } from '../../constants/strings'
 
 type Props = {
   isOpen: boolean
@@ -8,8 +10,9 @@ type Props = {
   handleHardMode: Function
   isDarkMode: boolean
   handleDarkMode: Function
+  isHardModeErrorModalOpen: boolean
   isHighContrastMode: boolean
-  handleHighConstrastMode: Function  
+  handleHighContrastMode: Function
 }
 
 export const SettingsModal = ({
@@ -19,8 +22,9 @@ export const SettingsModal = ({
   handleHardMode,
   isDarkMode,
   handleDarkMode,
+  isHardModeErrorModalOpen: isHardModeAlertModalOpen,
   isHighContrastMode,
-  handleHighConstrastMode,
+  handleHighContrastMode,
 }: Props) => {
   return (
     <BaseModal title="Settings 設定" isOpen={isOpen} handleClose={handleClose}>
@@ -43,12 +47,16 @@ export const SettingsModal = ({
           settingName="High Contrast Mode ハイコントラストモード"
           settingDescription=""
           flag={isHighContrastMode}
-          handleFlag={handleHighConstrastMode}
+          handleFlag={handleHighContrastMode}
+        />
+        <Alert
+          message={HARD_MODE_ALERT_MESSAGE}
+          isOpen={isHardModeAlertModalOpen}
         />
         <hr className="mt-4 mb-4" />
         <div className="flex justify-between items-center gap-8 mt-3">
           <div className="text-left">
-            <h2 className="text-font text-base text-gray-600 dark:text-gray-300">Feedback フィードバック</h2>
+            <h2 className="local-font text-base text-gray-600 dark:text-gray-300">Feedback フィードバック</h2>
           </div>
           <div className='w-14 content-start'>
             {' '}<a className="underline text-sm text-gray-600 dark:text-gray-300" href="https://twitter.com/taximanli" rel="noreferrer" target="_blank">Twitter</a>{' '}
@@ -65,7 +73,7 @@ export const SettingsModal = ({
           </p>
         </div>
         <div className="flex justify-between items-center gap-8 mt-3">
-          <p className="text-left text-font text-sm text-gray-500 dark:text-gray-300">
+          <p className="text-left local-font text-sm text-gray-500 dark:text-gray-300">
             これは、私たち皆が知っていて大好きな単語パズルゲームの
             {' '}<a className="underline text-sm text-gray-600 dark:text-gray-300" href="https://github.com/cwackerfuss/react-wordle" rel="noreferrer" target="_blank">オープンソース版</a>{' '}
             です。
