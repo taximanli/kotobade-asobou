@@ -1,13 +1,16 @@
+import { Key } from './Key'
 import { MAX_WORD_LENGTH } from '../../constants/settings'
-import { ENTER_TEXT } from '../../constants/strings'
+import { ENTER_TEXT, DELETE_TEXT } from '../../constants/strings'
 
 type Props = {
+    onDelete: Function
     onEnter: Function
     currentGuess: string
     setCurrentGuess: Function
 }
 
-export const WordForm = ({
+export const Bar = ({
+    onDelete,
     onEnter,
     currentGuess,
     setCurrentGuess,
@@ -21,31 +24,33 @@ export const WordForm = ({
         event.stopPropagation()
     }    
 
-    const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (event) => {
-        event.preventDefault()
-        onEnter()
-    }
-            
+    const onClick = (value: string) => {
+        if (value === 'ENTER') {
+          onEnter()
+        } else if (value === 'DELETE') {
+          onDelete()
+        }
+      }
+                
     return (
     <div className='flex justify-center pb-2 md:pb-3'>
-        <form className="" onSubmit={handleSubmit}>
+        <Key value="ENTER" onClick={onClick}>
+          {ENTER_TEXT}
+        </Key>
         <input 
             type="text"
             name="word"
-            className="bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-600 border-solid border-2 mx-0.5 pl-2 text-lg sm:text-xl local-font rounded dark:text-white"
-            size={MAX_WORD_LENGTH * 3}
+            className="h-7 xs:h-8 sm:h-10 bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-600 border-solid border-2 mx-0.5 pl-2 text-lg sm:text-xl local-font rounded dark:text-white"
+            size={10}
             maxLength={MAX_WORD_LENGTH}
             placeholder="キーボード入力用"
             value={currentGuess}
             onChange={handleInput}
             onKeyUp={handleKeyUp}
         />
-        <input 
-            type="submit" 
-            className="w-10 h-8 bg-slate-200 dark:bg-slate-600 hover:bg-slate-300 active:bg-slate-400 rounded mx-0.5 text-lg sm:text-xl local-font font-bold cursor-pointer select-none dark:text-white"
-            value={ENTER_TEXT}
-        />
-        </form>
+        <Key value="DELETE" onClick={onClick}>
+          {DELETE_TEXT}
+        </Key>
     </div>
     )
 }

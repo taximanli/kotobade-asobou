@@ -5,7 +5,7 @@ import {
 } from '@heroicons/react/outline'
 import { useState, useEffect } from 'react'
 import { Grid } from './components/grid/Grid'
-import { WordForm } from './components/forms/WordForm'
+import { Bar } from './components/keyboard/Bar'
 import { Keyboard } from './components/keyboard/Keyboard'
 import { InfoModal } from './components/modals/InfoModal'
 import { StatsModal } from './components/modals/StatsModal'
@@ -268,7 +268,8 @@ function App() {
         isRevealing={isRevealing}
         currentRowClassName={currentRowClass}
       />
-      <WordForm
+      <Bar
+        onDelete={onDelete}
         onEnter={onEnter}
         currentGuess={currentGuess}
         setCurrentGuess={setCurrentGuess}
