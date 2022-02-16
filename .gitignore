@@ -15,6 +15,7 @@ BACKUP.md
 /build
 
 # misc
+.backup
 .DS_Store
 .env.local
 .env.development.local
