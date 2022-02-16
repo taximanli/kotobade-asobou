@@ -20,7 +20,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
       </p>
 
       <div className="flex justify-center mb-1 mt-2 md:mt-4">
-        <Cell value="て" status="correct" />
+        <Cell value="て" status="correct" isRevealing={true} isCompleted={true} />
         <Cell value="り" />
         <Cell value="や" />
         <Cell value="き" />
@@ -33,7 +33,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
       <div className="flex justify-center mb-1 mt-2 md:mt-4">
         <Cell value="か" />
         <Cell value="ん" />
-        <Cell value="む" status="present" />
+        <Cell value="む" status="present" isRevealing={true} isCompleted={true} />
         <Cell value="り" />
       </div>
       <p className="text-sm text-gray-500 dark:text-gray-300">
@@ -45,7 +45,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
         <Cell value="ふ" />
         <Cell value="た" />
         <Cell value="た" />
-        <Cell value="び" status="absent" />
+        <Cell value="び" status="absent" isRevealing={true} isCompleted={true} />
       </div>
       <p className="text-sm text-gray-500 dark:text-gray-300">
         The kana び is not in the word in any spot.<br />

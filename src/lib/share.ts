@@ -10,7 +10,9 @@ export const shareStatus = (
   isHardMode: boolean
 ) => {
   navigator.clipboard.writeText(
-    `${GAME_TITLE} ${solutionIndex} ${lost ? 'X' : guesses.length}/${MAX_CHALLENGES}${isHardMode ? '*' : ''}\n` +
+    `${GAME_TITLE} ${solutionIndex} ${
+      lost ? 'X' : guesses.length
+    }/${MAX_CHALLENGES}${isHardMode ? '*' : ''}\n` +
     `${GAME_LINK}\n` +
       generateEmojiGrid(guesses)
   )
@@ -28,7 +30,7 @@ export const generateEmojiGrid = (guesses: string[]) => {
             case 'correct':
               if (isHighContrast) {
                 return '🟧'
-              }              
+              }
               return '🟩'
             case 'present':
               if (isHighContrast) {

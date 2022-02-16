@@ -18,10 +18,10 @@ export const WIN_MESSAGES = [
 // 'Phew! セーフ！',
 ]
 export const GAME_COPIED_MESSAGE = 'Copied results to clipboard 成績をクリップボードにコピーしました'
-// export const ABOUT_GAME_MESSAGE = 'About this game'
 export const NOT_ENOUGH_LETTERS_MESSAGE = 'Not enough letters 4文字入力してください'
 export const WORD_NOT_FOUND_MESSAGE = 'Not in word list この答えは単語リストにありません'
-export const HARD_MODE_ALERT_MESSAGE = 'Hard Mode can only be enabled at the start!'
+export const HARD_MODE_ALERT_MESSAGE =
+  'Hard Mode can only be enabled at the start!'
 export const CORRECT_WORD_MESSAGE = (solution: string) =>
   `The word was ${solution}. 今日の正解は「${solution}」です。`
 export const WRONG_SPOT_MESSAGE = (guess: string, position: number) =>

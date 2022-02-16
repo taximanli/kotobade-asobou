@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
+import { AlertProvider } from './context/AlertContext'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AlertProvider>
+      <App />
+    </AlertProvider>
   </React.StrictMode>,
   document.getElementById('root')
 )
