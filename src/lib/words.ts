@@ -7,6 +7,7 @@ export const isWordInWordList = (word: string) => {
   return (
     WORDS.includes(word.toLowerCase()) ||
     VALID_GUESSES.includes(word.toLowerCase())
+    || true // desmond
   )
 }
 
@@ -60,7 +61,8 @@ export const getWordOfDay = () => {
   const nextday = (index + 1) * msInDay + epochMs
 
   return {
-    solution: WORDS[index % WORDS.length].toUpperCase(),
+    // desmond
+    solution: 'はじきめ',// WORDS[index % WORDS.length].toUpperCase(),
     solutionIndex: index,
     tomorrow: nextday,
   }

@@ -33,10 +33,18 @@ export const Cell = ({
         status === 'absent',
       'correct bg-orange-500 text-white border-orange-500':
         status === 'correct' && isHighContrast,
+      'close bg-violet-500 text-white border-violet-500':
+        status === 'close' && isHighContrast,
+      'consonant cell-consonant-bg-color-high-contrast text-white border-slate-400':
+        status === 'consonant' && isHighContrast,
       'present bg-cyan-500 text-white border-cyan-500':
         status === 'present' && isHighContrast,
       'correct bg-green-500 text-white border-green-500':
         status === 'correct' && !isHighContrast,
+      'close bg-lime-500 text-white border-lime-500':
+        status === 'close' && !isHighContrast,
+      'consonant cell-consonant-bg-color text-white border-slate-400':
+        status === 'consonant' && !isHighContrast,
       'present bg-yellow-500 text-white border-yellow-500':
         status === 'present' && !isHighContrast,
       'cell-fill-animation': isFilled,

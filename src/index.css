@@ -2,6 +2,109 @@
 @tailwind components;
 @tailwind utilities;
 
+.cell-consonant-bg-color {
+  background: linear-gradient(
+    to right,
+    theme('colors.green.500') 50%,
+    theme('colors.slate.400') 50%
+  );
+}
+.cell-consonant-bg-color-high-contrast {
+  background: linear-gradient(
+    to right,
+    theme('colors.orange.500') 50%,
+    theme('colors.slate.400') 50%
+  );
+}
+
+.key-consonant-bg-color {
+  background: linear-gradient(
+    to right,
+    theme('colors.green.500') 50%,
+    theme('colors.slate.400') 50%
+  );
+}
+.key-consonant-bg-color:hover {
+  background-image: linear-gradient(
+    to right,
+    theme('colors.green.600') 50%,
+    theme('colors.slate.400') 50%
+  );
+}
+.key-consonant-bg-color:active {
+  background: linear-gradient(
+    to right,
+    theme('colors.green.700') 50%,
+    theme('colors.slate.400') 50%
+  );
+}
+
+.key-consonant-bg-color-high-contrast {
+  background: linear-gradient(
+    to right,
+    theme('colors.orange.500') 50%,
+    theme('colors.slate.400') 50%
+  );
+}
+.key-consonant-bg-color-high-contrast:hover {
+  background: linear-gradient(
+    to right,
+    theme('colors.orange.600') 50%,
+    theme('colors.slate.400') 50%
+  );
+}
+.key-consonant-bg-color-high-contrast:active {
+  background: linear-gradient(
+    to right,
+    theme('colors.orange.700') 50%,
+    theme('colors.slate.400') 50%
+  );
+}
+
+.key-consonant-bg-color-dark {
+  background: linear-gradient(
+    to right,
+    theme('colors.green.500') 50%,
+    theme('colors.slate.800') 50%
+  );
+}
+.key-consonant-bg-color-dark:hover {
+  background: linear-gradient(
+    to right,
+    theme('colors.green.600') 50%,
+    theme('colors.slate.800') 50%
+  );
+}
+.key-consonant-bg-color-dark:active {
+  background: linear-gradient(
+    to right,
+    theme('colors.green.700') 50%,
+    theme('colors.slate.800') 50%
+  );
+}
+
+.key-consonant-bg-color-high-contrast-dark {
+  background: linear-gradient(
+    to right,
+    theme('colors.orange.500') 50%,
+    theme('colors.slate.800') 50%
+  );
+}
+.key-consonant-bg-color-high-contrast-dark:hover {
+  background: linear-gradient(
+    to right,
+    theme('colors.orange.600') 50%,
+    theme('colors.slate.800') 50%
+  );
+}
+.key-consonant-bg-color-high-contrast-dark:active {
+  background: linear-gradient(
+    to right,
+    theme('colors.orange.700') 50%,
+    theme('colors.slate.800') 50%
+  );
+}
+
 :root {
   --animation-speed: 1000ms;
   --animation-speed-fast: 250ms;
@@ -11,6 +114,12 @@
   --absent-cell-bg-color: theme('colors.slate.400');
   --correct-cell-bg-color: theme('colors.green.400');
   --present-cell-bg-color: theme('colors.yellow.400');
+  --close-cell-bg-color: theme('colors.lime.400');
+  --consonant-cell-bg-color: linear-gradient(
+    to right,
+    theme('colors.green.400') 50%,
+    theme('colors.slate.400') 50%
+  );
 }
 
 .dark {
@@ -23,6 +132,12 @@
 .high-contrast {
   --correct-cell-bg-color: theme('colors.orange.400');
   --present-cell-bg-color: theme('colors.cyan.400');
+  --close-cell-bg-color: theme('colors.violet.400');
+  --consonant-cell-bg-color: linear-gradient(
+    to right,
+    theme('colors.orange.400') 50%,
+    theme('colors.slate.400') 50%
+  );
 }
 
 .cell-fill-animation {

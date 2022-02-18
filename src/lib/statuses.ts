@@ -1,6 +1,7 @@
 import { solution } from './words'
+import { CONSONANT_STATUS_KANA, CLOSE_STATUS_KANA } from '../constants/strings'
 
-export type CharStatus = 'absent' | 'present' | 'correct'
+export type CharStatus = 'absent' | 'present' | 'consonant' | 'close' | 'correct'
 
 export const getStatuses = (
   guesses: string[]
@@ -9,7 +10,21 @@ export const getStatuses = (
 
   guesses.forEach((word) => {
     word.split('').forEach((letter, i) => {
-      if (!solution.includes(letter)) {
+      CONSONANT_STATUS_KANA.forEach((kana) => {
+        if (kana.includes(letter) && kana.includes(solution[i])) {
+          //make status close
+          return (charObj[letter] = 'consonant')
+        }
+      })
+
+      CLOSE_STATUS_KANA.forEach((kana) => {
+        if (kana.includes(letter) && kana.includes(solution[i])) {
+          //make status close
+          return (charObj[letter] = 'close')
+        }
+      })
+
+      if (!solution.includes(letter) && !['present', 'consonant', 'close', 'correct'].includes(charObj[letter])) {
         // make status absent
         return (charObj[letter] = 'absent')
       }
@@ -19,7 +34,7 @@ export const getStatuses = (
         return (charObj[letter] = 'correct')
       }
 
-      if (charObj[letter] !== 'correct') {
+      if (!['consonant', 'close', 'correct'].includes(charObj[letter])) {
         //make status present
         return (charObj[letter] = 'present')
       }
@@ -47,6 +62,26 @@ export const getGuessStatuses = (guess: string): CharStatus[] => {
   })
 
   splitGuess.forEach((letter, i) => {
+    if (statuses[i]) return
+
+    CONSONANT_STATUS_KANA.forEach((kana) => {
+      if (kana.includes(letter) && kana.includes(splitSolution[i])) {
+        // handles status close
+        statuses[i] = 'consonant'
+        return
+      }
+    })
+
+    if (statuses[i]) return
+
+    CLOSE_STATUS_KANA.forEach((kana) => {
+      if (kana.includes(letter) && kana.includes(splitSolution[i])) {
+        // handles status close
+        statuses[i] = 'close'
+        return
+      }
+    })
+
     if (statuses[i]) return
 
     if (!splitSolution.includes(letter)) {

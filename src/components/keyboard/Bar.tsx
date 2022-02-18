@@ -22,6 +22,9 @@ export const Bar = ({
 
     const handleKeyUp: React.KeyboardEventHandler<HTMLInputElement> = (event) => {
         event.stopPropagation()
+        if (event.code === 'Enter') {
+          onEnter()
+        }
     }    
 
     const onClick = (value: string) => {
