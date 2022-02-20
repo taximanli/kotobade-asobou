@@ -20,7 +20,8 @@ export const Bar = ({
     const { t } = useTranslation();
 
     const handleInput: React.ChangeEventHandler<HTMLInputElement> = (event) => {
-        setCurrentGuess(event.target.value)
+        const filteredInput = event.target.value.replace(/[^ぁあぃいぅうぇえぉおかがきぎくぐけげこごさざしじすずせぜそぞただちぢっつづてでとどなにぬねのはばぱひびぴふぶぷへべぺほぼぽまみむめもゃやゅゆょよらりるれろわをんゔー]/, '')
+        setCurrentGuess(filteredInput)
     }    
 
     const handleKeyUp: React.KeyboardEventHandler<HTMLInputElement> = (event) => {

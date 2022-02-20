@@ -169,7 +169,9 @@ function App() {
   useEffect(() => {
     if (isGameWon) {
       const winMessage =
-        WIN_MESSAGES[Math.floor(Math.random() * WIN_MESSAGES.length)]
+        displayLanguage === 'en'
+          ? WIN_MESSAGES.en[guesses.length - 1]
+          : WIN_MESSAGES.ja[guesses.length - 1]
       const delayMs = REVEAL_TIME_MS * MAX_WORD_LENGTH
 
       showSuccessAlert(winMessage, {
@@ -183,7 +185,7 @@ function App() {
         setIsStatsModalOpen(true)
       }, GAME_LOST_INFO_DELAY)
     }
-  }, [isGameWon, isGameLost, showSuccessAlert])
+  }, [isGameWon, isGameLost, guesses, showSuccessAlert])
 
   const onChar = (value: string) => {
     if (

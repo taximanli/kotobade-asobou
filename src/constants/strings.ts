@@ -3,20 +3,36 @@ export const GAME_HEADING = ['Kotobade Asobou', '言葉で遊ぼう']
 export const GAME_LINK = process.env.REACT_APP_GAME_LINK!
 
 // export const WIN_MESSAGES = ['Great Job!', 'Awesome', 'Well done!']
-export const WIN_MESSAGES = [
-  'Genius! 天才！',
-  'Genius! 天才！',
-  'Magnificent! 素晴らしい！',
-  'Magnificent! 素晴らしい！',
-  'Impressive! 立派！',
-  'Impressive! 立派！',
-  'Splendid! 素敵！',
-  'Splendid! 素敵！',
-  'Great! すごい！',
-  'Great! すごい！',
-  // 'Phew! セーフ！',
-  // 'Phew! セーフ！',
-]
+export const WIN_MESSAGES = {
+  en: [
+    'Genius!',
+    'Genius!',
+    'Magnificent!',
+    'Magnificent!',
+    'Impressive!',
+    'Impressive!',
+    'Splendid!',
+    'Splendid!',
+    'Great!',
+    'Great!',
+    'Phew!',
+    'Phew!',
+  ],
+  ja: [
+    '天才！',
+    '天才！',
+    '素晴らしい！',
+    '素晴らしい！',
+    '立派！',
+    '立派！',
+    '素敵！',
+    '素敵！',
+    'すごい！',
+    'すごい！',
+    'セーフ！',
+    'セーフ！',
+  ]
+}
 
 export const CORRECT_WORD_MESSAGE = (solution: string) =>
   `The word was ${solution}. 今日の正解は「${solution}」です。`
@@ -24,10 +40,9 @@ export const WRONG_SPOT_MESSAGE = (guess: string, position: number) =>
   `Must use ${guess} in position ${position}. ${position}文字目は「${guess}」でないといけません。`
 export const NOT_CONTAINED_MESSAGE = (letter: string) =>
   `Guess must contain ${letter}.「${letter}」を答えに含める必要があります。`
+
 export const ENTER_TEXT = '⏎'
 export const DELETE_TEXT = '⇦'
-
-export const ALLOWED_KANA = 'ぁあぃいぅうぇえぉおかがきぎくぐけげこごさざしじすずせぜそぞただちぢっつづてでとどなにぬねのはばぱひびぴふぶぷへべぺほぼぽまみむめもゃやゅゆょよらりるれろわをんゔー'
 
 export const CLOSE_STATUS_KANA = [
   'あぁ',
