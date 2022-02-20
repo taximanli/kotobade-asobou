@@ -18,6 +18,7 @@ import {
   NOT_ENOUGH_LETTERS_MESSAGE,
   WORD_NOT_FOUND_MESSAGE,
   CORRECT_WORD_MESSAGE,
+  HINT_MODE_ALERT_MESSAGE,
   HARD_MODE_ALERT_MESSAGE,
 } from './constants/strings'
 import {
@@ -37,6 +38,8 @@ import { addStatsForCompletedGame, loadStats } from './lib/stats'
 import {
   loadGameStateFromLocalStorage,
   saveGameStateToLocalStorage,
+  setStoredIsHintMode,
+  getStoredIsHintMode,
   setStoredIsHighContrastMode,
   getStoredIsHighContrastMode,
 } from './lib/localStorage'
@@ -90,6 +93,8 @@ function App() {
 
   const [stats, setStats] = useState(() => loadStats())
 
+  const [isHintMode, setIsHintMode] = useState(getStoredIsHintMode())
+
   const [isHardMode, setIsHardMode] = useState(
     localStorage.getItem('gameMode')
       ? localStorage.getItem('gameMode') === 'hard'
@@ -121,6 +126,15 @@ function App() {
   const handleDarkMode = (isDark: boolean) => {
     setIsDarkMode(isDark)
     localStorage.setItem('theme', isDark ? 'dark' : 'light')
+  }
+
+  const handleHintMode = (isHint: boolean) => {
+    if (guesses.length === 0 || !getStoredIsHintMode()) {
+      setIsHintMode(isHint)
+      setStoredIsHintMode(isHint)
+    } else {
+      showErrorAlert(HINT_MODE_ALERT_MESSAGE)
+    }
   }
 
   const handleHardMode = (isHard: boolean) => {
@@ -293,11 +307,14 @@ function App() {
         isGameLost={isGameLost}
         isGameWon={isGameWon}
         handleShare={() => showSuccessAlert(GAME_COPIED_MESSAGE)}
+        isHintMode={isHintMode}
         isHardMode={isHardMode}
       />
       <SettingsModal
         isOpen={isSettingsModalOpen}
         handleClose={() => setIsSettingsModalOpen(false)}
+        isHintMode={isHintMode}
+        handleHintMode={handleHintMode}
         isHardMode={isHardMode}
         handleHardMode={handleHardMode}
         isDarkMode={isDarkMode}

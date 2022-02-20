@@ -15,7 +15,7 @@ export const Keyboard = ({
   onDelete,
   onEnter,
   guesses,
-  isRevealing,
+  isRevealing
 }: Props) => {
   const charStatuses = getStatuses(guesses)
 

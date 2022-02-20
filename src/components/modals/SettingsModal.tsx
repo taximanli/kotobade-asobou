@@ -4,6 +4,8 @@ import { SettingsToggle } from './SettingsToggle'
 type Props = {
   isOpen: boolean
   handleClose: () => void
+  isHintMode: boolean
+  handleHintMode: Function
   isHardMode: boolean
   handleHardMode: Function
   isDarkMode: boolean
@@ -15,6 +17,8 @@ type Props = {
 export const SettingsModal = ({
   isOpen,
   handleClose,
+  isHintMode,
+  handleHintMode,
   isHardMode,
   handleHardMode,
   isDarkMode,
@@ -25,6 +29,13 @@ export const SettingsModal = ({
   return (
     <BaseModal title="Settings 設定" isOpen={isOpen} handleClose={handleClose}>
       <div className="grid-cols-2 gap-4">
+        <SettingsToggle
+          settingName="Hint Mode ヒントモード"
+          settingDescription=""
+          flag={isHintMode}
+          handleFlag={handleHintMode}
+        />
+        <hr className="mt-4 mb-4" />
         <SettingsToggle
           settingName="Hard Mode ハードモード"
           settingDescription="Any revealed hints must be used in subsequent guesses.|開示されたすべてのヒントを満たす単語だけが入力できます。"

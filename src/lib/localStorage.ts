@@ -1,5 +1,6 @@
 const gameStateKey = 'gameState'
 const highContrastKey = 'highContrast'
+const hintModeKey = 'hintMode'
 
 type StoredGameState = {
   guesses: string[]
@@ -77,6 +78,24 @@ export const loadStatsFromLocalStorage = () => {
     } else {
       return null
     }
+  }
+}
+
+export const setStoredIsHintMode = (isHint: boolean) => {
+  if (isHint) {
+    localStorage.setItem(hintModeKey, 'hint')
+  } else {
+    localStorage.setItem(hintModeKey, 'normal')
+  }
+}
+
+export const getStoredIsHintMode = () => {
+  if (localStorage.getItem(hintModeKey)) {
+    const hintMode = localStorage.getItem(hintModeKey)
+    return hintMode === 'hint'
+  } else {
+    setStoredIsHintMode(true)
+    return true
   }
 }
 

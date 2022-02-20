@@ -21,8 +21,10 @@ export const WIN_MESSAGES = [
 export const GAME_COPIED_MESSAGE = 'Copied results to clipboard 成績をクリップボードにコピーしました'
 export const NOT_ENOUGH_LETTERS_MESSAGE = 'Not enough letters 4文字入力してください'
 export const WORD_NOT_FOUND_MESSAGE = 'Not in word list この答えは単語リストにありません'
+export const HINT_MODE_ALERT_MESSAGE =
+  'Hint Mode can only be turned off at the start ヒントモードは、ゲーム開始時にのみオフにすることができます'
 export const HARD_MODE_ALERT_MESSAGE =
-  'Hard Mode can only be enabled at the start ハードモードは、ゲーム開始時にのみオンにすることができます'
+  'Hard Mode can only be turned on at the start ハードモードは、ゲーム開始時にのみオンにすることができます'
 export const CORRECT_WORD_MESSAGE = (solution: string) =>
   `The word was ${solution}. 今日の正解は「${solution}」です。`
 export const WRONG_SPOT_MESSAGE = (guess: string, position: number) =>

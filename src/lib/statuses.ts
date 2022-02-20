@@ -1,4 +1,5 @@
 import { solution } from './words'
+import { getStoredIsHintMode } from './localStorage'
 import { CLOSE_STATUS_KANA, CONSONANT_STATUS_KANA, VOWEL_STATUS_KANA } from '../constants/strings'
 
 export type CharStatus = 'absent' | 'vowel' | 'consonant' | 'present' | 'close' | 'correct'
@@ -7,29 +8,33 @@ export const getStatuses = (
   guesses: string[]
 ): { [key: string]: CharStatus } => {
   const charObj: { [key: string]: CharStatus } = {}
+  const isHintMode = getStoredIsHintMode()
 
   guesses.forEach((word) => {
     word.split('').forEach((letter, i) => {
-      VOWEL_STATUS_KANA.forEach((kana) => {
-        if (kana.includes(letter) && kana.includes(solution[i])) {
-          //make status close
-          return (charObj[letter] = 'vowel')
-        }
-      })
 
-      CONSONANT_STATUS_KANA.forEach((kana) => {
-        if (kana.includes(letter) && kana.includes(solution[i])) {
-          //make status close
-          return (charObj[letter] = 'consonant')
-        }
-      })
+      if (isHintMode) {
+        VOWEL_STATUS_KANA.forEach((kana) => {
+          if (kana.includes(letter) && kana.includes(solution[i])) {
+            //make status close
+            return (charObj[letter] = 'vowel')
+          }
+        })
 
-      CLOSE_STATUS_KANA.forEach((kana) => {
-        if (kana.includes(letter) && kana.includes(solution[i])) {
-          //make status close
-          return (charObj[letter] = 'close')
-        }
-      })
+        CONSONANT_STATUS_KANA.forEach((kana) => {
+          if (kana.includes(letter) && kana.includes(solution[i])) {
+            //make status close
+            return (charObj[letter] = 'consonant')
+          }
+        })
+
+        CLOSE_STATUS_KANA.forEach((kana) => {
+          if (kana.includes(letter) && kana.includes(solution[i])) {
+            //make status close
+            return (charObj[letter] = 'close')
+          }
+        })
+      }
 
       if (!solution.includes(letter) && !['vowel', 'consonant', 'present', 'close', 'correct'].includes(charObj[letter])) {
         // make status absent
@@ -59,6 +64,8 @@ export const getGuessStatuses = (guess: string): CharStatus[] => {
 
   const statuses: CharStatus[] = Array.from(Array(guess.length))
 
+  const isHintMode = getStoredIsHintMode()
+
   // handle all correct cases first
   splitGuess.forEach((letter, i) => {
     if (letter === splitSolution[i]) {
@@ -71,13 +78,15 @@ export const getGuessStatuses = (guess: string): CharStatus[] => {
   splitGuess.forEach((letter, i) => {
     if (statuses[i]) return
 
-    CLOSE_STATUS_KANA.forEach((kana) => {
-      if (kana.includes(letter) && kana.includes(splitSolution[i])) {
-        // handles status close
-        statuses[i] = 'close'
-        return
-      }
-    })
+    if (isHintMode) {
+      CLOSE_STATUS_KANA.forEach((kana) => {
+        if (kana.includes(letter) && kana.includes(splitSolution[i])) {
+          // handles status close
+          statuses[i] = 'close'
+          return
+        }
+      })
+    }
 
     if (statuses[i]) return
 
@@ -94,23 +103,27 @@ export const getGuessStatuses = (guess: string): CharStatus[] => {
 
     if (statuses[i]) return
 
-    CONSONANT_STATUS_KANA.forEach((kana) => {
-      if (kana.includes(letter) && kana.includes(splitSolution[i])) {
-        // handles status consonant
-        statuses[i] = 'consonant'
-        return
-      }
-    })
+    if (isHintMode) {
+      CONSONANT_STATUS_KANA.forEach((kana) => {
+        if (kana.includes(letter) && kana.includes(splitSolution[i])) {
+          // handles status consonant
+          statuses[i] = 'consonant'
+          return
+        }
+      })
+    }
 
     if (statuses[i]) return
 
-    VOWEL_STATUS_KANA.forEach((kana) => {
-      if (kana.includes(letter) && kana.includes(splitSolution[i])) {
-        // handles status vowel
-        statuses[i] = 'vowel'
-        return
-      }
-    })
+    if (isHintMode) {
+      VOWEL_STATUS_KANA.forEach((kana) => {
+        if (kana.includes(letter) && kana.includes(splitSolution[i])) {
+          // handles status vowel
+          statuses[i] = 'vowel'
+          return
+        }
+      })
+    }
 
     if (statuses[i]) {
       return
