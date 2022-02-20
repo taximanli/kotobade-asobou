@@ -1,15 +1,20 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { AlertProvider } from './context/AlertContext'
 
+// import i18n (needs to be bundled ;))
+import './i18n'
+
 ReactDOM.render(
   <React.StrictMode>
-    <AlertProvider>
-      <App />
-    </AlertProvider>
+    <Suspense fallback={<div>Loading...</div>}>
+      <AlertProvider>
+        <App />
+      </AlertProvider>
+    </Suspense>
   </React.StrictMode>,
   document.getElementById('root')
 )

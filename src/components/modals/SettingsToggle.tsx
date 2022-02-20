@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import { getStoredIsHighContrastMode } from '../../lib/localStorage'
+import { getStoredDisplayLanguage, getStoredIsHighContrastMode } from '../../lib/localStorage'
 
 type Props = {
   settingName: string
@@ -10,6 +10,7 @@ type Props = {
 
 export const SettingsToggle = ({ settingName, settingDescription, flag, handleFlag }: Props) => {
   const isHighContrast = getStoredIsHighContrastMode()
+  const displayLanguage = getStoredDisplayLanguage()
   const toggleHolder = classnames(
     'w-14 h-8 flex items-center bg-gray-300 rounded-full p-1 duration-300 ease-in-out cursor-pointer',
     {
@@ -26,15 +27,9 @@ export const SettingsToggle = ({ settingName, settingDescription, flag, handleFl
 
   let settingDescriptionJSX
   if (settingDescription !== '') {
-    const settingDescriptionClassNames = [classnames('text-xs text-gray-500 dark:text-gray-400'), classnames('local-font text-xs text-gray-500 dark:text-gray-400')]
-    let splittedSettingDescription = []
-    splittedSettingDescription = settingDescription.split('|')
+    const settingDescriptionClassName = classnames((displayLanguage === 'en' ? '' : 'local-font'), 'text-xs text-gray-500 dark:text-gray-400')
     settingDescriptionJSX = (
-      <div>
-        <span className={settingDescriptionClassNames[0]}>{splittedSettingDescription[0]}</span>
-        <br />
-        <span className={settingDescriptionClassNames[1]}>{splittedSettingDescription[1]}</span>
-      </div>
+      <div className={settingDescriptionClassName}>{settingDescription}</div>
       )
   }
 

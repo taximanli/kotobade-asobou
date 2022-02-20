@@ -1,6 +1,8 @@
 import {
   TranslateIcon,
 } from '@heroicons/react/outline'
+import classnames from 'classnames'
+import { useTranslation } from 'react-i18next';
 import { BaseModal } from './BaseModal'
 import { SettingsToggle } from './SettingsToggle'
 
@@ -33,8 +35,10 @@ export const SettingsModal = ({
   displayLanguage,
   handleDisplayLanguage,
 }: Props) => {
+  const aboutClassName = classnames((displayLanguage === 'en' ? '' : 'local-font'), 'text-left text-sm text-gray-500 dark:text-gray-300')
+  const { t } = useTranslation();
   return (
-    <BaseModal title="Settings 設定" isOpen={isOpen} handleClose={handleClose}>
+    <BaseModal title={t('Settings')} isOpen={isOpen} handleClose={handleClose}>
       <div className="grid-cols-2 gap-4">
         <div className="flex justify-between items-center gap-8 mt-3">
           <div className="text-left">
@@ -56,28 +60,28 @@ export const SettingsModal = ({
       <div className="grid-cols-2 gap-4">
         <hr className="mt-4 mb-4" />
         <SettingsToggle
-          settingName="Hint Mode ヒントモード"
+          settingName={t('Hint Mode')}
           settingDescription=""
           flag={isHintMode}
           handleFlag={handleHintMode}
         />
         <hr className="mt-4 mb-4" />
         <SettingsToggle
-          settingName="Hard Mode ハードモード"
-          settingDescription="Any revealed hints must be used in subsequent guesses.|開示されたすべてのヒントを満たす単語だけが入力できます。"
+          settingName={t('Hard Mode')}
+          settingDescription={t('Any revealed hints must be used in subsequent guesses')}
           flag={isHardMode}
           handleFlag={handleHardMode}
         />
         <hr className="mt-4 mb-4" />
         <SettingsToggle
-          settingName="Dark Mode ダークモード"
+          settingName={t('Dark Mode')}
           settingDescription=""
           flag={isDarkMode}
           handleFlag={handleDarkMode}
         />
         <hr className="mt-4 mb-4" />
         <SettingsToggle
-          settingName="High Contrast Mode ハイコントラストモード"
+          settingName={t('High Contrast Mode')}
           settingDescription=""
           flag={isHighContrastMode}
           handleFlag={handleHighContrastMode}
@@ -85,7 +89,7 @@ export const SettingsModal = ({
         <hr className="mt-4 mb-4" />
         <div className="flex justify-between items-center gap-8 mt-3">
           <div className="text-left">
-            <h2 className="local-font text-base text-gray-600 dark:text-gray-300">Feedback フィードバック</h2>
+            <h2 className="local-font text-base text-gray-600 dark:text-gray-300">{t('Feedback')}</h2>
           </div>
           <div className='w-14 content-start'>
             {' '}<a className="underline text-sm text-gray-600 dark:text-gray-300" href="https://twitter.com/taximanli" rel="noreferrer" target="_blank">Twitter</a>{' '}
@@ -95,18 +99,10 @@ export const SettingsModal = ({
       <hr className="mt-4 mb-4" />
       <div className="grid-cols-1 gap-4">
         <div className="flex justify-between items-center gap-8 mt-3">
-          <p className="text-left text-sm text-gray-500 dark:text-gray-300">
-            This is an
-            {' '}<a className="underline text-sm text-gray-600 dark:text-gray-300" href="https://github.com/cwackerfuss/react-wordle" rel="noreferrer" target="_blank">open source version</a>{' '}
-            of the word guessing game we all know and love. This game was adapted into Japanese by Desmond Lee.<br />
-          </p>
-        </div>
-        <div className="flex justify-between items-center gap-8 mt-3">
-          <p className="text-left local-font text-sm text-gray-500 dark:text-gray-300">
-            これは、私たち皆が知っていて大好きな単語パズルゲームの
-            {' '}<a className="underline text-sm text-gray-600 dark:text-gray-300" href="https://github.com/cwackerfuss/react-wordle" rel="noreferrer" target="_blank">オープンソース版</a>{' '}
-            です。
-            このゲームは Desmond Lee が日本語版を作りました。
+          <p className={aboutClassName}>
+            {t('This is an')}
+            {' '}<a className="underline text-sm text-gray-600 dark:text-gray-300" href="https://github.com/cwackerfuss/react-wordle" rel="noreferrer" target="_blank">{t('open source version')}</a>{' '}
+            {t('This game was adapted')}
           </p>
         </div>
       </div>

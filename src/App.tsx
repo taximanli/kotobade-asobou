@@ -3,7 +3,8 @@ import {
   ChartBarIcon,
   CogIcon,
 } from '@heroicons/react/outline'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Grid } from './components/grid/Grid'
 import { Bar } from './components/keyboard/Bar'
 import { Keyboard } from './components/keyboard/Keyboard'
@@ -14,12 +15,7 @@ import {
   GAME_TITLE,
   GAME_HEADING,
   WIN_MESSAGES,
-  GAME_COPIED_MESSAGE,
-  NOT_ENOUGH_LETTERS_MESSAGE,
-  WORD_NOT_FOUND_MESSAGE,
   CORRECT_WORD_MESSAGE,
-  HINT_MODE_ALERT_MESSAGE,
-  HARD_MODE_ALERT_MESSAGE,
 } from './constants/strings'
 import {
   MAX_WORD_LENGTH,
@@ -51,6 +47,7 @@ import { AlertContainer } from './components/alerts/AlertContainer'
 import { useAlert } from './context/AlertContext'
 
 function App() {
+  const { t, i18n } = useTranslation()
   const prefersDarkMode = window.matchMedia(
     '(prefers-color-scheme: dark)'
   ).matches
@@ -138,7 +135,7 @@ function App() {
       setIsHintMode(isHint)
       setStoredIsHintMode(isHint)
     } else {
-      showErrorAlert(HINT_MODE_ALERT_MESSAGE)
+      showErrorAlert(t('HINT_MODE_ALERT_MESSAGE'))
     }
   }
 
@@ -147,7 +144,7 @@ function App() {
       setIsHardMode(isHard)
       localStorage.setItem('gameMode', isHard ? 'hard' : 'normal')
     } else {
-      showErrorAlert(HARD_MODE_ALERT_MESSAGE)
+      showErrorAlert(t('HARD_MODE_ALERT_MESSAGE'))
     }
   }
 
@@ -159,6 +156,10 @@ function App() {
   const handleDisplayLanguage = (displayLanguage: string) => {
     setDisplayLanguage(displayLanguage)
     setStoredDisplayLanguage(displayLanguage)
+    i18n.changeLanguage(displayLanguage, (err, t) => {
+      if (err) return console.log('something went wrong loading', err)
+      // t('key'); // -> same as i18next.t
+    })
   }
 
   useEffect(() => {
@@ -203,7 +204,7 @@ function App() {
       return
     }
     if (!(currentGuess.length === MAX_WORD_LENGTH)) {
-      showErrorAlert(NOT_ENOUGH_LETTERS_MESSAGE)
+      showErrorAlert(t('NOT_ENOUGH_LETTERS_MESSAGE'))
       setCurrentRowClass('jiggle')
       return setTimeout(() => {
         setCurrentRowClass('')
@@ -211,7 +212,7 @@ function App() {
     }
 
     if (!isWordInWordList(currentGuess)) {
-      showErrorAlert(WORD_NOT_FOUND_MESSAGE)
+      showErrorAlert(t('WORD_NOT_FOUND_MESSAGE'))
       setCurrentRowClass('jiggle')
       return setTimeout(() => {
         setCurrentRowClass('')
@@ -316,7 +317,7 @@ function App() {
         gameStats={stats}
         isGameLost={isGameLost}
         isGameWon={isGameWon}
-        handleShare={() => showSuccessAlert(GAME_COPIED_MESSAGE)}
+        handleShare={() => showSuccessAlert(t('GAME_COPIED_MESSAGE'))}
         isHintMode={isHintMode}
         isHardMode={isHardMode}
       />
@@ -340,4 +341,12 @@ function App() {
   )
 }
 
-export default App
+// i18n translations might still be loaded by the http backend
+// use react's Suspense
+export default function startApp() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <App />
+    </Suspense>
+  )
+}
