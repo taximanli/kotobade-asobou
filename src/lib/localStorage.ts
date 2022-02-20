@@ -121,7 +121,8 @@ export const getStoredDisplayLanguage = () => {
   if (localStorage.getItem(displayLanguageKey)) {
     return localStorage.getItem(displayLanguageKey)
   } else {
-    setStoredDisplayLanguage('ja')
-    return 'ja'
+    const displayLanguage = (navigator.language === 'ja' ? 'ja' : 'en')
+    setStoredDisplayLanguage(displayLanguage)
+    return displayLanguage
   }
 }
