@@ -1,3 +1,6 @@
+import {
+  TranslateIcon,
+} from '@heroicons/react/outline'
 import { BaseModal } from './BaseModal'
 import { SettingsToggle } from './SettingsToggle'
 
@@ -12,6 +15,8 @@ type Props = {
   handleDarkMode: Function
   isHighContrastMode: boolean
   handleHighContrastMode: Function
+  displayLanguage: string
+  handleDisplayLanguage: Function
 }
 
 export const SettingsModal = ({
@@ -25,10 +30,31 @@ export const SettingsModal = ({
   handleDarkMode,
   isHighContrastMode,
   handleHighContrastMode,
+  displayLanguage,
+  handleDisplayLanguage,
 }: Props) => {
   return (
     <BaseModal title="Settings 設定" isOpen={isOpen} handleClose={handleClose}>
       <div className="grid-cols-2 gap-4">
+        <div className="flex justify-between items-center gap-8 mt-3">
+          <div className="text-left">
+            <h2 className="local-font text-base text-gray-600 dark:text-gray-300">Language 言語</h2>
+          </div>
+          <div className='w-36 text-right'>
+            <button
+              onClick={() => handleDisplayLanguage(displayLanguage === 'en' ? 'ja' : 'en')}
+              className="local-font text-black dark:text-white shadow-none p-2 focus:outline-none text-lg rounded-full outline-none ring-transparent cursor-pointer"
+            >
+              <div className="flex mx-auto items-center">
+                <TranslateIcon className="h-6 w-6 -ml-1 mr-1" />
+                {displayLanguage === 'en' ? '日本語' : 'English'}
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className="grid-cols-2 gap-4">
+        <hr className="mt-4 mb-4" />
         <SettingsToggle
           settingName="Hint Mode ヒントモード"
           settingDescription=""

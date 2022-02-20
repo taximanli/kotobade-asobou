@@ -38,10 +38,12 @@ import { addStatsForCompletedGame, loadStats } from './lib/stats'
 import {
   loadGameStateFromLocalStorage,
   saveGameStateToLocalStorage,
-  setStoredIsHintMode,
-  getStoredIsHintMode,
   setStoredIsHighContrastMode,
   getStoredIsHighContrastMode,
+  setStoredIsHintMode,
+  getStoredIsHintMode,
+  setStoredDisplayLanguage,
+  getStoredDisplayLanguage,
 } from './lib/localStorage'
 
 import './App.css'
@@ -71,6 +73,9 @@ function App() {
   )
   const [isHighContrastMode, setIsHighContrastMode] = useState(
     getStoredIsHighContrastMode()
+  )
+  const [displayLanguage, setDisplayLanguage] = useState(
+    getStoredDisplayLanguage()
   )
   const [isRevealing, setIsRevealing] = useState(false)
   const [guesses, setGuesses] = useState<string[]>(() => {
@@ -149,6 +154,11 @@ function App() {
   const handleHighContrastMode = (isHighContrast: boolean) => {
     setIsHighContrastMode(isHighContrast)
     setStoredIsHighContrastMode(isHighContrast)
+  }
+
+  const handleDisplayLanguage = (displayLanguage: string) => {
+    setDisplayLanguage(displayLanguage)
+    setStoredDisplayLanguage(displayLanguage)
   }
 
   useEffect(() => {
@@ -321,6 +331,8 @@ function App() {
         handleDarkMode={handleDarkMode}
         isHighContrastMode={isHighContrastMode}
         handleHighContrastMode={handleHighContrastMode}
+        displayLanguage={displayLanguage!}
+        handleDisplayLanguage={handleDisplayLanguage}
       />
 
       <AlertContainer />

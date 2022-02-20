@@ -1,6 +1,7 @@
 const gameStateKey = 'gameState'
 const highContrastKey = 'highContrast'
 const hintModeKey = 'hintMode'
+const displayLanguageKey = 'displayLanguage'
 
 type StoredGameState = {
   guesses: string[]
@@ -81,6 +82,19 @@ export const loadStatsFromLocalStorage = () => {
   }
 }
 
+export const setStoredIsHighContrastMode = (isHighContrast: boolean) => {
+  if (isHighContrast) {
+    localStorage.setItem(highContrastKey, '1')
+  } else {
+    localStorage.removeItem(highContrastKey)
+  }
+}
+
+export const getStoredIsHighContrastMode = () => {
+  const highContrast = localStorage.getItem(highContrastKey)
+  return highContrast === '1'
+}
+
 export const setStoredIsHintMode = (isHint: boolean) => {
   if (isHint) {
     localStorage.setItem(hintModeKey, 'hint')
@@ -99,15 +113,15 @@ export const getStoredIsHintMode = () => {
   }
 }
 
-export const setStoredIsHighContrastMode = (isHighContrast: boolean) => {
-  if (isHighContrast) {
-    localStorage.setItem(highContrastKey, '1')
-  } else {
-    localStorage.removeItem(highContrastKey)
-  }
+export const setStoredDisplayLanguage = (displayLanguage: string) => {
+  localStorage.setItem(displayLanguageKey, displayLanguage)
 }
 
-export const getStoredIsHighContrastMode = () => {
-  const highContrast = localStorage.getItem(highContrastKey)
-  return highContrast === '1'
+export const getStoredDisplayLanguage = () => {
+  if (localStorage.getItem(displayLanguageKey)) {
+    return localStorage.getItem(displayLanguageKey)
+  } else {
+    setStoredDisplayLanguage('ja')
+    return 'ja'
+  }
 }
