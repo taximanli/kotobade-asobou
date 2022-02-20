@@ -62,7 +62,7 @@ export const getWordOfDay = () => {
 
   return {
     // desmond
-    solution: 'はじきめ',// WORDS[index % WORDS.length].toUpperCase(),
+    solution: 'たまきし',// WORDS[index % WORDS.length].toUpperCase(),
     solutionIndex: index,
     tomorrow: nextday,
   }

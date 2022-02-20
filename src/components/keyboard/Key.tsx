@@ -2,7 +2,6 @@ import { ReactNode } from 'react'
 import classnames from 'classnames'
 import { CharStatus } from '../../lib/statuses'
 import { MAX_WORD_LENGTH, REVEAL_TIME_MS } from '../../constants/settings'
-import { getStoredIsHighContrastMode } from '../../lib/localStorage'
 
 type Props = {
   children?: ReactNode
@@ -22,7 +21,6 @@ export const Key = ({
   isRevealing,
 }: Props) => {
   const keyDelayMs = REVEAL_TIME_MS * MAX_WORD_LENGTH
-  const isHighContrast = getStoredIsHighContrastMode()
 
   const dummyKeyClasses = classnames(
     'w-10 h-7 xs:h-8 sm:h-10 rounded mx-0.5 select-none'
@@ -34,23 +32,18 @@ export const Key = ({
       'transition ease-in-out': isRevealing,
       'bg-slate-200 dark:bg-slate-600 hover:bg-slate-300 active:bg-slate-400':
         !status,
-      'bg-slate-400 dark:bg-slate-800 text-white': status === 'absent',
-      'bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white':
-        status === 'correct' && isHighContrast,
-      'bg-violet-500 hover:bg-violet-600 active:bg-violet-700 text-white':
-        status === 'close' && isHighContrast,
-      'key-consonant-bg-color-high-contrast text-white':
-        status === 'consonant' && isHighContrast,
-      'bg-cyan-500 hover:bg-cyan-600 active:bg-cyan-700 text-white':
-        status === 'present' && isHighContrast,
-      'bg-green-500 hover:bg-green-600 active:bg-green-700 text-white':
-        status === 'correct' && !isHighContrast,
-      'bg-lime-500 hover:bg-lime-600 active:bg-lime-700 text-white':
-        status === 'close' && !isHighContrast,
-      'key-consonant-bg-color text-white':
-        status === 'consonant' && !isHighContrast,
-      'bg-yellow-500 hover:bg-yellow-600 active:bg-yellow-700 text-white':
-        status === 'present' && !isHighContrast,
+      'absent key-bg':
+        status === 'absent',
+      'correct key-bg':
+        status === 'correct',
+      'present key-bg':
+        status === 'present',
+      'close key-bg':
+        status === 'close',
+      'consonant key-bg':
+        status === 'consonant',
+      'vowel key-bg':
+        status === 'vowel',
     }
   )
 
