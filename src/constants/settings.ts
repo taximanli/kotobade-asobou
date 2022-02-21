@@ -1,3 +1,4 @@
+export const PREFERRED_DISPLAY_LANGUAGE = 'ja'
 export const MAX_WORD_LENGTH = 4
 export const MAX_CHALLENGES = 12
 export const ALERT_TIME_MS = 2000

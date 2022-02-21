@@ -1,4 +1,5 @@
 import classnames from 'classnames'
+import { PREFERRED_DISPLAY_LANGUAGE } from '../../constants/settings'
 import { getStoredDisplayLanguage, getStoredIsHighContrastMode } from '../../lib/localStorage'
 
 type Props = {
@@ -27,7 +28,7 @@ export const SettingsToggle = ({ settingName, settingDescription, flag, handleFl
 
   let settingDescriptionJSX
   if (settingDescription !== '') {
-    const settingDescriptionClassName = classnames((displayLanguage === 'en' ? '' : 'local-font'), 'text-xs text-gray-500 dark:text-gray-400')
+    const settingDescriptionClassName = classnames((displayLanguage === PREFERRED_DISPLAY_LANGUAGE ? 'local-font' : ''), 'text-xs text-gray-500 dark:text-gray-400')
     settingDescriptionJSX = (
       <div className={settingDescriptionClassName}>{settingDescription}</div>
       )

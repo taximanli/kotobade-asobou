@@ -5,6 +5,7 @@ import classnames from 'classnames'
 import { useTranslation } from 'react-i18next';
 import { BaseModal } from './BaseModal'
 import { SettingsToggle } from './SettingsToggle'
+import { PREFERRED_DISPLAY_LANGUAGE } from '../../constants/settings'
 
 type Props = {
   isOpen: boolean
@@ -35,7 +36,7 @@ export const SettingsModal = ({
   displayLanguage,
   handleDisplayLanguage,
 }: Props) => {
-  const aboutClassName = classnames((displayLanguage === 'en' ? '' : 'local-font'), 'text-left text-sm text-gray-500 dark:text-gray-300')
+  const aboutClassName = classnames((displayLanguage === PREFERRED_DISPLAY_LANGUAGE ? 'local-font' : ''), 'text-left text-sm text-gray-500 dark:text-gray-300')
   const { t } = useTranslation();
   return (
     <BaseModal title={t('Settings')} isOpen={isOpen} handleClose={handleClose}>
@@ -46,12 +47,12 @@ export const SettingsModal = ({
           </div>
           <div className='w-36 text-right'>
             <button
-              onClick={() => handleDisplayLanguage(displayLanguage === 'en' ? 'ja' : 'en')}
+              onClick={() => handleDisplayLanguage(displayLanguage === PREFERRED_DISPLAY_LANGUAGE ? 'en' : PREFERRED_DISPLAY_LANGUAGE)}
               className="local-font text-black dark:text-white shadow-none p-2 focus:outline-none text-lg rounded-full outline-none ring-transparent cursor-pointer"
             >
               <div className="flex mx-auto items-center">
                 <TranslateIcon className="h-6 w-6 -ml-1 mr-1" />
-                {displayLanguage === 'en' ? '日本語' : 'English'}
+                {displayLanguage === PREFERRED_DISPLAY_LANGUAGE ? 'English' : '日本語'}
               </div>
             </button>
           </div>

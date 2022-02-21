@@ -23,6 +23,7 @@ import {
   ALERT_TIME_MS,
   REVEAL_TIME_MS,
   GAME_LOST_INFO_DELAY,
+  PREFERRED_DISPLAY_LANGUAGE,
 } from './constants/settings'
 import {
   isWordInWordList,
@@ -169,9 +170,9 @@ function App() {
   useEffect(() => {
     if (isGameWon) {
       const winMessage =
-        displayLanguage === 'en'
-          ? WIN_MESSAGES.en[guesses.length - 1]
-          : WIN_MESSAGES.ja[guesses.length - 1]
+        displayLanguage === PREFERRED_DISPLAY_LANGUAGE
+          ? WIN_MESSAGES.ja[guesses.length - 1]
+          : WIN_MESSAGES.en[guesses.length - 1]
       const delayMs = REVEAL_TIME_MS * MAX_WORD_LENGTH
 
       showSuccessAlert(winMessage, {
@@ -185,7 +186,7 @@ function App() {
         setIsStatsModalOpen(true)
       }, GAME_LOST_INFO_DELAY)
     }
-  }, [isGameWon, isGameLost, guesses, showSuccessAlert])
+  }, [isGameWon, isGameLost, guesses, displayLanguage, showSuccessAlert])
 
   const onChar = (value: string) => {
     if (
