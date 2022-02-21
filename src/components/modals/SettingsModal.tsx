@@ -59,35 +59,35 @@ export const SettingsModal = ({
         </div>
       </div>
       <div className="grid-cols-2 gap-4">
-        <hr className="mt-4 mb-4" />
+        <hr className="mt-2 mb-2" />
         <SettingsToggle
           settingName={t('Hint Mode')}
           settingDescription=""
           flag={isHintMode}
           handleFlag={handleHintMode}
         />
-        <hr className="mt-4 mb-4" />
+        <hr className="mt-2 mb-2" />
         <SettingsToggle
           settingName={t('Hard Mode')}
           settingDescription={t('Any revealed hints must be used in subsequent guesses')}
           flag={isHardMode}
           handleFlag={handleHardMode}
         />
-        <hr className="mt-4 mb-4" />
+        <hr className="mt-2 mb-2" />
         <SettingsToggle
           settingName={t('Dark Mode')}
           settingDescription=""
           flag={isDarkMode}
           handleFlag={handleDarkMode}
         />
-        <hr className="mt-4 mb-4" />
+        <hr className="mt-2 mb-2" />
         <SettingsToggle
           settingName={t('High Contrast Mode')}
           settingDescription=""
           flag={isHighContrastMode}
           handleFlag={handleHighContrastMode}
         />
-        <hr className="mt-4 mb-4" />
+        <hr className="mt-2 mb-2" />
         <div className="flex justify-between items-center gap-8 mt-3">
           <div className="text-left">
             <h2 className="local-font text-base text-gray-600 dark:text-gray-300">{t('Feedback')}</h2>
@@ -97,7 +97,7 @@ export const SettingsModal = ({
           </div>
         </div>
       </div>
-      <hr className="mt-4 mb-4" />
+      <hr className="mt-2 mb-2" />
       <div className="grid-cols-1 gap-4">
         <div className="flex justify-between items-center gap-8 mt-3">
           <p className={aboutClassName}>

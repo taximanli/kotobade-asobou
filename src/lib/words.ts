@@ -7,7 +7,6 @@ export const isWordInWordList = (word: string) => {
   return (
     WORDS.includes(word.toLowerCase()) ||
     VALID_GUESSES.includes(word.toLowerCase())
-    || true // desmond
   )
 }
 
