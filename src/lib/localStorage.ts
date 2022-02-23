@@ -14,7 +14,25 @@ export const saveGameStateToLocalStorage = (gameState: StoredGameState) => {
 
 export const loadGameStateFromLocalStorage = () => {
   const state = localStorage.getItem(gameStateKey)
-  return state ? (JSON.parse(state) as StoredGameState) : null
+  if (state) {
+    let parsedInheritedGameState = JSON.parse(state)
+    if (parsedInheritedGameState.hasOwnProperty('boardState')) {
+      let boardState = []
+      for (var i = 0; i < 12; i++) {
+        if (parsedInheritedGameState['boardState'][i] !== '') {
+          boardState.push(parsedInheritedGameState['boardState'][i])
+        }
+      }
+      return ({
+        guesses: boardState,
+        solution: parsedInheritedGameState.solution
+      } as StoredGameState)
+    } else {
+      return (JSON.parse(state) as StoredGameState)
+    }
+  } else {
+    return null
+  }
 }
 
 const inheritedGameStatKey = 'statistics'

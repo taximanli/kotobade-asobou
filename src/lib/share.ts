@@ -1,7 +1,6 @@
 import { getGuessStatuses } from './statuses'
 import { solutionIndex } from './words'
 import { GAME_TITLE, GAME_LINK } from '../constants/strings'
-import { getStoredIsHighContrastMode } from './localStorage'
 import { MAX_CHALLENGES } from '../constants/settings'
 
 export const shareStatus = (

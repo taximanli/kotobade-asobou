@@ -3,7 +3,7 @@ import {
   ChartBarIcon,
   CogIcon,
 } from '@heroicons/react/outline'
-import { useState, useEffect, Suspense } from 'react'
+import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Grid } from './components/grid/Grid'
 import { Bar } from './components/keyboard/Bar'

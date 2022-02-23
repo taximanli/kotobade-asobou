@@ -29,23 +29,29 @@ i18n
     resources: {
       en: {
         translation: {
-          'For keyboard input': 'Type here',
+          'For keyboard input': 'Type kana here',
           Settings: 'Settings',
           'Hint Mode': 'Hint Mode',
           'Hard Mode': 'Hard Mode',
-          'Any revealed hints must be used in subsequent guesses':
-            'Any revealed hints must be used in subsequent guesses.',
+          'Revealed hints': 'Revealed hints',
+          and: 'and',
+          'must be used in subsequent guesses':
+            'must be used in subsequent guesses.',
           'Dark Mode': 'Dark Mode',
           'High Contrast Mode': 'High Contrast Mode',
           Feedback: 'Feedback',
-          'This is an': 'This is an',
+          'This game is the': 'Kotobade Asobou is the',
+          'Japanese version': 'Japanese version',
+          'word guessing game':
+            'of the word guessing game we all know and love. This game was forked from this',
           'open source version': 'open source version',
-          'The game was adapted':
-            'of the word guessing game we all know and love. The game was adapted into Japanese by Desmond Lee.',
+          'massive development':
+            'and has undergone massive redevelopment with extra game mode and new elements added to accommodate the unique features of the Japanese language.',
           'If you enjoy':
-            'If you enjoy the game and would like to support me, please consider',
+            'If you enjoy the game and would like to support my work, please consider',
           'buying me a coffee': 'buying me a coffee',
-          'if you wish': '',
+          'if you wish': '♥️',
+          'Buy me a coffee?': 'Buy me a coffee? ♥️ https://ko-fi.com/taximanli',
           GAME_COPIED_MESSAGE: 'Copied results to clipboard',
           NOT_ENOUGH_LETTERS_MESSAGE: 'Not enough letters',
           WORD_NOT_FOUND_MESSAGE: 'Not in word list',
@@ -69,20 +75,26 @@ i18n
           Settings: '設定',
           'Hint Mode': 'ヒントモード',
           'Hard Mode': 'ハードモード',
-          'Any revealed hints must be used in subsequent guesses':
-            '開示されたすべてのヒントを満たす単語だけが入力できます。',
+          'Revealed hints': '開示されたヒント',
+          and: 'と',
+          'must be used in subsequent guesses':
+            'を満たす単語だけが入力できます。',
           'Dark Mode': 'ダークモード',
           'High Contrast Mode': 'ハイコントラストモード',
           Feedback: 'フィードバック',
-          'This is an':
-            'これは、私たち皆が知っていて大好きな単語パズルゲームの',
+          'This game is the':
+            '「言葉で遊ぼう」は、よく知られていて大好きな単語パズルゲームの',
+          'Japanese version': '日本語版',
+          'word guessing game': 'です。このゲームは、この',
           'open source version': 'オープンソース版',
-          'The game was adapted':
-            'です。このゲームは Desmond Lee が日本語版を作りました。',
+          'massive development':
+            'からフォークして大規模なソフトウェア再開発を経ています。また、日本語の特徴を満たすために、新しいモードと要素が追加されています。',
           'If you enjoy':
-            'このゲームを楽しんで、私をサポートしたい場合は、望めば',
+            'このゲームを楽しんで、私のソフトウェア開発をサポートしたい場合は、望めば ♥️',
           'buying me a coffee': '私にコーヒーを一杯おごる',
           'if you wish': 'こともできます。',
+          'Buy me a coffee?':
+            '私にコーヒーを一杯？♥️ https://ko-fi.com/taximanli',
           GAME_COPIED_MESSAGE: '成績をクリップボードにコピーしました',
           NOT_ENOUGH_LETTERS_MESSAGE: '4文字入力してください',
           WORD_NOT_FOUND_MESSAGE: 'この答えは単語リストにありません',

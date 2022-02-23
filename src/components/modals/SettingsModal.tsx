@@ -1,11 +1,13 @@
 import {
-  TranslateIcon,
+  TranslateIcon
 } from '@heroicons/react/outline'
 import classnames from 'classnames'
 import { useTranslation } from 'react-i18next';
 import { BaseModal } from './BaseModal'
 import { SettingsToggle } from './SettingsToggle'
 import { PREFERRED_DISPLAY_LANGUAGE } from '../../constants/settings'
+import { getStoredIsHighContrastMode } from '../../lib/localStorage'
+import coffeeLogo from '../../images/ko-fi-com-taximanli.png';
 
 type Props = {
   isOpen: boolean
@@ -36,8 +38,17 @@ export const SettingsModal = ({
   displayLanguage,
   handleDisplayLanguage,
 }: Props) => {
+  const isHighContrast = getStoredIsHighContrastMode()
+  
   const aboutClassName = classnames((displayLanguage === PREFERRED_DISPLAY_LANGUAGE ? 'local-font' : ''), 'text-left text-sm text-gray-500 dark:text-gray-300')
   const { t } = useTranslation();
+
+  const hardModeSettingDescription = t('Revealed hints')
+    + (isHighContrast ? '（🟧 ' : '（🟩 ' )
+    + t('and')
+    + (isHighContrast ? ' 🟦）' : ' 🟨）' )
+    + t('must be used in subsequent guesses')
+
   return (
     <BaseModal title={t('Settings')} isOpen={isOpen} handleClose={handleClose}>
       <div className="grid-cols-2 gap-4">
@@ -69,7 +80,7 @@ export const SettingsModal = ({
         <hr className="mt-2 mb-2" />
         <SettingsToggle
           settingName={t('Hard Mode')}
-          settingDescription={t('Any revealed hints must be used in subsequent guesses')}
+          settingDescription={hardModeSettingDescription}
           flag={isHardMode}
           handleFlag={handleHardMode}
         />
@@ -92,26 +103,30 @@ export const SettingsModal = ({
           <div className="text-left">
             <h2 className="local-font text-base text-gray-600 dark:text-gray-300">{t('Feedback')}</h2>
           </div>
-          <div className='w-14 content-start'>
+          <div className='w-36 text-right'>
+            {' '}<a className="underline text-sm text-gray-600 dark:text-gray-300" href="https://github.com/taximanli/kotobade-asobou/issues" rel="noreferrer" target="_blank">Github</a>{' |'}
             {' '}<a className="underline text-sm text-gray-600 dark:text-gray-300" href="https://twitter.com/taximanli" rel="noreferrer" target="_blank">Twitter</a>{' '}
           </div>
         </div>
       </div>
-      <hr className="mt-2 mb-2" />
+      <hr className="mt-4 mb-4" />
       <div className="grid-cols-1 gap-4">
         <div className="flex justify-between items-center gap-8 mt-3">
           <p className={aboutClassName}>
-            {t('This is an')}
+            {t('This game is the')}
+            {' '}<a className="underline text-sm text-gray-600 dark:text-gray-300" href="https://github.com/taximanli/kotobade-asobou" rel="noreferrer" target="_blank">{t('Japanese version')}</a>{' '}
+            {t('word guessing game')}
             {' '}<a className="underline text-sm text-gray-600 dark:text-gray-300" href="https://github.com/cwackerfuss/react-wordle" rel="noreferrer" target="_blank">{t('open source version')}</a>{' '}
-            {t('The game was adapted')}
+            {t('massive development')}
           </p>
         </div>
-        <div className="flex justify-between items-center gap-8 mt-3">
+        <div className="flex justify-between items-center gap-3 mt-3">
           <p className={aboutClassName}>
-            {t('If you enjoy')}
+            {t('If you enjoy')}<br />
             {' '}<a className="underline text-sm text-gray-600 dark:text-gray-300" href="https://ko-fi.com/taximanli" rel="noreferrer" target="_blank">{t('buying me a coffee')}</a>{' '}
             {t('if you wish')}
           </p>
+          <img className="w-9 h-9 cursor-pointer" src={coffeeLogo} title={t('Buy me a coffee?')} alt={t('Buy me a coffee?')} onClick={()=> window.open("https://ko-fi.com/taximanli", "_blank")} />
         </div>
       </div>
     </BaseModal>
