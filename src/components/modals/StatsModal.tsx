@@ -19,6 +19,8 @@ type Props = {
   handleShare: () => void
   isHintMode: boolean
   isHardMode: boolean
+  isDarkMode: boolean
+  isHighContrastMode: boolean
 }
 
 export const StatsModal = ({
@@ -31,6 +33,8 @@ export const StatsModal = ({
   handleShare,
   isHintMode,
   isHardMode,
+  isDarkMode,
+  isHighContrastMode,
 }: Props) => {
   const { t } = useTranslation();
   const isHighContrast = getStoredIsHighContrastMode()
@@ -81,7 +85,14 @@ export const StatsModal = ({
               type="button"
               className={classNames}
               onClick={() => {
-                shareStatus(guesses, isGameLost, isHintMode, isHardMode)
+              shareStatus(
+                guesses,
+                isGameLost,
+                isHintMode,
+                isHardMode,
+                isDarkMode,
+                isHighContrastMode
+              )
                 handleShare()
               }}
             >

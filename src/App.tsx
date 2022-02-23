@@ -20,9 +20,9 @@ import {
 import {
   MAX_WORD_LENGTH,
   MAX_CHALLENGES,
-  ALERT_TIME_MS,
   REVEAL_TIME_MS,
   GAME_LOST_INFO_DELAY,
+  WELCOME_INFO_MODAL_MS,
   PREFERRED_DISPLAY_LANGUAGE,
 } from './constants/settings'
 import {
@@ -30,6 +30,7 @@ import {
   isWinningWord,
   solution,
   findFirstUnusedReveal,
+  unicodeLength,
 } from './lib/words'
 import { addStatsForCompletedGame, loadStats } from './lib/stats'
 import {
@@ -42,6 +43,7 @@ import {
   setStoredDisplayLanguage,
   getStoredDisplayLanguage,
 } from './lib/localStorage'
+import { default as GraphemeSplitter } from 'grapheme-splitter'
 
 import './App.css'
 import { AlertContainer } from './components/alerts/AlertContainer'
@@ -108,7 +110,9 @@ function App() {
     // if no game state on load,
     // show the user the how-to info modal
     if (!loadGameStateFromLocalStorage()) {
-      setIsInfoModalOpen(true)
+      setTimeout(() => {
+        setIsInfoModalOpen(true)
+      }, WELCOME_INFO_MODAL_MS)
     }
   }, [])
 
@@ -163,6 +167,10 @@ function App() {
     })
   }
 
+  const clearCurrentRowClass = () => {
+    setCurrentRowClass('')
+  }
+
   useEffect(() => {
     saveGameStateToLocalStorage({ guesses, solution })
   }, [guesses])
@@ -190,7 +198,7 @@ function App() {
 
   const onChar = (value: string) => {
     if (
-      currentGuess.length < MAX_WORD_LENGTH &&
+      unicodeLength(`${currentGuess}${value}`) <= MAX_WORD_LENGTH &&
       guesses.length < MAX_CHALLENGES &&
       !isGameWon
     ) {
@@ -199,38 +207,38 @@ function App() {
   }
 
   const onDelete = () => {
-    setCurrentGuess(currentGuess.slice(0, -1))
+    setCurrentGuess(
+      new GraphemeSplitter().splitGraphemes(currentGuess).slice(0, -1).join('')
+    )
   }
 
   const onEnter = () => {
     if (isGameWon || isGameLost) {
       return
     }
-    if (!(currentGuess.length === MAX_WORD_LENGTH)) {
-      showErrorAlert(t('NOT_ENOUGH_LETTERS_MESSAGE'))
+
+    if (!(unicodeLength(currentGuess) === MAX_WORD_LENGTH)) {
       setCurrentRowClass('jiggle')
-      return setTimeout(() => {
-        setCurrentRowClass('')
-      }, ALERT_TIME_MS)
+      return showErrorAlert(t('NOT_ENOUGH_LETTERS_MESSAGE'), {
+        onClose: clearCurrentRowClass,
+      })
     }
 
     if (!isWordInWordList(currentGuess)) {
-      showErrorAlert(t('WORD_NOT_FOUND_MESSAGE'))
       setCurrentRowClass('jiggle')
-      return setTimeout(() => {
-        setCurrentRowClass('')
-      }, ALERT_TIME_MS)
+      return showErrorAlert(t('WORD_NOT_FOUND_MESSAGE'), {
+        onClose: clearCurrentRowClass,
+      })
     }
 
     // enforce hard mode - all guesses must contain all previously revealed letters
     if (isHardMode) {
       const firstMissingReveal = findFirstUnusedReveal(currentGuess, guesses)
       if (firstMissingReveal) {
-        showErrorAlert(firstMissingReveal)
         setCurrentRowClass('jiggle')
-        return setTimeout(() => {
-          setCurrentRowClass('')
-        }, ALERT_TIME_MS)
+        return showErrorAlert(firstMissingReveal, {
+          onClose: clearCurrentRowClass,
+        })
       }
     }
 
@@ -244,7 +252,7 @@ function App() {
     const winningWord = isWinningWord(currentGuess)
 
     if (
-      currentGuess.length === MAX_WORD_LENGTH &&
+      unicodeLength(currentGuess) === MAX_WORD_LENGTH &&
       guesses.length < MAX_CHALLENGES &&
       !isGameWon
     ) {
@@ -323,6 +331,8 @@ function App() {
         handleShare={() => showSuccessAlert(t('GAME_COPIED_MESSAGE'))}
         isHintMode={isHintMode}
         isHardMode={isHardMode}
+        isDarkMode={isDarkMode}
+        isHighContrastMode={isHighContrastMode}
       />
       <SettingsModal
         isOpen={isSettingsModalOpen}
@@ -344,8 +354,11 @@ function App() {
   )
 }
 
+export default App
+
 // i18n translations might still be loaded by the http backend
 // use react's Suspense
+/*
 export default function startApp() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
@@ -353,3 +366,4 @@ export default function startApp() {
     </Suspense>
   )
 }
+*/

@@ -40,8 +40,12 @@ i18n
           Feedback: 'Feedback',
           'This is an': 'This is an',
           'open source version': 'open source version',
-          'This game was adapted':
-            'of the word guessing game we all know and love. This game was adapted into Japanese by Desmond Lee.',
+          'The game was adapted':
+            'of the word guessing game we all know and love. The game was adapted into Japanese by Desmond Lee.',
+          'If you enjoy':
+            'If you enjoy the game and would like to support me, please consider',
+          'buying me a coffee': 'buying me a coffee',
+          'if you wish': '',
           GAME_COPIED_MESSAGE: 'Copied results to clipboard',
           NOT_ENOUGH_LETTERS_MESSAGE: 'Not enough letters',
           WORD_NOT_FOUND_MESSAGE: 'Not in word list',
@@ -73,8 +77,12 @@ i18n
           'This is an':
             'これは、私たち皆が知っていて大好きな単語パズルゲームの',
           'open source version': 'オープンソース版',
-          'This game was adapted':
+          'The game was adapted':
             'です。このゲームは Desmond Lee が日本語版を作りました。',
+          'If you enjoy':
+            'このゲームを楽しんで、私をサポートしたい場合は、望めば',
+          'buying me a coffee': '私にコーヒーを一杯おごる',
+          'if you wish': 'こともできます。',
           GAME_COPIED_MESSAGE: '成績をクリップボードにコピーしました',
           NOT_ENOUGH_LETTERS_MESSAGE: '4文字入力してください',
           WORD_NOT_FOUND_MESSAGE: 'この答えは単語リストにありません',

@@ -8,44 +8,53 @@ export const shareStatus = (
   guesses: string[],
   lost: boolean,
   isHintMode: boolean,
-  isHardMode: boolean
+  isHardMode: boolean,
+  isDarkMode: boolean,
+  isHighContrastMode: boolean
 ) => {
   navigator.clipboard.writeText(
     `${GAME_TITLE} ${solutionIndex} ${
       lost ? 'X' : guesses.length
     }/${MAX_CHALLENGES}${isHintMode ? '?' : ''}${isHardMode ? '*' : ''}\n` +
     `${GAME_LINK}\n` +
-      generateEmojiGrid(guesses)
+      generateEmojiGrid(guesses, getEmojiTiles(isDarkMode, isHighContrastMode))
   )
 }
 
-export const generateEmojiGrid = (guesses: string[]) => {
+export const generateEmojiGrid = (guesses: string[], tiles: string[]) => {
   return guesses
     .map((guess) => {
       const status = getGuessStatuses(guess)
-      const isHighContrast = getStoredIsHighContrastMode()
       return guess
         .split('')
         .map((_, i) => {
           switch (status[i]) {
             case 'correct':
-              if (isHighContrast) {
-                return '🟧'
-              }
-              return '🟩'
+              return tiles[0]
             case 'present':
-              if (isHighContrast) {
-                return '🟦'
-              }
-              return '🟨'
+              return tiles[1]
+            case 'close':
+              return tiles[2]
+            case 'consonant':
+              return tiles[3]
+            case 'vowel':
+              return tiles[4]
             default:
-              if (localStorage.getItem('theme') === 'dark') {
-                return '⬛'
-              }
-              return '⬜'
+              return tiles[5]
           }
         })
         .join('')
     })
     .join('\n')
+}
+
+const getEmojiTiles = (isDarkMode: boolean, isHighContrastMode: boolean) => {
+  let tiles: string[] = []
+  tiles.push(isHighContrastMode ? '🟧' : '🟩') // correct
+  tiles.push(isHighContrastMode ? '🟦' : '🟨') // present
+  tiles.push(isHighContrastMode ? '🟣' : '🟢') // close
+  tiles.push('↕️') // consonant
+  tiles.push('↔️') // vowel
+  tiles.push(isDarkMode ? '⬛' : '⬜') // absent
+  return tiles
 }

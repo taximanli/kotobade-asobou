@@ -1,4 +1,4 @@
-import { solution } from './words'
+import { solution, unicodeSplit } from './words'
 import { getStoredIsHintMode } from './localStorage'
 import { CLOSE_STATUS_KANA, CONSONANT_STATUS_KANA, VOWEL_STATUS_KANA } from '../constants/strings'
 
@@ -8,21 +8,22 @@ export const getStatuses = (
   guesses: string[]
 ): { [key: string]: CharStatus } => {
   const charObj: { [key: string]: CharStatus } = {}
+  const splitSolution = unicodeSplit(solution)
   const isHintMode = getStoredIsHintMode()
 
   guesses.forEach((word) => {
-    word.split('').forEach((letter, i) => {
+    unicodeSplit(word).forEach((letter, i) => {
 
       if (isHintMode) {
         VOWEL_STATUS_KANA.forEach((kana) => {
-          if (kana.includes(letter) && kana.includes(solution[i])) {
+          if (kana.includes(letter) && kana.includes(splitSolution[i])) {
             //make status close
             return (charObj[letter] = 'vowel')
           }
         })
 
         CONSONANT_STATUS_KANA.forEach((kana) => {
-          if (kana.includes(letter) && kana.includes(solution[i])) {
+          if (kana.includes(letter) && kana.includes(splitSolution[i])) {
             //make status close
             return (charObj[letter] = 'consonant')
           }
@@ -30,23 +31,23 @@ export const getStatuses = (
       }
 
       CLOSE_STATUS_KANA.forEach((kana) => {
-        if (kana.includes(letter) && kana.includes(solution[i])) {
+        if (kana.includes(letter) && kana.includes(splitSolution[i])) {
           //make status close
           return (charObj[letter] = 'close')
         }
       })
 
-      if (!solution.includes(letter) && !['vowel', 'consonant', 'present', 'close', 'correct'].includes(charObj[letter])) {
+      if (!splitSolution.includes(letter) && !['vowel', 'consonant', 'present', 'close', 'correct'].includes(charObj[letter])) {
         // make status absent
         return (charObj[letter] = 'absent')
       }
 
-      if (letter === solution[i]) {
+      if (letter === splitSolution[i]) {
         //make status correct
         return (charObj[letter] = 'correct')
       }
 
-      if (solution.includes(letter) && !['close', 'correct'].includes(charObj[letter])) {
+      if (splitSolution.includes(letter) && !['close', 'correct'].includes(charObj[letter])) {
         //make status present
         return (charObj[letter] = 'present')
       }
@@ -57,8 +58,8 @@ export const getStatuses = (
 }
 
 export const getGuessStatuses = (guess: string): CharStatus[] => {
-  const splitSolution = solution.split('')
-  const splitGuess = guess.split('')
+  const splitSolution = unicodeSplit(solution)
+  const splitGuess = unicodeSplit(guess)
 
   const solutionCharsTaken = splitSolution.map((_) => false)
 

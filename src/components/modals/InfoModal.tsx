@@ -55,7 +55,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
         </p>
 
         <p className="local-font text-left text-sm text-gray-500 dark:text-gray-300">
-          ヒントモードがオンの場合、2種類のヒントが追加で表示されます。
+          ヒントモードがオンの場合、二種類のヒントが追加で表示されます。
         </p>
         <div className="flex justify-center mb-2 mt-2 md:mt-4">
           <Cell value="な" status="consonant" isRevealing={true} isCompleted={true} />
@@ -67,13 +67,13 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
           答えは「にっこう」
         </p>
         <p className="local-font text-left text-sm text-gray-500 dark:text-gray-300 pb-2">
-          「な」の正方形には上下の矢印があります。正解は「な」ではなく、五十音図の同じ行からの別の仮名（に・ぬ・ね・の）であることを示しています。
+          「な」の正方形には上下の矢印があります。正解は「な」ではなく、五十音図内の同じ行に他の仮名（に・ぬ・ね・の）であることを示しています。
         </p>
         <p className="local-font text-left text-sm text-gray-500 dark:text-gray-300 pb-2">
-          「と」の正方形には左右の矢印があります。正解は「と」ではなく、五十音図の同じ段からの別の仮名（お・こ・そ等）であることを示しています。<br />
+          「と」の正方形には左右の矢印があります。正解は「と」ではなく、五十音図内の同じ段に他の仮名（お・こ・そ等）であることを示しています。<br />
         </p>
 
-        <p className="local-font text-left text-sm text-gray-500 dark:text-gray-300">
+        <p className="local-font text-left text-sm text-gray-500 dark:text-gray-300 pb-2">
           ヒントモードは、下の五十音図を使用します。
         </p>
 
@@ -111,15 +111,25 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
           </div>
         </div>
 
+        <p className="local-font text-left text-sm text-gray-500 dark:text-gray-300 pb-2">
+          「行」は子音が同じであることを示します。<br />例えば「さ行」は「さ・し・す・せ・そ」です。清音、濁音、半濁音は区別することをご了承ください。
+        </p>
+        <p className="local-font text-left text-sm text-gray-500 dark:text-gray-300 pb-2">
+          「段」は母音が同じであることを示します。<br />例えば「う段」は「う・く・す・つ・ぬ・ふ・む・ゆ・る・ぐ・ず・づ・ぶ・ぷ」です。
+        </p>
         <p className="local-font text-left text-sm text-gray-500 dark:text-gray-300">
-          行は基本的に子音が同じであることを示します。 <br />例えば「か行」は「か・き・く・け・こ」の5文字です。 清音と濁音、半濁音は区別します。<br />
-          段は基本的に母音が同じであることを示します。 <br />例えば「い段」は「い・き・し・ち・に・ひ・み・り・ぎ・じ・ぢ・び・ぴ」です。<br />
-          「ん」と「ー」は他のどの行段にも一致しません。 また、他のどの段にも一致しません。<br />
+          撥音「ん」と長音符「ー」は他のどの行と段にも一致しません。
         </p>
 
-        <hr className="mt-4 mb-4" />
+        <p className="local-font text-lg leading-6 font-medium text-gray-900 dark:text-gray-100 mt-2 md:mt-4 mb-2">
+          単語リストについて
+        </p>
 
-        <p className="local-font text-left text-sm font-bold text-gray-500 dark:text-gray-300">
+        <p className="local-font text-left text-sm text-gray-500 dark:text-gray-300 pb-2">
+          単語リストは、名詞、代名詞、形容詞、副詞及び動詞が含まれています。外来語も含まれています。活用語は、基本的に終止形です。
+        </p>
+
+        <p className="local-font text-sm font-bold text-gray-500 dark:text-gray-300">
           単語は日替わりです！
         </p>
       </BaseModal>
@@ -148,7 +158,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
           The kana め is not in the word in any spot.<br />
         </p>
         <p className="text-left text-sm text-gray-500 dark:text-gray-300">
-          <span className={isHighContrast ? "local-font text-violet-500" : "local-font text-lime-500" }>■</span> indicates that it can be a basic kana, a voiced kana, a semi-voiced kana, or a small kana.
+          <span className={isHighContrast ? "local-font text-violet-500" : "local-font text-lime-500" }>■</span> indicates that it can be a basic kana, a voiced kana (゛), a semi-voiced kana (゜), or a small kana (っ).
         </p>
 
         <p className="local-font text-lg leading-6 font-medium text-gray-900 dark:text-gray-100 mt-2 md:mt-4 mb-2">
@@ -175,7 +185,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
         </p>
 
         <p className="text-left text-sm text-gray-500 dark:text-gray-300">
-          The kana chart used in Hint Mode
+          This is the kana chart used in Hint Mode
         </p>
 
         <div className="flex flex-col">
@@ -185,13 +195,13 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
                 <table className="min-w-full">
                   <thead className={rowClassNames}>
                     <tr>
-                      <td colSpan={16} className={headingClassNames}><span className={arrowClassNames}>↓↑</span> 行の一致 <span className={arrowClassNames}>↓↑</span></td>
+                      <td colSpan={16} className={headingClassNames}><span className={arrowClassNames}>↓↑</span> COLUMN <span className={arrowClassNames}>↓↑</span></td>
                     </tr>
                   </thead>
                   <tbody>
                     <tr className={rowClassNames}>
                       <td className={cellClassNames}>ぱ</td><td className={cellClassNames}>ば</td><td className={cellClassNames}>だ</td><td className={cellClassNames}>ざ</td><td className={cellClassNames}>が</td><td className={cellClassNames}>わ</td><td className={cellClassNames}>ら</td><td className={cellClassNames}>や<br />ゃ</td><td className={cellClassNames}>ま</td><td className={cellClassNames}>は</td><td className={cellClassNames}>な</td><td className={cellClassNames}>た</td><td className={cellClassNames}>さ</td><td className={cellClassNames}>か</td><td className={cellClassNames}>あ<br />ぁ</td>
-                      <td rowSpan={5} className={headingClassNames}><span className={arrowClassNames}>→<br />←</span><br />段<br />の<br />一<br />致<br /><span className={arrowClassNames}>→<br />←</span></td>
+                      <td rowSpan={5} className={headingClassNames}><span className={arrowClassNames}>→<br />←</span><br />R<br />O<br />W<br /><span className={arrowClassNames}>→<br />←</span></td>
                     </tr>
                     <tr className={rowClassNames}>
                       <td className={cellClassNames}>ぴ</td><td className={cellClassNames}>び</td><td className={cellClassNames}>ぢ</td><td className={cellClassNames}>じ</td><td className={cellClassNames}>ぎ</td><td className={cellClassNames}></td><td className={cellClassNames}>り</td><td className={cellClassNames}></td><td className={cellClassNames}>み</td><td className={cellClassNames}>ひ</td><td className={cellClassNames}>に</td><td className={cellClassNames}>ち</td><td className={cellClassNames}>し</td><td className={cellClassNames}>き</td><td className={cellClassNames}>い<br />ぃ</td>
@@ -212,9 +222,25 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
           </div>
         </div>
 
-        <hr className="mt-4 mb-4" />
+        <p className="text-left text-sm text-gray-500 dark:text-gray-300 pb-2">
+          Each COLUMN contains kana that have the matching consonant e.g. か/き/く/け/こ are in the same column with the same consonant K. Notice that basic kana, voiced kana (゛), semi-voiced kana (゜) are seen as separate columns.
+        </p>
+        <p className="text-left text-sm text-gray-500 dark:text-gray-300 pb-2">
+          Each ROW contains kana that have the matching vowel e.g. う/く/す/つ/ぬ/ふ/む/ゆ/る/ぐ/ず/づ/ぶ/ぷ are in the same row with the same vowel U.
+        </p>
+        <p className="text-left text-sm text-gray-500 dark:text-gray-300">
+          Both the kana ん and the long sound mark ー do not have any matching rows or columns.
+        </p>
 
-        <p className="text-left text-sm font-bold text-gray-500 dark:text-gray-300">
+        <p className="local-font text-lg leading-6 font-medium text-gray-900 dark:text-gray-100 mt-2 md:mt-4 mb-2">
+          About the word list
+        </p>
+
+        <p className="text-left text-sm text-gray-500 dark:text-gray-300 pb-2">
+          The word list includes nouns, pronouns, adjectives, adverbs and verbs. Foreign loanwords are also included. Conjugable words are in plain form (i.e. dictionary form).
+        </p>
+
+        <p className="text-sm font-bold text-gray-500 dark:text-gray-300">
           A new word will be available each day!<br />
         </p>
       </BaseModal>

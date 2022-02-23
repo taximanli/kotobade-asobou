@@ -103,7 +103,14 @@ export const SettingsModal = ({
           <p className={aboutClassName}>
             {t('This is an')}
             {' '}<a className="underline text-sm text-gray-600 dark:text-gray-300" href="https://github.com/cwackerfuss/react-wordle" rel="noreferrer" target="_blank">{t('open source version')}</a>{' '}
-            {t('This game was adapted')}
+            {t('The game was adapted')}
+          </p>
+        </div>
+        <div className="flex justify-between items-center gap-8 mt-3">
+          <p className={aboutClassName}>
+            {t('If you enjoy')}
+            {' '}<a className="underline text-sm text-gray-600 dark:text-gray-300" href="https://ko-fi.com/taximanli" rel="noreferrer" target="_blank">{t('buying me a coffee')}</a>{' '}
+            {t('if you wish')}
           </p>
         </div>
       </div>
