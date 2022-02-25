@@ -1,7 +1,6 @@
 import { getStatuses } from '../../lib/statuses'
 import { Key } from './Key'
 import { useEffect } from 'react'
-import { localeAwareUpperCase } from '../../lib/words'
 
 type Props = {
   onChar: (value: string) => void
