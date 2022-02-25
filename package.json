@@ -2,7 +2,7 @@
   "name": "kotobade-asobou",
   "version": "2.0.0",
   "private": true,
-  "homepage": "https://descklee.github.io/react-wordle",
+  "homepage": "https://taximanli.github.io/kotobade-asobou",
   "dependencies": {
     "@headlessui/react": "^1.4.2",
     "@heroicons/react": "^1.0.5",
