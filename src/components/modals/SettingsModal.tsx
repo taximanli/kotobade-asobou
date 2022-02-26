@@ -5,7 +5,7 @@ import classnames from 'classnames'
 import { BaseModal } from './BaseModal'
 import { SettingsToggle } from './SettingsToggle'
 import { PREFERRED_DISPLAY_LANGUAGE } from '../../constants/settings'
-import { t } from '../../constants/strings'
+import { t, KOFI_LINK } from '../../constants/strings'
 import { getStoredIsHighContrastMode } from '../../lib/localStorage'
 import coffeeLogo from '../../images/ko-fi-com-taximanli.png';
 
@@ -42,11 +42,7 @@ export const SettingsModal = ({
   
   const aboutClassName = classnames((displayLanguage === PREFERRED_DISPLAY_LANGUAGE ? 'local-font' : ''), 'text-left text-sm text-gray-500 dark:text-gray-300')
 
-  const hardModeSettingDescription = t('Revealed hints')
-    + (isHighContrast ? '（🟧 ' : '（🟩 ' )
-    + t('and')
-    + (isHighContrast ? ' 🟦）' : ' 🟨）' )
-    + t('must be used in subsequent guesses')
+  const hardModeSettingDescription = t('Revealed hints', (isHighContrast ? '🟧' : '🟩'), (isHighContrast ? '🟦' : '🟨'))
 
   return (
     <BaseModal title={t('Settings')} isOpen={isOpen} handleClose={handleClose}>
@@ -122,7 +118,7 @@ export const SettingsModal = ({
         <div className="flex justify-between items-center gap-3 mt-3">
           <p className={aboutClassName}>
             {t('If you enjoy')}<br />
-            {' '}<a className="underline text-sm text-gray-600 dark:text-gray-300" href="https://ko-fi.com/taximanli" rel="noreferrer" target="_blank">{t('buying me a coffee')}</a>{' '}
+            {' '}<a className="underline text-sm text-gray-600 dark:text-gray-300" href={KOFI_LINK} rel="noreferrer" target="_blank">{t('buying me a coffee')}</a>{' '}
             {t('if you wish')}
           </p>
           <img className="w-9 h-9 cursor-pointer" src={coffeeLogo} title={t('Buy me a coffee?')} alt={t('Buy me a coffee?')} onClick={()=> window.open("https://ko-fi.com/taximanli", "_blank")} />

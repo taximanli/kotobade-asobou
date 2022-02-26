@@ -1,6 +1,6 @@
 import { WORDS } from '../constants/wordlist'
 import { VALID_GUESSES } from '../constants/validGuesses'
-import { WRONG_SPOT_MESSAGE, NOT_CONTAINED_MESSAGE } from '../constants/strings'
+import { t } from '../constants/strings'
 import { getGuessStatuses } from './statuses'
 import { default as GraphemeSplitter } from 'grapheme-splitter'
 
@@ -32,7 +32,8 @@ export const findFirstUnusedReveal = (word: string, guesses: string[]) => {
       lettersLeftArray.push(guess[i])
     }
     if (statuses[i] === 'correct' && word[i] !== guess[i]) {
-      return WRONG_SPOT_MESSAGE(guess[i], i + 1)
+      const position = (i + 1)
+      return t('WRONG_SPOT_MESSAGE', guess[i], position.toString())
     }
   }
 
@@ -47,7 +48,7 @@ export const findFirstUnusedReveal = (word: string, guesses: string[]) => {
   }
 
   if (lettersLeftArray.length > 0) {
-    return NOT_CONTAINED_MESSAGE(lettersLeftArray[0])
+    return t('NOT_CONTAINED_MESSAGE', lettersLeftArray[0])
   }
   return false
 }

@@ -10,13 +10,7 @@ import { Keyboard } from './components/keyboard/Keyboard'
 import { InfoModal } from './components/modals/InfoModal'
 import { StatsModal } from './components/modals/StatsModal'
 import { SettingsModal } from './components/modals/SettingsModal'
-import {
-  t,
-  GAME_TITLE,
-  GAME_HEADING,
-  WIN_MESSAGES,
-  CORRECT_WORD_MESSAGE,
-} from './constants/strings'
+import { t, GAME_TITLE, WIN_MESSAGES } from './constants/strings'
 import {
   MAX_WORD_LENGTH,
   MAX_CHALLENGES,
@@ -88,7 +82,7 @@ function App() {
     }
     if (loaded.guesses.length === MAX_CHALLENGES && !gameWasWon) {
       setIsGameLost(true)
-      showErrorAlert(CORRECT_WORD_MESSAGE(solution), {
+      showErrorAlert(t('CORRECT_WORD_MESSAGE', solution), {
         persist: true,
       })
     }
@@ -262,13 +256,15 @@ function App() {
       if (guesses.length === MAX_CHALLENGES - 1) {
         setStats(addStatsForCompletedGame(stats, guesses.length + 1))
         setIsGameLost(true)
-        showErrorAlert(CORRECT_WORD_MESSAGE(solution), {
+        showErrorAlert(t('CORRECT_WORD_MESSAGE', solution), {
           persist: true,
           delayMs: REVEAL_TIME_MS * MAX_WORD_LENGTH + 1,
         })
       }
     }
   }
+
+  const gameHeading = GAME_TITLE.split(' ')
 
   return (
     <div className="pt-2 pb-8 max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -278,11 +274,11 @@ function App() {
           className="h-6 w-6 ml-3 cursor-pointer dark:stroke-white"
           onClick={() => setIsInfoModalOpen(true)}
         />
-        <span className="local-font text-xs sm:text-sm md:text-base lg:text-lg font-bold uppercase ml-2.5 shrink dark:text-white">
-          {GAME_HEADING[0]}
+        <span className="local-font text-xs sm:text-sm md:text-base lg:text-lg font-bold ml-2.5 shrink dark:text-white">
+          {gameHeading[0]} {gameHeading[1]}
         </span>
         <span className="local-font text-xl sm:text-2xl font-bold ml-2.5 grow dark:text-white">
-          {GAME_HEADING[1]}
+          {gameHeading[2]}
         </span>
         <ChartBarIcon
           className="h-6 w-6 mr-2 cursor-pointer dark:stroke-white"
