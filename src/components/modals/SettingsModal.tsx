@@ -2,10 +2,10 @@ import {
   TranslateIcon
 } from '@heroicons/react/outline'
 import classnames from 'classnames'
-import { useTranslation } from 'react-i18next';
 import { BaseModal } from './BaseModal'
 import { SettingsToggle } from './SettingsToggle'
 import { PREFERRED_DISPLAY_LANGUAGE } from '../../constants/settings'
+import { t } from '../../constants/strings'
 import { getStoredIsHighContrastMode } from '../../lib/localStorage'
 import coffeeLogo from '../../images/ko-fi-com-taximanli.png';
 
@@ -41,7 +41,6 @@ export const SettingsModal = ({
   const isHighContrast = getStoredIsHighContrastMode()
   
   const aboutClassName = classnames((displayLanguage === PREFERRED_DISPLAY_LANGUAGE ? 'local-font' : ''), 'text-left text-sm text-gray-500 dark:text-gray-300')
-  const { t } = useTranslation();
 
   const hardModeSettingDescription = t('Revealed hints')
     + (isHighContrast ? '（🟧 ' : '（🟩 ' )

@@ -4,7 +4,6 @@ import {
   CogIcon,
 } from '@heroicons/react/outline'
 import { useState, useEffect } from 'react'
-import { useTranslation } from 'react-i18next'
 import { Grid } from './components/grid/Grid'
 import { Bar } from './components/keyboard/Bar'
 import { Keyboard } from './components/keyboard/Keyboard'
@@ -12,6 +11,7 @@ import { InfoModal } from './components/modals/InfoModal'
 import { StatsModal } from './components/modals/StatsModal'
 import { SettingsModal } from './components/modals/SettingsModal'
 import {
+  t,
   GAME_TITLE,
   GAME_HEADING,
   WIN_MESSAGES,
@@ -50,7 +50,6 @@ import { AlertContainer } from './components/alerts/AlertContainer'
 import { useAlert } from './context/AlertContext'
 
 function App() {
-  const { t, i18n } = useTranslation()
   const prefersDarkMode = window.matchMedia(
     '(prefers-color-scheme: dark)'
   ).matches
@@ -161,10 +160,6 @@ function App() {
   const handleDisplayLanguage = (displayLanguage: string) => {
     setDisplayLanguage(displayLanguage)
     setStoredDisplayLanguage(displayLanguage)
-    i18n.changeLanguage(displayLanguage, (err, t) => {
-      if (err) return console.log('something went wrong loading', err)
-      // t('key'); // -> same as i18next.t
-    })
   }
 
   const clearCurrentRowClass = () => {
@@ -355,15 +350,3 @@ function App() {
 }
 
 export default App
-
-// i18n translations might still be loaded by the http backend
-// use react's Suspense
-/*
-export default function startApp() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <App />
-    </Suspense>
-  )
-}
-*/

@@ -1,6 +1,5 @@
 import classnames from 'classnames'
 import Countdown from 'react-countdown'
-import { useTranslation } from 'react-i18next';
 import { StatBar } from '../stats/StatBar'
 import { Histogram } from '../stats/Histogram'
 import { GameStats, getStoredDisplayLanguage, getStoredIsHighContrastMode } from '../../lib/localStorage'
@@ -8,6 +7,7 @@ import { shareStatus } from '../../lib/share'
 import { solutionIndex, tomorrow } from '../../lib/words'
 import { BaseModal } from './BaseModal'
 import { PREFERRED_DISPLAY_LANGUAGE } from '../../constants/settings';
+import { t } from '../../constants/strings';
 
 type Props = {
   isOpen: boolean
@@ -36,7 +36,6 @@ export const StatsModal = ({
   isDarkMode,
   isHighContrastMode,
 }: Props) => {
-  const { t } = useTranslation();
   const isHighContrast = getStoredIsHighContrastMode()
   const displayLanguage = getStoredDisplayLanguage()
   var today = new Date();

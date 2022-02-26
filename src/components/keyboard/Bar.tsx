@@ -1,7 +1,6 @@
-import { useTranslation } from 'react-i18next';
 import { Key } from './Key'
 import { MAX_WORD_LENGTH } from '../../constants/settings'
-import { ENTER_TEXT, DELETE_TEXT } from '../../constants/strings'
+import { t, ENTER_TEXT, DELETE_TEXT } from '../../constants/strings'
 
 type Props = {
     onDelete: Function
@@ -16,8 +15,6 @@ export const Bar = ({
     currentGuess,
     setCurrentGuess,
 }: Props) => {
-
-    const { t } = useTranslation();
 
     const handleInput: React.ChangeEventHandler<HTMLInputElement> = (event) => {
         const filteredInput = event.target.value.replace(/[^ぁあぃいぅうぇえぉおかがきぎくぐけげこごさざしじすずせぜそぞただちぢっつづてでとどなにぬねのはばぱひびぴふぶぷへべぺほぼぽまみむめもゃやゅゆょよらりるれろわをんゔー]/, '')

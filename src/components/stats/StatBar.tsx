@@ -1,5 +1,5 @@
-import { useTranslation } from 'react-i18next';
 import { GameStats } from '../../lib/localStorage'
+import { t } from '../../constants/strings'
 
 type Props = {
   gameStats: GameStats
@@ -21,7 +21,6 @@ const StatItem = ({
 }
 
 export const StatBar = ({ gameStats }: Props) => {
-  const { t } = useTranslation();
   return (
     <div className="flex justify-center my-2">
       <StatItem label={t('TOTAL_TRIES_TEXT')} value={gameStats.totalGames} />
