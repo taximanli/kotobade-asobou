@@ -1,14 +1,16 @@
-Kotobade Asobou is the Japanese version of the word guessing game we all know and love. This game was forked from this open source version and has undergone massive redevelopment with extra game mode and new elements added to accommodate the unique features of the Japanese language.
+# Kotobade Asobou 言葉で遊ぼう
+
+This is the Japanese version of the word guessing game we all know and love. This game was forked from this open source version and has undergone massive redevelopment with extra game mode and new elements added to accommodate the unique features of the Japanese language.
 
 If you enjoy the game and would like to support my work, please consider buying me a coffee ♥️
 
-「言葉で遊ぼう」は、よく知られていて大好きな単語パズルゲームの 日本語版 です。このゲームは、この オープンソース版 からフォークして大規模なソフトウェア再開発を経ています。また、日本語の特徴を満たすために、新しいモードと要素が追加されています。
+これは、よく知られていて大好きな単語パズルゲームの 日本語版 です。このゲームは、この オープンソース版 からフォークして大規模なソフトウェア再開発を経ています。また、日本語の特徴を満たすために、新しいモードと要素が追加されています。
 
 このゲームを楽しんで、私のソフトウェア開発をサポートしたい場合は、望めば ♥️ 私にコーヒーを一杯おごる こともできます。
 
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/T6T1ATGS5)
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/taximanli)
 
-How to play
+## How to play
 
 Guess the word of the day in 12 tries. Each guess must be a valid 4-kana word. Hit the enter button to submit. After each guess, the colour of the tiles will change to show how close your guess was to the word.
 
@@ -18,7 +20,7 @@ The word list includes nouns, pronouns, adjectives, adverbs and verbs. Foreign l
 
 A new word will be available each day!
 
-遊び方
+## 遊び方
 
 今日の単語を12回以内に当ててください。それぞれの答えはひらがな4文字の単語である必要があります。入力ボタンを押して答えを決定してください。 答えるたびに正方形の色が変わり、それが次のヒントになります。
 
