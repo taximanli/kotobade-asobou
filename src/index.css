@@ -1,0 +1,731 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --animation-speed: 1000ms;
+  --animation-speed-fast: 250ms;
+  --default-cell-bg-color: theme('colors.white');
+  --default-cell-border-color: theme('colors.black');
+  --default-cell-text-color: theme('colors.black');
+  --absent-cell-bg-color: theme('colors.slate.400');
+  --correct-cell-bg-color: theme('colors.green.400');
+  --present-cell-bg-color: theme('colors.yellow.400');
+  --close-cell-bg-color: theme('colors.lime.400');
+  --consonant-cell-bg-color: linear-gradient(
+    to right,
+    theme('colors.green.400') 50%,
+    theme('colors.slate.400') 50%
+  );
+  --vowel-cell-bg-color: linear-gradient(
+    to top,
+    theme('colors.green.400') 50%,
+    theme('colors.slate.400') 50%
+  );
+}
+
+.dark {
+  --default-cell-bg-color: theme('colors.slate.900');
+  --default-cell-border-color: theme('colors.white');
+  --default-cell-text-color: theme('colors.white');
+  --absent-cell-bg-color: theme('colors.slate.700');
+  --consonant-cell-bg-color: linear-gradient(
+    to right,
+    theme('colors.green.400') 50%,
+    theme('colors.slate.700') 50%
+  );
+  --vowel-cell-bg-color: linear-gradient(
+    to top,
+    theme('colors.green.400') 50%,
+    theme('colors.slate.700') 50%
+  );
+}
+
+.high-contrast {
+  --correct-cell-bg-color: theme('colors.orange.400');
+  --present-cell-bg-color: theme('colors.cyan.400');
+  --close-cell-bg-color: theme('colors.violet.400');
+  --consonant-cell-bg-color: linear-gradient(
+    to right,
+    theme('colors.orange.400') 50%,
+    theme('colors.slate.400') 50%
+  );
+  --vowel-cell-bg-color: linear-gradient(
+    to top,
+    theme('colors.orange.400') 50%,
+    theme('colors.slate.400') 50%
+  );
+}
+
+.high-contrast.dark {
+  --consonant-cell-bg-color: linear-gradient(
+    to right,
+    theme('colors.orange.400') 50%,
+    theme('colors.slate.700') 50%
+  );
+  --vowel-cell-bg-color: linear-gradient(
+    to top,
+    theme('colors.orange.400') 50%,
+    theme('colors.slate.700') 50%
+  );
+}
+
+.cell-fill-animation {
+  animation: onTypeCell linear;
+  animation-duration: 0.35s;
+}
+
+.cell-reveal {
+  animation-duration: 0.35s;
+  animation-timing-function: linear;
+  animation-fill-mode: backwards;
+}
+
+.cell-reveal.absent {
+  animation-name: revealAbsentCharCell;
+}
+
+.cell-reveal.correct {
+  animation-name: revealCorrectCharCell;
+}
+
+.cell-reveal.present {
+  animation-name: revealPresentCharCell;
+}
+
+.cell-reveal.close {
+  animation-name: revealCloseCharCell;
+}
+
+.cell-reveal.consonant {
+  animation-name: revealConsonantCharCell;
+}
+
+.cell-reveal.vowel {
+  animation-name: revealVowelCharCell;
+}
+
+.cell-reveal > .letter-container {
+  animation: offsetLetterFlip 0.35s linear;
+  animation-fill-mode: backwards;
+}
+
+svg:hover {
+  animation: float infinite;
+  animation-duration: var(--animation-speed);
+}
+
+.jiggle {
+  animation: jiggle linear;
+  animation-duration: var(--animation-speed-fast);
+}
+
+@keyframes revealAbsentCharCell {
+  0% {
+    transform: rotateX(0deg);
+    background-color: var(--default-cell-bg-color);
+    border-color: var(--default-cell-border-color);
+    color: var(--default-cell-text-color);
+  }
+  50% {
+    background-color: var(--default-cell-bg-color);
+    border-color: var(--default-cell-border-color);
+    color: var(--default-cell-text-color);
+  }
+  50.1% {
+    background-color: var(--absent-cell-bg-color);
+    border-color: var(--absent-cell-bg-color);
+  }
+  100% {
+    transform: rotateX(180deg);
+  }
+}
+
+@keyframes revealCorrectCharCell {
+  0% {
+    transform: rotateX(0deg);
+    background-color: var(--default-cell-bg-color);
+    border-color: var(--default-cell-border-color);
+    color: var(--default-cell-text-color);
+  }
+  50% {
+    background-color: var(--default-cell-bg-color);
+    border-color: var(--default-cell-border-color);
+    color: var(--default-cell-text-color);
+  }
+  50.1% {
+    background-color: var(--correct-cell-bg-color);
+    border-color: var(--correct-cell-bg-color);
+  }
+  100% {
+    transform: rotateX(180deg);
+  }
+}
+
+@keyframes revealPresentCharCell {
+  0% {
+    transform: rotateX(0deg);
+    background-color: var(--default-cell-bg-color);
+    border-color: var(--default-cell-border-color);
+    color: var(--default-cell-text-color);
+  }
+  50% {
+    background-color: var(--default-cell-bg-color);
+    border-color: var(--default-cell-border-color);
+    color: var(--default-cell-text-color);
+  }
+  50.1% {
+    background-color: var(--present-cell-bg-color);
+    border-color: var(--present-cell-bg-color);
+  }
+  100% {
+    transform: rotateX(180deg);
+  }
+}
+
+@keyframes revealCloseCharCell {
+  0% {
+    transform: rotateX(0deg);
+    background-color: var(--default-cell-bg-color);
+    border-color: var(--default-cell-border-color);
+    color: var(--default-cell-text-color);
+  }
+  50% {
+    background-color: var(--default-cell-bg-color);
+    border-color: var(--default-cell-border-color);
+    color: var(--default-cell-text-color);
+  }
+  50.1% {
+    background-color: var(--close-cell-bg-color);
+    border-color: var(--close-cell-bg-color);
+  }
+  100% {
+    transform: rotateX(180deg);
+  }
+}
+
+@keyframes revealConsonantCharCell {
+  0% {
+    transform: rotateX(0deg);
+    background-color: var(--default-cell-bg-color);
+    border-color: var(--default-cell-border-color);
+    color: var(--default-cell-text-color);
+  }
+  50% {
+    background-color: var(--default-cell-bg-color);
+    border-color: var(--default-cell-border-color);
+    color: var(--default-cell-text-color);
+  }
+  50.1% {
+    background-color: var(--consonant-cell-bg-color);
+    border-color: var(--consonant-cell-bg-color);
+  }
+  100% {
+    transform: rotateX(180deg);
+  }
+}
+
+@keyframes revealVowelCharCell {
+  0% {
+    transform: rotateX(0deg);
+    background-color: var(--default-cell-bg-color);
+    border-color: var(--default-cell-border-color);
+    color: var(--default-cell-text-color);
+  }
+  50% {
+    background-color: var(--default-cell-bg-color);
+    border-color: var(--default-cell-border-color);
+    color: var(--default-cell-text-color);
+  }
+  50.1% {
+    background-color: var(--vowel-cell-bg-color);
+    border-color: var(--vowel-cell-bg-color);
+  }
+  100% {
+    transform: rotateX(180deg);
+  }
+}
+
+/* Additional animation on the child div to avoid letters turning upside down/snapping back to upright visual glitch */
+@keyframes offsetLetterFlip {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(180deg);
+  }
+}
+
+@keyframes onTypeCell {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.shadowed {
+  text-shadow: 1px 1px 1px #000000;
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0, -0.5rem);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes jiggle {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-0.5rem, 0);
+  }
+  50% {
+    transform: translate(0.5rem, 0);
+  }
+  75% {
+    transform: translate(-0.5rem, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.local-font {
+  font-family: 'Noto Sans JP', 'Noto Sans CJK JP', 'ヒラギノ角ゴ Pro W3',
+    'Hiragino Kaku Gothic Pro', Osaka, メイリオ, Meiryo, 'ＭＳ Ｐゴシック',
+    'MS PGothic', 'ＭＳ ゴシック', 'MS Gothic', TakaoPGothic, sans-serif;
+}
+
+.correct.cell-bg {
+  background-color: theme('colors.green.500');
+  border-color: theme('colors.green.500');
+  color: white;
+}
+
+.high-contrast .correct.cell-bg {
+  background-color: theme('colors.orange.500');
+  border-color: theme('colors.orange.500');
+  color: white;
+}
+
+.close.cell-bg {
+  background-color: theme('colors.lime.500');
+  border-color: theme('colors.lime.500');
+  color: white;
+}
+
+.high-contrast .close.cell-bg {
+  background-color: theme('colors.violet.500');
+  border-color: theme('colors.violet.500');
+  color: white;
+}
+
+.consonant.cell-bg {
+  /* background: linear-gradient(to right, theme('colors.green.500') 50%, theme('colors.slate.400') 50%); */
+  background-color: theme('colors.gray.400');
+  background-image: url('./images/consonant-green.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-color: theme('colors.slate.400');
+  color: white;
+}
+
+.dark .consonant.cell-bg {
+  /* background: linear-gradient(to right, theme('colors.green.500') 50%, theme('colors.slate.700') 50%); */
+  background-color: theme('colors.slate.700');
+  background-image: url('./images/consonant-green.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-color: theme('colors.slate.700');
+  color: white;
+}
+
+.high-contrast .consonant.cell-bg {
+  /* background: linear-gradient(to right, theme('colors.orange.500') 50%, theme('colors.slate.400') 50%); */
+  background-color: theme('colors.gray.400');
+  background-image: url('./images/consonant-orange.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-color: theme('colors.slate.400');
+  color: white;
+}
+
+.high-contrast.dark .consonant.cell-bg {
+  /* background: linear-gradient(to right, theme('colors.orange.500') 50%, theme('colors.slate.700') 50%); */
+  background-color: theme('colors.slate.700');
+  background-image: url('./images/consonant-orange.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-color: theme('colors.slate.700');
+  color: white;
+}
+
+.vowel.cell-bg {
+  /* background: linear-gradient(to top, theme('colors.green.500') 50%, theme('colors.slate.400') 50%); */
+  background-color: theme('colors.gray.400');
+  background-image: url('./images/vowel-green.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-color: theme('colors.slate.400');
+  color: white;
+}
+
+.dark .vowel.cell-bg {
+  /* background: linear-gradient(to top, theme('colors.green.500') 50%, theme('colors.slate.700') 50%); */
+  background-color: theme('colors.slate.700');
+  background-image: url('./images/vowel-green.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-color: theme('colors.slate.700');
+  color: white;
+}
+
+.high-contrast .vowel.cell-bg {
+  /* background: linear-gradient(to top, theme('colors.orange.500') 50%, theme('colors.slate.400') 50%); */
+  background-color: theme('colors.gray.400');
+  background-image: url('./images/vowel-orange.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-color: theme('colors.slate.400');
+  color: white;
+}
+
+.high-contrast.dark .vowel.cell-bg {
+  /* background: linear-gradient(to top, theme('colors.orange.500') 50%, theme('colors.slate.700') 50%); */
+  background-color: theme('colors.slate.700');
+  background-image: url('./images/vowel-orange.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-color: theme('colors.slate.700');
+  color: white;
+}
+
+.present.cell-bg {
+  background-color: theme('colors.yellow.500');
+  border-color: theme('colors.yellow.500');
+  color: white;
+}
+
+.high-contrast .present.cell-bg {
+  background-color: theme('colors.cyan.500');
+  border-color: theme('colors.cyan.500');
+  color: white;
+}
+
+.absent.cell-bg {
+  background-color: theme('colors.gray.400');
+  border-color: theme('colors.slate.400');
+  color: white;
+}
+
+.dark .absent.cell-bg {
+  background-color: theme('colors.slate.700');
+  border-color: theme('colors.slate.700');
+  color: white;
+}
+
+.correct.key-bg {
+  background-color: theme('colors.green.500');
+  color: white;
+}
+
+.correct.key-bg:hover {
+  background-color: theme('colors.green.600');
+  color: white;
+}
+
+.correct.key-bg:active {
+  background-color: theme('colors.green.700');
+  color: white;
+}
+
+.high-contrast .correct.key-bg {
+  background-color: theme('colors.orange.500');
+  color: white;
+}
+
+.high-contrast .correct.key-bg:hover {
+  background-color: theme('colors.orange.600');
+  color: white;
+}
+
+.high-contrast .correct.key-bg:active {
+  background-color: theme('colors.orange.700');
+  color: white;
+}
+
+.consonant.key-bg {
+  /* background: linear-gradient(to right, theme('colors.green.500') 50%, theme('colors.slate.400') 50%); */
+  background-color: theme('colors.gray.400');
+  background-image: url('./images/consonant-green.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.9;
+  color: white;
+}
+
+.consonant.key-bg:hover,
+.consonant.key-bg:active {
+  /* background: linear-gradient(to right, theme('colors.green.600') 50%, theme('colors.slate.400') 50%); */
+  background-color: theme('colors.gray.400');
+  background-image: url('./images/consonant-green.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 1;
+  color: white;
+}
+
+.dark .consonant.key-bg {
+  /* background: linear-gradient(to right, theme('colors.green.500') 50%, theme('colors.slate.800') 50%); */
+  background-color: theme('colors.slate.800');
+  background-image: url('./images/consonant-green.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.9;
+  color: white;
+}
+
+.dark .consonant.key-bg:hover,
+.dark .consonant.key-bg:active {
+  /* background: linear-gradient(to right, theme('colors.green.600') 50%, theme('colors.slate.800') 50%); */
+  background-color: theme('colors.slate.800');
+  background-image: url('./images/consonant-green.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 1;
+  color: white;
+}
+
+.high-contrast .consonant.key-bg {
+  /* background: linear-gradient(to right, theme('colors.orange.500') 50%, theme('colors.slate.400') 50%); */
+  background-color: theme('colors.gray.400');
+  background-image: url('./images/consonant-orange.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.9;
+  color: white;
+}
+
+.high-contrast .consonant.key-bg:hover,
+.high-contrast .consonant.key-bg:active {
+  /* background: linear-gradient(to right, theme('colors.orange.600') 50%, theme('colors.slate.400') 50%); */
+  background-color: theme('colors.gray.400');
+  background-image: url('./images/consonant-orange.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 1;
+  color: white;
+}
+
+.high-contrast.dark .consonant.key-bg {
+  /* background: linear-gradient(to right, theme('colors.orange.500') 50%, theme('colors.slate.800') 50%); */
+  background-color: theme('colors.slate.800');
+  background-image: url('./images/consonant-orange.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.9;
+  color: white;
+}
+
+.high-contrast.dark .consonant.key-bg:hover,
+.high-contrast.dark .consonant.key-bg:active {
+  /* background: linear-gradient(to right, theme('colors.orange.600') 50%, theme('colors.slate.800') 50%); */
+  background-color: theme('colors.slate.800');
+  background-image: url('./images/consonant-orange.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 1;
+  color: white;
+}
+
+.vowel.key-bg {
+  /* background: linear-gradient(to top, theme('colors.green.500') 50%, theme('colors.slate.400') 50%); */
+  background-color: theme('colors.gray.400');
+  background-image: url('./images/vowel-green.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.9;
+  color: white;
+}
+
+.vowel.key-bg:hover,
+.vowel.key-bg:active {
+  /* background: linear-gradient(to top, theme('colors.green.600') 50%, theme('colors.slate.400') 50%); */
+  background-color: theme('colors.gray.400');
+  background-image: url('./images/vowel-green.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 1;
+  color: white;
+}
+
+.dark .vowel.key-bg {
+  /* background: linear-gradient(to top, theme('colors.green.500') 50%, theme('colors.slate.800') 50%); */
+  background-color: theme('colors.slate.800');
+  background-image: url('./images/vowel-green.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.9;
+  color: white;
+}
+
+.dark .vowel.key-bg:hover,
+.dark .vowel.key-bg:active {
+  /* background: linear-gradient(to top, theme('colors.green.600') 50%, theme('colors.slate.800') 50%); */
+  background-color: theme('colors.slate.800');
+  background-image: url('./images/vowel-green.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 1;
+  color: white;
+}
+
+.high-contrast .vowel.key-bg {
+  /* background: linear-gradient(to top, theme('colors.orange.500') 50%, theme('colors.slate.400') 50%); */
+  background-color: theme('colors.gray.400');
+  background-image: url('./images/vowel-orange.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.9;
+  color: white;
+}
+
+.high-contrast .vowel.key-bg:hover,
+.high-contrast .vowel.key-bg:active {
+  /* background: linear-gradient(to top, theme('colors.orange.600') 50%, theme('colors.slate.400') 50%); */
+  background-color: theme('colors.gray.400');
+  background-image: url('./images/vowel-orange.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 1;
+  color: white;
+}
+
+.high-contrast.dark .vowel.key-bg {
+  /* background: linear-gradient(to top, theme('colors.orange.500') 50%, theme('colors.slate.800') 50%); */
+  background-color: theme('colors.slate.800');
+  background-image: url('./images/vowel-orange.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.9;
+  color: white;
+}
+
+.high-contrast.dark .vowel.key-bg:hover,
+.high-contrast.dark .vowel.key-bg:active {
+  /* background: linear-gradient(to top, theme('colors.orange.600') 50%, theme('colors.slate.800') 50%); */
+  background-color: theme('colors.slate.800');
+  background-image: url('./images/vowel-orange.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 1;
+  color: white;
+}
+
+.close.key-bg {
+  background-color: theme('colors.lime.500');
+  color: white;
+}
+
+.close.key-bg:hover {
+  background-color: theme('colors.lime.600');
+  color: white;
+}
+
+.close.key-bg:active {
+  background-color: theme('colors.lime.700');
+  color: white;
+}
+
+.high-contrast .close.key-bg {
+  background-color: theme('colors.violet.500');
+  color: white;
+}
+
+.high-contrast .close.key-bg:hover {
+  background-color: theme('colors.violet.600');
+  color: white;
+}
+
+.high-contrast .close.key-bg:active {
+  background-color: theme('colors.violet.700');
+  color: white;
+}
+
+.present.key-bg {
+  background-color: theme('colors.yellow.500');
+  color: white;
+}
+
+.present.key-bg:hover {
+  background-color: theme('colors.yellow.600');
+  color: white;
+}
+
+.present.key-bg:active {
+  background-color: theme('colors.yellow.700');
+  color: white;
+}
+
+.high-contrast .present.key-bg {
+  background-color: theme('colors.cyan.500');
+  color: white;
+}
+
+.high-contrast .present.key-bg:hover {
+  background-color: theme('colors.cyan.600');
+  color: white;
+}
+
+.high-contrast .present.key-bg:active {
+  background-color: theme('colors.cyan.700');
+  color: white;
+}
+
+.absent.key-bg {
+  background-color: theme('colors.gray.400');
+  color: white;
+}
+
+.dark .absent.key-bg {
+  background-color: theme('colors.slate.800');
+  color: white;
+}
