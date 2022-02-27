@@ -2,11 +2,10 @@ import classnames from 'classnames'
 import Countdown from 'react-countdown'
 import { StatBar } from '../stats/StatBar'
 import { Histogram } from '../stats/Histogram'
-import { GameStats, getStoredDisplayLanguage, getStoredIsHighContrastMode } from '../../lib/localStorage'
+import { GameStats, getStoredIsHighContrastMode } from '../../lib/localStorage'
 import { shareStatus } from '../../lib/share'
 import { solutionIndex, tomorrow } from '../../lib/words'
 import { BaseModal } from './BaseModal'
-import { PREFERRED_DISPLAY_LANGUAGE } from '../../constants/settings';
 import { t } from '../../constants/strings';
 
 type Props = {
@@ -37,9 +36,6 @@ export const StatsModal = ({
   isHighContrastMode,
 }: Props) => {
   const isHighContrast = getStoredIsHighContrastMode()
-  const displayLanguage = getStoredDisplayLanguage()
-  var today = new Date();
-  const SOLUTION_INDEX_TEXT = (displayLanguage === PREFERRED_DISPLAY_LANGUAGE ? today.toLocaleDateString("ja-JP", { year: 'numeric', month: 'short', day: 'numeric' })+` 第${solutionIndex}回` : `Game #${solutionIndex} on `+today.toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' }))
 
   const classNames = classnames(
     'mt-2 w-full rounded-md border border-transparent shadow-sm px-4 py-2 local-font text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 sm:text-sm',
@@ -52,7 +48,7 @@ export const StatsModal = ({
   if (gameStats.totalGames <= 0) {
     return (
       <BaseModal
-        title={SOLUTION_INDEX_TEXT}
+        title={t('SOLUTION_INDEX_TEXT', solutionIndex.toString())}
         isOpen={isOpen}
         handleClose={handleClose}
       >
@@ -65,7 +61,7 @@ export const StatsModal = ({
   }
   return (
     <BaseModal
-      title={SOLUTION_INDEX_TEXT}
+      title={t('SOLUTION_INDEX_TEXT', solutionIndex.toString())}
       isOpen={isOpen}
       handleClose={handleClose}
     >

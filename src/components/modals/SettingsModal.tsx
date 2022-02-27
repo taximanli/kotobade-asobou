@@ -5,7 +5,7 @@ import classnames from 'classnames'
 import { BaseModal } from './BaseModal'
 import { SettingsToggle } from './SettingsToggle'
 import { PREFERRED_DISPLAY_LANGUAGE } from '../../constants/settings'
-import { t, KOFI_LINK } from '../../constants/strings'
+import { t } from '../../constants/strings'
 import { getStoredIsHighContrastMode } from '../../lib/localStorage'
 import coffeeLogo from '../../images/ko-fi-com-taximanli.png';
 
@@ -49,7 +49,7 @@ export const SettingsModal = ({
       <div className="grid-cols-2 gap-4">
         <div className="flex justify-between items-center gap-8 mt-3">
           <div className="text-left">
-            <h2 className="local-font text-base text-gray-600 dark:text-gray-300">Language 言語</h2>
+            <h2 className="local-font text-base text-gray-600 dark:text-gray-300">{t('Language')}</h2>
           </div>
           <div className='w-36 text-right'>
             <button
@@ -58,7 +58,7 @@ export const SettingsModal = ({
             >
               <div className="flex mx-auto items-center">
                 <TranslateIcon className="h-6 w-6 -ml-1 mr-1" />
-                {displayLanguage === PREFERRED_DISPLAY_LANGUAGE ? 'English' : '日本語'}
+                {t('Switch to language')}
               </div>
             </button>
           </div>
@@ -118,10 +118,10 @@ export const SettingsModal = ({
         <div className="flex justify-between items-center gap-3 mt-3">
           <p className={aboutClassName}>
             {t('If you enjoy')}<br />
-            {' '}<a className="underline text-sm text-gray-600 dark:text-gray-300" href={KOFI_LINK} rel="noreferrer" target="_blank">{t('buying me a coffee')}</a>{' '}
+            {' '}<a className="underline text-sm text-gray-600 dark:text-gray-300" href={t('KOFI_LINK')} rel="noreferrer" target="_blank">{t('buying me a coffee')}</a>{' '}
             {t('if you wish')}
           </p>
-          <img className="w-9 h-9 cursor-pointer" src={coffeeLogo} title={t('Buy me a coffee?')} alt={t('Buy me a coffee?')} onClick={()=> window.open("https://ko-fi.com/taximanli", "_blank")} />
+          <img className="w-9 h-9 cursor-pointer" src={coffeeLogo} title={t('Buy me a coffee?')} alt={t('Buy me a coffee?')} onClick={()=> window.open(t('KOFI_LINK'), "_blank")} />
         </div>
       </div>
     </BaseModal>

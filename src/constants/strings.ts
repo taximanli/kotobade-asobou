@@ -1,5 +1,5 @@
 import { getStoredDisplayLanguage } from '../lib/localStorage'
-import { MAX_WORD_LENGTH } from '../constants/settings'
+import { PREFERRED_DISPLAY_LANGUAGE, MAX_WORD_LENGTH } from '../constants/settings'
 
 export const GAME_TITLE = process.env.REACT_APP_GAME_NAME!
 export const GAME_LINK = process.env.REACT_APP_GAME_LINK!
@@ -12,9 +12,12 @@ interface TranslationType {
 
 export let en = {} as TranslationType
 
-en['For keyboard input'] = 'Type kana here'
+en['KOFI_LINK'] = KOFI_LINK
+en['For keyboard input'] = 'Type かな here'
 
 en['Settings'] = 'Settings'
+en['Language'] = 'Language 言語'
+en['Switch to language'] = '日本語'
 en['Hint Mode'] = 'Hint Mode'
 en['Hard Mode'] = 'Hard Mode'
 en['Revealed hints'] = 'Revealed hints（$text1 and $text2）must be used in subsequent guesses.'
@@ -32,6 +35,8 @@ en['If you enjoy'] = 'If you enjoy the game and would like to support my work, p
 en['buying me a coffee'] = 'buying me a coffee'
 en['if you wish'] = '♥️'
 en['Buy me a coffee?'] = 'Buy me a coffee? ♥️ ' + KOFI_LINK
+
+en['SOLUTION_INDEX_TEXT'] = 'Game #$text1 on ' + (new Date()).toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })
 
 en['CORRECT_WORD_MESSAGE'] = 'The word for today was $text1.'
 en['WRONG_SPOT_MESSAGE'] = 'Must use $text1 in position $text2.'
@@ -53,9 +58,12 @@ en['BEST_STREAK_TEXT'] = 'Best Streak'
 
 export let ja = {} as TranslationType
 
+ja['KOFI_LINK'] = KOFI_LINK
 ja['For keyboard input'] = 'キーボード入力用'
 
 ja['Settings'] = '設定'
+ja['Language'] = 'Language 言語'
+ja['Switch to language'] = 'English'
 ja['Hint Mode'] = 'ヒントモード'
 ja['Hard Mode'] = 'ハードモード'
 ja['Revealed hints'] = '開示されたヒント（$text1 と $text2）を満たす単語だけが入力できます。'
@@ -73,6 +81,8 @@ ja['If you enjoy'] = 'このゲームを楽しんで、私のソフトウェア�
 ja['buying me a coffee'] = '私にコーヒーを一杯おごる'
 ja['if you wish'] = 'こともできます。'
 ja['Buy me a coffee?'] = '私にコーヒーを一杯？♥️ ' + KOFI_LINK
+
+ja['SOLUTION_INDEX_TEXT'] = (new Date()).toLocaleDateString("ja-JP", { year: 'numeric', month: 'short', day: 'numeric' }) + ' 第$text1回'
 
 ja['CORRECT_WORD_MESSAGE'] = '今日の正解は「$text1」です。'
 ja['WRONG_SPOT_MESSAGE'] = '$text2文字目は「$text1」でないといけません。'
@@ -94,7 +104,7 @@ ja['BEST_STREAK_TEXT'] = '最大連勝数'
 
 export const t = (index: string, text1: string = '', text2: string = '') => {
   const displayLanguage = getStoredDisplayLanguage()
-  let translationText = (displayLanguage === 'ja' ? ja[index] : en[index])
+  let translationText = (displayLanguage === PREFERRED_DISPLAY_LANGUAGE ? ja[index] : en[index])
   if (text1 !== '') translationText = translationText.replace('$text1', text1)
   if (text2 !== '') translationText = translationText.replace('$text2', text2)
   return translationText
@@ -131,9 +141,6 @@ export const WIN_MESSAGES = {
     'セーフ！',
   ]
 }
-
-export const NOT_CONTAINED_MESSAGE = (letter: string) =>
-  `Guess must contain ${letter}.「${letter}」を答えに含める必要があります。`
 
 export const ENTER_TEXT = '⏎'
 export const DELETE_TEXT = '⇦'

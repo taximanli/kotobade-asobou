@@ -1,3 +1,5 @@
+import { PREFERRED_DISPLAY_LANGUAGE } from '../constants/settings'
+
 const gameStateKey = 'gameState'
 const highContrastKey = 'highContrast'
 const hintModeKey = 'hintMode'
@@ -139,7 +141,7 @@ export const getStoredDisplayLanguage = () => {
   if (localStorage.getItem(displayLanguageKey)) {
     return localStorage.getItem(displayLanguageKey)
   } else {
-    const displayLanguage = (navigator.language === 'ja' ? 'ja' : 'en')
+    const displayLanguage = (navigator.language === PREFERRED_DISPLAY_LANGUAGE ? PREFERRED_DISPLAY_LANGUAGE : 'en')
     setStoredDisplayLanguage(displayLanguage)
     return displayLanguage
   }
