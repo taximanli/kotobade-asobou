@@ -1,5 +1,5 @@
 # Kotobade Asobou 言葉で遊ぼう
-## Daily Japanese word puzzle game 日本語版 日替わり単語パズルゲーム
+### Daily Japanese word puzzle game 日本語版 日替わり単語パズルゲーム
 
 Copyright (C) 2022
 
