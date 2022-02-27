@@ -1,6 +1,6 @@
 # Kotobade Asobou 言葉で遊ぼう
 
-This is the Japanese version of the word guessing game we all know and love. This game was forked from this open source version and has undergone massive redevelopment with extra game mode and new elements added to accommodate the unique features of the Japanese language.
+This is the Japanese version of the word guessing game we all know and love. This game was forked from this [open source version](https://github.com/cwackerfuss/react-wordle) and has undergone massive redevelopment with extra game mode and new elements added to accommodate the unique features of the Japanese language.
 
 If you enjoy the game and would like to support my work, please consider [buying me a coffee](https://ko-fi.com/taximanli)  ♥️
 
