@@ -219,7 +219,10 @@ function App() {
       return
     }
 
-    if (unicodeLength(currentInputText) === 0 || unicodeLength(currentGuess)) {
+    if (
+      unicodeLength(currentInputText) === 0 ||
+      unicodeLength(currentGuess) === 0
+    ) {
       return
     }
 
