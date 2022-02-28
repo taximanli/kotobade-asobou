@@ -178,10 +178,10 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
           Answer: <span className="local-font">にっこう</span>
         </p>
         <p className="text-left text-sm text-gray-500 dark:text-gray-300 pb-2">
-          The kana な has up and down arrows in its tile. It shows that the correct answer is not な but another kana from the same COLUMN in the kana chart (i.e. に/ぬ/ね/の).
+          The kana な has up and down arrows in its tile. It shows that the correct answer in this spot is not な but another kana from the same COLUMN in the kana chart (i.e. に/ぬ/ね/の).
         </p>
         <p className="text-left text-sm text-gray-500 dark:text-gray-300 pb-2">
-          The kana と has left and right arrows in its tile. It shows that the correct answer is not と but another kana from the same ROW in the kana chart (i.e. お/こ/そ...).
+          The kana と has left and right arrows in its tile. It shows that the correct answer in this spot is not と but another kana from the same ROW in the kana chart (i.e. お/こ/そ...).
         </p>
 
         <p className="text-left text-sm text-gray-500 dark:text-gray-300">

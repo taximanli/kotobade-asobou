@@ -1,19 +1,22 @@
 import { Key } from './Key'
 import { MAX_WORD_LENGTH } from '../../constants/settings'
 import { t, ENTER_TEXT, DELETE_TEXT } from '../../constants/strings'
+import { unicodeLength, unicodeSplit } from '../../lib/words'
 
 type Props = {
     onDelete: Function
     onEnter: Function
-    currentGuess: string
     setCurrentGuess: Function
+    setCurrentInputText: Function
+    currentInputText: string
 }
 
 export const Bar = ({
     onDelete,
     onEnter,
-    currentGuess,
     setCurrentGuess,
+    setCurrentInputText,
+    currentInputText,
 }: Props) => {
 
     const handleInput: React.ChangeEventHandler<HTMLInputElement> = (event) => {
@@ -21,7 +24,15 @@ export const Bar = ({
         const filteredInput = event.target.value.replace(/[^ぁあぃいぅうぇえぉおかがきぎくぐけげこごさざしじすずせぜそぞただちぢっつづてでとどなにぬねのはばぱひびぴふぶぷへべぺほぼぽまみむめもゃやゅゆょよらりるれろわをんゔー]/, '')
         setCurrentGuess(filteredInput)
         */
-        setCurrentGuess(event.target.value)
+
+        let inputText = event.target.value
+
+        if (unicodeLength(inputText) > MAX_WORD_LENGTH) {
+          inputText = unicodeSplit(inputText).slice(0, MAX_WORD_LENGTH).join('')
+        }
+
+        setCurrentGuess(inputText)
+        setCurrentInputText(event.target.value)
     }    
 
     const handleKeyUp: React.KeyboardEventHandler<HTMLInputElement> = (event) => {
@@ -46,12 +57,11 @@ export const Bar = ({
         </Key>
         <input 
             type="text"
-            name="word"
+            name="inputText"
             className="h-7 xs:h-8 sm:h-10 bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-600 border-solid border-2 mx-0.5 pl-2 text-lg sm:text-xl local-font rounded dark:text-white"
             size={10}
-            maxLength={MAX_WORD_LENGTH}
             placeholder={t('For keyboard input')}
-            value={currentGuess}
+            value={currentInputText}
             onChange={handleInput}
             onKeyUp={handleKeyUp}
         />

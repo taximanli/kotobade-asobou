@@ -43,7 +43,7 @@ en['WRONG_SPOT_MESSAGE'] = 'Must use $text1 in position $text2.'
 en['NOT_CONTAINED_MESSAGE'] = 'Guess must contain $text1.'
 
 en['GAME_COPIED_MESSAGE'] = 'Copied results to clipboard'
-en['NOT_ENOUGH_LETTERS_MESSAGE'] = 'Not enough letters'
+en['NOT_ENOUGH_LETTERS_MESSAGE'] = '$text1 has $text2 kana. Please enter a ' + MAX_WORD_LENGTH + '-kana word.'
 en['WORD_NOT_FOUND_MESSAGE'] = 'Not in word list'
 en['HINT_MODE_ALERT_MESSAGE'] = 'Hint Mode can only be turned off at the start'
 en['HARD_MODE_ALERT_MESSAGE'] = 'Hard Mode can only be turned on at the start'
@@ -89,7 +89,7 @@ ja['WRONG_SPOT_MESSAGE'] = '$text2文字目は「$text1」でないといけま�
 ja['NOT_CONTAINED_MESSAGE'] = '「$text1」を答えに含める必要があります。'
 
 ja['GAME_COPIED_MESSAGE'] = '成績をクリップボードにコピーしました'
-ja['NOT_ENOUGH_LETTERS_MESSAGE'] = MAX_WORD_LENGTH + '文字入力してください'
+ja['NOT_ENOUGH_LETTERS_MESSAGE'] = '「$text1」は $text2文字の単語です。' + MAX_WORD_LENGTH + '文字入力してください。'
 ja['WORD_NOT_FOUND_MESSAGE'] = 'この答えは単語リストにありません'
 ja['HINT_MODE_ALERT_MESSAGE'] = 'ヒントモードは、ゲーム開始時にのみオフにすることができます'
 ja['HARD_MODE_ALERT_MESSAGE'] = 'ハードモードは、ゲーム開始時にのみオンにすることができます'

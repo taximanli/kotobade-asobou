@@ -51,6 +51,7 @@ function App() {
   const { showError: showErrorAlert, showSuccess: showSuccessAlert } =
     useAlert()
   const [currentGuess, setCurrentGuess] = useState('')
+  const [currentInputText, setCurrentInputText] = useState('')
   const [isGameWon, setIsGameWon] = useState(false)
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false)
   const [isStatsModalOpen, setIsStatsModalOpen] = useState(false)
@@ -192,12 +193,24 @@ function App() {
       !isGameWon
     ) {
       setCurrentGuess(`${currentGuess}${value}`)
+      setCurrentInputText(`${currentInputText}${value}`)
     }
   }
 
   const onDelete = () => {
-    setCurrentGuess(
-      new GraphemeSplitter().splitGraphemes(currentGuess).slice(0, -1).join('')
+    if (currentGuess === currentInputText) {
+      setCurrentGuess(
+        new GraphemeSplitter()
+          .splitGraphemes(currentGuess)
+          .slice(0, -1)
+          .join('')
+      )
+    }
+    setCurrentInputText(
+      new GraphemeSplitter()
+        .splitGraphemes(currentInputText)
+        .slice(0, -1)
+        .join('')
     )
   }
 
@@ -206,11 +219,28 @@ function App() {
       return
     }
 
+    if (!(unicodeLength(currentInputText) === MAX_WORD_LENGTH)) {
+      return showErrorAlert(
+        t(
+          'NOT_ENOUGH_LETTERS_MESSAGE',
+          currentInputText,
+          unicodeLength(currentInputText).toString()
+        )
+      )
+    }
+
     if (!(unicodeLength(currentGuess) === MAX_WORD_LENGTH)) {
       setCurrentRowClass('jiggle')
-      return showErrorAlert(t('NOT_ENOUGH_LETTERS_MESSAGE'), {
-        onClose: clearCurrentRowClass,
-      })
+      return showErrorAlert(
+        t(
+          'NOT_ENOUGH_LETTERS_MESSAGE',
+          currentGuess,
+          unicodeLength(currentGuess).toString()
+        ),
+        {
+          onClose: clearCurrentRowClass,
+        }
+      )
     }
 
     if (!isWordInWordList(currentGuess)) {
@@ -247,6 +277,7 @@ function App() {
     ) {
       setGuesses([...guesses, currentGuess])
       setCurrentGuess('')
+      setCurrentInputText('')
 
       if (winningWord) {
         setStats(addStatsForCompletedGame(stats, guesses.length))
@@ -298,8 +329,9 @@ function App() {
       <Bar
         onDelete={onDelete}
         onEnter={onEnter}
-        currentGuess={currentGuess}
         setCurrentGuess={setCurrentGuess}
+        setCurrentInputText={setCurrentInputText}
+        currentInputText={currentInputText}
       />
       <Keyboard
         onChar={onChar}
