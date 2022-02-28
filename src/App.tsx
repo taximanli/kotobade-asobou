@@ -219,28 +219,19 @@ function App() {
       return
     }
 
+    if (currentInputText === '' || currentGuess === '') {
+      return
+    }
+
     if (!(unicodeLength(currentInputText) === MAX_WORD_LENGTH)) {
-      return showErrorAlert(
-        t(
-          'NOT_ENOUGH_LETTERS_MESSAGE',
-          currentInputText,
-          unicodeLength(currentInputText).toString()
-        )
-      )
+      return showErrorAlert(t('NOT_ENOUGH_LETTERS_MESSAGE', currentInputText))
     }
 
     if (!(unicodeLength(currentGuess) === MAX_WORD_LENGTH)) {
       setCurrentRowClass('jiggle')
-      return showErrorAlert(
-        t(
-          'NOT_ENOUGH_LETTERS_MESSAGE',
-          currentGuess,
-          unicodeLength(currentGuess).toString()
-        ),
-        {
-          onClose: clearCurrentRowClass,
-        }
-      )
+      return showErrorAlert(t('NOT_ENOUGH_LETTERS_MESSAGE', currentGuess), {
+        onClose: clearCurrentRowClass,
+      })
     }
 
     if (!isWordInWordList(currentGuess)) {
