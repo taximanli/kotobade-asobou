@@ -219,6 +219,10 @@ function App() {
       return
     }
 
+    if (unicodeLength(currentInputText) === 0 || unicodeLength(currentGuess)) {
+      return
+    }
+
     if (!(unicodeLength(currentInputText) === MAX_WORD_LENGTH)) {
       return showErrorAlert(
         t(
