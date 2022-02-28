@@ -74,7 +74,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
         </p>
 
         <p className="local-font text-left text-sm text-gray-500 dark:text-gray-300 pb-2">
-          ヒントモードは、下の五十音図を使用します。
+          ヒントモードでは、下の五十音図が使われます。
         </p>
 
         <div className="flex flex-col">
@@ -112,7 +112,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
         </div>
 
         <p className="local-font text-left text-sm text-gray-500 dark:text-gray-300 pb-2">
-          「行」は子音が同じであることを示します。<br />例えば「さ行」は「さ・し・す・せ・そ」です。清音、濁音、半濁音は区別することをご了承ください。
+          「行」は子音が同じであることを示します。<br />例えば「さ行」は「さ・し・す・せ・そ」です。清音、濁音、半濁音は区別することに注意してください。
         </p>
         <p className="local-font text-left text-sm text-gray-500 dark:text-gray-300 pb-2">
           「段」は母音が同じであることを示します。<br />例えば「う段」は「う・く・す・つ・ぬ・ふ・む・ゆ・る・ぐ・ず・づ・ぶ・ぷ」です。
