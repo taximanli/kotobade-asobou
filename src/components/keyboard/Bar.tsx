@@ -17,8 +17,11 @@ export const Bar = ({
 }: Props) => {
 
     const handleInput: React.ChangeEventHandler<HTMLInputElement> = (event) => {
+        /*
         const filteredInput = event.target.value.replace(/[^ぁあぃいぅうぇえぉおかがきぎくぐけげこごさざしじすずせぜそぞただちぢっつづてでとどなにぬねのはばぱひびぴふぶぷへべぺほぼぽまみむめもゃやゅゆょよらりるれろわをんゔー]/, '')
         setCurrentGuess(filteredInput)
+        */
+        setCurrentGuess(event.target.value)
     }    
 
     const handleKeyUp: React.KeyboardEventHandler<HTMLInputElement> = (event) => {
