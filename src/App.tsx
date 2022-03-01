@@ -1,7 +1,7 @@
 import {
-  InformationCircleIcon,
+  QuestionMarkCircleIcon,
   ChartBarIcon,
-  CogIcon,
+  DotsVerticalIcon,
 } from '@heroicons/react/outline'
 import { useState, useEffect } from 'react'
 import { Grid } from './components/grid/Grid'
@@ -103,11 +103,11 @@ function App() {
   useEffect(() => {
     // if no game state on load,
     // show the user the how-to info modal
-    if (!loadGameStateFromLocalStorage()) {
-      setTimeout(() => {
-        setIsInfoModalOpen(true)
-      }, WELCOME_INFO_MODAL_MS)
-    }
+    //if (!loadGameStateFromLocalStorage()) {
+    setTimeout(() => {
+      setIsInfoModalOpen(true)
+    }, WELCOME_INFO_MODAL_MS)
+    //}
   }, [])
 
   useEffect(() => {
@@ -292,7 +292,7 @@ function App() {
     <div className="pt-2 pb-8 max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div className="flex max-w-lg mx-auto items-center mb-2 md:mb-3 mt-0 md:mt-3">
         <h1 className="hidden">{GAME_TITLE}</h1>
-        <InformationCircleIcon
+        <QuestionMarkCircleIcon
           className="h-6 w-6 ml-3 cursor-pointer dark:stroke-white"
           onClick={() => setIsInfoModalOpen(true)}
         />
@@ -306,7 +306,7 @@ function App() {
           className="h-6 w-6 mr-2 cursor-pointer dark:stroke-white"
           onClick={() => setIsStatsModalOpen(true)}
         />
-        <CogIcon
+        <DotsVerticalIcon
           className="h-6 w-6 mr-3 cursor-pointer dark:stroke-white"
           onClick={() => setIsSettingsModalOpen(true)}
         />
