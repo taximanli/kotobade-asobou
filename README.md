@@ -4,10 +4,10 @@ This is the Japanese version of the word guessing game we all know and love. Thi
 
 If you enjoy the game and would like to support my work, please consider [buying me a coffee](https://ko-fi.com/taximanli)  ♥️
 
-これは、よく知られていて大好きな単語パズルゲームの 日本語版 です。このゲームは、この オープンソース版 からフォークして大規模なソフトウェア再開発を経ています。また、日本語の特徴を満たすために、新しいモードと要素が追加されています。
+これは、有名で人気な単語パズルゲームの 日本語版 です。このゲームは、この [オープンソース版](https://github.com/cwackerfuss/react-wordle) からフォークして大規模なソフトウェア再開発を経ています。また、日本語の特徴に合わせて、新しいモードと要素が追加されています。
 
 このゲームを楽しんで、私のソフトウェア開発をサポートしたい場合は、
-望めば ♥️ [私にコーヒーを一杯おごる](https://ko-fi.com/taximanli) こともできます。
+よろしければ ♥️ [私にコーヒーを一杯おごる](https://ko-fi.com/taximanli) こともできます。
 
 ## How to play
 
