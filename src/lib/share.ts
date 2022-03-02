@@ -2,6 +2,7 @@ import { getGuessStatuses } from './statuses'
 import { solutionIndex } from './words'
 import { GAME_TITLE, GAME_LINK } from '../constants/strings'
 import { MAX_CHALLENGES } from '../constants/settings'
+import { loadShareStatusFromLocalStorage } from '../lib/localStorage'
 
 export const shareStatus = (
   guesses: string[],
@@ -11,6 +12,13 @@ export const shareStatus = (
   isDarkMode: boolean,
   isHighContrastMode: boolean
 ) => {
+  const loaded = loadShareStatusFromLocalStorage()
+
+  if (loaded) {
+    isHintMode = loaded.isHintMode
+    isHardMode = loaded.isHardMode
+  }
+
   navigator.clipboard.writeText(
     `${GAME_TITLE} ${solutionIndex} ${
       lost ? 'X' : guesses.length

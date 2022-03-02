@@ -1,9 +1,36 @@
 import { PREFERRED_DISPLAY_LANGUAGE } from '../constants/settings'
 
 const gameStateKey = 'gameState'
+const shareStatusKey = 'shareStatus'
 const highContrastKey = 'highContrast'
 const hintModeKey = 'hintMode'
 const displayLanguageKey = 'displayLanguage'
+
+type StoredShareStatus = {
+  isHintMode: boolean
+  isHardMode: boolean
+}
+
+export const saveShareStatusToLocalStorage = (isHintMode: boolean, isHardMode: boolean) => {
+  const shareStatus = {
+    isHintMode,
+    isHardMode
+  }
+  localStorage.setItem(shareStatusKey, JSON.stringify(shareStatus))
+}
+
+export const removeShareStatusFromLocalStorage = () => {
+  localStorage.removeItem(shareStatusKey)
+}
+
+export const loadShareStatusFromLocalStorage = () => {
+  const state = localStorage.getItem(shareStatusKey)
+  if (state) {
+    return (JSON.parse(state) as StoredShareStatus)
+  } else {
+    return null
+  }
+}
 
 type StoredGameState = {
   guesses: string[]

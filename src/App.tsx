@@ -28,6 +28,8 @@ import {
 } from './lib/words'
 import { addStatsForCompletedGame, loadStats } from './lib/stats'
 import {
+  saveShareStatusToLocalStorage,
+  removeShareStatusFromLocalStorage,
   loadGameStateFromLocalStorage,
   saveGameStateToLocalStorage,
   setStoredIsHighContrastMode,
@@ -75,6 +77,7 @@ function App() {
   const [guesses, setGuesses] = useState<string[]>(() => {
     const loaded = loadGameStateFromLocalStorage()
     if (loaded?.solution !== solution) {
+      removeShareStatusFromLocalStorage()
       return []
     }
     const gameWasWon = loaded.guesses.includes(solution)
@@ -104,11 +107,13 @@ function App() {
     // if no game state on load,
     // show the user the how-to info modal
     //if (!loadGameStateFromLocalStorage()) {
-    setTimeout(() => {
-      setIsInfoModalOpen(true)
-    }, WELCOME_INFO_MODAL_MS)
+    if (!(isGameWon || isGameLost)) {
+      setTimeout(() => {
+        setIsInfoModalOpen(true)
+      }, WELCOME_INFO_MODAL_MS)
+    }
     //}
-  }, [])
+  }, [isGameWon, isGameLost])
 
   useEffect(() => {
     if (isDarkMode) {
@@ -130,7 +135,12 @@ function App() {
   }
 
   const handleHintMode = (isHint: boolean) => {
-    if (guesses.length === 0 || !getStoredIsHintMode()) {
+    if (
+      guesses.length === 0 ||
+      isGameWon ||
+      isGameLost ||
+      !getStoredIsHintMode()
+    ) {
       setIsHintMode(isHint)
       setStoredIsHintMode(isHint)
     } else {
@@ -139,7 +149,12 @@ function App() {
   }
 
   const handleHardMode = (isHard: boolean) => {
-    if (guesses.length === 0 || localStorage.getItem('gameMode') === 'hard') {
+    if (
+      guesses.length === 0 ||
+      isGameWon ||
+      isGameLost ||
+      localStorage.getItem('gameMode') === 'hard'
+    ) {
       setIsHardMode(isHard)
       localStorage.setItem('gameMode', isHard ? 'hard' : 'normal')
     } else {
@@ -269,6 +284,7 @@ function App() {
       setGuesses([...guesses, currentGuess])
       setCurrentGuess('')
       setCurrentInputText('')
+      saveShareStatusToLocalStorage(isHintMode, isHardMode)
 
       if (winningWord) {
         setStats(addStatsForCompletedGame(stats, guesses.length))
