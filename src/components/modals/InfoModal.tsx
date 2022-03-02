@@ -161,11 +161,11 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
         </p>
 
         <p className="local-font text-lg leading-6 font-medium text-gray-900 dark:text-gray-100 mt-2 md:mt-4 mb-2">
-          Hint Mode
+          Hint Mode (ON/OFF in Settings)
         </p>
 
         <p className="text-left text-sm text-gray-500 dark:text-gray-300">
-          Hint Mode can be switched ON/OFF in Settings. The Settings icon ⋮ is on top right of screen. Two extra types of hints are available when Hint Mode is switched on.
+          Hint Mode can be turned ON/OFF in Settings. The Settings icon ⋮ is on top right of screen. Two extra types of hints are available when Hint Mode is on.
         </p>
         <div className="flex justify-center mb-2 mt-2 md:mt-4">
           <Cell value="な" status="consonant" isRevealing={true} isCompleted={true} />
