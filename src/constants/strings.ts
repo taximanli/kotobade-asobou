@@ -71,7 +71,7 @@ ja['Dark Mode'] = 'ダークモード'
 ja['High Contrast Mode'] = 'ハイコントラストモード'
 ja['Feedback'] = 'フィードバック'
 
-ja['This game is the'] = '「言葉で遊ぼう」は、有名で人気な単語パズルゲームの'
+ja['This game is the'] = '言葉で遊ぼうは、有名で人気な単語パズルゲームの'
 ja['Japanese version'] = '日本語版'
 ja['word guessing game'] = 'です。このゲームは、この'
 ja['open source version'] = 'オープンソース版'

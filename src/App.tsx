@@ -135,12 +135,7 @@ function App() {
   }
 
   const handleHintMode = (isHint: boolean) => {
-    if (
-      guesses.length === 0 ||
-      isGameWon ||
-      isGameLost ||
-      !getStoredIsHintMode()
-    ) {
+    if (guesses.length === 0 || !getStoredIsHintMode()) {
       setIsHintMode(isHint)
       setStoredIsHintMode(isHint)
     } else {
@@ -149,12 +144,7 @@ function App() {
   }
 
   const handleHardMode = (isHard: boolean) => {
-    if (
-      guesses.length === 0 ||
-      isGameWon ||
-      isGameLost ||
-      localStorage.getItem('gameMode') === 'hard'
-    ) {
+    if (guesses.length === 0 || localStorage.getItem('gameMode') === 'hard') {
       setIsHardMode(isHard)
       localStorage.setItem('gameMode', isHard ? 'hard' : 'normal')
     } else {
@@ -312,7 +302,7 @@ function App() {
           className="h-6 w-6 ml-3 cursor-pointer dark:stroke-white"
           onClick={() => setIsInfoModalOpen(true)}
         />
-        <span className="local-font text-xs sm:text-sm md:text-base lg:text-lg font-bold ml-2.5 shrink dark:text-white">
+        <span className="local-font text-sm sm:text-sm md:text-base lg:text-lg font-bold ml-2.5 shrink dark:text-white">
           {gameHeading[0]} {gameHeading[1]}
         </span>
         <span className="local-font text-xl sm:text-2xl font-bold ml-2.5 grow dark:text-white">

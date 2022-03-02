@@ -72,7 +72,6 @@ export const SettingsModal = ({
           flag={isHintMode}
           handleFlag={handleHintMode}
         />
-        <hr className="mt-2 mb-2" />
         <SettingsToggle
           settingName={t('Hard Mode')}
           settingDescription={hardModeSettingDescription}
@@ -86,7 +85,6 @@ export const SettingsModal = ({
           flag={isDarkMode}
           handleFlag={handleDarkMode}
         />
-        <hr className="mt-2 mb-2" />
         <SettingsToggle
           settingName={t('High Contrast Mode')}
           settingDescription=""
@@ -117,7 +115,7 @@ export const SettingsModal = ({
         </div>
         <div className="flex justify-between items-center gap-3 mt-3">
           <p className={aboutClassName}>
-            {t('If you enjoy')}<br />
+            {t('If you enjoy')}
             {' '}<a className="underline text-sm text-gray-600 dark:text-gray-300" href={t('KOFI_LINK')} rel="noreferrer" target="_blank">{t('buying me a coffee')}</a>{' '}
             {t('if you wish')}
           </p>
