@@ -112,7 +112,7 @@ ja['BEST_STREAK_TEXT'] = '最大連勝数'
 
 export const t = (index: string, text1: string = '', text2: string = '') => {
   const displayLanguage = getStoredDisplayLanguage()
-  let translationText = (displayLanguage === PREFERRED_DISPLAY_LANGUAGE ? ja[index] : en[index])
+  let translationText = (displayLanguage === PREFERRED_DISPLAY_LANGUAGE ? ja[index] : en[index]) || index
   if (text1 !== '') translationText = translationText.replace('$text1', text1)
   if (text2 !== '') translationText = translationText.replace('$text2', text2)
   return translationText
