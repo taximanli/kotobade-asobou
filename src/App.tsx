@@ -135,7 +135,12 @@ function App() {
   }
 
   const handleHintMode = (isHint: boolean) => {
-    if (guesses.length === 0 || !getStoredIsHintMode()) {
+    if (
+      guesses.length === 0 ||
+      isGameWon ||
+      isGameLost ||
+      !getStoredIsHintMode()
+    ) {
       setIsHintMode(isHint)
       setStoredIsHintMode(isHint)
     } else {
@@ -144,7 +149,12 @@ function App() {
   }
 
   const handleHardMode = (isHard: boolean) => {
-    if (guesses.length === 0 || localStorage.getItem('gameMode') === 'hard') {
+    if (
+      guesses.length === 0 ||
+      isGameWon ||
+      isGameLost ||
+      localStorage.getItem('gameMode') === 'hard'
+    ) {
       setIsHardMode(isHard)
       localStorage.setItem('gameMode', isHard ? 'hard' : 'normal')
     } else {

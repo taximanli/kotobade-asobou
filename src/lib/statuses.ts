@@ -1,5 +1,5 @@
 import { solution, unicodeSplit } from './words'
-import { getStoredIsHintMode } from './localStorage'
+import { getStoredIsHintMode, loadShareStatusFromLocalStorage } from './localStorage'
 import { CLOSE_STATUS_KANA, CONSONANT_STATUS_KANA, VOWEL_STATUS_KANA } from '../constants/strings'
 
 export type CharStatus = 'absent' | 'vowel' | 'consonant' | 'present' | 'close' | 'correct'
@@ -9,7 +9,13 @@ export const getStatuses = (
 ): { [key: string]: CharStatus } => {
   const charObj: { [key: string]: CharStatus } = {}
   const splitSolution = unicodeSplit(solution)
-  const isHintMode = getStoredIsHintMode()
+  let isHintMode = getStoredIsHintMode()
+
+  const loaded = loadShareStatusFromLocalStorage()
+
+  if (loaded) {
+    isHintMode = loaded.isHintMode
+  }
 
   guesses.forEach((word) => {
     unicodeSplit(word).forEach((letter, i) => {
@@ -65,7 +71,13 @@ export const getGuessStatuses = (guess: string): CharStatus[] => {
 
   const statuses: CharStatus[] = Array.from(Array(guess.length))
 
-  const isHintMode = getStoredIsHintMode()
+  let isHintMode = getStoredIsHintMode()
+
+  const loaded = loadShareStatusFromLocalStorage()
+
+  if (loaded) {
+    isHintMode = loaded.isHintMode
+  }
 
   // handle all correct cases first
   splitGuess.forEach((letter, i) => {
