@@ -28,14 +28,14 @@ export const getStatuses = (
             return (charObj[letter] = 'consonant')
           }
         })
-      }
 
-      CLOSE_STATUS_KANA.forEach((kana) => {
-        if (kana.includes(letter) && kana.includes(splitSolution[i])) {
-          //make status close
-          return (charObj[letter] = 'close')
-        }
-      })
+        CLOSE_STATUS_KANA.forEach((kana) => {
+          if (kana.includes(letter) && kana.includes(splitSolution[i])) {
+            //make status close
+            return (charObj[letter] = 'close')
+          }
+        })
+      }
 
       if (!splitSolution.includes(letter) && !['vowel', 'consonant', 'present', 'close', 'correct'].includes(charObj[letter])) {
         // make status absent
@@ -79,13 +79,15 @@ export const getGuessStatuses = (guess: string): CharStatus[] => {
   splitGuess.forEach((letter, i) => {
     if (statuses[i]) return
 
-    CLOSE_STATUS_KANA.forEach((kana) => {
-      if (kana.includes(letter) && kana.includes(splitSolution[i])) {
-        // handles status close
-        statuses[i] = 'close'
-        return
-      }
-    })
+    if (isHintMode) {
+      CLOSE_STATUS_KANA.forEach((kana) => {
+        if (kana.includes(letter) && kana.includes(splitSolution[i])) {
+          // handles status close
+          statuses[i] = 'close'
+          return
+        }
+      })
+    }
 
     if (statuses[i]) return
 

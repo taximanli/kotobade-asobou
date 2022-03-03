@@ -22,6 +22,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
   const headingClassNames = 'local-font text-sm font-bold text-gray-500 dark:text-gray-300 border'
   const rowClassNames = ''
   const cellClassNames = 'local-font text-sm text-gray-500 dark:text-gray-300 border align-top'
+  const dividerClassNames = 'h-3'
 
   if (displayLanguage === PREFERRED_DISPLAY_LANGUAGE) {
     return (
@@ -66,10 +67,10 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
           答えは「にっこう」
         </p>
         <p className="local-font text-left text-sm text-gray-500 dark:text-gray-300 pb-2">
-          「な」の正方形には上下の矢印があります。正解は「な」ではなく、五十音図内の同じ行に他の仮名（に・ぬ・ね・の）であることを示しています。
+          「な」の正方形には上下の矢印があります。この位置に正解は「な」ではなく、五十音図内の同じ行に他の仮名（に・ぬ・ね・の）であることを示しています。
         </p>
         <p className="local-font text-left text-sm text-gray-500 dark:text-gray-300 pb-2">
-          「と」の正方形には左右の矢印があります。正解は「と」ではなく、五十音図内の同じ段に他の仮名（お・こ・そ等）であることを示しています。<br />
+          「と」の正方形には左右の矢印があります。この位置に正解は「と」ではなく、五十音図内の同じ段に他の仮名（お・こ・そ等）であることを示しています。<br />
         </p>
 
         <p className="local-font text-left text-sm text-gray-500 dark:text-gray-300 pb-2">
@@ -83,25 +84,43 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
                 <table className="min-w-full">
                   <thead className={rowClassNames}>
                     <tr>
-                      <td colSpan={16} className={headingClassNames}><span className={arrowClassNames}>↓↑</span> 行の一致 <span className={arrowClassNames}>↓↑</span></td>
+                      <td colSpan={11} className={headingClassNames}><span className={arrowClassNames}>↓↑</span> 行の一致 <span className={arrowClassNames}>↓↑</span></td>
                     </tr>
                   </thead>
                   <tbody>
                     <tr className={rowClassNames}>
-                      <td className={cellClassNames}>ぱ</td><td className={cellClassNames}>ば</td><td className={cellClassNames}>だ</td><td className={cellClassNames}>ざ</td><td className={cellClassNames}>が</td><td className={cellClassNames}>わ</td><td className={cellClassNames}>ら</td><td className={cellClassNames}>や<br />ゃ</td><td className={cellClassNames}>ま</td><td className={cellClassNames}>は</td><td className={cellClassNames}>な</td><td className={cellClassNames}>た</td><td className={cellClassNames}>さ</td><td className={cellClassNames}>か</td><td className={cellClassNames}>あ<br />ぁ</td>
-                      <td rowSpan={5} className={headingClassNames}><span className={arrowClassNames}>→<br />←</span><br />段<br />の<br />一<br />致<br /><span className={arrowClassNames}>→<br />←</span></td>
+                      <td className={cellClassNames}>わ</td><td className={cellClassNames}>ら</td><td className={cellClassNames}>や</td><td className={cellClassNames}>ま</td><td className={cellClassNames}>　は</td><td className={cellClassNames}>な</td><td className={cellClassNames}>　た</td><td className={cellClassNames}>さ</td><td className={cellClassNames}>か</td><td className={cellClassNames}>あ</td>
+                      <td rowSpan={11} className={headingClassNames}><span className={arrowClassNames}>→<br />←</span><br />段<br />の<br />一<br />致<br /><span className={arrowClassNames}>→<br />←</span></td>
                     </tr>
                     <tr className={rowClassNames}>
-                      <td className={cellClassNames}>ぴ</td><td className={cellClassNames}>び</td><td className={cellClassNames}>ぢ</td><td className={cellClassNames}>じ</td><td className={cellClassNames}>ぎ</td><td className={cellClassNames}></td><td className={cellClassNames}>り</td><td className={cellClassNames}></td><td className={cellClassNames}>み</td><td className={cellClassNames}>ひ</td><td className={cellClassNames}>に</td><td className={cellClassNames}>ち</td><td className={cellClassNames}>し</td><td className={cellClassNames}>き</td><td className={cellClassNames}>い<br />ぃ</td>
+                      <td className={cellClassNames}></td><td className={cellClassNames}>り</td><td className={cellClassNames}></td><td className={cellClassNames}>み</td><td className={cellClassNames}>　ひ</td><td className={cellClassNames}>に</td><td className={cellClassNames}>　ち</td><td className={cellClassNames}>し</td><td className={cellClassNames}>き</td><td className={cellClassNames}>い</td>
                     </tr>
                     <tr className={rowClassNames}>
-                      <td className={cellClassNames}>ぷ</td><td className={cellClassNames}>ぶ</td><td className={cellClassNames}>づ</td><td className={cellClassNames}>ず</td><td className={cellClassNames}>ぐ</td><td className={cellClassNames}></td><td className={cellClassNames}>る</td><td className={cellClassNames}>ゆ<br />ゅ</td><td className={cellClassNames}>む</td><td className={cellClassNames}>ふ</td><td className={cellClassNames}>ぬ</td><td className={cellClassNames}>つ<br />っ</td><td className={cellClassNames}>す</td><td className={cellClassNames}>く</td><td className={cellClassNames}>う<br />ぅ</td>
+                      <td className={cellClassNames}></td><td className={cellClassNames}>る</td><td className={cellClassNames}>ゆ</td><td className={cellClassNames}>む</td><td className={cellClassNames}>　ふ</td><td className={cellClassNames}>ぬ</td><td className={cellClassNames}>　つ</td><td className={cellClassNames}>す</td><td className={cellClassNames}>く</td><td className={cellClassNames}>う</td>
                     </tr>
                     <tr className={rowClassNames}>
-                      <td className={cellClassNames}>ぺ</td><td className={cellClassNames}>べ</td><td className={cellClassNames}>で</td><td className={cellClassNames}>ぜ</td><td className={cellClassNames}>げ</td><td className={cellClassNames}></td><td className={cellClassNames}>れ</td><td className={cellClassNames}></td><td className={cellClassNames}>め</td><td className={cellClassNames}>へ</td><td className={cellClassNames}>ね</td><td className={cellClassNames}>て</td><td className={cellClassNames}>せ</td><td className={cellClassNames}>け</td><td className={cellClassNames}>え<br />ぇ</td>
+                      <td className={cellClassNames}></td><td className={cellClassNames}>れ</td><td className={cellClassNames}></td><td className={cellClassNames}>め</td><td className={cellClassNames}>　へ</td><td className={cellClassNames}>ね</td><td className={cellClassNames}>　て</td><td className={cellClassNames}>せ</td><td className={cellClassNames}>け</td><td className={cellClassNames}>え</td>
                     </tr>
                     <tr className={rowClassNames}>
-                      <td className={cellClassNames}>ぽ</td><td className={cellClassNames}>ぼ</td><td className={cellClassNames}>ど</td><td className={cellClassNames}>ぞ</td><td className={cellClassNames}>ご</td><td className={cellClassNames}>を</td><td className={cellClassNames}>ろ</td><td className={cellClassNames}>よ<br />ょ</td><td className={cellClassNames}>も</td><td className={cellClassNames}>ほ</td><td className={cellClassNames}>の</td><td className={cellClassNames}>と</td><td className={cellClassNames}>そ</td><td className={cellClassNames}>こ</td><td className={cellClassNames}>お<br />ぉ</td>
+                      <td className={cellClassNames}>を</td><td className={cellClassNames}>ろ</td><td className={cellClassNames}>よ</td><td className={cellClassNames}>も</td><td className={cellClassNames}>　ほ</td><td className={cellClassNames}>の</td><td className={cellClassNames}>　と</td><td className={cellClassNames}>そ</td><td className={cellClassNames}>こ</td><td className={cellClassNames}>お</td>
+                    </tr>
+                    <tr className={rowClassNames}>
+                      <td colSpan={10} className={dividerClassNames}></td>
+                    </tr>
+                    <tr className={rowClassNames}>
+                      <td className={cellClassNames}></td><td className={cellClassNames}></td><td className={cellClassNames}>ゃ</td><td className={cellClassNames}></td><td className={cellClassNames}>ぱば</td><td className={cellClassNames}></td><td className={cellClassNames}>　だ</td><td className={cellClassNames}>ざ</td><td className={cellClassNames}>が</td><td className={cellClassNames}>ぁ</td>
+                    </tr>
+                    <tr className={rowClassNames}>
+                      <td className={cellClassNames}></td><td className={cellClassNames}></td><td className={cellClassNames}></td><td className={cellClassNames}></td><td className={cellClassNames}>ぴび</td><td className={cellClassNames}></td><td className={cellClassNames}>　ぢ</td><td className={cellClassNames}>じ</td><td className={cellClassNames}>ぎ</td><td className={cellClassNames}>ぃ</td>
+                    </tr>
+                    <tr className={rowClassNames}>
+                      <td className={cellClassNames}></td><td className={cellClassNames}></td><td className={cellClassNames}>ゅ</td><td className={cellClassNames}></td><td className={cellClassNames}>ぷぶ</td><td className={cellClassNames}></td><td className={cellClassNames}>っづ</td><td className={cellClassNames}>ず</td><td className={cellClassNames}>ぐ</td><td className={cellClassNames}>ぅ</td>
+                    </tr>
+                    <tr className={rowClassNames}>
+                      <td className={cellClassNames}></td><td className={cellClassNames}></td><td className={cellClassNames}></td><td className={cellClassNames}></td><td className={cellClassNames}>ぺべ</td><td className={cellClassNames}></td><td className={cellClassNames}>　で</td><td className={cellClassNames}>ぜ</td><td className={cellClassNames}>げ</td><td className={cellClassNames}>ぇ</td>
+                    </tr>
+                    <tr className={rowClassNames}>
+                      <td className={cellClassNames}></td><td className={cellClassNames}></td><td className={cellClassNames}>ょ</td><td className={cellClassNames}></td><td className={cellClassNames}>ぽぼ</td><td className={cellClassNames}></td><td className={cellClassNames}>　ど</td><td className={cellClassNames}>ぞ</td><td className={cellClassNames}>ご</td><td className={cellClassNames}>ぉ</td>
                     </tr>
                   </tbody>
                 </table>
@@ -111,10 +130,10 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
         </div>
 
         <p className="local-font text-left text-sm text-gray-500 dark:text-gray-300 pb-2">
-          「行」は子音が同じであることを示します。<br />例えば「さ行」は「さ・し・す・せ・そ」です。清音、濁音、半濁音は区別することに注意してください。
+          「行」は子音が同じ（または近い）であることを示します。例えば「か行」は「か・き・く・け・こ・が・ぎ・ぐ・げ・ご」です。清音、濁音、半濁音は区別しないことに注意してください。
         </p>
         <p className="local-font text-left text-sm text-gray-500 dark:text-gray-300 pb-2">
-          「段」は母音が同じであることを示します。<br />例えば「う段」は「う・く・す・つ・ぬ・ふ・む・ゆ・る・ぐ・ず・づ・ぶ・ぷ」です。
+          「段」は母音が同じであることを示します。例えば「う段」は「う・く・す・つ・ぬ・ふ・む・ゆ・る・ぐ・ず・づ・ぶ・ぷ」です。
         </p>
         <p className="local-font text-left text-sm text-gray-500 dark:text-gray-300">
           撥音「ん」と長音符「ー」は他のどの行と段にも一致しません。
@@ -194,38 +213,56 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
                 <table className="min-w-full">
                   <thead className={rowClassNames}>
                     <tr>
-                      <td colSpan={16} className={headingClassNames}><span className={arrowClassNames}>↓↑</span> COLUMN <span className={arrowClassNames}>↓↑</span></td>
+                      <td colSpan={11} className={headingClassNames}><span className={arrowClassNames}>↓↑</span> COLUMN <span className={arrowClassNames}>↓↑</span></td>
                     </tr>
                   </thead>
                   <tbody>
                     <tr className={rowClassNames}>
-                      <td className={cellClassNames}>ぱ</td><td className={cellClassNames}>ば</td><td className={cellClassNames}>だ</td><td className={cellClassNames}>ざ</td><td className={cellClassNames}>が</td><td className={cellClassNames}>わ</td><td className={cellClassNames}>ら</td><td className={cellClassNames}>や<br />ゃ</td><td className={cellClassNames}>ま</td><td className={cellClassNames}>は</td><td className={cellClassNames}>な</td><td className={cellClassNames}>た</td><td className={cellClassNames}>さ</td><td className={cellClassNames}>か</td><td className={cellClassNames}>あ<br />ぁ</td>
-                      <td rowSpan={5} className={headingClassNames}><span className={arrowClassNames}>→<br />←</span><br />R<br />O<br />W<br /><span className={arrowClassNames}>→<br />←</span></td>
+                      <td className={cellClassNames}>わ</td><td className={cellClassNames}>ら</td><td className={cellClassNames}>や</td><td className={cellClassNames}>ま</td><td className={cellClassNames}>　は</td><td className={cellClassNames}>な</td><td className={cellClassNames}>　た</td><td className={cellClassNames}>さ</td><td className={cellClassNames}>か</td><td className={cellClassNames}>あ</td>
+                      <td rowSpan={11} className={headingClassNames}><span className={arrowClassNames}>→<br />←</span><br />R<br />O<br />W<br /><span className={arrowClassNames}>→<br />←</span></td>
                     </tr>
                     <tr className={rowClassNames}>
-                      <td className={cellClassNames}>ぴ</td><td className={cellClassNames}>び</td><td className={cellClassNames}>ぢ</td><td className={cellClassNames}>じ</td><td className={cellClassNames}>ぎ</td><td className={cellClassNames}></td><td className={cellClassNames}>り</td><td className={cellClassNames}></td><td className={cellClassNames}>み</td><td className={cellClassNames}>ひ</td><td className={cellClassNames}>に</td><td className={cellClassNames}>ち</td><td className={cellClassNames}>し</td><td className={cellClassNames}>き</td><td className={cellClassNames}>い<br />ぃ</td>
+                      <td className={cellClassNames}></td><td className={cellClassNames}>り</td><td className={cellClassNames}></td><td className={cellClassNames}>み</td><td className={cellClassNames}>　ひ</td><td className={cellClassNames}>に</td><td className={cellClassNames}>　ち</td><td className={cellClassNames}>し</td><td className={cellClassNames}>き</td><td className={cellClassNames}>い</td>
                     </tr>
                     <tr className={rowClassNames}>
-                      <td className={cellClassNames}>ぷ</td><td className={cellClassNames}>ぶ</td><td className={cellClassNames}>づ</td><td className={cellClassNames}>ず</td><td className={cellClassNames}>ぐ</td><td className={cellClassNames}></td><td className={cellClassNames}>る</td><td className={cellClassNames}>ゆ<br />ゅ</td><td className={cellClassNames}>む</td><td className={cellClassNames}>ふ</td><td className={cellClassNames}>ぬ</td><td className={cellClassNames}>つ<br />っ</td><td className={cellClassNames}>す</td><td className={cellClassNames}>く</td><td className={cellClassNames}>う<br />ぅ</td>
+                      <td className={cellClassNames}></td><td className={cellClassNames}>る</td><td className={cellClassNames}>ゆ</td><td className={cellClassNames}>む</td><td className={cellClassNames}>　ふ</td><td className={cellClassNames}>ぬ</td><td className={cellClassNames}>　つ</td><td className={cellClassNames}>す</td><td className={cellClassNames}>く</td><td className={cellClassNames}>う</td>
                     </tr>
                     <tr className={rowClassNames}>
-                      <td className={cellClassNames}>ぺ</td><td className={cellClassNames}>べ</td><td className={cellClassNames}>で</td><td className={cellClassNames}>ぜ</td><td className={cellClassNames}>げ</td><td className={cellClassNames}></td><td className={cellClassNames}>れ</td><td className={cellClassNames}></td><td className={cellClassNames}>め</td><td className={cellClassNames}>へ</td><td className={cellClassNames}>ね</td><td className={cellClassNames}>て</td><td className={cellClassNames}>せ</td><td className={cellClassNames}>け</td><td className={cellClassNames}>え<br />ぇ</td>
+                      <td className={cellClassNames}></td><td className={cellClassNames}>れ</td><td className={cellClassNames}></td><td className={cellClassNames}>め</td><td className={cellClassNames}>　へ</td><td className={cellClassNames}>ね</td><td className={cellClassNames}>　て</td><td className={cellClassNames}>せ</td><td className={cellClassNames}>け</td><td className={cellClassNames}>え</td>
                     </tr>
                     <tr className={rowClassNames}>
-                      <td className={cellClassNames}>ぽ</td><td className={cellClassNames}>ぼ</td><td className={cellClassNames}>ど</td><td className={cellClassNames}>ぞ</td><td className={cellClassNames}>ご</td><td className={cellClassNames}>を</td><td className={cellClassNames}>ろ</td><td className={cellClassNames}>よ<br />ょ</td><td className={cellClassNames}>も</td><td className={cellClassNames}>ほ</td><td className={cellClassNames}>の</td><td className={cellClassNames}>と</td><td className={cellClassNames}>そ</td><td className={cellClassNames}>こ</td><td className={cellClassNames}>お<br />ぉ</td>
+                      <td className={cellClassNames}>を</td><td className={cellClassNames}>ろ</td><td className={cellClassNames}>よ</td><td className={cellClassNames}>も</td><td className={cellClassNames}>　ほ</td><td className={cellClassNames}>の</td><td className={cellClassNames}>　と</td><td className={cellClassNames}>そ</td><td className={cellClassNames}>こ</td><td className={cellClassNames}>お</td>
+                    </tr>
+                    <tr className={rowClassNames}>
+                      <td colSpan={10} className={dividerClassNames}></td>
+                    </tr>
+                    <tr className={rowClassNames}>
+                      <td className={cellClassNames}></td><td className={cellClassNames}></td><td className={cellClassNames}>ゃ</td><td className={cellClassNames}></td><td className={cellClassNames}>ぱば</td><td className={cellClassNames}></td><td className={cellClassNames}>　だ</td><td className={cellClassNames}>ざ</td><td className={cellClassNames}>が</td><td className={cellClassNames}>ぁ</td>
+                    </tr>
+                    <tr className={rowClassNames}>
+                      <td className={cellClassNames}></td><td className={cellClassNames}></td><td className={cellClassNames}></td><td className={cellClassNames}></td><td className={cellClassNames}>ぴび</td><td className={cellClassNames}></td><td className={cellClassNames}>　ぢ</td><td className={cellClassNames}>じ</td><td className={cellClassNames}>ぎ</td><td className={cellClassNames}>ぃ</td>
+                    </tr>
+                    <tr className={rowClassNames}>
+                      <td className={cellClassNames}></td><td className={cellClassNames}></td><td className={cellClassNames}>ゅ</td><td className={cellClassNames}></td><td className={cellClassNames}>ぷぶ</td><td className={cellClassNames}></td><td className={cellClassNames}>っづ</td><td className={cellClassNames}>ず</td><td className={cellClassNames}>ぐ</td><td className={cellClassNames}>ぅ</td>
+                    </tr>
+                    <tr className={rowClassNames}>
+                      <td className={cellClassNames}></td><td className={cellClassNames}></td><td className={cellClassNames}></td><td className={cellClassNames}></td><td className={cellClassNames}>ぺべ</td><td className={cellClassNames}></td><td className={cellClassNames}>　で</td><td className={cellClassNames}>ぜ</td><td className={cellClassNames}>げ</td><td className={cellClassNames}>ぇ</td>
+                    </tr>
+                    <tr className={rowClassNames}>
+                      <td className={cellClassNames}></td><td className={cellClassNames}></td><td className={cellClassNames}>ょ</td><td className={cellClassNames}></td><td className={cellClassNames}>ぽぼ</td><td className={cellClassNames}></td><td className={cellClassNames}>　ど</td><td className={cellClassNames}>ぞ</td><td className={cellClassNames}>ご</td><td className={cellClassNames}>ぉ</td>
                     </tr>
                   </tbody>
-                </table>
+                </table>                
               </div>
             </div>
           </div>
         </div>
 
         <p className="text-left text-sm text-gray-500 dark:text-gray-300 pb-2">
-          Each COLUMN contains kana that have the matching consonant e.g. か/き/く/け/こ are in the same column with the same consonant K. Notice that basic kana, voiced kana (゛), semi-voiced kana (゜) are seen as separate columns.
+          Each COLUMN contains kana that have the matching (or similar) consonant e.g. か/き/く/け/こ/が/ぎ/ぐ/げ/ご are in the same column with matching consonant K/G. Notice that basic kana, voiced kana (゛), semi-voiced kana (゜) are seen as the SAME columns.
         </p>
         <p className="text-left text-sm text-gray-500 dark:text-gray-300 pb-2">
-          Each ROW contains kana that have the matching vowel e.g. う/く/す/つ/ぬ/ふ/む/ゆ/る/ぐ/ず/づ/ぶ/ぷ are in the same row with the same vowel U.
+          Each ROW contains kana that have the matching vowel e.g. う/く/す/つ/ぬ/ふ/む/ゆ/る/ぐ/ず/づ/ぶ/ぷ are in the same row with the matching vowel U.
         </p>
         <p className="text-left text-sm text-gray-500 dark:text-gray-300">
           Both the kana ん and the long sound mark ー do not have any matching rows or columns.

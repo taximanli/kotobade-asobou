@@ -71,15 +71,15 @@ ja['Dark Mode'] = 'ダークモード'
 ja['High Contrast Mode'] = 'ハイコントラストモード'
 ja['Feedback'] = 'フィードバック'
 
-ja['This game is the'] = '言葉で遊ぼうは、有名で人気な単語パズルゲームの'
+ja['This game is the'] = '「言葉で遊ぼう」は、有名で人気な単語パズルゲームの'
 ja['Japanese version'] = '日本語版'
 ja['word guessing game'] = 'です。このゲームは、この'
 ja['open source version'] = 'オープンソース版'
 ja['massive development'] = 'からフォークして大規模なソフトウェア再開発を経ています。また、日本語の特徴に合わせて、新しいモードと要素が追加されています。'
 
-ja['If you enjoy'] = 'このゲームを楽しんで、私のアプリ開発をサポートしたい場合は、よろしければ ♥️'
+ja['If you enjoy'] = 'このゲームを楽しんで、私のアプリ開発をサポートしたい場合は、よろしければ'
 ja['buying me a coffee'] = '私にコーヒーを一杯おごる'
-ja['if you wish'] = 'こともできます。'
+ja['if you wish'] = '♥️ こともできます。'
 ja['Buy me a coffee?'] = 'おごっていただけますか？♥️ ' + KOFI_LINK
 
 ja['SOLUTION_INDEX_TEXT'] = (new Date()).toLocaleDateString("ja-JP", { year: 'numeric', month: 'short', day: 'numeric' }) + ' 第$text1回'
@@ -178,20 +178,15 @@ export const CLOSE_STATUS_KANA = [
 
 export const CONSONANT_STATUS_KANA = [
   'あいうえおぁぃぅぇぉ',
-  'かきくけこ',
-  'さしすせそ',
-  'たちつてとっ',
+  'かきくけこがぎぐげご',
+  'さしすせそざじずぜぞ',
+  'たちつてとだぢづでどっ',
   'なにぬねの',
-  'はひふへほ',
+  'はひふへほばびぶべぼぱぴぷぺぽ',
   'まみむめも',
   'やゆよゃゅょ',
   'らりるれろ',
   'わを',
-  'がぎぐげご',
-  'ざじずぜぞ',
-  'だぢづでど',
-  'ばびぶべぼ',
-  'ぱぴぷぺぽ',    
 ]
 
 export const VOWEL_STATUS_KANA = [
