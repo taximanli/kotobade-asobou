@@ -16,6 +16,8 @@ type Props = {
   handleHintMode: Function
   isHardMode: boolean
   handleHardMode: Function
+  isBabyMode: boolean
+  handleBabyMode: Function
   isDarkMode: boolean
   handleDarkMode: Function
   isHighContrastMode: boolean
@@ -31,6 +33,8 @@ export const SettingsModal = ({
   handleHintMode,
   isHardMode,
   handleHardMode,
+  isBabyMode,
+  handleBabyMode,
   isDarkMode,
   handleDarkMode,
   isHighContrastMode,
@@ -43,6 +47,8 @@ export const SettingsModal = ({
   const aboutClassName = classnames((displayLanguage === PREFERRED_DISPLAY_LANGUAGE ? 'local-font' : ''), 'text-left text-sm text-gray-500 dark:text-gray-300')
 
   const hardModeSettingDescription = t('Revealed hints', (isHighContrast ? '🟧' : '🟩'), (isHighContrast ? '🟦' : '🟨'))
+
+  const babyModeSettingDescription = t('Add RegExp Search')
 
   return (
     <BaseModal title={t('Settings')} isOpen={isOpen} handleClose={handleClose}>
@@ -79,6 +85,13 @@ export const SettingsModal = ({
           handleFlag={handleHardMode}
         />
         <hr />
+        <SettingsToggle
+          settingName={t('Baby Mode')}
+          settingDescription={babyModeSettingDescription}
+          flag={isBabyMode}
+          handleFlag={handleBabyMode}
+        />
+        <hr className="mt-2 mb-2" />
         <SettingsToggle
           settingName={t('Dark Mode')}
           settingDescription=""

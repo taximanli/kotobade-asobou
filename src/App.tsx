@@ -44,6 +44,7 @@ import { default as GraphemeSplitter } from 'grapheme-splitter'
 import './App.css'
 import { AlertContainer } from './components/alerts/AlertContainer'
 import { useAlert } from './context/AlertContext'
+import { Search } from './components/search/Search'
 
 function App() {
   const prefersDarkMode = window.matchMedia(
@@ -103,6 +104,12 @@ function App() {
       : false
   )
 
+  const [isBabyMode, setIsBabyMode] = useState(
+    localStorage.getItem('babyMode')
+      ? localStorage.getItem('babyMode') === 'baby'
+      : false
+  )
+
   useEffect(() => {
     // if no game state on load,
     // show the user the how-to info modal
@@ -149,6 +156,20 @@ function App() {
       localStorage.setItem('gameMode', isHard ? 'hard' : 'normal')
     } else {
       showErrorAlert(t('HARD_MODE_ALERT_MESSAGE'))
+    }
+  }
+
+  const handleBabyMode = (isBaby: boolean) => {
+    if (
+      guesses.length === 0 ||
+      isGameWon ||
+      isGameLost ||
+      localStorage.getItem('babyMode') === 'baby'
+    ) {
+      setIsBabyMode(isBaby)
+      localStorage.setItem('babyMode', isBaby ? 'baby' : 'normal')
+    } else {
+      showErrorAlert(t('BABY_MODE_ALERT_MESSAGE'))
     }
   }
 
@@ -274,7 +295,7 @@ function App() {
       setGuesses([...guesses, currentGuess])
       setCurrentGuess('')
       setCurrentInputText('')
-      saveShareStatusToLocalStorage(isHintMode, isHardMode)
+      saveShareStatusToLocalStorage(isHintMode, isHardMode, isBabyMode)
 
       if (winningWord) {
         setStats(addStatsForCompletedGame(stats, guesses.length))
@@ -337,6 +358,7 @@ function App() {
         guesses={guesses}
         isRevealing={isRevealing}
       />
+      {isBabyMode && <Search />}
       <InfoModal
         isOpen={isInfoModalOpen}
         handleClose={() => setIsInfoModalOpen(false)}
@@ -351,6 +373,7 @@ function App() {
         handleShare={() => showSuccessAlert(t('GAME_COPIED_MESSAGE'))}
         isHintMode={isHintMode}
         isHardMode={isHardMode}
+        isBabyMode={isBabyMode}
         isDarkMode={isDarkMode}
         isHighContrastMode={isHighContrastMode}
       />
@@ -361,6 +384,8 @@ function App() {
         handleHintMode={handleHintMode}
         isHardMode={isHardMode}
         handleHardMode={handleHardMode}
+        isBabyMode={isBabyMode}
+        handleBabyMode={handleBabyMode}
         isDarkMode={isDarkMode}
         handleDarkMode={handleDarkMode}
         isHighContrastMode={isHighContrastMode}

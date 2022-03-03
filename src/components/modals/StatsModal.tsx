@@ -6,7 +6,7 @@ import { GameStats, getStoredIsHighContrastMode } from '../../lib/localStorage'
 import { shareStatus } from '../../lib/share'
 import { solutionIndex, tomorrow } from '../../lib/words'
 import { BaseModal } from './BaseModal'
-import { t } from '../../constants/strings';
+import { t } from '../../constants/strings'
 
 type Props = {
   isOpen: boolean
@@ -18,6 +18,7 @@ type Props = {
   handleShare: () => void
   isHintMode: boolean
   isHardMode: boolean
+  isBabyMode: boolean
   isDarkMode: boolean
   isHighContrastMode: boolean
 }
@@ -32,6 +33,7 @@ export const StatsModal = ({
   handleShare,
   isHintMode,
   isHardMode,
+  isBabyMode,
   isDarkMode,
   isHighContrastMode,
 }: Props) => {
@@ -80,14 +82,15 @@ export const StatsModal = ({
               type="button"
               className={classNames}
               onClick={() => {
-              shareStatus(
-                guesses,
-                isGameLost,
-                isHintMode,
-                isHardMode,
-                isDarkMode,
-                isHighContrastMode
-              )
+                shareStatus(
+                  guesses,
+                  isGameLost,
+                  isHintMode,
+                  isHardMode,
+                  isBabyMode,
+                  isDarkMode,
+                  isHighContrastMode
+                )
                 handleShare()
               }}
             >

@@ -20,7 +20,10 @@ en['Language'] = 'Language 言語'
 en['Switch to language'] = '日本語'
 en['Hint Mode'] = 'Hint Mode'
 en['Hard Mode'] = 'Hard Mode'
+en['Baby Mode'] = 'Baby Mode'
 en['Revealed hints'] = 'Revealed hints（$text1 and $text2）must be used in subsequent guesses.'
+en['Add RegExp Search'] = 'Add RegExp Search'
+en['RegExp Search'] = 'RegExp Search'
 en['Dark Mode'] = 'Dark Mode'
 en['High Contrast Mode'] = 'High Contrast Mode'
 en['Feedback'] = 'Feedback'
@@ -47,6 +50,7 @@ en['NOT_ENOUGH_LETTERS_MESSAGE'] = '$text1 is not a ' + MAX_WORD_LENGTH + '-kana
 en['WORD_NOT_FOUND_MESSAGE'] = 'Not in word list'
 en['HINT_MODE_ALERT_MESSAGE'] = 'Hint Mode can only be turned off at the start'
 en['HARD_MODE_ALERT_MESSAGE'] = 'Hard Mode can only be turned on at the start'
+en['BABY_MODE_ALERT_MESSAGE'] = 'Baby Mode can only be turned on at the start'
 en['STATISTICS_TITLE'] = 'Statistics'
 en['GUESS_DISTRIBUTION_TEXT'] = 'Guess Distribution'
 en['NEW_WORD_TEXT'] = 'Next word in'
@@ -66,7 +70,10 @@ ja['Language'] = 'Language 言語'
 ja['Switch to language'] = 'English'
 ja['Hint Mode'] = 'ヒントモード'
 ja['Hard Mode'] = 'ハードモード'
+ja['Baby Mode'] = 'ベービモード'
 ja['Revealed hints'] = '開示されたヒント（$text1 と $text2）を満たす単語だけが入力できます。'
+ja['Add RegExp Search'] = '正規表現の検索を追加する'
+ja['RegExp Search'] = '正規表現を検索する'
 ja['Dark Mode'] = 'ダークモード'
 ja['High Contrast Mode'] = 'ハイコントラストモード'
 ja['Feedback'] = 'フィードバック'
@@ -93,6 +100,7 @@ ja['NOT_ENOUGH_LETTERS_MESSAGE'] = '「$text1」は ' + MAX_WORD_LENGTH + '文�
 ja['WORD_NOT_FOUND_MESSAGE'] = 'この答えは単語リストにありません'
 ja['HINT_MODE_ALERT_MESSAGE'] = 'ヒントモードは、ゲーム開始時にのみオフにすることができます'
 ja['HARD_MODE_ALERT_MESSAGE'] = 'ハードモードは、ゲーム開始時にのみオンにすることができます'
+ja['BABY_MODE_ALERT_MESSAGE'] = 'ベービモードは、ゲーム開始時にのみオンにすることができます'
 ja['STATISTICS_TITLE'] = '統計情報'
 ja['GUESS_DISTRIBUTION_TEXT'] = '推測数の分布'
 ja['NEW_WORD_TEXT'] = '次の単語まで'
@@ -104,7 +112,7 @@ ja['BEST_STREAK_TEXT'] = '最大連勝数'
 
 export const t = (index: string, text1: string = '', text2: string = '') => {
   const displayLanguage = getStoredDisplayLanguage()
-  let translationText = (displayLanguage === PREFERRED_DISPLAY_LANGUAGE ? ja[index] : en[index])
+  let translationText = (displayLanguage === PREFERRED_DISPLAY_LANGUAGE ? ja[index] : en[index]) || index
   if (text1 !== '') translationText = translationText.replace('$text1', text1)
   if (text2 !== '') translationText = translationText.replace('$text2', text2)
   return translationText

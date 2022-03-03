@@ -9,6 +9,7 @@ export const shareStatus = (
   lost: boolean,
   isHintMode: boolean,
   isHardMode: boolean,
+  isBabyMode: boolean,
   isDarkMode: boolean,
   isHighContrastMode: boolean
 ) => {
@@ -17,13 +18,16 @@ export const shareStatus = (
   if (loaded) {
     isHintMode = loaded.isHintMode
     isHardMode = loaded.isHardMode
+    isBabyMode = loaded.isBabyMode
   }
 
   navigator.clipboard.writeText(
     `${GAME_TITLE} ${solutionIndex} ${
       lost ? 'X' : guesses.length
-    }/${MAX_CHALLENGES}${isHardMode ? '*' : ''}${isHintMode ? '?' : ''}\n` +
-    `${GAME_LINK}\n` +
+    }/${MAX_CHALLENGES}${isHardMode ? '*' : ''}${isHintMode ? '?' : ''}${
+      isBabyMode ? '🍼' : ''
+    }\n` +
+      `${GAME_LINK}\n` +
       generateEmojiGrid(guesses, getEmojiTiles(isDarkMode, isHighContrastMode))
   )
 }

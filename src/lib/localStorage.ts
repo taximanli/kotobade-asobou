@@ -4,17 +4,20 @@ const gameStateKey = 'gameState'
 const shareStatusKey = 'shareStatus'
 const highContrastKey = 'highContrast'
 const hintModeKey = 'hintMode'
+const babyModeKey = 'babyMode'
 const displayLanguageKey = 'displayLanguage'
 
 type StoredShareStatus = {
   isHintMode: boolean
   isHardMode: boolean
+  isBabyMode: boolean
 }
 
-export const saveShareStatusToLocalStorage = (isHintMode: boolean, isHardMode: boolean) => {
+export const saveShareStatusToLocalStorage = (isHintMode: boolean, isHardMode: boolean, isBabyMode: boolean) => {
   const shareStatus = {
     isHintMode,
-    isHardMode
+    isHardMode,
+    isBabyMode,
   }
   localStorage.setItem(shareStatusKey, JSON.stringify(shareStatus))
 }
@@ -156,6 +159,24 @@ export const getStoredIsHintMode = () => {
     return hintMode === 'hint'
   } else {
     setStoredIsHintMode(true)
+    return true
+  }
+}
+
+export const setStoredIsBabyMode = (isBaby: boolean) => {
+  if (isBaby) {
+    localStorage.setItem(babyModeKey, 'baby')
+  } else {
+    localStorage.setItem(babyModeKey, 'normal')
+  }
+}
+
+export const getStoredIsBabyMode = () => {
+  if (localStorage.getItem(babyModeKey)) {
+    const babyMode = localStorage.getItem(babyModeKey)
+    return babyMode === 'baby'
+  } else {
+    setStoredIsBabyMode(true)
     return true
   }
 }

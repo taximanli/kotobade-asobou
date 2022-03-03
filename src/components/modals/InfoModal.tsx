@@ -138,6 +138,18 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
         <p className="local-font text-left text-sm text-gray-500 dark:text-gray-300">
           撥音「ん」と長音符「ー」は他のどの行と段にも一致しません。
         </p>
+        s
+        <p className="local-font text-lg leading-6 font-medium text-gray-900 dark:text-gray-100 mt-2 md:mt-4 mb-2">
+          ベービモード（オン/オフ切替可能）
+        </p>
+
+        <p className="text-left text-sm text-gray-500 dark:text-gray-300 pb-2">
+          ベービモードは画面の右上に「設定 ⋮ 」でオン/オフを切り替えることができます。下部に検索パネルを追加します。
+        </p>
+
+        <p className="text-left text-sm text-gray-500 dark:text-gray-300">
+          検索は正規表現を使用します、説明は<a href='https://www.turtle.gr.jp/techno/regular-expression.html' className='underline text-sm text-gray-600 dark:text-gray-300'>こちら</a>。
+        </p>
 
         <p className="local-font text-lg leading-6 font-medium text-gray-900 dark:text-gray-100 mt-2 md:mt-4 mb-2">
           単語リストについて
@@ -266,6 +278,18 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
         </p>
         <p className="text-left text-sm text-gray-500 dark:text-gray-300">
           Both the kana ん and the long sound mark ー do not have any matching rows or columns.
+        </p>
+        
+        <p className="local-font text-lg leading-6 font-medium text-gray-900 dark:text-gray-100 mt-2 md:mt-4 mb-2">
+          Baby Mode (ON/OFF in Settings)
+        </p>
+
+        <p className="text-left text-sm text-gray-500 dark:text-gray-300 pb-2">
+          Baby Mode can be turned ON/OFF in Settings. The Settings icon ⋮ is on top right of screen. Adds a search panel on the bottom.
+        </p>
+
+        <p className="text-left text-sm text-gray-500 dark:text-gray-300">
+          Search uses Regular Expressions, click <a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Cheatsheet' className='underline text-sm text-gray-600 dark:text-gray-300'>here</a> for explanation. 
         </p>
 
         <p className="local-font text-lg leading-6 font-medium text-gray-900 dark:text-gray-100 mt-2 md:mt-4 mb-2">
