@@ -8,6 +8,8 @@ import { solutionIndex, tomorrow } from '../../lib/words'
 import { BaseModal } from './BaseModal'
 import { t } from '../../constants/strings';
 
+export type shareStatusType = 'text' | 'clipboard' | 'tweet'
+
 type Props = {
   isOpen: boolean
   handleClose: () => void
@@ -66,36 +68,76 @@ export const StatsModal = ({
       handleClose={handleClose}
     >
       {(isGameLost || isGameWon) && (
-        <div className="mt-5 sm:mt-6 grid grid-cols-2 gap-4 dark:text-white m-5">
-          <div>
-            <h5>{t('NEW_WORD_TEXT')}</h5>
-            <Countdown
-              className="local-font text-lg font-medium text-gray-900 dark:text-gray-100"
-              date={tomorrow}
-              daysInHours={true}
-            />
+        <div>
+          <div className="flex gap-1 justify-center dark:text-white mx-1">
+            <div>
+              <h5>{t('NEW_WORD_TEXT')}</h5>
+            </div>
+            <div>
+              <Countdown
+                className="local-font text-baseline font-medium text-gray-900 dark:text-gray-100"
+                date={tomorrow}
+                daysInHours={true}
+              />
+            </div>
           </div>
-          <div>
-            <button
-              type="button"
-              className={classNames}
-              onClick={() => {
-              shareStatus(
-                guesses,
-                isGameLost,
-                isHintMode,
-                isHardMode,
-                isDarkMode,
-                isHighContrastMode
-              )
-                handleShare()
-              }}
-            >
-              {t('SHARE_TEXT')}
-            </button>
+          <div className="mt-4 sm:mt-5 mb-1 dark:text-white mx-1">
+            <textarea className="local-font text-xs w-full border-solid border-2 rounded bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-600" rows={5}
+              value={shareStatus(
+                  'text',
+                  guesses,
+                  isGameLost,
+                  isHintMode,
+                  isHardMode,
+                  isDarkMode,
+                  isHighContrastMode
+              )} />          
+          </div>
+          <div className="mb-5 sm:mb-6 grid grid-cols-2 gap-3 dark:text-white mx-1">
+            <div>
+              <button
+                type="button"
+                className={classNames}
+                onClick={() => {
+                shareStatus(
+                  'clipboard',
+                  guesses,
+                  isGameLost,
+                  isHintMode,
+                  isHardMode,
+                  isDarkMode,
+                  isHighContrastMode
+                )
+                  handleShare()
+                }}
+              >
+                {t('SHARE_TEXT')}
+              </button>
+            </div>
+            <div>
+              <button
+                type="button"
+                className={classNames}
+                onClick={() => {
+                shareStatus(
+                  'tweet',
+                  guesses,
+                  isGameLost,
+                  isHintMode,
+                  isHardMode,
+                  isDarkMode,
+                  isHighContrastMode
+                )
+                  handleShare()
+                }}
+              >
+                {t('TWEET_TEXT')}
+              </button>
+            </div>
           </div>
         </div>
       )}
+      <hr className="mt-4 mb-4" />
       <h4 className="local-font text-base leading-6 font-medium text-gray-900 dark:text-gray-100">
         {t('STATISTICS_TITLE')}
       </h4>

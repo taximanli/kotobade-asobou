@@ -3,8 +3,10 @@ import { solutionIndex } from './words'
 import { GAME_TITLE, GAME_LINK } from '../constants/strings'
 import { MAX_CHALLENGES } from '../constants/settings'
 import { loadShareStatusFromLocalStorage } from '../lib/localStorage'
+import { shareStatusType } from '../components/modals/StatsModal'
 
 export const shareStatus = (
+  shareStatusType: shareStatusType,
   guesses: string[],
   lost: boolean,
   isHintMode: boolean,
@@ -19,16 +21,29 @@ export const shareStatus = (
     isHardMode = loaded.isHardMode
   }
 
-  navigator.clipboard.writeText(
-    `${GAME_TITLE} ${solutionIndex} ${
-      lost ? 'X' : guesses.length
-    }/${MAX_CHALLENGES}${isHardMode ? '*' : ''}${isHintMode ? '?' : ''}\n` +
-    `${GAME_LINK}\n` +
-      generateEmojiGrid(guesses, getEmojiTiles(isDarkMode, isHighContrastMode))
-  )
+  const endOfLine = (shareStatusType === 'tweet' ? '%0A' : '\n')
+
+  const shareText = 
+  `${GAME_TITLE} ${solutionIndex} ${
+    lost ? 'X' : guesses.length
+  }/${MAX_CHALLENGES}${isHardMode ? '*' : ''}${isHintMode ? '?' : ''}` + endOfLine +
+  `${GAME_LINK}` + endOfLine +
+    generateEmojiGrid(endOfLine, guesses, getEmojiTiles(isDarkMode, isHighContrastMode))
+
+  if (shareStatusType === 'tweet') {
+    window.open("https://twitter.com/intent/tweet?text=" + shareText, "_blank")
+  }
+  else
+  if (shareStatusType === 'clipboard') {
+    navigator.clipboard.writeText(shareText)
+  }
+  else
+  {
+    return shareText
+  }
 }
 
-export const generateEmojiGrid = (guesses: string[], tiles: string[]) => {
+export const generateEmojiGrid = (endOfLine: string, guesses: string[], tiles: string[]) => {
   return guesses
     .map((guess) => {
       const status = getGuessStatuses(guess)
@@ -52,7 +67,7 @@ export const generateEmojiGrid = (guesses: string[], tiles: string[]) => {
         })
         .join('')
     })
-    .join('\n')
+    .join(endOfLine)
 }
 
 const getEmojiTiles = (isDarkMode: boolean, isHighContrastMode: boolean) => {
