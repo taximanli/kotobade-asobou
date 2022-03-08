@@ -1,8 +1,3 @@
-import {
-  QuestionMarkCircleIcon,
-  ChartBarIcon,
-  DotsVerticalIcon,
-} from '@heroicons/react/outline'
 import { useState, useEffect } from 'react'
 import { Grid } from './components/grid/Grid'
 import { Bar } from './components/keyboard/Bar'
@@ -10,7 +5,7 @@ import { Keyboard } from './components/keyboard/Keyboard'
 import { InfoModal } from './components/modals/InfoModal'
 import { StatsModal } from './components/modals/StatsModal'
 import { SettingsModal } from './components/modals/SettingsModal'
-import { t, GAME_TITLE, WIN_MESSAGES } from './constants/strings'
+import { t, WIN_MESSAGES } from './constants/strings'
 import {
   MAX_WORD_LENGTH,
   MAX_CHALLENGES,
@@ -44,6 +39,7 @@ import { default as GraphemeSplitter } from 'grapheme-splitter'
 import './App.css'
 import { AlertContainer } from './components/alerts/AlertContainer'
 import { useAlert } from './context/AlertContext'
+import { Navbar } from './components/navbar/Navbar'
 
 function App() {
   const prefersDarkMode = window.matchMedia(
@@ -302,31 +298,13 @@ function App() {
     }
   }
 
-  const gameHeading = GAME_TITLE.split(' ')
-
   return (
     <div className="pt-2 pb-8 max-w-7xl mx-auto sm:px-6 lg:px-8">
-      <div className="flex max-w-lg mx-auto items-center mb-2 md:mb-3 mt-0 md:mt-3">
-        <h1 className="hidden">{GAME_TITLE}</h1>
-        <QuestionMarkCircleIcon
-          className="h-6 w-6 ml-3 cursor-pointer dark:stroke-white"
-          onClick={() => setIsInfoModalOpen(true)}
-        />
-        <span className="local-font text-sm sm:text-sm md:text-base lg:text-lg font-bold ml-2.5 shrink dark:text-white">
-          {gameHeading[0]} {gameHeading[1]}
-        </span>
-        <span className="local-font text-xl sm:text-2xl font-bold ml-2.5 grow dark:text-white">
-          {gameHeading[2]}
-        </span>
-        <ChartBarIcon
-          className="h-6 w-6 mr-2 cursor-pointer dark:stroke-white"
-          onClick={() => setIsStatsModalOpen(true)}
-        />
-        <DotsVerticalIcon
-          className="h-6 w-6 mr-3 cursor-pointer dark:stroke-white"
-          onClick={() => setIsSettingsModalOpen(true)}
-        />
-      </div>
+      <Navbar
+        setIsInfoModalOpen={setIsInfoModalOpen}
+        setIsStatsModalOpen={setIsStatsModalOpen}
+        setIsSettingsModalOpen={setIsSettingsModalOpen}
+      />
       <Grid
         guesses={guesses}
         currentGuess={currentGuess}
@@ -358,11 +336,14 @@ function App() {
         gameStats={stats}
         isGameLost={isGameLost}
         isGameWon={isGameWon}
-        handleShare={() => showSuccessAlert(t('GAME_COPIED_MESSAGE'))}
+        handleShareToClipboard={() =>
+          showSuccessAlert(t('GAME_COPIED_MESSAGE'))
+        }
         isHintMode={isHintMode}
         isHardMode={isHardMode}
         isDarkMode={isDarkMode}
         isHighContrastMode={isHighContrastMode}
+        numberOfGuessesMade={guesses.length}
       />
       <SettingsModal
         isOpen={isSettingsModalOpen}

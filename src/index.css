@@ -110,9 +110,12 @@
   animation-fill-mode: backwards;
 }
 
-svg:hover {
-  animation: float infinite;
-  animation-duration: var(--animation-speed);
+svg.cursor-pointer {
+  transition: all var(--animation-speed-fast);
+}
+
+svg.cursor-pointer:hover {
+  transform: scale(1.2);
 }
 
 .jiggle {
@@ -272,18 +275,6 @@ svg:hover {
 
 .shadowed {
   text-shadow: 1px 1px 1px #000000;
-}
-
-@keyframes float {
-  0% {
-    transform: translate(0, 0);
-  }
-  50% {
-    transform: translate(0, -0.5rem);
-  }
-  100% {
-    transform: translate(0, 0);
-  }
 }
 
 @keyframes jiggle {

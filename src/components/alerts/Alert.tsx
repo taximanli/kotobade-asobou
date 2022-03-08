@@ -16,7 +16,7 @@ export const Alert = ({
   topMost = false,
 }: Props) => {
   const classes = classNames(
-    'fixed z-20 top-5 left-1/2 transform -translate-x-1/2 max-w-sm w-full shadow-lg rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5 overflow-hidden',
+    'fixed z-20 top-14 md:top-20 left-1/2 transform -translate-x-1/2 max-w-sm w-4/5 shadow-lg rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5 overflow-hidden',
     {
       'bg-rose-500 text-white': variant === 'error',
       'bg-blue-500 text-white': variant === 'success',
@@ -35,8 +35,8 @@ export const Alert = ({
       leaveTo="opacity-0"
     >
       <div className={classes}>
-        <div className="p-4">
-          <p className="local-font text-sm text-center font-medium">{message}</p>
+        <div className="p-2">
+          <p className="local-font text-baseline text-center font-medium">{message}</p>
         </div>
       </div>
     </Transition>

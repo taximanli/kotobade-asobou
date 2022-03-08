@@ -17,11 +17,12 @@ type Props = {
   gameStats: GameStats
   isGameLost: boolean
   isGameWon: boolean
-  handleShare: () => void
+  handleShareToClipboard: () => void
   isHintMode: boolean
   isHardMode: boolean
   isDarkMode: boolean
   isHighContrastMode: boolean
+  numberOfGuessesMade: number
 }
 
 export const StatsModal = ({
@@ -31,11 +32,12 @@ export const StatsModal = ({
   gameStats,
   isGameLost,
   isGameWon,
-  handleShare,
+  handleShareToClipboard,
   isHintMode,
   isHardMode,
   isDarkMode,
   isHighContrastMode,
+  numberOfGuessesMade,
 }: Props) => {
   const isHighContrast = getStoredIsHighContrastMode()
 
@@ -90,7 +92,8 @@ export const StatsModal = ({
                   isHintMode,
                   isHardMode,
                   isDarkMode,
-                  isHighContrastMode
+                  isHighContrastMode,
+                  handleShareToClipboard
               )} />          
           </div>
           <div className="mb-5 sm:mb-6 grid grid-cols-2 gap-3 dark:text-white mx-1">
@@ -99,16 +102,16 @@ export const StatsModal = ({
                 type="button"
                 className={classNames}
                 onClick={() => {
-                shareStatus(
-                  'clipboard',
-                  guesses,
-                  isGameLost,
-                  isHintMode,
-                  isHardMode,
-                  isDarkMode,
-                  isHighContrastMode
-                )
-                  handleShare()
+                  shareStatus(
+                    'clipboard',
+                    guesses,
+                    isGameLost,
+                    isHintMode,
+                    isHardMode,
+                    isDarkMode,
+                    isHighContrastMode,
+                    handleShareToClipboard
+                  )
                 }}
               >
                 {t('SHARE_TEXT')}
@@ -119,16 +122,16 @@ export const StatsModal = ({
                 type="button"
                 className={classNames}
                 onClick={() => {
-                shareStatus(
-                  'tweet',
-                  guesses,
-                  isGameLost,
-                  isHintMode,
-                  isHardMode,
-                  isDarkMode,
-                  isHighContrastMode
-                )
-                  handleShare()
+                  shareStatus(
+                    'tweet',
+                    guesses,
+                    isGameLost,
+                    isHintMode,
+                    isHardMode,
+                    isDarkMode,
+                    isHighContrastMode,
+                    handleShareToClipboard
+                  )                  
                 }}
               >
                 {t('TWEET_TEXT')}
@@ -145,7 +148,10 @@ export const StatsModal = ({
       <h4 className="local-font text-base leading-6 font-medium text-gray-900 dark:text-gray-100">
         {t('GUESS_DISTRIBUTION_TEXT')}
       </h4>
-      <Histogram gameStats={gameStats} />
+      <Histogram
+        gameStats={gameStats}
+        numberOfGuessesMade={numberOfGuessesMade}
+      />
     </BaseModal>
   )
 }

@@ -3,9 +3,10 @@ import { Progress } from './Progress'
 
 type Props = {
   gameStats: GameStats
+  numberOfGuessesMade: number
 }
 
-export const Histogram = ({ gameStats }: Props) => {
+export const Histogram = ({ gameStats, numberOfGuessesMade }: Props) => {
   const winDistribution = gameStats.winDistribution
   const maxValue = Math.max(...winDistribution)
 
@@ -15,6 +16,7 @@ export const Histogram = ({ gameStats }: Props) => {
         <Progress
           key={i}
           index={i}
+          currentDayStatRow={numberOfGuessesMade === i + 1}
           size={90 * (value / maxValue)}
           label={String(value)}
         />

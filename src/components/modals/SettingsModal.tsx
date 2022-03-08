@@ -42,8 +42,6 @@ export const SettingsModal = ({
   
   const aboutClassName = classnames((displayLanguage === PREFERRED_DISPLAY_LANGUAGE ? 'local-font' : ''), 'text-left text-sm text-gray-500 dark:text-gray-300')
 
-  const hardModeSettingDescription = t('Revealed hints', (isHighContrast ? '🟧' : '🟩'), (isHighContrast ? '🟦' : '🟨'))
-
   return (
     <BaseModal title={t('Settings')} isOpen={isOpen} handleClose={handleClose}>
       <div className="grid-cols-2 gap-4">
@@ -68,28 +66,26 @@ export const SettingsModal = ({
         <hr />
         <SettingsToggle
           settingName={t('Hint Mode')}
-          settingDescription=""
           flag={isHintMode}
           handleFlag={handleHintMode}
         />
         <SettingsToggle
           settingName={t('Hard Mode')}
-          settingDescription={hardModeSettingDescription}
           flag={isHardMode}
           handleFlag={handleHardMode}
+          description={t('HARD_MODE_DESCRIPTION', (isHighContrast ? '🟧' : '🟩'), (isHighContrast ? '🟦' : '🟨'))}
         />
         <hr />
         <SettingsToggle
           settingName={t('Dark Mode')}
-          settingDescription=""
           flag={isDarkMode}
           handleFlag={handleDarkMode}
         />
         <SettingsToggle
           settingName={t('High Contrast Mode')}
-          settingDescription=""
           flag={isHighContrastMode}
           handleFlag={handleHighContrastMode}
+          description={t('HIGH_CONTRAST_MODE_DESCRIPTION')}
         />
         <hr />
         <div className="flex justify-between items-center gap-8 mt-3">

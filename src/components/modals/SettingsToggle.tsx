@@ -4,12 +4,17 @@ import { getStoredDisplayLanguage, getStoredIsHighContrastMode } from '../../lib
 
 type Props = {
   settingName: string
-  settingDescription: string
   flag: boolean
   handleFlag: Function
+  description?: string
 }
 
-export const SettingsToggle = ({ settingName, settingDescription, flag, handleFlag }: Props) => {
+export const SettingsToggle = ({
+  settingName,
+  flag,
+  handleFlag,
+  description,
+}: Props) => {
   const isHighContrast = getStoredIsHighContrastMode()
   const displayLanguage = getStoredDisplayLanguage()
   const toggleHolder = classnames(
@@ -26,11 +31,11 @@ export const SettingsToggle = ({ settingName, settingDescription, flag, handleFl
     }
   )
 
-  let settingDescriptionJSX
-  if (settingDescription !== '') {
+  let descriptionJSX
+  if (description !== '') {
     const settingDescriptionClassName = classnames((displayLanguage === PREFERRED_DISPLAY_LANGUAGE ? 'local-font' : ''), 'text-xs text-gray-500 dark:text-gray-400')
-    settingDescriptionJSX = (
-      <div className={settingDescriptionClassName}>{settingDescription}</div>
+    descriptionJSX = (
+      <div className={settingDescriptionClassName}>{description}</div>
       )
   }
 
@@ -38,7 +43,7 @@ export const SettingsToggle = ({ settingName, settingDescription, flag, handleFl
     <div className="flex justify-between items-start gap-8 mt-3 mb-4">
       <div className="text-left">
         <h2 className="local-font text-base text-gray-600 dark:text-gray-300">{settingName}</h2>
-        {settingDescription === '' ? '' : settingDescriptionJSX}
+        {description === '' ? '' : descriptionJSX}
       </div>
       <div className='w-14'>
         <div className={toggleHolder} onClick={() => handleFlag(!flag)}>
