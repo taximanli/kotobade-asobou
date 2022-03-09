@@ -70,10 +70,10 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
           <span className={isHighContrast ? "text-violet-500" : "text-lime-500" }>■</span> は清音、濁音、半濁音、小書き文字のどれかであることを表します。
         </p>
         <p className="local-font text-left text-sm text-gray-500 dark:text-gray-300 pb-2">
-          「ま」の正方形には左右の矢印があります。この位置に正解は「ま」ではなく、五十音図内の同じ段に他の仮名（あ・か・さ・た・な・は・や・ら・わ等）であることを示しています。<br />
+          「ま」の正方形には左右の矢印があります。この位置に正解は「ま」ではなく、五十音図内の同じ段に他の仮名（「あ・か・さ・た・な・は・や・ら・わ」「ぁ・が・ざ・だ・ば・ぱ・ゃ」）であることを示しています。<br />
         </p>
         <p className="local-font text-left text-sm text-gray-500 dark:text-gray-300 pb-2">
-          「き」の正方形には上下の矢印があります。この位置に正解は「き」ではなく、五十音図内の同じ行に他の仮名（か・く・け・こ）であることを示しています。
+          「き」の正方形には上下の矢印があります。この位置に正解は「き」ではなく、五十音図内の同じ行に他の仮名（「か・く・け・こ」「が・ぎ・ぐ・げ・ご」）であることを示しています。
         </p>
 
         <p className="local-font text-left text-sm text-gray-500 dark:text-gray-300 pb-2">
@@ -133,10 +133,10 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
         </div>
 
         <p className="local-font text-left text-sm text-gray-500 dark:text-gray-300 pb-2">
-          「行」は子音が同じ（または近い）であることを示します。例えば「か行」は「か・き・く・け・こ・が・ぎ・ぐ・げ・ご」です。清音、濁音、半濁音は区別しないことに注意してください。
+          「行」は子音が同じ（または近い）であることを示します。例えば「か行」は「か・き・く・け・こ」と「が・ぎ・ぐ・げ・ご」です。清音、濁音、半濁音は区別しないことに注意してください。
         </p>
         <p className="local-font text-left text-sm text-gray-500 dark:text-gray-300 pb-2">
-          「段」は母音が同じであることを示します。例えば「う段」は「う・く・す・つ・ぬ・ふ・む・ゆ・る・ぐ・ず・づ・ぶ・ぷ」です。
+          「段」は母音が同じであることを示します。例えば「う段」は「う・く・す・つ・ぬ・ふ・む・ゆ・る」と「ぅ・ぐ・ず・づ・っ・ぶ・ぷ・ゅ・ゔ」です。
         </p>
         <p className="local-font text-left text-sm text-gray-500 dark:text-gray-300">
           撥音「ん」と長音符「ー」は他のどの行と段にも一致しません。
@@ -204,10 +204,10 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
           <span className={isHighContrast ? "local-font text-violet-500" : "local-font text-lime-500" }>■</span> indicates that it can be a basic kana, a voiced kana (゛), a semi-voiced kana (゜), or a small kana (っ).
         </p>
         <p className="text-left text-sm text-gray-500 dark:text-gray-300 pb-2">
-          The kana ま has left and right arrows in its tile. It shows that the correct answer in this spot is not ま but another kana from the same ROW in the kana chart (i.e. あ/か/さ/た/な/は/や/ら/わ...).
+          The kana ま has left and right arrows in its tile. It shows that the correct answer in this spot is not ま but another kana from the same ROW in the kana chart (i.e. UPPER row あ か さ た な は や ら わ LOWER row ぁ が ざ だ ば ぱ ゃ are treated as the SAME row).
         </p>
         <p className="text-left text-sm text-gray-500 dark:text-gray-300 pb-2">
-          The kana き has up and down arrows in its tile. It shows that the correct answer in this spot is not き but another kana from the same COLUMN in the kana chart (i.e. か/く/け/こ).
+          The kana き has up and down arrows in its tile. It shows that the correct answer in this spot is not き but another kana from the same COLUMN in the kana chart (i.e. か く け こ が ぎ ぐ げ ご).
         </p>
 
         <p className="text-left text-sm text-gray-500 dark:text-gray-300">
@@ -267,10 +267,10 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
         </div>
 
         <p className="text-left text-sm text-gray-500 dark:text-gray-300 pb-2">
-          Each COLUMN contains kana that have the matching (or similar) consonant e.g. か/き/く/け/こ/が/ぎ/ぐ/げ/ご are in the same column with matching consonant K/G. Notice that basic kana, voiced kana (゛), semi-voiced kana (゜) are seen as the SAME columns.
+          Each COLUMN contains kana that have the matching (or similar) consonant, e.g. か き く け こ が ぎ ぐ げ ご are in the same column with matching consonant K~G. Notice that basic kana, voiced kana (゛), semi-voiced kana (゜) are treated as they are in the SAME column.
         </p>
         <p className="text-left text-sm text-gray-500 dark:text-gray-300 pb-2">
-          Each ROW contains kana that have the matching vowel e.g. う/く/す/つ/ぬ/ふ/む/ゆ/る/ぐ/ず/づ/ぶ/ぷ are in the same row with the matching vowel U.
+          Each ROW contains kana that have the matching vowel, e.g. both UPPER row う く す つ ぬ ふ む ゆ る and LOWER row ぅ ぐ ず づ っ ぶ ぷ ゅ ゔ are treated as the SAME row with the matching vowel U.
         </p>
         <p className="text-left text-sm text-gray-500 dark:text-gray-300">
           Both the kana ん and the long sound mark ー do not have any matching rows or columns.

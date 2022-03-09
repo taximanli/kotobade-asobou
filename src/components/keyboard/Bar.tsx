@@ -1,6 +1,9 @@
+import {
+  SearchIcon,
+} from '@heroicons/react/outline'
 import { Key } from './Key'
 import { MAX_WORD_LENGTH } from '../../constants/settings'
-import { t, ENTER_TEXT, DELETE_TEXT } from '../../constants/strings'
+import { t, ENTER_TEXT, DELETE_TEXT, JISHO_SEARCH_LINK } from '../../constants/strings'
 import { unicodeLength, unicodeSplit } from '../../lib/words'
 
 type Props = {
@@ -47,6 +50,8 @@ export const Bar = ({
           onEnter()
         } else if (value === 'DELETE') {
           onDelete()
+        } else if (value === 'SEARCH') {
+          window.open(JISHO_SEARCH_LINK + currentInputText, "_blank")
         }
       }
                 
@@ -67,6 +72,11 @@ export const Bar = ({
         />
         <Key value="DELETE" onClick={onClick}>
           {DELETE_TEXT}
+        </Key>
+        <Key value="SEARCH" onClick={onClick}>
+          <SearchIcon
+            className="h-6 w-6 cursor-pointer dark:stroke-white"
+          />
         </Key>
     </div>
     )

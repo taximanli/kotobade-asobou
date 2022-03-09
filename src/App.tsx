@@ -3,6 +3,7 @@ import { Grid } from './components/grid/Grid'
 import { Bar } from './components/keyboard/Bar'
 import { Keyboard } from './components/keyboard/Keyboard'
 import { InfoModal } from './components/modals/InfoModal'
+import { SupportModal } from './components/modals/SupportModal'
 import { StatsModal } from './components/modals/StatsModal'
 import { SettingsModal } from './components/modals/SettingsModal'
 import { t, WIN_MESSAGES } from './constants/strings'
@@ -17,6 +18,7 @@ import {
 import {
   isWordInWordList,
   isWinningWord,
+  solutionIndex,
   solution,
   findFirstUnusedReveal,
   unicodeLength,
@@ -52,6 +54,7 @@ function App() {
   const [currentInputText, setCurrentInputText] = useState('')
   const [isGameWon, setIsGameWon] = useState(false)
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false)
+  const [isSupportModalOpen, setIsSupportModalOpen] = useState(false)
   const [isStatsModalOpen, setIsStatsModalOpen] = useState(false)
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false)
   const [currentRowClass, setCurrentRowClass] = useState('')
@@ -82,9 +85,12 @@ function App() {
     }
     if (loaded.guesses.length === MAX_CHALLENGES && !gameWasWon) {
       setIsGameLost(true)
-      showErrorAlert(t('CORRECT_WORD_MESSAGE', solution), {
-        persist: true,
-      })
+      showErrorAlert(
+        t('CORRECT_WORD_MESSAGE', solutionIndex.toString(), solution),
+        {
+          persist: true,
+        }
+      )
     }
     return loaded.guesses
   })
@@ -290,10 +296,13 @@ function App() {
       if (guesses.length === MAX_CHALLENGES - 1) {
         setStats(addStatsForCompletedGame(stats, guesses.length + 1))
         setIsGameLost(true)
-        showErrorAlert(t('CORRECT_WORD_MESSAGE', solution), {
-          persist: true,
-          delayMs: REVEAL_TIME_MS * MAX_WORD_LENGTH + 1,
-        })
+        showErrorAlert(
+          t('CORRECT_WORD_MESSAGE', solutionIndex.toString(), solution),
+          {
+            persist: true,
+            delayMs: REVEAL_TIME_MS * MAX_WORD_LENGTH + 1,
+          }
+        )
       }
     }
   }
@@ -302,6 +311,7 @@ function App() {
     <div className="pt-2 pb-8 max-w-7xl mx-auto sm:px-6 lg:px-8">
       <Navbar
         setIsInfoModalOpen={setIsInfoModalOpen}
+        setIsSupportModalOpen={setIsSupportModalOpen}
         setIsStatsModalOpen={setIsStatsModalOpen}
         setIsSettingsModalOpen={setIsSettingsModalOpen}
       />
@@ -328,6 +338,10 @@ function App() {
       <InfoModal
         isOpen={isInfoModalOpen}
         handleClose={() => setIsInfoModalOpen(false)}
+      />
+      <SupportModal
+        isOpen={isSupportModalOpen}
+        handleClose={() => setIsSupportModalOpen(false)}
       />
       <StatsModal
         isOpen={isStatsModalOpen}

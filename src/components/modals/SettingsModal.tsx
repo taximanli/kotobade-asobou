@@ -7,7 +7,6 @@ import { SettingsToggle } from './SettingsToggle'
 import { PREFERRED_DISPLAY_LANGUAGE } from '../../constants/settings'
 import { t } from '../../constants/strings'
 import { getStoredIsHighContrastMode } from '../../lib/localStorage'
-import coffeeLogo from '../../images/ko-fi-com-taximanli.png';
 
 type Props = {
   isOpen: boolean
@@ -108,14 +107,6 @@ export const SettingsModal = ({
             {' '}<a className="underline text-sm text-gray-600 dark:text-gray-300" href="https://github.com/cwackerfuss/react-wordle" rel="noreferrer" target="_blank">{t('open source version')}</a>{' '}
             {t('massive development')}
           </p>
-        </div>
-        <div className="flex justify-between items-center gap-3 mt-3">
-          <p className={aboutClassName}>
-            {t('If you enjoy')}<br />
-            {' '}<a className="underline text-sm text-gray-600 dark:text-gray-300" href={t('KOFI_LINK')} rel="noreferrer" target="_blank">{t('buying me a coffee')}</a>{' '}
-            {t('if you wish')}
-          </p>
-          <img className="w-9 h-9 cursor-pointer" src={coffeeLogo} title={t('Buy me a coffee?')} alt={t('Buy me a coffee?')} onClick={()=> window.open(t('KOFI_LINK'), "_blank")} />
         </div>
       </div>
     </BaseModal>
