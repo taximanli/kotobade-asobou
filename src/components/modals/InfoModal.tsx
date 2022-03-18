@@ -56,8 +56,8 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
         <div className="flex justify-center mb-2 mt-2 md:mt-4">
           <Cell value="た" status="close" isRevealing={true} isCompleted={true} />
           <Cell value="つ" status="close" isRevealing={true} isCompleted={true} />
-          <Cell value="ま" status="vowel" isRevealing={true} isCompleted={true} />
-          <Cell value="き" status="consonant" isRevealing={true} isCompleted={true} />
+          <Cell value="ま" status="vowel-correct" isRevealing={true} isCompleted={true} />
+          <Cell value="き" status="consonant-correct" isRevealing={true} isCompleted={true} />
         </div>
         <p className="local-font text-sm text-gray-500 dark:text-gray-300 pb-2">
           答えは「だっかく」
@@ -188,8 +188,8 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
         <div className="flex justify-center mb-2 mt-2 md:mt-4">
           <Cell value="た" status="close" isRevealing={true} isCompleted={true} />
           <Cell value="つ" status="close" isRevealing={true} isCompleted={true} />
-          <Cell value="ま" status="vowel" isRevealing={true} isCompleted={true} />
-          <Cell value="き" status="consonant" isRevealing={true} isCompleted={true} />
+          <Cell value="ま" status="vowel-correct" isRevealing={true} isCompleted={true} />
+          <Cell value="き" status="consonant-correct" isRevealing={true} isCompleted={true} />
         </div>
         <p className="text-sm text-gray-500 dark:text-gray-300 pb-2">
           Answer: <span className="local-font">だっかく</span>

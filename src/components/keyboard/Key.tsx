@@ -40,10 +40,14 @@ export const Key = ({
         status === 'present',
       'close key-bg':
         status === 'close',
-      'consonant key-bg':
-        status === 'consonant',
-      'vowel key-bg':
-        status === 'vowel',
+      'consonant correct key-bg':
+        status === 'consonant-correct',
+      'vowel correct key-bg':
+        status === 'vowel-correct',
+      'consonant present key-bg':
+        status === 'consonant-present',
+      'vowel present key-bg':
+        status === 'vowel-present',
     }
   )
 

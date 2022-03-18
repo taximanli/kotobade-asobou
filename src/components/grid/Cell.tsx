@@ -35,10 +35,14 @@ export const Cell = ({
         status === 'present',
       'close cell-bg':
         status === 'close',
-      'consonant cell-bg':
-        status === 'consonant',
-      'vowel cell-bg':
-        status === 'vowel',
+      'consonant correct cell-bg':
+        status === 'consonant-correct',
+      'vowel correct cell-bg':
+        status === 'vowel-correct',
+      'consonant present cell-bg':
+        status === 'consonant-present',
+      'vowel present cell-bg':
+        status === 'vowel-present',
       'cell-fill-animation': isFilled,
       'cell-reveal': shouldReveal,
     }

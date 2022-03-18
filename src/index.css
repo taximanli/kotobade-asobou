@@ -361,10 +361,10 @@ svg.cursor-pointer:hover {
   color: white;
 }
 
-.consonant.cell-bg {
+.consonant.correct.cell-bg {
   /* background: linear-gradient(to right, theme('colors.green.500') 50%, theme('colors.slate.400') 50%); */
   background-color: theme('colors.gray.400');
-  background-image: url('./images/consonant-green.svg');
+  background-image: url('./images/consonant-correct.svg');
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -372,10 +372,10 @@ svg.cursor-pointer:hover {
   color: white;
 }
 
-.dark .consonant.cell-bg {
+.dark .consonant.correct.cell-bg {
   /* background: linear-gradient(to right, theme('colors.green.500') 50%, theme('colors.slate.700') 50%); */
   background-color: theme('colors.slate.700');
-  background-image: url('./images/consonant-green.svg');
+  background-image: url('./images/consonant-correct.svg');
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -383,10 +383,10 @@ svg.cursor-pointer:hover {
   color: white;
 }
 
-.high-contrast .consonant.cell-bg {
+.high-contrast .consonant.correct.cell-bg {
   /* background: linear-gradient(to right, theme('colors.orange.500') 50%, theme('colors.slate.400') 50%); */
   background-color: theme('colors.gray.400');
-  background-image: url('./images/consonant-orange.svg');
+  background-image: url('./images/consonant-correct-high-contrast.svg');
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -394,10 +394,10 @@ svg.cursor-pointer:hover {
   color: white;
 }
 
-.high-contrast.dark .consonant.cell-bg {
+.high-contrast.dark .consonant.correct.cell-bg {
   /* background: linear-gradient(to right, theme('colors.orange.500') 50%, theme('colors.slate.700') 50%); */
   background-color: theme('colors.slate.700');
-  background-image: url('./images/consonant-orange.svg');
+  background-image: url('./images/consonant-correct-high-contrast.svg');
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -405,10 +405,10 @@ svg.cursor-pointer:hover {
   color: white;
 }
 
-.vowel.cell-bg {
+.vowel.correct.cell-bg {
   /* background: linear-gradient(to top, theme('colors.green.500') 50%, theme('colors.slate.400') 50%); */
   background-color: theme('colors.gray.400');
-  background-image: url('./images/vowel-green.svg');
+  background-image: url('./images/vowel-correct.svg');
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -416,10 +416,10 @@ svg.cursor-pointer:hover {
   color: white;
 }
 
-.dark .vowel.cell-bg {
+.dark .vowel.correct.cell-bg {
   /* background: linear-gradient(to top, theme('colors.green.500') 50%, theme('colors.slate.700') 50%); */
   background-color: theme('colors.slate.700');
-  background-image: url('./images/vowel-green.svg');
+  background-image: url('./images/vowel-correct.svg');
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -427,10 +427,10 @@ svg.cursor-pointer:hover {
   color: white;
 }
 
-.high-contrast .vowel.cell-bg {
+.high-contrast .vowel.correct.cell-bg {
   /* background: linear-gradient(to top, theme('colors.orange.500') 50%, theme('colors.slate.400') 50%); */
   background-color: theme('colors.gray.400');
-  background-image: url('./images/vowel-orange.svg');
+  background-image: url('./images/vowel-correct-high-contrast.svg');
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -438,10 +438,98 @@ svg.cursor-pointer:hover {
   color: white;
 }
 
-.high-contrast.dark .vowel.cell-bg {
+.high-contrast.dark .vowel.correct.cell-bg {
   /* background: linear-gradient(to top, theme('colors.orange.500') 50%, theme('colors.slate.700') 50%); */
   background-color: theme('colors.slate.700');
-  background-image: url('./images/vowel-orange.svg');
+  background-image: url('./images/vowel-correct-high-contrast.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-color: theme('colors.slate.700');
+  color: white;
+}
+
+.consonant.present.cell-bg {
+  /* background: linear-gradient(to right, theme('colors.yellow.500') 50%, theme('colors.slate.400') 50%); */
+  background-color: theme('colors.gray.400');
+  background-image: url('./images/consonant-present.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-color: theme('colors.slate.400');
+  color: white;
+}
+
+.dark .consonant.present.cell-bg {
+  /* background: linear-gradient(to right, theme('colors.yellow.500') 50%, theme('colors.slate.700') 50%); */
+  background-color: theme('colors.slate.700');
+  background-image: url('./images/consonant-present.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-color: theme('colors.slate.700');
+  color: white;
+}
+
+.high-contrast .consonant.present.cell-bg {
+  /* background: linear-gradient(to right, theme('colors.cyan.500') 50%, theme('colors.slate.400') 50%); */
+  background-color: theme('colors.gray.400');
+  background-image: url('./images/consonant-present-high-contrast.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-color: theme('colors.slate.400');
+  color: white;
+}
+
+.high-contrast.dark .consonant.present.cell-bg {
+  /* background: linear-gradient(to right, theme('colors.cyan.500') 50%, theme('colors.slate.700') 50%); */
+  background-color: theme('colors.slate.700');
+  background-image: url('./images/consonant-present-high-contrast.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-color: theme('colors.slate.700');
+  color: white;
+}
+
+.vowel.present.cell-bg {
+  /* background: linear-gradient(to top, theme('colors.yellow.500') 50%, theme('colors.slate.400') 50%); */
+  background-color: theme('colors.gray.400');
+  background-image: url('./images/vowel-present.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-color: theme('colors.slate.400');
+  color: white;
+}
+
+.dark .vowel.present.cell-bg {
+  /* background: linear-gradient(to top, theme('colors.yellow.500') 50%, theme('colors.slate.700') 50%); */
+  background-color: theme('colors.slate.700');
+  background-image: url('./images/vowel-present.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-color: theme('colors.slate.700');
+  color: white;
+}
+
+.high-contrast .vowel.present.cell-bg {
+  /* background: linear-gradient(to top, theme('colors.cyan.500') 50%, theme('colors.slate.400') 50%); */
+  background-color: theme('colors.gray.400');
+  background-image: url('./images/vowel-present-high-contrast.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-color: theme('colors.slate.400');
+  color: white;
+}
+
+.high-contrast.dark .vowel.present.cell-bg {
+  /* background: linear-gradient(to top, theme('colors.cyan.500') 50%, theme('colors.slate.700') 50%); */
+  background-color: theme('colors.slate.700');
+  background-image: url('./images/vowel-present-high-contrast.svg');
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -503,10 +591,10 @@ svg.cursor-pointer:hover {
   color: white;
 }
 
-.consonant.key-bg {
+.consonant.correct.key-bg {
   /* background: linear-gradient(to right, theme('colors.green.500') 50%, theme('colors.slate.400') 50%); */
   background-color: theme('colors.gray.400');
-  background-image: url('./images/consonant-green.svg');
+  background-image: url('./images/consonant-correct.svg');
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -514,11 +602,11 @@ svg.cursor-pointer:hover {
   color: white;
 }
 
-.consonant.key-bg:hover,
-.consonant.key-bg:active {
+.consonant.correct.key-bg:hover,
+.consonant.correct.key-bg:active {
   /* background: linear-gradient(to right, theme('colors.green.600') 50%, theme('colors.slate.400') 50%); */
   background-color: theme('colors.gray.400');
-  background-image: url('./images/consonant-green.svg');
+  background-image: url('./images/consonant-correct.svg');
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -526,10 +614,10 @@ svg.cursor-pointer:hover {
   color: white;
 }
 
-.dark .consonant.key-bg {
+.dark .consonant.correct.key-bg {
   /* background: linear-gradient(to right, theme('colors.green.500') 50%, theme('colors.slate.800') 50%); */
   background-color: theme('colors.slate.800');
-  background-image: url('./images/consonant-green.svg');
+  background-image: url('./images/consonant-correct.svg');
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -537,11 +625,11 @@ svg.cursor-pointer:hover {
   color: white;
 }
 
-.dark .consonant.key-bg:hover,
-.dark .consonant.key-bg:active {
+.dark .consonant.correct.key-bg:hover,
+.dark .consonant.correct.key-bg:active {
   /* background: linear-gradient(to right, theme('colors.green.600') 50%, theme('colors.slate.800') 50%); */
   background-color: theme('colors.slate.800');
-  background-image: url('./images/consonant-green.svg');
+  background-image: url('./images/consonant-correct.svg');
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -549,10 +637,10 @@ svg.cursor-pointer:hover {
   color: white;
 }
 
-.high-contrast .consonant.key-bg {
+.high-contrast .consonant.correct.key-bg {
   /* background: linear-gradient(to right, theme('colors.orange.500') 50%, theme('colors.slate.400') 50%); */
   background-color: theme('colors.gray.400');
-  background-image: url('./images/consonant-orange.svg');
+  background-image: url('./images/consonant-correct-high-contrast.svg');
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -560,11 +648,11 @@ svg.cursor-pointer:hover {
   color: white;
 }
 
-.high-contrast .consonant.key-bg:hover,
-.high-contrast .consonant.key-bg:active {
+.high-contrast .consonant.correct.key-bg:hover,
+.high-contrast .consonant.correct.key-bg:active {
   /* background: linear-gradient(to right, theme('colors.orange.600') 50%, theme('colors.slate.400') 50%); */
   background-color: theme('colors.gray.400');
-  background-image: url('./images/consonant-orange.svg');
+  background-image: url('./images/consonant-correct-high-contrast.svg');
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -572,10 +660,10 @@ svg.cursor-pointer:hover {
   color: white;
 }
 
-.high-contrast.dark .consonant.key-bg {
+.high-contrast.dark .consonant.correct.key-bg {
   /* background: linear-gradient(to right, theme('colors.orange.500') 50%, theme('colors.slate.800') 50%); */
   background-color: theme('colors.slate.800');
-  background-image: url('./images/consonant-orange.svg');
+  background-image: url('./images/consonant-correct-high-contrast.svg');
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -583,11 +671,11 @@ svg.cursor-pointer:hover {
   color: white;
 }
 
-.high-contrast.dark .consonant.key-bg:hover,
-.high-contrast.dark .consonant.key-bg:active {
+.high-contrast.dark .consonant.correct.key-bg:hover,
+.high-contrast.dark .consonant.correct.key-bg:active {
   /* background: linear-gradient(to right, theme('colors.orange.600') 50%, theme('colors.slate.800') 50%); */
   background-color: theme('colors.slate.800');
-  background-image: url('./images/consonant-orange.svg');
+  background-image: url('./images/consonant-correct-high-contrast.svg');
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -595,10 +683,10 @@ svg.cursor-pointer:hover {
   color: white;
 }
 
-.vowel.key-bg {
+.vowel.correct.key-bg {
   /* background: linear-gradient(to top, theme('colors.green.500') 50%, theme('colors.slate.400') 50%); */
   background-color: theme('colors.gray.400');
-  background-image: url('./images/vowel-green.svg');
+  background-image: url('./images/vowel-correct.svg');
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -606,11 +694,11 @@ svg.cursor-pointer:hover {
   color: white;
 }
 
-.vowel.key-bg:hover,
-.vowel.key-bg:active {
+.vowel.correct.key-bg:hover,
+.vowel.correct.key-bg:active {
   /* background: linear-gradient(to top, theme('colors.green.600') 50%, theme('colors.slate.400') 50%); */
   background-color: theme('colors.gray.400');
-  background-image: url('./images/vowel-green.svg');
+  background-image: url('./images/vowel-correct.svg');
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -618,10 +706,10 @@ svg.cursor-pointer:hover {
   color: white;
 }
 
-.dark .vowel.key-bg {
+.dark .vowel.correct.key-bg {
   /* background: linear-gradient(to top, theme('colors.green.500') 50%, theme('colors.slate.800') 50%); */
   background-color: theme('colors.slate.800');
-  background-image: url('./images/vowel-green.svg');
+  background-image: url('./images/vowel-correct.svg');
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -629,11 +717,11 @@ svg.cursor-pointer:hover {
   color: white;
 }
 
-.dark .vowel.key-bg:hover,
-.dark .vowel.key-bg:active {
+.dark .vowel.correct.key-bg:hover,
+.dark .vowel.correct.key-bg:active {
   /* background: linear-gradient(to top, theme('colors.green.600') 50%, theme('colors.slate.800') 50%); */
   background-color: theme('colors.slate.800');
-  background-image: url('./images/vowel-green.svg');
+  background-image: url('./images/vowel-correct.svg');
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -641,10 +729,10 @@ svg.cursor-pointer:hover {
   color: white;
 }
 
-.high-contrast .vowel.key-bg {
+.high-contrast .vowel.correct.key-bg {
   /* background: linear-gradient(to top, theme('colors.orange.500') 50%, theme('colors.slate.400') 50%); */
   background-color: theme('colors.gray.400');
-  background-image: url('./images/vowel-orange.svg');
+  background-image: url('./images/vowel-correct-high-contrast.svg');
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -652,11 +740,11 @@ svg.cursor-pointer:hover {
   color: white;
 }
 
-.high-contrast .vowel.key-bg:hover,
-.high-contrast .vowel.key-bg:active {
+.high-contrast .vowel.correct.key-bg:hover,
+.high-contrast .vowel.correct.key-bg:active {
   /* background: linear-gradient(to top, theme('colors.orange.600') 50%, theme('colors.slate.400') 50%); */
   background-color: theme('colors.gray.400');
-  background-image: url('./images/vowel-orange.svg');
+  background-image: url('./images/vowel-correct-high-contrast.svg');
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -664,10 +752,10 @@ svg.cursor-pointer:hover {
   color: white;
 }
 
-.high-contrast.dark .vowel.key-bg {
+.high-contrast.dark .vowel.correct.key-bg {
   /* background: linear-gradient(to top, theme('colors.orange.500') 50%, theme('colors.slate.800') 50%); */
   background-color: theme('colors.slate.800');
-  background-image: url('./images/vowel-orange.svg');
+  background-image: url('./images/vowel-correct-high-contrast.svg');
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -675,11 +763,195 @@ svg.cursor-pointer:hover {
   color: white;
 }
 
-.high-contrast.dark .vowel.key-bg:hover,
-.high-contrast.dark .vowel.key-bg:active {
+.high-contrast.dark .vowel.correct.key-bg:hover,
+.high-contrast.dark .vowel.correct.key-bg:active {
   /* background: linear-gradient(to top, theme('colors.orange.600') 50%, theme('colors.slate.800') 50%); */
   background-color: theme('colors.slate.800');
-  background-image: url('./images/vowel-orange.svg');
+  background-image: url('./images/vowel-correct-high-contrast.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 1;
+  color: white;
+}
+
+.consonant.present.key-bg {
+  /* background: linear-gradient(to right, theme('colors.yellow.500') 50%, theme('colors.slate.400') 50%); */
+  background-color: theme('colors.gray.400');
+  background-image: url('./images/consonant-present.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.9;
+  color: white;
+}
+
+.consonant.present.key-bg:hover,
+.consonant.present.key-bg:active {
+  /* background: linear-gradient(to right, theme('colors.yellow.600') 50%, theme('colors.slate.400') 50%); */
+  background-color: theme('colors.gray.400');
+  background-image: url('./images/consonant-present.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 1;
+  color: white;
+}
+
+.dark .consonant.present.key-bg {
+  /* background: linear-gradient(to right, theme('colors.yellow.500') 50%, theme('colors.slate.800') 50%); */
+  background-color: theme('colors.slate.800');
+  background-image: url('./images/consonant-present.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.9;
+  color: white;
+}
+
+.dark .consonant.present.key-bg:hover,
+.dark .consonant.present.key-bg:active {
+  /* background: linear-gradient(to right, theme('colors.yellow.600') 50%, theme('colors.slate.800') 50%); */
+  background-color: theme('colors.slate.800');
+  background-image: url('./images/consonant-present.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 1;
+  color: white;
+}
+
+.high-contrast .consonant.present.key-bg {
+  /* background: linear-gradient(to right, theme('colors.cyan.500') 50%, theme('colors.slate.400') 50%); */
+  background-color: theme('colors.gray.400');
+  background-image: url('./images/consonant-present-high-contrast.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.9;
+  color: white;
+}
+
+.high-contrast .consonant.present.key-bg:hover,
+.high-contrast .consonant.present.key-bg:active {
+  /* background: linear-gradient(to right, theme('colors.cyan.600') 50%, theme('colors.slate.400') 50%); */
+  background-color: theme('colors.gray.400');
+  background-image: url('./images/consonant-present-high-contrast.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 1;
+  color: white;
+}
+
+.high-contrast.dark .consonant.present.key-bg {
+  /* background: linear-gradient(to right, theme('colors.cyan.500') 50%, theme('colors.slate.800') 50%); */
+  background-color: theme('colors.slate.800');
+  background-image: url('./images/consonant-present-high-contrast.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.9;
+  color: white;
+}
+
+.high-contrast.dark .consonant.present.key-bg:hover,
+.high-contrast.dark .consonant.present.key-bg:active {
+  /* background: linear-gradient(to right, theme('colors.cyan.600') 50%, theme('colors.slate.800') 50%); */
+  background-color: theme('colors.slate.800');
+  background-image: url('./images/consonant-present-high-contrast.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 1;
+  color: white;
+}
+
+.vowel.present.key-bg {
+  /* background: linear-gradient(to top, theme('colors.yellow.500') 50%, theme('colors.slate.400') 50%); */
+  background-color: theme('colors.gray.400');
+  background-image: url('./images/vowel-present.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.9;
+  color: white;
+}
+
+.vowel.present.key-bg:hover,
+.vowel.present.key-bg:active {
+  /* background: linear-gradient(to top, theme('colors.yellow.600') 50%, theme('colors.slate.400') 50%); */
+  background-color: theme('colors.gray.400');
+  background-image: url('./images/vowel-present.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 1;
+  color: white;
+}
+
+.dark .vowel.present.key-bg {
+  /* background: linear-gradient(to top, theme('colors.yellow.500') 50%, theme('colors.slate.800') 50%); */
+  background-color: theme('colors.slate.800');
+  background-image: url('./images/vowel-present.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.9;
+  color: white;
+}
+
+.dark .vowel.present.key-bg:hover,
+.dark .vowel.present.key-bg:active {
+  /* background: linear-gradient(to top, theme('colors.yellow.600') 50%, theme('colors.slate.800') 50%); */
+  background-color: theme('colors.slate.800');
+  background-image: url('./images/vowel-present.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 1;
+  color: white;
+}
+
+.high-contrast .vowel.present.key-bg {
+  /* background: linear-gradient(to top, theme('colors.cyan.500') 50%, theme('colors.slate.400') 50%); */
+  background-color: theme('colors.gray.400');
+  background-image: url('./images/vowel-present-high-contrast.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.9;
+  color: white;
+}
+
+.high-contrast .vowel.present.key-bg:hover,
+.high-contrast .vowel.present.key-bg:active {
+  /* background: linear-gradient(to top, theme('colors.cyan.600') 50%, theme('colors.slate.400') 50%); */
+  background-color: theme('colors.gray.400');
+  background-image: url('./images/vowel-present-high-contrast.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 1;
+  color: white;
+}
+
+.high-contrast.dark .vowel.present.key-bg {
+  /* background: linear-gradient(to top, theme('colors.cyan.500') 50%, theme('colors.slate.800') 50%); */
+  background-color: theme('colors.slate.800');
+  background-image: url('./images/vowel-present-high-contrast.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.9;
+  color: white;
+}
+
+.high-contrast.dark .vowel.present.key-bg:hover,
+.high-contrast.dark .vowel.present.key-bg:active {
+  /* background: linear-gradient(to top, theme('colors.cyan.600') 50%, theme('colors.slate.800') 50%); */
+  background-color: theme('colors.slate.800');
+  background-image: url('./images/vowel-present-high-contrast.svg');
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: center;

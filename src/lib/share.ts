@@ -80,9 +80,13 @@ export const generateEmojiGrid = (endOfLine: string, guesses: string[], tiles: s
               return tiles[1]
             case 'close':
               return tiles[2]
-            case 'consonant':
+            case 'consonant-correct':
               return tiles[3]
-            case 'vowel':
+            case 'vowel-correct':
+              return tiles[4]
+            case 'consonant-present':
+              return tiles[3]
+            case 'vowel-present':
               return tiles[4]
             default:
               return tiles[5]
