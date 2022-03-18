@@ -51,7 +51,9 @@ export const Bar = ({
         } else if (value === 'DELETE') {
           onDelete()
         } else if (value === 'SEARCH') {
-          window.open(JISHO_SEARCH_LINK + currentInputText, "_blank")
+          if (currentInputText !== '') {
+            window.open(JISHO_SEARCH_LINK + currentInputText, "_blank")
+          }
         }
       }
                 

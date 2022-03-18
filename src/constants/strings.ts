@@ -10,7 +10,7 @@ export const JISHO_SEARCH_LINK = 'https://jisho.org/search/'
 export const ENTER_TEXT = '⏎'
 export const DELETE_TEXT = '⇦'
 
-export const SUPPORTER_NAME = 'Jeffrey, m, cheapshot, Ken1, Kai, Vikki, kana, keika, neko, Katie, 東郷, Rima, あるる, のん, xipj, tosuke ...'
+export const SUPPORTER_NAME = 'Jeffrey, m, みのる, cheapshot, Ken1, Kai, Vikki, kana, keika, neko, Katie, 東郷, Rima, あるる, のん, xipj, tosuke, Conrick, 良幸, あかいと, Akitack, ユーキャン, Cheryl, zk ...'
 
 interface TranslationType {
   [index: string]: string
