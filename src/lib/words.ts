@@ -77,12 +77,20 @@ export const localeAwareUpperCase = (text: string) => {
 
 export const getWordOfDay = () => {
   // January 23, 2022 Game Epoch
-  const epochMs = new Date(2022, 0, 23).valueOf()
-  const now = Date.now()
+  // To account for cases where the two dates in question span a daylight saving time (DST) change.
+  // The date on which the DST change happens will have a duration in milliseconds which is != 86400000.
+  // Convert the two dates to UTC time because because UTC time never observes DST.
+  const epoch = new Date(2022, 0, 23)
+  const now = new Date()
+  const utcEpoch = Date.UTC(epoch.getFullYear(), epoch.getMonth(), epoch.getDate())
+  const utcToday = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate())
   const msInDay = 86400000
-  const index = Math.floor((now - epochMs) / msInDay)
+  const index = Math.floor((utcToday - utcEpoch) / msInDay)
   const yesterdayIndex = (index > 0 ? index - 1 : 0)
-  const nextday = (index + 1) * msInDay + epochMs
+  // Add 86400000ms to UTC today to get UTC tomorrow and retrive the UTC date to create local time
+  const utcTomorrow = new Date(utcToday + 86400000)
+  const tomorrow = new Date(utcTomorrow.getUTCFullYear(), utcTomorrow.getUTCMonth(), utcTomorrow.getUTCDate())
+  const nextday = tomorrow.valueOf()
 
   return {
     yesterdaySolution: localeAwareUpperCase(WORDS[yesterdayIndex % WORDS.length]),
