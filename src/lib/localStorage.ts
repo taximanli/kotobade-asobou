@@ -1,10 +1,13 @@
 import { PREFERRED_DISPLAY_LANGUAGE } from '../constants/settings'
+import { setWordOfDay } from './words'
 
 const gameStateKey = 'gameState'
 const shareStatusKey = 'shareStatus'
 const highContrastKey = 'highContrast'
 const hintModeKey = 'hintMode'
 const displayLanguageKey = 'displayLanguage'
+const timezoneKey = 'timezone'
+const timezoneOffsetKey = 'timezoneOffset'
 
 type StoredShareStatus = {
   isHintMode: boolean
@@ -172,4 +175,34 @@ export const getStoredDisplayLanguage = () => {
     setStoredDisplayLanguage(displayLanguage)
     return displayLanguage
   }
+}
+
+export const setStoredTimezone = (timezone: string) => {
+  localStorage.setItem(timezoneKey, timezone)
+}
+
+export const getStoredTimezone = () => {
+  let timezone = localStorage.getItem(timezoneKey)
+  if (!timezone) {
+    timezone = Intl.DateTimeFormat().resolvedOptions().timeZone
+    setStoredTimezone(timezone)
+  }
+  return timezone
+}
+
+export const setStoredTimezoneOffset = (timezoneOffset: number) => {
+  localStorage.setItem(timezoneOffsetKey, timezoneOffset.toString())
+  setWordOfDay()
+}
+
+export const getStoredTimezoneOffset = () => {
+  let storedTimezoneOffset = localStorage.getItem(timezoneOffsetKey)
+  let timezoneOffset = 0
+  if (storedTimezoneOffset) {
+    timezoneOffset = parseInt(storedTimezoneOffset)
+  } else {
+    timezoneOffset = -(new Date().getTimezoneOffset()) / 60
+    setStoredTimezoneOffset(timezoneOffset)
+  }
+  return timezoneOffset
 }
