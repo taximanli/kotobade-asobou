@@ -45,8 +45,9 @@ export const SupportModal = ({ isOpen, handleClose }: Props) => {
         </p>
       </div>
       <div className="flex mt-3">
-        <textarea className="local-font text-xs text-gray-400 dark:text-gray-500 w-full border-solid border-2 rounded bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-600" rows={4}
-              value={SUPPORTER_NAME} />
+        <textarea className="local-font text-xs text-gray-400 dark:text-gray-500 w-full border-solid border-2 rounded bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-600"
+          rows={5}
+          value={SUPPORTER_NAME} />
       </div>
     </BaseModal>
   )

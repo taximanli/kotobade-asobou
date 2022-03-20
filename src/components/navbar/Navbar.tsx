@@ -33,19 +33,19 @@ export const Navbar = ({
         onClick={() => setIsSupportModalOpen(true)}
       />
       <span
-        className="hidden sm:inline local-font text-sm sm:text-sm md:text-base lg:text-lg font-bold ml-2 sm:ml-2.5 shrink dark:text-white cursor-pointer"
+        className="hidden xs:inline local-font text-sm sm:text-sm md:text-base lg:text-lg font-bold ml-2 sm:ml-2.5 shrink dark:text-white cursor-pointer"
         onClick={() => setIsSupportModalOpen(true)}
       >
         {gameHeading[0]} {gameHeading[1]}
       </span>
       <span
-        className="hidden sm:inline local-font text-xl sm:text-2xl font-bold ml-2 sm:ml-2.5 grow dark:text-white cursor-pointer"
+        className="hidden xs:inline local-font text-xl sm:text-2xl font-bold ml-2 sm:ml-2.5 grow dark:text-white cursor-pointer"
         onClick={() => setIsSupportModalOpen(true)}
       >
         {gameHeading[2]}
       </span>
       <span
-        className="inline sm:hidden text-center local-font text-xl font-bold grow dark:text-white cursor-pointer"
+        className="inline xs:hidden text-center local-font text-xl font-bold grow dark:text-white cursor-pointer"
         onClick={() => setIsSupportModalOpen(true)}
       >
         {gameHeading[2]}
