@@ -7,7 +7,6 @@ const highContrastKey = 'highContrast'
 const hintModeKey = 'hintMode'
 const displayLanguageKey = 'displayLanguage'
 const timezoneKey = 'timezone'
-const timezoneOffsetKey = 'timezoneOffset'
 
 type StoredShareStatus = {
   isHintMode: boolean
@@ -179,6 +178,7 @@ export const getStoredDisplayLanguage = () => {
 
 export const setStoredTimezone = (timezone: string) => {
   localStorage.setItem(timezoneKey, timezone)
+  setWordOfDay()
 }
 
 export const getStoredTimezone = () => {
@@ -188,21 +188,4 @@ export const getStoredTimezone = () => {
     setStoredTimezone(timezone)
   }
   return timezone
-}
-
-export const setStoredTimezoneOffset = (timezoneOffset: number) => {
-  localStorage.setItem(timezoneOffsetKey, timezoneOffset.toString())
-  setWordOfDay()
-}
-
-export const getStoredTimezoneOffset = () => {
-  let storedTimezoneOffset = localStorage.getItem(timezoneOffsetKey)
-  let timezoneOffset = 0
-  if (storedTimezoneOffset) {
-    timezoneOffset = parseInt(storedTimezoneOffset)
-  } else {
-    timezoneOffset = -(new Date().getTimezoneOffset()) / 60
-    setStoredTimezoneOffset(timezoneOffset)
-  }
-  return timezoneOffset
 }

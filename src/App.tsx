@@ -38,7 +38,6 @@ import {
   getStoredDisplayLanguage,
   getStoredTimezone,
   setStoredTimezone,
-  setStoredTimezoneOffset,
 } from './lib/localStorage'
 import { default as GraphemeSplitter } from 'grapheme-splitter'
 
@@ -138,14 +137,13 @@ function App() {
   }, [isDarkMode, isHighContrastMode])
 
   const handleTimezone = (timezone: ITimezone) => {
-    const timezoneOffset =
-      typeof timezone === 'string' ? null : timezone.offset!
-    if (timezoneOffset !== null) {
-      setStoredTimezoneOffset(timezoneOffset)
+    if (guesses.length === 0) {
+      timezone = typeof timezone === 'string' ? timezone : timezone.value
+      setTimezone(timezone)
+      setStoredTimezone(timezone)
+    } else {
+      showErrorAlert(t('TIMEZONE_ALERT_MESSAGE'))
     }
-    timezone = typeof timezone === 'string' ? timezone : timezone.value
-    setTimezone(timezone)
-    setStoredTimezone(timezone)
   }
 
   const handleDarkMode = (isDark: boolean) => {

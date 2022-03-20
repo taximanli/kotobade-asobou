@@ -2,7 +2,8 @@ import { WORDS } from '../constants/wordlist'
 import { VALID_GUESSES } from '../constants/validGuesses'
 import { t } from '../constants/strings'
 import { getGuessStatuses } from './statuses'
-import { getStoredTimezoneOffset } from './localStorage'
+import { getStoredTimezone } from './localStorage'
+import { DateTime } from 'luxon'
 import { default as GraphemeSplitter } from 'grapheme-splitter'
 
 export const isWordInWordList = (word: string) => {
@@ -81,29 +82,27 @@ export const getWordOfDay = () => {
   // To account for cases where the two dates in question span a daylight saving time (DST) change.
   // The date on which the DST change happens will have a duration in milliseconds which is != 86400000.
   // Convert the two dates to UTC time because because UTC time never observes DST.
-  const msInHour = 3600000
+  const msInMinute = 60000
   const msInDay = 86400000
-  const timezoneOffset = getStoredTimezoneOffset()
-  const selectedTimezoneOffset = timezoneOffset * msInHour
 
-  const epoch = new Date(2022, 0, 23)
+  const luxonDateTime = DateTime.now().setZone(getStoredTimezone())
+  const msTimezoneOffset = luxonDateTime.offset * msInMinute
+  const msDayOffset = (luxonDateTime.offset > 0 ? 0 : msInDay)
+
   const now = new Date()
-  const utcEpoch = Date.UTC(epoch.getFullYear(), epoch.getMonth(), epoch.getDate())
-  const utcToday = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate())
+  const epoch = Date.UTC(2022, 0, 23) - msTimezoneOffset
+  const today = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) - msTimezoneOffset - msDayOffset
+  const tomorrow = today + msInDay
 
-  const index = Math.floor((utcToday - utcEpoch) / msInDay)
+  const index = Math.floor((today - epoch) / msInDay)
   const yesterdayIndex = (index > 0 ? index - 1 : 0)
-  // Add 86400000ms to UTC today to get UTC tomorrow and retrive the UTC date to create local time
-  const utcTomorrow = new Date(utcToday + msInDay)
-  const tomorrow = new Date(utcTomorrow.getUTCFullYear(), utcTomorrow.getUTCMonth(), utcTomorrow.getUTCDate())
-  const nextday = tomorrow.valueOf()
 
   return {
     yesterdaySolution: localeAwareUpperCase(WORDS[yesterdayIndex % WORDS.length]),
     yesterdaySolutionIndex: yesterdayIndex,
     solution: localeAwareUpperCase(WORDS[index % WORDS.length]),
     solutionIndex: index,
-    tomorrow: nextday,
+    tomorrow: tomorrow,
   }
 }
 
