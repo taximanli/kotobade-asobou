@@ -80,11 +80,12 @@ export const SettingsModal = ({
             />
         </div>
       </div>
-      <div className="grid-cols-2 gap-4">
+      <div className="grid-cols-2 gap-4 pt-1">
         <SettingsToggle
           settingName={t('Hint Mode')}
           flag={isHintMode}
           handleFlag={handleHintMode}
+          description={t('HINT_MODE_DESCRIPTION')}
         />
         <SettingsToggle
           settingName={t('Hard Mode')}
