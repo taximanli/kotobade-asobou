@@ -7,6 +7,7 @@ import { shareStatus } from '../../lib/share'
 import { yesterdaySolution, yesterdaySolutionIndex, solutionIndex, tomorrow } from '../../lib/words'
 import { BaseModal } from './BaseModal'
 import { t, JISHO_SEARCH_LINK } from '../../constants/strings';
+import coffeeLogo from '../../images/ko-fi-com-taximanli.png';
 
 export type shareStatusType = 'text' | 'clipboard' | 'tweet'
 
@@ -41,8 +42,9 @@ export const StatsModal = ({
 }: Props) => {
   const isHighContrast = getStoredIsHighContrastMode()
 
+  const linkClassName = classnames((isHighContrast ? 'text-orange-600' : 'text-green-600'), 'underline text-sm')
   const classNames = classnames(
-    'mt-2 w-full rounded-md border border-transparent shadow-sm px-4 py-2 local-font text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 sm:text-sm',
+    'mt-1 w-full rounded-md border border-transparent shadow-sm px-4 py-2 local-font text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 sm:text-sm',
     {
       'bg-orange-500 hover:bg-orange-600 focus:ring-orange-400': isHighContrast,
       'bg-green-500 hover:bg-green-600 focus:ring-green-400': !isHighContrast,
@@ -84,6 +86,14 @@ export const StatsModal = ({
       <div className="flex gap-1 justify-center text-sm dark:text-white mx-1">
         {t('YESTERDAY_CORRECT_WORD_MESSAGE', yesterdaySolutionIndex.toString())}
         <a className="underline text-sm text-gray-600 dark:text-gray-300 cursor-zoom-in" href={(JISHO_SEARCH_LINK + yesterdaySolution)} rel="noreferrer" target="_blank">{yesterdaySolution}</a>
+      </div>
+      <div className="flex justify-between items-center gap-3 mt-3">
+        <p className="text-left text-sm dark:text-white">
+          {t('If you love this game')}<br />{t('Please consider')}
+          {' '}<a className={linkClassName} href={t('KOFI_LINK')} rel="noreferrer" target="_blank">{t('can you treat me')}</a>{' '}
+          {t('please?')}
+        </p>
+        <img className="w-9 h-9 wiggle cursor-pointer" src={coffeeLogo} title={t('Buy me a coffee?')} alt={t('Buy me a coffee?')} onClick={()=> window.open(t('KOFI_LINK'), "_blank")} />
       </div>
       {(isGameLost || isGameWon) && (
         <div>

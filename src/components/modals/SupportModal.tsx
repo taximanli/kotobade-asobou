@@ -1,7 +1,7 @@
 import classnames from 'classnames'
 import { BaseModal } from './BaseModal'
 import { PREFERRED_DISPLAY_LANGUAGE } from '../../constants/settings'
-import { getStoredDisplayLanguage } from '../../lib/localStorage'
+import { getStoredIsHighContrastMode, getStoredDisplayLanguage } from '../../lib/localStorage'
 import { t, SUPPORTER_NAME } from '../../constants/strings';
 import coffeeLogo from '../../images/ko-fi-com-taximanli.png';
 
@@ -13,8 +13,10 @@ type Props = {
 }
 
 export const SupportModal = ({ isOpen, handleClose }: Props) => {
+  const isHighContrast = getStoredIsHighContrastMode()
   const displayLanguage = getStoredDisplayLanguage()
   const aboutClassName = classnames((displayLanguage === PREFERRED_DISPLAY_LANGUAGE ? 'local-font' : ''), 'text-left text-sm text-gray-500 dark:text-gray-300')
+  const linkClassName = classnames((isHighContrast ? 'text-orange-600' : 'text-green-600'), 'underline text-sm')
 
   return (
     <BaseModal
@@ -30,7 +32,7 @@ export const SupportModal = ({ isOpen, handleClose }: Props) => {
       <div className="flex justify-between items-center gap-3 mt-3">
         <p className={aboutClassName}>
           {t('If you enjoy')}<br />
-          {' '}<a className="underline text-sm text-gray-600 dark:text-gray-300" href={t('KOFI_LINK')} rel="noreferrer" target="_blank">{t('buying me a coffee')}</a>{' '}
+          {' '}<a className={linkClassName} href={t('KOFI_LINK')} rel="noreferrer" target="_blank">{t('buying me a coffee')}</a>{' '}
           {t('if you wish')}
           {' '}
           {t('do my best')}
@@ -43,7 +45,7 @@ export const SupportModal = ({ isOpen, handleClose }: Props) => {
         </p>
       </div>
       <div className="flex mt-3">
-        <textarea className="local-font text-xs text-gray-400 dark:text-gray-500 w-full border-solid border-2 rounded bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-600" rows={3}
+        <textarea className="local-font text-xs text-gray-400 dark:text-gray-500 w-full border-solid border-2 rounded bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-600" rows={4}
               value={SUPPORTER_NAME} />
       </div>
     </BaseModal>

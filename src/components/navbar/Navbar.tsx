@@ -29,13 +29,25 @@ export const Navbar = ({
         onClick={() => setIsInfoModalOpen(true)}
       />
       <HeartIcon
-        className="h-6 w-6 ml-1 sm:ml-2 cursor-pointer dark:stroke-white"
+        className="h-6 w-6 ml-1 sm:ml-2 cursor-pointer stroke-red-700"
         onClick={() => setIsSupportModalOpen(true)}
       />
-      <span className="local-font text-sm sm:text-sm md:text-base lg:text-lg font-bold ml-2 sm:ml-2.5 shrink dark:text-white">
+      <span
+        className="hidden sm:inline local-font text-sm sm:text-sm md:text-base lg:text-lg font-bold ml-2 sm:ml-2.5 shrink dark:text-white cursor-pointer"
+        onClick={() => setIsSupportModalOpen(true)}
+      >
         {gameHeading[0]} {gameHeading[1]}
       </span>
-      <span className="local-font text-xl sm:text-2xl font-bold ml-2 sm:ml-2.5 grow dark:text-white">
+      <span
+        className="hidden sm:inline local-font text-xl sm:text-2xl font-bold ml-2 sm:ml-2.5 grow dark:text-white cursor-pointer"
+        onClick={() => setIsSupportModalOpen(true)}
+      >
+        {gameHeading[2]}
+      </span>
+      <span
+        className="inline sm:hidden text-center local-font text-xl font-bold grow dark:text-white cursor-pointer"
+        onClick={() => setIsSupportModalOpen(true)}
+      >
         {gameHeading[2]}
       </span>
       <ChartBarIcon
