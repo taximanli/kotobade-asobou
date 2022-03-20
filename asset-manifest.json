@@ -1,19 +1,21 @@
 {
   "files": {
-    "main.css": "/kotobade-asobou/static/css/main.c82c35d0.css",
-    "main.js": "/kotobade-asobou/static/js/main.0087f3dc.js",
+    "main.css": "/kotobade-asobou/static/css/main.96db4512.css",
+    "main.js": "/kotobade-asobou/static/js/main.80670daa.js",
     "static/js/787.dd9820bb.chunk.js": "/kotobade-asobou/static/js/787.dd9820bb.chunk.js",
     "index.html": "/kotobade-asobou/index.html",
     "static/media/vowel-orange.svg": "/kotobade-asobou/static/media/vowel-orange.db3d060ace482c7dc7ae.svg",
     "static/media/vowel-green.svg": "/kotobade-asobou/static/media/vowel-green.b297242a84d27f31c808.svg",
     "static/media/consonant-orange.svg": "/kotobade-asobou/static/media/consonant-orange.edd0a2beededb5eb6891.svg",
     "static/media/consonant-green.svg": "/kotobade-asobou/static/media/consonant-green.c8cbcf2c4ecedc3e2988.svg",
-    "main.c82c35d0.css.map": "/kotobade-asobou/static/css/main.c82c35d0.css.map",
-    "main.0087f3dc.js.map": "/kotobade-asobou/static/js/main.0087f3dc.js.map",
+    "static/media/close-violet.svg": "/kotobade-asobou/static/media/close-violet.5f8aab25816d66466ce6.svg",
+    "static/media/close-lime.svg": "/kotobade-asobou/static/media/close-lime.d2bd53e75e7b454c0c25.svg",
+    "main.96db4512.css.map": "/kotobade-asobou/static/css/main.96db4512.css.map",
+    "main.80670daa.js.map": "/kotobade-asobou/static/js/main.80670daa.js.map",
     "787.dd9820bb.chunk.js.map": "/kotobade-asobou/static/js/787.dd9820bb.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c82c35d0.css",
-    "static/js/main.0087f3dc.js"
+    "static/css/main.96db4512.css",
+    "static/js/main.80670daa.js"
   ]
 }
