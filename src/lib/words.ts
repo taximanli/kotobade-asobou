@@ -82,19 +82,16 @@ export const getWordOfDay = () => {
   // To account for cases where the two dates in question span a daylight saving time (DST) change.
   // The date on which the DST change happens will have a duration in milliseconds which is != 86400000.
   // Convert the two dates to UTC time because because UTC time never observes DST.
-  const msInMinute = 60000
+
   const msInDay = 86400000
+  const timezone = getStoredTimezone()
 
-  const luxonDateTime = DateTime.now().setZone(getStoredTimezone())
-  const msTimezoneOffset = luxonDateTime.offset * msInMinute
-  const msDayOffset = (luxonDateTime.offset > 0 ? 0 : msInDay)
+  const now = DateTime.now().setZone(timezone)
+  const epoch = DateTime.utc(2022, 1, 23)
+  const today = DateTime.utc(now.year, now.month, now.day)
+  const tomorrow = today.plus({days: 1}).minus({minutes: now.offset}).valueOf()
 
-  const now = new Date()
-  const epoch = Date.UTC(2022, 0, 23) - msTimezoneOffset
-  const today = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) - msTimezoneOffset - msDayOffset
-  const tomorrow = today + msInDay
-
-  const index = Math.floor((today - epoch) / msInDay)
+  const index = Math.floor((today.valueOf() - epoch.valueOf()) / msInDay)
   const yesterdayIndex = (index > 0 ? index - 1 : 0)
 
   return {
