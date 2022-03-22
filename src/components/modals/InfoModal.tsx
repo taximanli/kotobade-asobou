@@ -26,7 +26,20 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
 
   if (displayLanguage === PREFERRED_DISPLAY_LANGUAGE) {
     return (
-      <BaseModal title="遊び方" isOpen={isOpen} handleClose={handleClose}>
+      <BaseModal title="更新情報" isOpen={isOpen} handleClose={handleClose}>
+
+        <p className="text-left local-font text-sm text-gray-500 dark:text-gray-300 mb-2">
+          新機能「タイムゾーンの設定」が追加されています。
+        </p>
+        <p className="text-left local-font text-sm text-gray-500 dark:text-gray-300">
+          海外の友達と同じ単語でゲームをしたい場合は、ゲームを同じタイムゾーンに設定します。
+          例えば、あなたとニューヨークの友達は両方ともゲームのタイムゾーンを日本時間に設定できます。
+        </p>
+
+        <p className="local-font text-lg leading-6 font-medium text-gray-900 dark:text-gray-100 mt-2 md:mt-4 mb-2">
+          遊び方
+        </p>
+
         <p className="text-left local-font text-sm text-gray-500 dark:text-gray-300">
           今日の単語を{MAX_CHALLENGES}回以内に当ててください。それぞれの答えはひらがな{MAX_WORD_LENGTH}文字の単語である必要があります。入力ボタンを押して答えを決定してください。
           答えるたびに正方形の色が変わり、それが次のヒントになります。
@@ -50,6 +63,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
         <p className="local-font text-lg leading-6 font-medium text-gray-900 dark:text-gray-100 mt-2 md:mt-4 mb-2">
           ヒントモード（オン/オフ切替可能）
         </p>
+
         <p className="local-font text-left text-sm text-gray-500 dark:text-gray-300">
           ヒントモードは画面の右上に「設定 ⋮ 」でオン/オフを切り替えることができます。ヒントモードがオンの場合、三種類のヒントが追加で表示されます。
         </p>
@@ -157,7 +171,20 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
     )
   } else {
     return (
-      <BaseModal title="How to play" isOpen={isOpen} handleClose={handleClose}>
+      <BaseModal title="Latest updates" isOpen={isOpen} handleClose={handleClose}>
+
+        <p className="text-left text-sm text-gray-500 dark:text-gray-300 mb-2">
+          New feature "Set timezone" is now available in Settings.
+        </p>
+        <p className="text-left text-sm text-gray-500 dark:text-gray-300">
+          If you want to play the same word with a friend living overseas, you both can choose the same timezone to play the game.
+          For example, you are in Japan and your friend is in New York, you both can set the timezone in the game to Japan time to play the same word.
+        </p>
+
+        <p className="local-font text-lg leading-6 font-medium text-gray-900 dark:text-gray-100 mt-2 md:mt-4 mb-2">
+          How to play
+        </p>
+
         <p className="text-left text-sm text-gray-500 dark:text-gray-300">
           Guess the word of the day in {MAX_CHALLENGES} tries. Each guess must be a valid {MAX_WORD_LENGTH}-kana word. Hit the enter button to submit.
           After each guess, the colour of the tiles will change to show how close your guess was to the word.

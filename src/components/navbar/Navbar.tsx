@@ -29,7 +29,7 @@ export const Navbar = ({
         onClick={() => setIsInfoModalOpen(true)}
       />
       <HeartIcon
-        className="h-6 w-6 ml-1 sm:ml-2 cursor-pointer stroke-red-700"
+        className="h-6 w-6 ml-1 sm:ml-2 cursor-pointer stroke-red-600 dark:stroke-red-400"
         onClick={() => setIsSupportModalOpen(true)}
       />
       <span
