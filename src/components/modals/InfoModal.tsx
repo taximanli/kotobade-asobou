@@ -32,7 +32,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
           新機能「タイムゾーンの設定」が追加されています。
         </p>
         <p className="text-left local-font text-sm text-gray-500 dark:text-gray-300">
-          海外の友達と同じ単語でゲームをしたい場合は、ゲームを同じタイムゾーンに設定します。
+          海外の友達と同じ単語でゲームをしたい場合は、ゲームを同じタイムゾーンに設定してください。
           例えば、あなたとニューヨークの友達は両方ともゲームのタイムゾーンを日本時間に設定できます。
         </p>
 
