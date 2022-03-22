@@ -2,6 +2,8 @@ import {
   TranslateIcon
 } from '@heroicons/react/outline'
 import classnames from 'classnames'
+import TimezoneSelect from 'react-timezone-select'
+import type { ITimezone } from "react-timezone-select"
 import { BaseModal } from './BaseModal'
 import { SettingsToggle } from './SettingsToggle'
 import { PREFERRED_DISPLAY_LANGUAGE } from '../../constants/settings'
@@ -11,6 +13,8 @@ import { getStoredIsHighContrastMode } from '../../lib/localStorage'
 type Props = {
   isOpen: boolean
   handleClose: () => void
+  timezone: ITimezone
+  handleTimezone: (timezone: ITimezone) => void
   isHintMode: boolean
   handleHintMode: Function
   isHardMode: boolean
@@ -26,6 +30,8 @@ type Props = {
 export const SettingsModal = ({
   isOpen,
   handleClose,
+  timezone,
+  handleTimezone,
   isHintMode,
   handleHintMode,
   isHardMode,
@@ -61,12 +67,25 @@ export const SettingsModal = ({
           </div>
         </div>
       </div>
-      <div className="grid-cols-2 gap-4">
-        <hr />
+      <div className="grid-cols-1 gap-4">
+        <div className="flex justify-between items-center mt-3">
+          <h2 className="local-font text-base text-gray-600 dark:text-gray-300">{t('Timezone')}</h2>
+        </div>
+      </div>
+      <div className="grid-cols-1 gap-4">
+        <div className="flex-grow text-left text-sm mt-3">
+          <TimezoneSelect
+            value={timezone}
+            onChange={handleTimezone}
+            />
+        </div>
+      </div>
+      <div className="grid-cols-2 gap-4 pt-1">
         <SettingsToggle
           settingName={t('Hint Mode')}
           flag={isHintMode}
           handleFlag={handleHintMode}
+          description={t('HINT_MODE_DESCRIPTION')}
         />
         <SettingsToggle
           settingName={t('Hard Mode')}

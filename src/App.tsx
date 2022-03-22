@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { ITimezone } from 'react-timezone-select'
 import { Grid } from './components/grid/Grid'
 import { Bar } from './components/keyboard/Bar'
 import { Keyboard } from './components/keyboard/Keyboard'
@@ -22,6 +23,7 @@ import {
   solution,
   findFirstUnusedReveal,
   unicodeLength,
+  setWordOfDay,
 } from './lib/words'
 import { addStatsForCompletedGame, loadStats } from './lib/stats'
 import {
@@ -35,6 +37,8 @@ import {
   getStoredIsHintMode,
   setStoredDisplayLanguage,
   getStoredDisplayLanguage,
+  getStoredTimezone,
+  setStoredTimezone,
 } from './lib/localStorage'
 import { default as GraphemeSplitter } from 'grapheme-splitter'
 
@@ -97,6 +101,8 @@ function App() {
 
   const [stats, setStats] = useState(() => loadStats())
 
+  const [timezone, setTimezone] = useState(getStoredTimezone())
+
   const [isHintMode, setIsHintMode] = useState(getStoredIsHintMode())
 
   const [isHardMode, setIsHardMode] = useState(
@@ -130,6 +136,17 @@ function App() {
       document.documentElement.classList.remove('high-contrast')
     }
   }, [isDarkMode, isHighContrastMode])
+
+  const handleTimezone = (timezone: ITimezone) => {
+    if (guesses.length === 0) {
+      timezone = typeof timezone === 'string' ? timezone : timezone.value
+      setTimezone(timezone)
+      setStoredTimezone(timezone)
+      setWordOfDay()
+    } else {
+      showErrorAlert(t('TIMEZONE_ALERT_MESSAGE'))
+    }
+  }
 
   const handleDarkMode = (isDark: boolean) => {
     setIsDarkMode(isDark)
@@ -362,6 +379,8 @@ function App() {
       <SettingsModal
         isOpen={isSettingsModalOpen}
         handleClose={() => setIsSettingsModalOpen(false)}
+        timezone={timezone}
+        handleTimezone={handleTimezone}
         isHintMode={isHintMode}
         handleHintMode={handleHintMode}
         isHardMode={isHardMode}

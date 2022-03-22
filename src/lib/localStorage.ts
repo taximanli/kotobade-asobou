@@ -5,6 +5,7 @@ const shareStatusKey = 'shareStatus'
 const highContrastKey = 'highContrast'
 const hintModeKey = 'hintMode'
 const displayLanguageKey = 'displayLanguage'
+const timezoneKey = 'timezone'
 
 type StoredShareStatus = {
   isHintMode: boolean
@@ -172,4 +173,17 @@ export const getStoredDisplayLanguage = () => {
     setStoredDisplayLanguage(displayLanguage)
     return displayLanguage
   }
+}
+
+export const setStoredTimezone = (timezone: string) => {
+  localStorage.setItem(timezoneKey, timezone)
+}
+
+export const getStoredTimezone = () => {
+  let timezone = localStorage.getItem(timezoneKey)
+  if (!timezone) {
+    timezone = Intl.DateTimeFormat().resolvedOptions().timeZone
+    setStoredTimezone(timezone)
+  }
+  return timezone
 }

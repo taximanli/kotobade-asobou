@@ -1,12 +1,14 @@
 import classnames from 'classnames'
 import Countdown from 'react-countdown'
+import { DateTime } from 'luxon'
 import { StatBar } from '../stats/StatBar'
 import { Histogram } from '../stats/Histogram'
-import { GameStats, getStoredIsHighContrastMode } from '../../lib/localStorage'
+import { GameStats, getStoredIsHighContrastMode, getStoredDisplayLanguage, getStoredTimezone } from '../../lib/localStorage'
 import { shareStatus } from '../../lib/share'
 import { yesterdaySolution, yesterdaySolutionIndex, solutionIndex, tomorrow } from '../../lib/words'
 import { BaseModal } from './BaseModal'
 import { t, JISHO_SEARCH_LINK } from '../../constants/strings';
+import { PREFERRED_DISPLAY_LANGUAGE } from '../../constants/settings'
 import coffeeLogo from '../../images/ko-fi-com-taximanli.png';
 
 export type shareStatusType = 'text' | 'clipboard' | 'tweet'
@@ -41,6 +43,18 @@ export const StatsModal = ({
   numberOfGuessesMade,
 }: Props) => {
   const isHighContrast = getStoredIsHighContrastMode()
+  const displayLanguage = getStoredDisplayLanguage()
+  const timezone = getStoredTimezone()
+
+  const now = DateTime.now().setZone(timezone)
+
+  let statsModalTitle = ''
+
+  if (displayLanguage === PREFERRED_DISPLAY_LANGUAGE) {
+    statsModalTitle = now.setLocale('ja-JP').toLocaleString(DateTime.DATE_FULL) + ' 第' + solutionIndex.toString() + '回'
+  } else {
+    statsModalTitle = 'Game #' + solutionIndex.toString() + ' on ' + now.setLocale('en-US').toLocaleString(DateTime.DATE_FULL)
+  }
 
   const linkClassName = classnames((isHighContrast ? 'text-orange-600' : 'text-green-600'), 'underline text-sm')
   const classNames = classnames(
@@ -54,7 +68,7 @@ export const StatsModal = ({
   if (gameStats.totalGames <= 0) {
     return (
       <BaseModal
-        title={t('SOLUTION_INDEX_TEXT', solutionIndex.toString())}
+        title={statsModalTitle}
         isOpen={isOpen}
         handleClose={handleClose}
       >
@@ -67,7 +81,7 @@ export const StatsModal = ({
   }
   return (
     <BaseModal
-      title={t('SOLUTION_INDEX_TEXT', solutionIndex.toString())}
+      title={statsModalTitle}
       isOpen={isOpen}
       handleClose={handleClose}
     >
