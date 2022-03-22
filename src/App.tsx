@@ -23,6 +23,7 @@ import {
   solution,
   findFirstUnusedReveal,
   unicodeLength,
+  setWordOfDay,
 } from './lib/words'
 import { addStatsForCompletedGame, loadStats } from './lib/stats'
 import {
@@ -141,6 +142,7 @@ function App() {
       timezone = typeof timezone === 'string' ? timezone : timezone.value
       setTimezone(timezone)
       setStoredTimezone(timezone)
+      setWordOfDay()
     } else {
       showErrorAlert(t('TIMEZONE_ALERT_MESSAGE'))
     }

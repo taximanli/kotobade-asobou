@@ -1,5 +1,4 @@
 import { PREFERRED_DISPLAY_LANGUAGE } from '../constants/settings'
-import { setWordOfDay } from './words'
 
 const gameStateKey = 'gameState'
 const shareStatusKey = 'shareStatus'
@@ -178,7 +177,6 @@ export const getStoredDisplayLanguage = () => {
 
 export const setStoredTimezone = (timezone: string) => {
   localStorage.setItem(timezoneKey, timezone)
-  setWordOfDay()
 }
 
 export const getStoredTimezone = () => {

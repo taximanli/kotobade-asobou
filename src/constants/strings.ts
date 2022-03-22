@@ -67,7 +67,6 @@ en['CORRECT_WORD_MESSAGE'] = 'The word for game #$text1 was $text2.'
 en['WRONG_SPOT_MESSAGE'] = 'Must use $text1 in position $text2.'
 en['NOT_CONTAINED_MESSAGE'] = 'Guess must contain $text1.'
 
-en['SOLUTION_INDEX_TEXT'] = 'Game #$text1 on ' + (new Date()).toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })
 en['SUPPORT_TITLE'] = 'Support'
 en['STATISTICS_TITLE'] = 'Statistics'
 en['GUESS_DISTRIBUTION_TEXT'] = 'Guess Distribution'
@@ -122,7 +121,6 @@ ja['CORRECT_WORD_MESSAGE'] = '第$text1回の正解は「$text2」です。'
 ja['WRONG_SPOT_MESSAGE'] = '$text2文字目は「$text1」でないといけません。'
 ja['NOT_CONTAINED_MESSAGE'] = '「$text1」を答えに含める必要があります。'
 
-ja['SOLUTION_INDEX_TEXT'] = (new Date()).toLocaleDateString("ja-JP", { year: 'numeric', month: 'short', day: 'numeric' }) + ' 第$text1回'
 ja['SUPPORT_TITLE'] = 'サポート'
 ja['STATISTICS_TITLE'] = '統計情報'
 ja['GUESS_DISTRIBUTION_TEXT'] = '推測数の分布'
