@@ -10,7 +10,7 @@ export const JISHO_SEARCH_LINK = 'https://jisho.org/search/'
 export const ENTER_TEXT = '⏎'
 export const DELETE_TEXT = '⇦'
 
-export const SUPPORTER_NAME = 'Jeffrey, m, Yoshiyasu, みのる, cheapshot, Ken1, Kai, Vikki, kana, keika, neko, Katie, 東郷, Rima, あるる, のん, xipj, tosuke, Conrick, 良幸, あかいと, Akitack, ユーキャン, Cheryl, zk ...'
+export const SUPPORTER_NAME = 'Jeffrey, Rose, m, Yoshiyasu, みのる, cheapshot, Ken1, Kai, Vikki, kana, keika, neko, Katie, 東郷, Rima, あるる, のん, xipj, tosuke, Conrick, 良幸, あかいと, Akitack, ユーキャン, Cheryl, zk, bree, koblf, kmaebashi, Mt4vE, kado ...'
 
 interface TranslationType {
   [index: string]: string
@@ -55,6 +55,11 @@ en['if you wish'] = '♥️'
 en['Buy me a coffee?'] = 'Buy me a coffee? ♥️ ' + KOFI_LINK
 en['do my best'] = 'I\'ll do my best to keep improving the game!'
 en['much love to'] = 'Much love to my supporters ♥️'
+
+en['If you love this game'] = 'Love the game and want to support me?'
+en['Please consider'] = 'Please consider'
+en['can you treat me'] = 'buying me a coffee'
+en['please?'] = '♥️'
 
 en['GAME_COPIED_MESSAGE'] = 'Copied results to clipboard'
 en['NOT_ENOUGH_LETTERS_MESSAGE'] = '$text1 is not a ' + MAX_WORD_LENGTH + '-kana word'
@@ -109,6 +114,11 @@ ja['if you wish'] = '♥️ こともできます。'
 ja['Buy me a coffee?'] = 'おごっていただけますか？♥️ ' + KOFI_LINK
 ja['do my best'] = 'このゲームを改良し続けるために最善を尽くします！'
 ja['much love to'] = '応援してくださった皆様、本当にありがとう ♥️'
+
+ja['If you love this game'] = 'このゲームを楽しんでいる場合は、'
+ja['Please consider'] = ''
+ja['can you treat me'] = 'コーヒーをおごって'
+ja['please?'] = 'いただけますか？'
 
 ja['GAME_COPIED_MESSAGE'] = '成績をクリップボードにコピーしました'
 ja['NOT_ENOUGH_LETTERS_MESSAGE'] = '「$text1」は ' + MAX_WORD_LENGTH + '文字の単語ではありません。' + MAX_WORD_LENGTH + '文字入力してください。'

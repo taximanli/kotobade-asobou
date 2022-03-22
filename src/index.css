@@ -350,19 +350,46 @@ svg.cursor-pointer:hover {
 }
 
 .close.cell-bg {
-  background-color: theme('colors.lime.500');
-  border-color: theme('colors.lime.500');
+  background-color: theme('colors.gray.400');
+  background-image: url('./images/close-lime.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-color: theme('colors.slate.400');
+  color: white;
+}
+
+.dark .close.cell-bg {
+  background-color: theme('colors.slate.700');
+  background-image: url('./images/close-lime.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-color: theme('colors.slate.700');
   color: white;
 }
 
 .high-contrast .close.cell-bg {
-  background-color: theme('colors.violet.500');
-  border-color: theme('colors.violet.500');
+  background-color: theme('colors.gray.400');
+  background-image: url('./images/close-violet.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-color: theme('colors.slate.400');
+  color: white;
+}
+
+.high-contrast.dark .close.cell-bg {
+  background-color: theme('colors.slate.700');
+  background-image: url('./images/close-violet.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-color: theme('colors.slate.700');
   color: white;
 }
 
 .consonant.cell-bg {
-  /* background: linear-gradient(to right, theme('colors.green.500') 50%, theme('colors.slate.400') 50%); */
   background-color: theme('colors.gray.400');
   background-image: url('./images/consonant-green.svg');
   background-size: auto 100%;
@@ -373,7 +400,6 @@ svg.cursor-pointer:hover {
 }
 
 .dark .consonant.cell-bg {
-  /* background: linear-gradient(to right, theme('colors.green.500') 50%, theme('colors.slate.700') 50%); */
   background-color: theme('colors.slate.700');
   background-image: url('./images/consonant-green.svg');
   background-size: auto 100%;
@@ -384,7 +410,6 @@ svg.cursor-pointer:hover {
 }
 
 .high-contrast .consonant.cell-bg {
-  /* background: linear-gradient(to right, theme('colors.orange.500') 50%, theme('colors.slate.400') 50%); */
   background-color: theme('colors.gray.400');
   background-image: url('./images/consonant-orange.svg');
   background-size: auto 100%;
@@ -395,7 +420,6 @@ svg.cursor-pointer:hover {
 }
 
 .high-contrast.dark .consonant.cell-bg {
-  /* background: linear-gradient(to right, theme('colors.orange.500') 50%, theme('colors.slate.700') 50%); */
   background-color: theme('colors.slate.700');
   background-image: url('./images/consonant-orange.svg');
   background-size: auto 100%;
@@ -406,7 +430,6 @@ svg.cursor-pointer:hover {
 }
 
 .vowel.cell-bg {
-  /* background: linear-gradient(to top, theme('colors.green.500') 50%, theme('colors.slate.400') 50%); */
   background-color: theme('colors.gray.400');
   background-image: url('./images/vowel-green.svg');
   background-size: auto 100%;
@@ -417,7 +440,6 @@ svg.cursor-pointer:hover {
 }
 
 .dark .vowel.cell-bg {
-  /* background: linear-gradient(to top, theme('colors.green.500') 50%, theme('colors.slate.700') 50%); */
   background-color: theme('colors.slate.700');
   background-image: url('./images/vowel-green.svg');
   background-size: auto 100%;
@@ -428,7 +450,6 @@ svg.cursor-pointer:hover {
 }
 
 .high-contrast .vowel.cell-bg {
-  /* background: linear-gradient(to top, theme('colors.orange.500') 50%, theme('colors.slate.400') 50%); */
   background-color: theme('colors.gray.400');
   background-image: url('./images/vowel-orange.svg');
   background-size: auto 100%;
@@ -439,7 +460,6 @@ svg.cursor-pointer:hover {
 }
 
 .high-contrast.dark .vowel.cell-bg {
-  /* background: linear-gradient(to top, theme('colors.orange.500') 50%, theme('colors.slate.700') 50%); */
   background-color: theme('colors.slate.700');
   background-image: url('./images/vowel-orange.svg');
   background-size: auto 100%;
@@ -504,7 +524,6 @@ svg.cursor-pointer:hover {
 }
 
 .consonant.key-bg {
-  /* background: linear-gradient(to right, theme('colors.green.500') 50%, theme('colors.slate.400') 50%); */
   background-color: theme('colors.gray.400');
   background-image: url('./images/consonant-green.svg');
   background-size: auto 100%;
@@ -516,7 +535,6 @@ svg.cursor-pointer:hover {
 
 .consonant.key-bg:hover,
 .consonant.key-bg:active {
-  /* background: linear-gradient(to right, theme('colors.green.600') 50%, theme('colors.slate.400') 50%); */
   background-color: theme('colors.gray.400');
   background-image: url('./images/consonant-green.svg');
   background-size: auto 100%;
@@ -527,7 +545,6 @@ svg.cursor-pointer:hover {
 }
 
 .dark .consonant.key-bg {
-  /* background: linear-gradient(to right, theme('colors.green.500') 50%, theme('colors.slate.800') 50%); */
   background-color: theme('colors.slate.800');
   background-image: url('./images/consonant-green.svg');
   background-size: auto 100%;
@@ -539,7 +556,6 @@ svg.cursor-pointer:hover {
 
 .dark .consonant.key-bg:hover,
 .dark .consonant.key-bg:active {
-  /* background: linear-gradient(to right, theme('colors.green.600') 50%, theme('colors.slate.800') 50%); */
   background-color: theme('colors.slate.800');
   background-image: url('./images/consonant-green.svg');
   background-size: auto 100%;
@@ -550,7 +566,6 @@ svg.cursor-pointer:hover {
 }
 
 .high-contrast .consonant.key-bg {
-  /* background: linear-gradient(to right, theme('colors.orange.500') 50%, theme('colors.slate.400') 50%); */
   background-color: theme('colors.gray.400');
   background-image: url('./images/consonant-orange.svg');
   background-size: auto 100%;
@@ -562,7 +577,6 @@ svg.cursor-pointer:hover {
 
 .high-contrast .consonant.key-bg:hover,
 .high-contrast .consonant.key-bg:active {
-  /* background: linear-gradient(to right, theme('colors.orange.600') 50%, theme('colors.slate.400') 50%); */
   background-color: theme('colors.gray.400');
   background-image: url('./images/consonant-orange.svg');
   background-size: auto 100%;
@@ -573,7 +587,6 @@ svg.cursor-pointer:hover {
 }
 
 .high-contrast.dark .consonant.key-bg {
-  /* background: linear-gradient(to right, theme('colors.orange.500') 50%, theme('colors.slate.800') 50%); */
   background-color: theme('colors.slate.800');
   background-image: url('./images/consonant-orange.svg');
   background-size: auto 100%;
@@ -585,7 +598,6 @@ svg.cursor-pointer:hover {
 
 .high-contrast.dark .consonant.key-bg:hover,
 .high-contrast.dark .consonant.key-bg:active {
-  /* background: linear-gradient(to right, theme('colors.orange.600') 50%, theme('colors.slate.800') 50%); */
   background-color: theme('colors.slate.800');
   background-image: url('./images/consonant-orange.svg');
   background-size: auto 100%;
@@ -596,7 +608,6 @@ svg.cursor-pointer:hover {
 }
 
 .vowel.key-bg {
-  /* background: linear-gradient(to top, theme('colors.green.500') 50%, theme('colors.slate.400') 50%); */
   background-color: theme('colors.gray.400');
   background-image: url('./images/vowel-green.svg');
   background-size: auto 100%;
@@ -608,7 +619,6 @@ svg.cursor-pointer:hover {
 
 .vowel.key-bg:hover,
 .vowel.key-bg:active {
-  /* background: linear-gradient(to top, theme('colors.green.600') 50%, theme('colors.slate.400') 50%); */
   background-color: theme('colors.gray.400');
   background-image: url('./images/vowel-green.svg');
   background-size: auto 100%;
@@ -619,7 +629,6 @@ svg.cursor-pointer:hover {
 }
 
 .dark .vowel.key-bg {
-  /* background: linear-gradient(to top, theme('colors.green.500') 50%, theme('colors.slate.800') 50%); */
   background-color: theme('colors.slate.800');
   background-image: url('./images/vowel-green.svg');
   background-size: auto 100%;
@@ -631,7 +640,6 @@ svg.cursor-pointer:hover {
 
 .dark .vowel.key-bg:hover,
 .dark .vowel.key-bg:active {
-  /* background: linear-gradient(to top, theme('colors.green.600') 50%, theme('colors.slate.800') 50%); */
   background-color: theme('colors.slate.800');
   background-image: url('./images/vowel-green.svg');
   background-size: auto 100%;
@@ -642,7 +650,6 @@ svg.cursor-pointer:hover {
 }
 
 .high-contrast .vowel.key-bg {
-  /* background: linear-gradient(to top, theme('colors.orange.500') 50%, theme('colors.slate.400') 50%); */
   background-color: theme('colors.gray.400');
   background-image: url('./images/vowel-orange.svg');
   background-size: auto 100%;
@@ -654,7 +661,6 @@ svg.cursor-pointer:hover {
 
 .high-contrast .vowel.key-bg:hover,
 .high-contrast .vowel.key-bg:active {
-  /* background: linear-gradient(to top, theme('colors.orange.600') 50%, theme('colors.slate.400') 50%); */
   background-color: theme('colors.gray.400');
   background-image: url('./images/vowel-orange.svg');
   background-size: auto 100%;
@@ -665,7 +671,6 @@ svg.cursor-pointer:hover {
 }
 
 .high-contrast.dark .vowel.key-bg {
-  /* background: linear-gradient(to top, theme('colors.orange.500') 50%, theme('colors.slate.800') 50%); */
   background-color: theme('colors.slate.800');
   background-image: url('./images/vowel-orange.svg');
   background-size: auto 100%;
@@ -677,7 +682,6 @@ svg.cursor-pointer:hover {
 
 .high-contrast.dark .vowel.key-bg:hover,
 .high-contrast.dark .vowel.key-bg:active {
-  /* background: linear-gradient(to top, theme('colors.orange.600') 50%, theme('colors.slate.800') 50%); */
   background-color: theme('colors.slate.800');
   background-image: url('./images/vowel-orange.svg');
   background-size: auto 100%;
@@ -688,32 +692,86 @@ svg.cursor-pointer:hover {
 }
 
 .close.key-bg {
-  background-color: theme('colors.lime.500');
+  background-color: theme('colors.gray.400');
+  background-image: url('./images/close-lime.svg');
+  background-size: auto 95%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.9;
   color: white;
 }
 
-.close.key-bg:hover {
-  background-color: theme('colors.lime.600');
-  color: white;
-}
-
+.close.key-bg:hover,
 .close.key-bg:active {
-  background-color: theme('colors.lime.700');
+  background-color: theme('colors.gray.400');
+  background-image: url('./images/close-lime.svg');
+  background-size: auto 95%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 1;
+  color: white;
+}
+
+.dark .close.key-bg {
+  background-color: theme('colors.slate.800');
+  background-image: url('./images/close-lime.svg');
+  background-size: auto 95%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.9;
+  color: white;
+}
+
+.dark .close.key-bg:hover,
+.dark .close.key-bg:active {
+  background-color: theme('colors.slate.800');
+  background-image: url('./images/close-lime.svg');
+  background-size: auto 95%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 1;
   color: white;
 }
 
 .high-contrast .close.key-bg {
-  background-color: theme('colors.violet.500');
+  background-color: theme('colors.gray.400');
+  background-image: url('./images/close-violet.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.9;
   color: white;
 }
 
-.high-contrast .close.key-bg:hover {
-  background-color: theme('colors.violet.600');
-  color: white;
-}
-
+.high-contrast .close.key-bg:hover,
 .high-contrast .close.key-bg:active {
-  background-color: theme('colors.violet.700');
+  background-color: theme('colors.gray.400');
+  background-image: url('./images/close-violet.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 1;
+  color: white;
+}
+
+.high-contrast.dark .close.key-bg {
+  background-color: theme('colors.slate.800');
+  background-image: url('./images/close-violet.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.9;
+  color: white;
+}
+
+.high-contrast.dark .close.key-bg:hover,
+.high-contrast.dark .close.key-bg:active {
+  background-color: theme('colors.slate.800');
+  background-image: url('./images/close-violet.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 1;
   color: white;
 }
 

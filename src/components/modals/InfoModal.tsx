@@ -67,7 +67,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
           「つ」はとても惜しいです。これは正しい位置にありますが、正解は小書き文字「っ」です。
         </p>      
         <p className="local-font text-left text-sm text-gray-500 dark:text-gray-300 pb-2">
-          <span className={isHighContrast ? "text-violet-500" : "text-lime-500" }>■</span> は清音、濁音、半濁音、小書き文字のどれかであることを表します。
+          <span className={isHighContrast ? "text-violet-500" : "text-lime-500" }>⬤</span> は清音、濁音、半濁音、小書き文字のどれかであることを表します。
         </p>
         <p className="local-font text-left text-sm text-gray-500 dark:text-gray-300 pb-2">
           「ま」の正方形には左右の矢印があります。この位置に正解は「ま」ではなく、五十音図内の同じ段に他の仮名（「あ・か・さ・た・な・は・や・ら・わ」「ぁ・が・ざ・だ・ば・ぱ・ゃ」）であることを示しています。<br />
