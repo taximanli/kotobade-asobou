@@ -10,7 +10,7 @@ export const JISHO_SEARCH_LINK = 'https://jisho.org/search/'
 export const ENTER_TEXT = '⏎'
 export const DELETE_TEXT = '⇦'
 
-export const SUPPORTER_NAME = 'Jeffrey, Rose, カリさ, m, Yoshiyasu, みのる, cheapshot, Ken1, Kai, Vikki, kana, keika, neko, Katie, 東郷, Rima, あるる, のん, xipj, tosuke, Conrick, 良幸, あかいと, Akitack, ユーキャン, Cheryl, zk, bree, koblf, kmaebashi, Mt4vE, kado, Michael, Kou684, karamite, Dewbs, ほしなみ, Chris, touko, hayafunakei, バンクスおんらいん, afrowagen, 14番, maman, haharesan, mudeng, 雅治 ...'
+export const SUPPORTER_NAME = 'Jeffrey, Rose, カリさ, m, Yoshiyasu, みのる, cheapshot, Ken1, Kai, Vikki, kana, keika, neko, Katie, 東郷, Rima, あるる, のん, xipj, tosuke, Conrick, 良幸, あかいと, Akitack, ユーキャン, Cheryl, zk, bree, koblf, kmaebashi, Mt4vE, kado, Michael, Kou684, karamite, Dewbs, ほしなみ, Chris, touko, hayafunakei, バンクスおんらいん, afrowagen, 14番, maman, haharesan, mudeng, 雅治, fumaruri ...'
 
 interface TranslationType {
   [index: string]: string
@@ -34,7 +34,7 @@ en['Language'] = 'Language 言語'
 en['Switch to language'] = '日本語'
 en['Timezone'] = 'Set timezone'
 en['Hint Mode'] = 'Hint Mode'
-en['HINT_MODE_DESCRIPTION'] = 'Show three extra types of hints.'
+en['HINT_MODE_DESCRIPTION'] = 'Show three extra types of hints (circle, up and down arrows, left and right arrows).'
 en['Hard Mode'] = 'Hard Mode'
 en['HARD_MODE_DESCRIPTION'] = 'Revealed hints（$text1 and $text2）must be used in subsequent guesses.'
 en['Dark Mode'] = 'Dark Mode'

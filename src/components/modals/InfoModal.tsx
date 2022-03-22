@@ -178,7 +178,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
         </p>
         <p className="text-left text-sm text-gray-500 dark:text-gray-300">
           If you want to play the same word with a friend living overseas, you both can choose the same timezone to play the game.
-          For example, you are in Japan and your friend is in New York, you both can set the timezone in the game to Japan time to play the same word.
+          E.g. you are in Japan and your friend is in New York, you both can set the timezone in the game to Japan time to play the same word.
         </p>
 
         <p className="local-font text-lg leading-6 font-medium text-gray-900 dark:text-gray-100 mt-2 md:mt-4 mb-2">
