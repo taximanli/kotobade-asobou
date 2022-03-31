@@ -7,7 +7,7 @@ import { GameStats, getStoredIsHighContrastMode, getStoredDisplayLanguage, getSt
 import { shareStatus } from '../../lib/share'
 import { yesterdaySolution, yesterdaySolutionIndex, solutionIndex, tomorrow } from '../../lib/words'
 import { BaseModal } from './BaseModal'
-import { t, JISHO_SEARCH_LINK } from '../../constants/strings';
+import { t, JOTOBA_SEARCH_LINK } from '../../constants/strings';
 import { PREFERRED_DISPLAY_LANGUAGE } from '../../constants/settings'
 import coffeeLogo from '../../images/ko-fi-com-taximanli.png';
 
@@ -100,7 +100,7 @@ export const StatsModal = ({
       {(isGameLost || isGameWon) && (
       <div className="flex gap-1 justify-center text-sm dark:text-white mx-1">
         {t('YESTERDAY_CORRECT_WORD_MESSAGE', yesterdaySolutionIndex.toString())}
-        <a className="underline text-sm text-gray-600 dark:text-gray-300 cursor-zoom-in" href={(JISHO_SEARCH_LINK + yesterdaySolution)} rel="noreferrer" target="_blank">{yesterdaySolution}</a>
+        <a className="underline text-sm text-gray-600 dark:text-gray-300 cursor-zoom-in" href={(JOTOBA_SEARCH_LINK + yesterdaySolution)} rel="noreferrer" target="_blank">{yesterdaySolution}</a>
       </div>
       )}
       <div className="flex justify-between items-center gap-3 mt-3">
