@@ -3,7 +3,7 @@ import {
 } from '@heroicons/react/outline'
 import { Key } from './Key'
 import { MAX_WORD_LENGTH } from '../../constants/settings'
-import { t, ENTER_TEXT, DELETE_TEXT, JISHO_SEARCH_LINK } from '../../constants/strings'
+import { t, ENTER_TEXT, DELETE_TEXT, JOTOBA_SEARCH_LINK } from '../../constants/strings'
 import { unicodeLength, unicodeSplit } from '../../lib/words'
 
 type Props = {
@@ -47,7 +47,7 @@ export const Bar = ({
           onDelete()
         } else if (value === 'SEARCH') {
           if (currentInputText !== '') {
-            window.open(JISHO_SEARCH_LINK + currentInputText, "_blank")
+            window.open(JOTOBA_SEARCH_LINK + currentInputText, "_blank")
           }
         }
       }

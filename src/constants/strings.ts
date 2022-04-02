@@ -5,7 +5,7 @@ export const GAME_TITLE = process.env.REACT_APP_GAME_NAME!
 export const GAME_LINK = process.env.REACT_APP_GAME_LINK!
 
 export const KOFI_LINK = 'https://ko-fi.com/taximanli'
-export const JISHO_SEARCH_LINK = 'https://jisho.org/search/'
+export const JOTOBA_SEARCH_LINK = 'https://jotoba.com/search/'
 
 export const ENTER_TEXT = '⏎'
 export const DELETE_TEXT = '⇦'
