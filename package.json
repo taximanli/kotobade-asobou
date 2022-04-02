@@ -1,15 +1,17 @@
 {
   "name": "kotobade-asobou",
-  "version": "2.2.10",
+  "version": "2.3.10",
   "private": true,
   "homepage": "https://taximanli.github.io/kotobade-asobou",
   "dependencies": {
     "@headlessui/react": "^1.4.2",
     "@heroicons/react": "^1.0.5",
+    "@koozaki/romaji-conv": "^2.0.17",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.4.0",
+    "@types/koozaki__romaji-conv": "^2.0.0",
     "@types/node": "^16.11.19",
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",

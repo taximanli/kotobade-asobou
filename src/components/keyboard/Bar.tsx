@@ -23,11 +23,6 @@ export const Bar = ({
 }: Props) => {
 
     const handleInput: React.ChangeEventHandler<HTMLInputElement> = (event) => {
-        /*
-        const filteredInput = event.target.value.replace(/[^ぁあぃいぅうぇえぉおかがきぎくぐけげこごさざしじすずせぜそぞただちぢっつづてでとどなにぬねのはばぱひびぴふぶぷへべぺほぼぽまみむめもゃやゅゆょよらりるれろわをんゔー]/, '')
-        setCurrentGuess(filteredInput)
-        */
-
         let inputText = event.target.value
 
         if (unicodeLength(inputText) > MAX_WORD_LENGTH) {

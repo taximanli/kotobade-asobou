@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { ITimezone } from 'react-timezone-select'
+import { toHiragana } from '@koozaki/romaji-conv'
 import { Grid } from './components/grid/Grid'
 import { Bar } from './components/keyboard/Bar'
 import { Keyboard } from './components/keyboard/Keyboard'
@@ -249,26 +250,41 @@ function App() {
   }
 
   const onEnter = () => {
+    // convert romaji or katakana input to hiragana
+    let currentInputTextInHiragana = toHiragana(currentInputText)
+    let currentGuessInHiragana = new GraphemeSplitter()
+      .splitGraphemes(currentInputTextInHiragana)
+      .slice(0, MAX_WORD_LENGTH)
+      .join('')
+
+    setCurrentGuess(currentGuessInHiragana)
+    setCurrentInputText(currentInputTextInHiragana)
+
     if (isGameWon || isGameLost) {
       return
     }
 
-    if (currentInputText === '' || currentGuess === '') {
+    if (currentInputTextInHiragana === '' || currentGuessInHiragana === '') {
       return
     }
 
-    if (!(unicodeLength(currentInputText) === MAX_WORD_LENGTH)) {
-      return showErrorAlert(t('NOT_ENOUGH_LETTERS_MESSAGE', currentInputText))
+    if (!(unicodeLength(currentInputTextInHiragana) === MAX_WORD_LENGTH)) {
+      return showErrorAlert(
+        t('NOT_ENOUGH_LETTERS_MESSAGE', currentInputTextInHiragana)
+      )
     }
 
-    if (!(unicodeLength(currentGuess) === MAX_WORD_LENGTH)) {
+    if (!(unicodeLength(currentGuessInHiragana) === MAX_WORD_LENGTH)) {
       setCurrentRowClass('jiggle')
-      return showErrorAlert(t('NOT_ENOUGH_LETTERS_MESSAGE', currentGuess), {
-        onClose: clearCurrentRowClass,
-      })
+      return showErrorAlert(
+        t('NOT_ENOUGH_LETTERS_MESSAGE', currentGuessInHiragana),
+        {
+          onClose: clearCurrentRowClass,
+        }
+      )
     }
 
-    if (!isWordInWordList(currentGuess)) {
+    if (!isWordInWordList(currentGuessInHiragana)) {
       setCurrentRowClass('jiggle')
       return showErrorAlert(t('WORD_NOT_FOUND_MESSAGE'), {
         onClose: clearCurrentRowClass,
@@ -277,7 +293,10 @@ function App() {
 
     // enforce hard mode - all guesses must contain all previously revealed letters
     if (isHardMode) {
-      const firstMissingReveal = findFirstUnusedReveal(currentGuess, guesses)
+      const firstMissingReveal = findFirstUnusedReveal(
+        currentGuessInHiragana,
+        guesses
+      )
       if (firstMissingReveal) {
         setCurrentRowClass('jiggle')
         return showErrorAlert(firstMissingReveal, {
@@ -293,14 +312,14 @@ function App() {
       setIsRevealing(false)
     }, REVEAL_TIME_MS * MAX_WORD_LENGTH)
 
-    const winningWord = isWinningWord(currentGuess)
+    const winningWord = isWinningWord(currentGuessInHiragana)
 
     if (
-      unicodeLength(currentGuess) === MAX_WORD_LENGTH &&
+      unicodeLength(currentGuessInHiragana) === MAX_WORD_LENGTH &&
       guesses.length < MAX_CHALLENGES &&
       !isGameWon
     ) {
-      setGuesses([...guesses, currentGuess])
+      setGuesses([...guesses, currentGuessInHiragana])
       setCurrentGuess('')
       setCurrentInputText('')
       saveShareStatusToLocalStorage(isHintMode, isHardMode)

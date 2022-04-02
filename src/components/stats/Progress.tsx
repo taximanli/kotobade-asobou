@@ -12,7 +12,7 @@ export const Progress = ({ index, size, label, currentDayStatRow }: Props) => {
   const isHighContrast = getStoredIsHighContrastMode()
 
   const classNames = classnames(
-    'text-xs font-medium text-blue-100 text-center p-0.5 rounded-l-full rounded-r-full',
+    'text-xs font-medium text-white dark:text-gray-700 text-center p-0.5 rounded-l-full rounded-r-full',
     {
       'bg-orange-500': currentDayStatRow && isHighContrast,
       'bg-green-500': currentDayStatRow && !isHighContrast,
