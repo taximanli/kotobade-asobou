@@ -52,7 +52,7 @@ export const Keyboard = ({
   return (
     <div>
       <div className="flex justify-center mb-1">
-        {['わ','ら','や','ま','は','な','た','さ','か','あ'].map((key) => (
+        {['あ','い','う','え','お'].map((key) => (
           <Key
             value={key}
             key={key}
@@ -63,7 +63,7 @@ export const Keyboard = ({
         ))}
       </div>
       <div className="flex justify-center mb-1">
-        {['','り','','み','ひ','に','ち','し','き','い'].map((key) => (
+        {['ぁ','ぃ','ぅ','ぇ','ぉ'].map((key) => (
           <Key
             value={key}
             key={key}
@@ -74,7 +74,7 @@ export const Keyboard = ({
         ))}
       </div>
       <div className="flex justify-center mb-1">
-        {['ん','る','ゆ','む','ふ','ぬ','つ','す','く','う'].map((key) => (
+        {['','','ゔ','',''].map((key) => (
           <Key
             value={key}
             key={key}
@@ -85,7 +85,150 @@ export const Keyboard = ({
         ))}
       </div>
       <div className="flex justify-center mb-1">
-        {['','れ','','め','へ','ね','て','せ','け','え'].map((key) => (
+        {['か','き','く','け','こ'].map((key) => (
+          <Key
+            value={key}
+            key={key}
+            onClick={onClick}
+            status={charStatuses[key]}
+            isRevealing={isRevealing}
+          />
+        ))}
+      </div>
+      <div className="flex justify-center mb-1">
+        {['が','ぎ','ぐ','げ','ご'].map((key) => (
+          <Key
+            value={key}
+            key={key}
+            onClick={onClick}
+            status={charStatuses[key]}
+            isRevealing={isRevealing}
+          />
+        ))}
+      </div>
+      <div className="flex justify-center mb-1">
+        {['さ','し','す','せ','そ'].map((key) => (
+          <Key
+            value={key}
+            key={key}
+            onClick={onClick}
+            status={charStatuses[key]}
+            isRevealing={isRevealing}
+          />
+        ))}
+      </div>
+      <div className="flex justify-center mb-1">
+        {['ざ','じ','ず','ぜ','ぞ'].map((key) => (
+          <Key
+            value={key}
+            key={key}
+            onClick={onClick}
+            status={charStatuses[key]}
+            isRevealing={isRevealing}
+          />
+        ))}
+      </div>
+      <div className="flex justify-center mb-1">
+        {['た','ち','つ','て','と'].map((key) => (
+          <Key
+            value={key}
+            key={key}
+            onClick={onClick}
+            status={charStatuses[key]}
+            isRevealing={isRevealing}
+          />
+        ))}
+      </div>
+      <div className="flex justify-center mb-1">
+        {['','','っ','',''].map((key) => (
+          <Key
+            value={key}
+            key={key}
+            onClick={onClick}
+            status={charStatuses[key]}
+            isRevealing={isRevealing}
+          />
+        ))}
+      </div>
+      <div className="flex justify-center mb-1">
+        {['だ','ぢ','づ','で','ど'].map((key) => (
+          <Key
+            value={key}
+            key={key}
+            onClick={onClick}
+            status={charStatuses[key]}
+            isRevealing={isRevealing}
+          />
+        ))}
+      </div>
+      <div className="flex justify-center mb-1">
+        {['な','に','ぬ','ね','の'].map((key) => (
+          <Key
+            value={key}
+            key={key}
+            onClick={onClick}
+            status={charStatuses[key]}
+            isRevealing={isRevealing}
+          />
+        ))}
+      </div>
+      <div className="flex justify-center mb-1">
+        {['は','ひ','ふ','へ','ほ'].map((key) => (
+          <Key
+            value={key}
+            key={key}
+            onClick={onClick}
+            status={charStatuses[key]}
+            isRevealing={isRevealing}
+          />
+        ))}
+      </div>
+      <div className="flex justify-center mb-1">
+        {['ば','び','ぶ','べ','ぼ'].map((key) => (
+          <Key
+            value={key}
+            key={key}
+            onClick={onClick}
+            status={charStatuses[key]}
+            isRevealing={isRevealing}
+          />
+        ))}
+      </div>
+      <div className="flex justify-center mb-1">
+        {['ぱ','ぴ','ぷ','ぺ','ぽ'].map((key) => (
+          <Key
+            value={key}
+            key={key}
+            onClick={onClick}
+            status={charStatuses[key]}
+            isRevealing={isRevealing}
+          />
+        ))}
+      </div>
+      <div className="flex justify-center mb-1">
+        {['ま','み','む','め','も'].map((key) => (
+          <Key
+            value={key}
+            key={key}
+            onClick={onClick}
+            status={charStatuses[key]}
+            isRevealing={isRevealing}
+          />
+        ))}
+      </div>
+      <div className="flex justify-center mb-1">
+        {['や','','ゆ','','よ'].map((key) => (
+          <Key
+            value={key}
+            key={key}
+            onClick={onClick}
+            status={charStatuses[key]}
+            isRevealing={isRevealing}
+          />
+        ))}
+      </div>
+      <div className="flex justify-center mb-1">
+        {['ゃ','','ゅ','','ょ'].map((key) => (
           <Key
             value={key}
             key={key}
@@ -96,7 +239,7 @@ export const Keyboard = ({
         ))}
       </div>
       <div className="flex justify-center mb-2">
-        {['を','ろ','よ','も','ほ','の','と','そ','こ','お'].map((key) => (
+        {['ら','り','る','れ','ろ'].map((key) => (
           <Key
             value={key}
             key={key}
@@ -107,7 +250,7 @@ export const Keyboard = ({
         ))}
       </div>
       <div className="flex justify-center mb-1">
-        {['ー','','ゃ','ぱ','ば','','だ','ざ','が','ぁ'].map((key) => (
+        {['わ','','','','を'].map((key) => (
           <Key
             value={key}
             key={key}
@@ -118,40 +261,7 @@ export const Keyboard = ({
         ))}
       </div>
       <div className="flex justify-center mb-1">
-        {['','','','ぴ','び','','ぢ','じ','ぎ','ぃ'].map((key) => (
-          <Key
-            value={key}
-            key={key}
-            onClick={onClick}
-            status={charStatuses[key]}
-            isRevealing={isRevealing}
-          />
-        ))}
-      </div>
-      <div className="flex justify-center mb-1">
-        {['ゔ','','ゅ','ぷ','ぶ','っ','づ','ず','ぐ','ぅ'].map((key) => (
-          <Key
-            value={key}
-            key={key}
-            onClick={onClick}
-            status={charStatuses[key]}
-            isRevealing={isRevealing}
-          />
-        ))}
-      </div>
-      <div className="flex justify-center mb-1">
-        {['','','','ぺ','べ','','で','ぜ','げ','ぇ'].map((key) => (
-          <Key
-            value={key}
-            key={key}
-            onClick={onClick}
-            status={charStatuses[key]}
-            isRevealing={isRevealing}
-          />
-        ))}
-      </div>
-      <div className="flex justify-center">
-        {['','','ょ','ぽ','ぼ','','ど','ぞ','ご','ぉ'].map((key) => (
+        {['ん','ー','','',''].map((key) => (
           <Key
             value={key}
             key={key}
