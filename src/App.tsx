@@ -53,8 +53,11 @@ function App() {
     '(prefers-color-scheme: dark)'
   ).matches
 
-  const { showError: showErrorAlert, showSuccess: showSuccessAlert } =
-    useAlert()
+  const {
+    showCorrectWord: showCorrectWordAlert,
+    showError: showErrorAlert,
+    showSuccess: showSuccessAlert,
+  } = useAlert()
   const [currentGuess, setCurrentGuess] = useState('')
   const [currentInputText, setCurrentInputText] = useState('')
   const [isGameWon, setIsGameWon] = useState(false)
@@ -90,7 +93,7 @@ function App() {
     }
     if (loaded.guesses.length === MAX_CHALLENGES && !gameWasWon) {
       setIsGameLost(true)
-      showErrorAlert(
+      showCorrectWordAlert(
         t('CORRECT_WORD_MESSAGE', solutionIndex.toString(), solution),
         {
           persist: true,
@@ -332,7 +335,7 @@ function App() {
       if (guesses.length === MAX_CHALLENGES - 1) {
         setStats(addStatsForCompletedGame(stats, guesses.length + 1))
         setIsGameLost(true)
-        showErrorAlert(
+        showCorrectWordAlert(
           t('CORRECT_WORD_MESSAGE', solutionIndex.toString(), solution),
           {
             persist: true,

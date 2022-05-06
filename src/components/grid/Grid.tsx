@@ -29,7 +29,7 @@ export const Grid = ({
             key={i}
             guess={guess}
             isRevealing={isRevealing && guesses.length - 1 === i}
-          />
+            />
         ))}
         {guesses.length < MAX_CHALLENGES && (
           <CurrentRow guess={currentGuess} className={currentRowClassName} />

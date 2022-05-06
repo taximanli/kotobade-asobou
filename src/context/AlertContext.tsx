@@ -7,7 +7,7 @@ import {
 } from 'react'
 import { ALERT_TIME_MS } from '../constants/settings'
 
-type AlertStatus = 'success' | 'error' | undefined
+type AlertStatus = 'success' | 'error' | 'correct_word' | undefined
 
 type ShowOptions = {
   persist?: boolean
@@ -20,6 +20,7 @@ type AlertContextValue = {
   status: AlertStatus
   message: string | null
   isVisible: boolean
+  showCorrectWord: (message: string, options?: ShowOptions) => void
   showSuccess: (message: string, options?: ShowOptions) => void
   showError: (message: string, options?: ShowOptions) => void
 }
@@ -28,6 +29,7 @@ export const AlertContext = createContext<AlertContextValue | null>({
   status: 'success',
   message: null,
   isVisible: false,
+  showCorrectWord: () => null,
   showSuccess: () => null,
   showError: () => null,
 })
@@ -71,6 +73,13 @@ export const AlertProvider = ({ children }: Props) => {
     [setStatus, setMessage, setIsVisible]
   )
 
+  const showCorrectWord = useCallback(
+    (newMessage: string, options?: ShowOptions) => {
+      show('correct_word', newMessage, options)
+    },
+    [show]
+  )
+
   const showError = useCallback(
     (newMessage: string, options?: ShowOptions) => {
       show('error', newMessage, options)
@@ -91,6 +100,7 @@ export const AlertProvider = ({ children }: Props) => {
         status,
         message,
         isVisible,
+        showCorrectWord,
         showError,
         showSuccess,
       }}
