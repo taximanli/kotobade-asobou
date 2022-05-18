@@ -28,15 +28,11 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
     return (
       <BaseModal title="更新情報" isOpen={isOpen} handleClose={handleClose}>
         <p className="text-left local-font text-sm text-gray-500 dark:text-gray-300 mb-2">
-          ひらがなのほかに、ローマ字やカタカナで答えをキーボード入力することもできます。入力ボタンを押すと答えは自動的にひらがなに変換されます。
+          慎重に検討した後、ゲーム体験を向上させるため、ABABパターンの単語（「われわれ」、「そろそろ」等）は日替わり単語のリストから削除されました。
         </p>
         <hr className="mt-2 mb-2" />
         <p className="text-left local-font text-sm text-gray-500 dark:text-gray-300 mb-2">
-          新機能「タイムゾーンの設定」が追加されています。
-        </p>
-        <p className="text-left local-font text-sm text-gray-500 dark:text-gray-300">
-          海外の友達と同じ単語でゲームをしたい場合は、ゲームを同じタイムゾーンに設定してください。
-          例えば、あなたとニューヨークの友達は両方ともゲームのタイムゾーンを日本時間に設定できます。
+          ひらがなのほかに、ローマ字やカタカナで答えをキーボード入力することもできます。入力ボタンを押すと答えは自動的にひらがなに変換されます。
         </p>
         <hr className="mt-2 mb-2" />
 
@@ -161,6 +157,18 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
         </p>
 
         <p className="local-font text-lg leading-6 font-medium text-gray-900 dark:text-gray-100 mt-2 md:mt-4 mb-2">
+          過去の更新
+        </p>
+
+        <p className="text-left local-font text-sm text-gray-500 dark:text-gray-300 mb-2">
+          新機能「タイムゾーンの設定」が追加されています。
+        </p>
+        <p className="text-left local-font text-sm text-gray-500 dark:text-gray-300">
+          海外の友達と同じ単語でゲームをしたい場合は、ゲームを同じタイムゾーンに設定してください。
+          例えば、あなたとニューヨークの友達は両方ともゲームのタイムゾーンを日本時間に設定できます。
+        </p>
+
+        <p className="local-font text-lg leading-6 font-medium text-gray-900 dark:text-gray-100 mt-2 md:mt-4 mb-2">
           単語リストについて
         </p>
 
@@ -177,15 +185,11 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
     return (
       <BaseModal title="Latest updates" isOpen={isOpen} handleClose={handleClose}>
         <p className="text-left text-sm text-gray-500 dark:text-gray-300 mb-2">
-          Besides hiragana, now you can also directly type your guesses in romaji or katakana. Your guesses will be automatically converted to hiragana after hitting the enter button.
+          After careful consideration, in order to enhance the gaming experience, words in ABAB pattern (われわれ, そろそろ...) have been removed from the list of daily words.
         </p>
         <hr className="mt-2 mb-2" />
         <p className="text-left text-sm text-gray-500 dark:text-gray-300 mb-2">
-          New feature "Set timezone" is now available in Settings.
-        </p>
-        <p className="text-left text-sm text-gray-500 dark:text-gray-300">
-          If you want to play the same word with a friend living overseas, you both can choose the same timezone to play the game.
-          E.g. you are in Japan and your friend is in New York, you both can set the timezone in the game to Japan time to play the same word.
+          In addition to hiragana, now you can also directly type your guesses in romaji or katakana. Your guesses will be automatically converted to hiragana after hitting the enter button.
         </p>
         <hr className="mt-2 mb-2" />
 
@@ -309,6 +313,18 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
         </p>
         <p className="text-left text-sm text-gray-500 dark:text-gray-300">
           Both the kana ん and the long sound mark ー do not have any matching rows or columns.
+        </p>
+
+        <p className="local-font text-lg leading-6 font-medium text-gray-900 dark:text-gray-100 mt-2 md:mt-4 mb-2">
+          Past updates
+        </p>
+
+        <p className="text-left text-sm text-gray-500 dark:text-gray-300 mb-2">
+          New feature "Set timezone" is now available in Settings.
+        </p>
+        <p className="text-left text-sm text-gray-500 dark:text-gray-300">
+          If you want to play the same word with a friend living overseas, you both can choose the same timezone to play the game.
+          E.g. you are in Japan and your friend is in New York, you both can set the timezone in the game to Japan time to play the same word.
         </p>
 
         <p className="local-font text-lg leading-6 font-medium text-gray-900 dark:text-gray-100 mt-2 md:mt-4 mb-2">
