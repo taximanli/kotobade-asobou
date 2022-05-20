@@ -28,7 +28,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
     return (
       <BaseModal title="更新情報" isOpen={isOpen} handleClose={handleClose}>
         <p className="text-left local-font text-sm text-gray-500 dark:text-gray-300 mb-2">
-          慎重に検討した後、ゲーム体験を向上させるため、ABABパターンの単語（「われわれ」、「そろそろ」等）は日替わり単語のリストから削除されました。
+          慎重に検討した後、ゲーム体験を向上させるため、ABABパターンの単語（「われわれ」とか「そろそろ」とか）が答えに選ばれなくなった。
         </p>
         <hr className="mt-2 mb-2" />
         <p className="text-left local-font text-sm text-gray-500 dark:text-gray-300 mb-2">
@@ -185,7 +185,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
     return (
       <BaseModal title="Latest updates" isOpen={isOpen} handleClose={handleClose}>
         <p className="text-left text-sm text-gray-500 dark:text-gray-300 mb-2">
-          After careful consideration, in order to enhance the gaming experience, words in ABAB pattern (われわれ, そろそろ...) have been removed from the list of daily words.
+          After careful consideration, in order to enhance the gaming experience, words in ABAB pattern (われわれ, そろそろ...) will be no longer chosen as answers.
         </p>
         <hr className="mt-2 mb-2" />
         <p className="text-left text-sm text-gray-500 dark:text-gray-300 mb-2">
