@@ -360,19 +360,19 @@ function App() {
         isRevealing={isRevealing}
         currentRowClassName={currentRowClass}
       />
-      <Bar
-        onDelete={onDelete}
-        onEnter={onEnter}
-        setCurrentGuess={setCurrentGuess}
-        setCurrentInputText={setCurrentInputText}
-        currentInputText={currentInputText}
-      />
       <Keyboard
         onChar={onChar}
         onDelete={onDelete}
         onEnter={onEnter}
         guesses={guesses}
         isRevealing={isRevealing}
+      />
+      <Bar
+        onDelete={onDelete}
+        onEnter={onEnter}
+        setCurrentGuess={setCurrentGuess}
+        setCurrentInputText={setCurrentInputText}
+        currentInputText={currentInputText}
       />
       <InfoModal
         isOpen={isInfoModalOpen}
