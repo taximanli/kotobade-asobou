@@ -1,5 +1,5 @@
 import {
-  TranslateIcon
+  TranslateIcon, TerminalIcon, TableIcon
 } from '@heroicons/react/outline'
 import classnames from 'classnames'
 import TimezoneSelect from 'react-timezone-select'
@@ -25,6 +25,8 @@ type Props = {
   handleHighContrastMode: Function
   displayLanguage: string
   handleDisplayLanguage: Function
+  activeAppArea: string
+  handleAppArea: Function
 }
 
 export const SettingsModal = ({
@@ -42,9 +44,15 @@ export const SettingsModal = ({
   handleHighContrastMode,
   displayLanguage,
   handleDisplayLanguage,
+  activeAppArea,
+  handleAppArea,
 }: Props) => {
   const isHighContrast = getStoredIsHighContrastMode()
   
+  const firstLayoutClassName = classnames((activeAppArea === 'Bar,Keyboard' ? (isHighContrast ? 'border-orange-400' : 'border-green-400') : 'border-gray-200 dark:border-gray-300'), 'local-font border-2 text-black dark:text-white p-2 mr-2 text-lg rounded cursor-pointer')
+  const secondLayoutClassName = classnames((activeAppArea === 'Keyboard,Bar' ? (isHighContrast ? 'border-orange-400' : 'border-green-400') : 'border-gray-200 dark:border-gray-300'), 'local-font border-2 text-black dark:text-white p-2 text-lg rounded cursor-pointer')
+
+  const settingDescriptionClassName = classnames((displayLanguage === PREFERRED_DISPLAY_LANGUAGE ? 'local-font' : ''), 'text-xs text-gray-500 dark:text-gray-400')
   const aboutClassName = classnames((displayLanguage === PREFERRED_DISPLAY_LANGUAGE ? 'local-font' : ''), 'text-left text-sm text-gray-500 dark:text-gray-300')
 
   return (
@@ -68,7 +76,7 @@ export const SettingsModal = ({
         </div>
       </div>
       <div className="grid-cols-1 gap-4">
-        <div className="flex justify-between items-center mt-3">
+        <div className="flex justify-between items-center mt-1">
           <h2 className="local-font text-base text-gray-600 dark:text-gray-300">{t('Timezone')}</h2>
         </div>
       </div>
@@ -78,6 +86,34 @@ export const SettingsModal = ({
             value={timezone}
             onChange={handleTimezone}
             />
+        </div>
+      </div>
+      <div className="grid-cols-2 gap-4">
+        <div className="flex justify-between items-center gap-8 mt-3">
+          <div className="text-left">
+            <h2 className="local-font text-base text-gray-600 dark:text-gray-300">{t('Layout')}</h2>
+            <div className={settingDescriptionClassName}>{t('LAYOUT_DESCRIPTION')}</div>
+          </div>
+          <div className='w-36 text-right'>
+            <button
+              onClick={() => handleAppArea('Bar,Keyboard')}
+              className={firstLayoutClassName}
+            >
+              <div className="grid-rows-2">
+                <TerminalIcon className="h-6 w-6" />
+                <TableIcon className="h-6 w-6" />
+              </div>
+            </button>
+            <button
+              onClick={() => handleAppArea('Keyboard,Bar')}
+              className={secondLayoutClassName}
+            >
+              <div className="grid-rows-2">
+                <TableIcon className="h-6 w-6" />
+                <TerminalIcon className="h-6 w-6" />
+              </div>
+            </button>
+          </div>
         </div>
       </div>
       <div className="grid-cols-2 gap-4 pt-1">

@@ -7,8 +7,8 @@ import { t, ENTER_TEXT, DELETE_TEXT, JISHO_SEARCH_LINK } from '../../constants/s
 import { unicodeLength, unicodeSplit } from '../../lib/words'
 
 type Props = {
-    onDelete: Function
-    onEnter: Function
+    onDelete: () => void
+    onEnter: () => void
     setCurrentGuess: Function
     setCurrentInputText: Function
     currentInputText: string
@@ -53,7 +53,7 @@ export const Bar = ({
       }
                 
     return (
-    <div className='flex justify-center pt-2 md:pt-3'>
+    <div className='flex justify-center'>
         <Key value="ENTER" onClick={onClick}>
           {ENTER_TEXT}
         </Key>

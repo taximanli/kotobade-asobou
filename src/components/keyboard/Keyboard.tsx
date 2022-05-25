@@ -74,7 +74,7 @@ export const Keyboard = ({
         ))}
       </div>
       <div className="flex justify-center mb-1">
-        {['ん','る','ゆ','む','ふ','ぬ','つ','す','く','う'].map((key) => (
+        {['','る','ゆ','む','ふ','ぬ','つ','す','く','う'].map((key) => (
           <Key
             value={key}
             key={key}
@@ -107,7 +107,7 @@ export const Keyboard = ({
         ))}
       </div>
       <div className="flex justify-center mb-1">
-        {['ー','','ゃ','ぱ','ば','','だ','ざ','が','ぁ'].map((key) => (
+        {['','','ゃ','ぱ','ば','','だ','ざ','が','ぁ'].map((key) => (
           <Key
             value={key}
             key={key}
@@ -118,7 +118,7 @@ export const Keyboard = ({
         ))}
       </div>
       <div className="flex justify-center mb-1">
-        {['','','','ぴ','び','','ぢ','じ','ぎ','ぃ'].map((key) => (
+        {['ー','','','ぴ','び','','ぢ','じ','ぎ','ぃ'].map((key) => (
           <Key
             value={key}
             key={key}
@@ -140,7 +140,7 @@ export const Keyboard = ({
         ))}
       </div>
       <div className="flex justify-center mb-1">
-        {['','','','ぺ','べ','','で','ぜ','げ','ぇ'].map((key) => (
+        {['ん','','','ぺ','べ','','で','ぜ','げ','ぇ'].map((key) => (
           <Key
             value={key}
             key={key}

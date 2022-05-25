@@ -6,6 +6,7 @@ const highContrastKey = 'highContrast'
 const hintModeKey = 'hintMode'
 const displayLanguageKey = 'displayLanguage'
 const timezoneKey = 'timezone'
+const appAreaKey = 'appArea'
 
 type StoredShareStatus = {
   isHintMode: boolean
@@ -186,4 +187,17 @@ export const getStoredTimezone = () => {
     setStoredTimezone(timezone)
   }
   return timezone
+}
+
+export const setStoredAppArea = (appArea: string) => {
+  localStorage.setItem(appAreaKey, appArea)
+}
+
+export const getStoredAppArea = () => {
+  let appArea = localStorage.getItem(appAreaKey)
+  if (!appArea) {
+    appArea = 'Bar,Keyboard'
+    setStoredAppArea(appArea)
+  }
+  return appArea
 }

@@ -23,7 +23,7 @@ export const Key = ({
   const keyDelayMs = REVEAL_TIME_MS * MAX_WORD_LENGTH
 
   const dummyKeyClasses = classnames(
-    'w-10 h-7 xs:h-8 sm:h-10 rounded mx-0.5 select-none'
+    'w-10 h-7 xs:h-8 sm:h-10 rounded mx-0.5 cursor-default select-none'
   )
 
   const keyClasses = classnames(
@@ -44,6 +44,10 @@ export const Key = ({
         status === 'consonant',
       'vowel key-bg':
         status === 'vowel',
+    },
+    {
+      'border-slate-400 dark:border-slate-300 border-l-2 border-r-2':
+        value === 'ー' || value === 'ゔ' || value === 'ん',
     }
   )
 

@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react'
 import { ITimezone } from 'react-timezone-select'
 import { toHiragana } from '@koozaki/romaji-conv'
 import { Grid } from './components/grid/Grid'
-import { Bar } from './components/keyboard/Bar'
-import { Keyboard } from './components/keyboard/Keyboard'
+import { AppArea } from './components/keyboard/Area'
 import { InfoModal } from './components/modals/InfoModal'
 import { SupportModal } from './components/modals/SupportModal'
 import { StatsModal } from './components/modals/StatsModal'
@@ -38,8 +37,10 @@ import {
   getStoredIsHintMode,
   setStoredDisplayLanguage,
   getStoredDisplayLanguage,
-  getStoredTimezone,
   setStoredTimezone,
+  getStoredTimezone,
+  setStoredAppArea,
+  getStoredAppArea,
 } from './lib/localStorage'
 import { default as GraphemeSplitter } from 'grapheme-splitter'
 
@@ -114,6 +115,8 @@ function App() {
       ? localStorage.getItem('gameMode') === 'hard'
       : false
   )
+
+  const [activeAppArea, setActiveAppArea] = useState(getStoredAppArea())
 
   useEffect(() => {
     // if no game state on load,
@@ -193,6 +196,11 @@ function App() {
   const handleDisplayLanguage = (displayLanguage: string) => {
     setDisplayLanguage(displayLanguage)
     setStoredDisplayLanguage(displayLanguage)
+  }
+
+  const handleAppArea = (appArea: string) => {
+    setActiveAppArea(appArea)
+    setStoredAppArea(appArea)
   }
 
   const clearCurrentRowClass = () => {
@@ -346,6 +354,8 @@ function App() {
     }
   }
 
+  console.log('log')
+
   return (
     <div className="pt-2 pb-8 max-w-7xl mx-auto sm:px-6 lg:px-8">
       <Navbar
@@ -360,19 +370,17 @@ function App() {
         isRevealing={isRevealing}
         currentRowClassName={currentRowClass}
       />
-      <Keyboard
+      <AppArea
         onChar={onChar}
-        onDelete={onDelete}
-        onEnter={onEnter}
-        guesses={guesses}
-        isRevealing={isRevealing}
-      />
-      <Bar
         onDelete={onDelete}
         onEnter={onEnter}
         setCurrentGuess={setCurrentGuess}
         setCurrentInputText={setCurrentInputText}
         currentInputText={currentInputText}
+        setActiveAppArea={setActiveAppArea}
+        activeAppArea={activeAppArea}
+        guesses={guesses}
+        isRevealing={isRevealing}
       />
       <InfoModal
         isOpen={isInfoModalOpen}
@@ -413,6 +421,8 @@ function App() {
         handleHighContrastMode={handleHighContrastMode}
         displayLanguage={displayLanguage!}
         handleDisplayLanguage={handleDisplayLanguage}
+        activeAppArea={activeAppArea!}
+        handleAppArea={handleAppArea}
       />
 
       <AlertContainer />

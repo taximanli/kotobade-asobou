@@ -28,11 +28,11 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
     return (
       <BaseModal title="更新情報" isOpen={isOpen} handleClose={handleClose}>
         <p className="text-left local-font text-sm text-gray-500 dark:text-gray-300 mb-2">
-          慎重に検討した後、ゲーム体験を向上させるため、ABABパターンの単語（「われわれ」とか「そろそろ」とか）が答えに選ばれなくなりました。
+          キーボードと音図のレイアウトを画面の右上に「設定 ⋮ 」で選択することができます。
         </p>
         <hr className="mt-2 mb-2" />
         <p className="text-left local-font text-sm text-gray-500 dark:text-gray-300 mb-2">
-          ひらがなのほかに、ローマ字やカタカナで答えをキーボード入力することもできます。入力ボタンを押すと答えは自動的にひらがなに変換されます。
+          慎重に検討した後、ゲーム体験を向上させるため、ABABパターンの単語（「われわれ」とか「そろそろ」とか）が答えに選ばれなくなりました。
         </p>
         <hr className="mt-2 mb-2" />
 
@@ -161,6 +161,10 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
         </p>
 
         <p className="text-left local-font text-sm text-gray-500 dark:text-gray-300 mb-2">
+          ひらがなのほかに、ローマ字やカタカナで答えをキーボード入力することもできます。入力ボタンを押すと答えは自動的にひらがなに変換されます。
+        </p>
+        <hr className="mt-2 mb-2" />
+        <p className="text-left local-font text-sm text-gray-500 dark:text-gray-300 mb-2">
           新機能「タイムゾーンの設定」が追加されています。
         </p>
         <p className="text-left local-font text-sm text-gray-500 dark:text-gray-300">
@@ -185,11 +189,11 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
     return (
       <BaseModal title="Latest updates" isOpen={isOpen} handleClose={handleClose}>
         <p className="text-left text-sm text-gray-500 dark:text-gray-300 mb-2">
-          After careful consideration, in order to enhance the gaming experience, words in ABAB pattern (われわれ, そろそろ...) will be no longer chosen as answers.
+          You can now select the positions of text box and kana chart in Settings.
         </p>
         <hr className="mt-2 mb-2" />
         <p className="text-left text-sm text-gray-500 dark:text-gray-300 mb-2">
-          In addition to hiragana, now you can also directly type your guesses in romaji or katakana. Your guesses will be automatically converted to hiragana after hitting the enter button.
+          After careful consideration, in order to enhance the gaming experience, words in ABAB pattern (われわれ, そろそろ...) will be no longer chosen as answers.
         </p>
         <hr className="mt-2 mb-2" />
 
@@ -319,6 +323,10 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
           Past updates
         </p>
 
+        <p className="text-left text-sm text-gray-500 dark:text-gray-300 mb-2">
+          In addition to hiragana, now you can also directly type your guesses in romaji or katakana. Your guesses will be automatically converted to hiragana after hitting the enter button.
+        </p>
+        <hr className="mt-2 mb-2" />
         <p className="text-left text-sm text-gray-500 dark:text-gray-300 mb-2">
           New feature "Set timezone" is now available in Settings.
         </p>
