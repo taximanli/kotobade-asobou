@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { ITimezone } from 'react-timezone-select'
-import { toHiragana } from '@koozaki/romaji-conv'
+import { toHiragana, toKatakana } from '@koozaki/romaji-conv'
 import { Grid } from './components/grid/Grid'
 import { AppArea } from './components/keyboard/Area'
 import { InfoModal } from './components/modals/InfoModal'
@@ -21,6 +21,7 @@ import {
   isWinningWord,
   solutionIndex,
   solution,
+  isKatakana,
   findFirstUnusedReveal,
   unicodeLength,
   setWordOfDay,
@@ -262,7 +263,9 @@ function App() {
 
   const onEnter = () => {
     // convert romaji or katakana input to hiragana
-    let currentInputTextInHiragana = toHiragana(currentInputText)
+    let currentInputTextInHiragana = isKatakana
+      ? toKatakana(currentInputText)
+      : toHiragana(currentInputText)
     let currentGuessInHiragana = new GraphemeSplitter()
       .splitGraphemes(currentInputTextInHiragana)
       .slice(0, MAX_WORD_LENGTH)
@@ -353,8 +356,6 @@ function App() {
       }
     }
   }
-
-  console.log('log')
 
   return (
     <div className="pt-2 pb-8 max-w-7xl mx-auto sm:px-6 lg:px-8">

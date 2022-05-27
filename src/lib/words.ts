@@ -5,11 +5,13 @@ import { getGuessStatuses } from './statuses'
 import { getStoredTimezone } from './localStorage'
 import { DateTime } from 'luxon'
 import { default as GraphemeSplitter } from 'grapheme-splitter'
+import { toHiragana, toKatakana } from '@koozaki/romaji-conv'
 
 export const isWordInWordList = (word: string) => {
   return (
-    WORDS.includes(localeAwareLowerCase(word)) ||
-    VALID_GUESSES.includes(localeAwareLowerCase(word))
+    WORDS.includes(toHiragana(localeAwareLowerCase(word))) ||
+    WORDS.includes(toKatakana(localeAwareLowerCase(word))) ||
+    VALID_GUESSES.includes(toHiragana(localeAwareLowerCase(word)))
   )
 }
 
@@ -94,16 +96,20 @@ export const getWordOfDay = () => {
   const index = Math.floor((today.valueOf() - epoch.valueOf()) / msInDay)
   const yesterdayIndex = (index > 0 ? index - 1 : 0)
 
+  const solution = localeAwareUpperCase(WORDS[index % WORDS.length])
+  const isKatakana = (solution === toKatakana(solution))
+
   return {
     yesterdaySolution: localeAwareUpperCase(WORDS[yesterdayIndex % WORDS.length]),
     yesterdaySolutionIndex: yesterdayIndex,
-    solution: localeAwareUpperCase(WORDS[index % WORDS.length]),
+    solution: solution,
     solutionIndex: index,
     tomorrow: tomorrow,
+    isKatakana: isKatakana,
   }
 }
 
-export let { yesterdaySolution, yesterdaySolutionIndex, solution, solutionIndex, tomorrow } = getWordOfDay()
+export let { yesterdaySolution, yesterdaySolutionIndex, solution, solutionIndex, tomorrow, isKatakana } = getWordOfDay()
 
 export const setWordOfDay = () => {
   let wordOfDay = getWordOfDay()
@@ -112,4 +118,5 @@ export const setWordOfDay = () => {
   solution = wordOfDay.solution
   solutionIndex = wordOfDay.solutionIndex
   tomorrow = wordOfDay.tomorrow
+  isKatakana = wordOfDay.isKatakana
 }

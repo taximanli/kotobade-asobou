@@ -2,6 +2,8 @@ import { ReactNode } from 'react'
 import classnames from 'classnames'
 import { CharStatus } from '../../lib/statuses'
 import { MAX_WORD_LENGTH, REVEAL_TIME_MS } from '../../constants/settings'
+import { unicodeLength, isKatakana } from '../../lib/words'
+import { toKatakana } from '@koozaki/romaji-conv'
 
 type Props = {
   children?: ReactNode
@@ -58,7 +60,7 @@ export const Key = ({
   }
 
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = (event) => {
-    onClick(value)
+    onClick((isKatakana && unicodeLength(value) === 1 ? toKatakana(value) : value))
     event.currentTarget.blur()
   }
 
@@ -71,7 +73,7 @@ export const Key = ({
   } else {
     return (
       <button style={styles} className={keyClasses} onClick={handleClick}>
-        {children || value}
+        {children || (isKatakana ? toKatakana(value) : value)}
       </button>
     )  
   }

@@ -1,8 +1,20 @@
-import { solution, unicodeSplit } from './words'
+import { toHiragana } from '@koozaki/romaji-conv'
+import { solution, isKatakana, unicodeSplit } from './words'
 import { getStoredIsHintMode, loadShareStatusFromLocalStorage } from './localStorage'
-import { CLOSE_STATUS_KANA, CONSONANT_STATUS_KANA, VOWEL_STATUS_KANA } from '../constants/strings'
+import {
+  CLOSE_STATUS_KATAKANA,
+  CONSONANT_STATUS_KATAKANA,
+  VOWEL_STATUS_KATAKANA,
+  CLOSE_STATUS_HIRAGANA,
+  CONSONANT_STATUS_HIRAGANA,
+  VOWEL_STATUS_HIRAGANA,
+} from '../constants/strings'
 
 export type CharStatus = 'absent' | 'vowel' | 'consonant' | 'present' | 'close' | 'correct'
+
+const closeStatusKana = (isKatakana ? CLOSE_STATUS_KATAKANA : CLOSE_STATUS_HIRAGANA)
+const consonantStatusKana = (isKatakana ? CONSONANT_STATUS_KATAKANA : CONSONANT_STATUS_HIRAGANA)
+const vowelStatusKana = (isKatakana ? VOWEL_STATUS_KATAKANA : VOWEL_STATUS_HIRAGANA)
 
 export const getStatuses = (
   guesses: string[]
@@ -21,41 +33,41 @@ export const getStatuses = (
     unicodeSplit(word).forEach((letter, i) => {
 
       if (isHintMode) {
-        VOWEL_STATUS_KANA.forEach((kana) => {
+        vowelStatusKana.forEach((kana) => {
           if (kana.includes(letter) && kana.includes(splitSolution[i])) {
             //make status close
-            return (charObj[letter] = 'vowel')
+            return (charObj[toHiragana(letter)] = 'vowel')
           }
         })
 
-        CONSONANT_STATUS_KANA.forEach((kana) => {
+        consonantStatusKana.forEach((kana) => {
           if (kana.includes(letter) && kana.includes(splitSolution[i])) {
             //make status close
-            return (charObj[letter] = 'consonant')
+            return (charObj[toHiragana(letter)] = 'consonant')
           }
         })
 
-        CLOSE_STATUS_KANA.forEach((kana) => {
+        closeStatusKana.forEach((kana) => {
           if (kana.includes(letter) && kana.includes(splitSolution[i])) {
             //make status close
-            return (charObj[letter] = 'close')
+            return (charObj[toHiragana(letter)] = 'close')
           }
         })
       }
 
-      if (!splitSolution.includes(letter) && !['vowel', 'consonant', 'present', 'close', 'correct'].includes(charObj[letter])) {
+      if (!splitSolution.includes(letter) && !['vowel', 'consonant', 'present', 'close', 'correct'].includes(charObj[toHiragana(letter)])) {
         // make status absent
-        return (charObj[letter] = 'absent')
+        return (charObj[toHiragana(letter)] = 'absent')
       }
 
       if (letter === splitSolution[i]) {
         //make status correct
-        return (charObj[letter] = 'correct')
+        return (charObj[toHiragana(letter)] = 'correct')
       }
 
-      if (splitSolution.includes(letter) && !['close', 'correct'].includes(charObj[letter])) {
+      if (splitSolution.includes(letter) && !['close', 'correct'].includes(charObj[toHiragana(letter)])) {
         //make status present
-        return (charObj[letter] = 'present')
+        return (charObj[toHiragana(letter)] = 'present')
       }
     })
   })
@@ -92,7 +104,7 @@ export const getGuessStatuses = (guess: string): CharStatus[] => {
     if (statuses[i]) return
 
     if (isHintMode) {
-      CLOSE_STATUS_KANA.forEach((kana) => {
+      closeStatusKana.forEach((kana) => {
         if (kana.includes(letter) && kana.includes(splitSolution[i])) {
           // handles status close
           statuses[i] = 'close'
@@ -117,7 +129,7 @@ export const getGuessStatuses = (guess: string): CharStatus[] => {
     if (statuses[i]) return
 
     if (isHintMode) {
-      CONSONANT_STATUS_KANA.forEach((kana) => {
+      consonantStatusKana.forEach((kana) => {
         if (kana.includes(letter) && kana.includes(splitSolution[i])) {
           // handles status consonant
           statuses[i] = 'consonant'
@@ -129,7 +141,7 @@ export const getGuessStatuses = (guess: string): CharStatus[] => {
     if (statuses[i]) return
 
     if (isHintMode) {
-      VOWEL_STATUS_KANA.forEach((kana) => {
+      vowelStatusKana.forEach((kana) => {
         if (kana.includes(letter) && kana.includes(splitSolution[i])) {
           // handles status vowel
           statuses[i] = 'vowel'

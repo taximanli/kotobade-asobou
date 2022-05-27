@@ -178,7 +178,59 @@ export const WIN_MESSAGES = {
   ]
 }
 
-export const CLOSE_STATUS_KANA = [
+export const CLOSE_STATUS_KATAKANA = [
+  'アァ',
+  'イィ',
+  'ウヴゥ',
+  'エェ',
+  'オォ',
+  'ヤャ',
+  'ユュ',
+  'ヨョ',
+  'カガ',
+  'キギ',
+  'クグ',
+  'ケゲ',
+  'コゴ',
+  'サザ',
+  'シジ',
+  'スズ',
+  'セゼ',
+  'ソゾ',
+  'タダ',
+  'チヂ',
+  'ツヅッ',
+  'テデ',
+  'トド',
+  'ハバパ',
+  'ヒビピ',
+  'フブプ',
+  'ヘベペ',
+  'ホボポ',
+]
+
+export const CONSONANT_STATUS_KATAKANA = [
+  'アイウエオァィゥェォ',
+  'カキクケコガギグゲゴ',
+  'サシスセソザジズゼゾ',
+  'タチツテトダヂヅデドッ',
+  'ナニヌネノ',
+  'ハヒフヘホバビブベボパピプペポ',
+  'マミムメモ',
+  'ヤユヨャュョ',
+  'ラリルレロ',
+  'ワヲ',
+]
+
+export const VOWEL_STATUS_KATAKANA = [
+  'ァアカサタナハマヤラワガザダバパャ',
+  'ィイキシチニヒミリギジヂビピ',
+  'ゥウクスツヌフムユルヴグズヅッブプュ',
+  'ェエケセテネヘメレゲゼデベペ',
+  'ォオコソトノホモヨロヲゴゾドボポョ',  
+]
+
+export const CLOSE_STATUS_HIRAGANA = [
   'あぁ',
   'いぃ',
   'うゔぅ',
@@ -209,7 +261,7 @@ export const CLOSE_STATUS_KANA = [
   'ほぼぽ',
 ]
 
-export const CONSONANT_STATUS_KANA = [
+export const CONSONANT_STATUS_HIRAGANA = [
   'あいうえおぁぃぅぇぉ',
   'かきくけこがぎぐげご',
   'さしすせそざじずぜぞ',
@@ -222,7 +274,7 @@ export const CONSONANT_STATUS_KANA = [
   'わを',
 ]
 
-export const VOWEL_STATUS_KANA = [
+export const VOWEL_STATUS_HIRAGANA = [
   'ぁあかさたなはまやらわがざだばぱゃ',
   'ぃいきしちにひみりぎじぢびぴ',
   'ぅうくすつぬふむゆるゔぐずづっぶぷゅ',
