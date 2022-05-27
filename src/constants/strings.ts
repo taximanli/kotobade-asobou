@@ -60,7 +60,7 @@ en['much love to'] = 'Much love to my supporters ♥️'
 
 en['If you love this game'] = 'Love the game and want to support me?'
 en['Please consider'] = 'Please consider'
-en['can you treat me'] = 'buying me a coffee'
+en['can you treat me'] = 'Buying Me a Coffee'
 en['please?'] = '♥️'
 
 en['GAME_COPIED_MESSAGE'] = 'Copied results to clipboard'
@@ -70,7 +70,7 @@ en['TIMEZONE_ALERT_MESSAGE'] = 'Timezone can only be switched at the start of th
 en['HINT_MODE_ALERT_MESSAGE'] = 'Hint Mode can only be turned off at the start of the game'
 en['HARD_MODE_ALERT_MESSAGE'] = 'Hard Mode can only be turned on at the start of the game'
 en['YESTERDAY_CORRECT_WORD_MESSAGE'] = 'The word for game #$text1 was '
-en['CORRECT_WORD_MESSAGE'] = 'The word for game #$text1 was $text2.'
+en['CORRECT_WORD_MESSAGE'] = 'The word for this game was '
 en['WRONG_SPOT_MESSAGE'] = 'Must use $text1 in position $text2.'
 en['NOT_CONTAINED_MESSAGE'] = 'Guess must contain $text1.'
 
@@ -131,7 +131,7 @@ ja['TIMEZONE_ALERT_MESSAGE'] = 'タイムゾーンをゲーム開始時にのみ
 ja['HINT_MODE_ALERT_MESSAGE'] = 'ヒントモードは、ゲーム開始時と終了時にのみオフにすることができます'
 ja['HARD_MODE_ALERT_MESSAGE'] = 'ハードモードは、ゲーム開始時と終了時にのみオンにすることができます'
 ja['YESTERDAY_CORRECT_WORD_MESSAGE'] = '第$text1回の正解は'
-ja['CORRECT_WORD_MESSAGE'] = '第$text1回の正解は「$text2」です。'
+ja['CORRECT_WORD_MESSAGE'] = '今回の正解は'
 ja['WRONG_SPOT_MESSAGE'] = '$text2文字目は「$text1」でないといけません。'
 ja['NOT_CONTAINED_MESSAGE'] = '「$text1」を答えに含める必要があります。'
 

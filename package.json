@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://taximanli.github.io/kotobade-asobou",
   "dependencies": {
+    "@date-io/luxon": "^2.14.0",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@headlessui/react": "^1.4.2",

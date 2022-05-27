@@ -28,7 +28,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
     return (
       <BaseModal title="更新情報" isOpen={isOpen} handleClose={handleClose}>
         <p className="text-left local-font text-sm text-gray-500 dark:text-gray-300 mb-2">
-          キーボードと音図のレイアウトを画面の右上に「設定 ⋮ 」で選択することができます。
+          キーボードと音図は画面の右上に「設定 ⋮ 」でレイアウトを選択することができます。
         </p>
         <hr className="mt-2 mb-2" />
         <p className="text-left local-font text-sm text-gray-500 dark:text-gray-300 mb-2">
@@ -153,7 +153,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
           「段」は母音が同じであることを示します。例えば「う段」は「う・く・す・つ・ぬ・ふ・む・ゆ・る」と「ぅ・ぐ・ず・づ・っ・ぶ・ぷ・ゅ・ゔ」です。
         </p>
         <p className="local-font text-left text-sm text-gray-500 dark:text-gray-300">
-          撥音「ん」と長音符「ー」は他のどの行と段にも一致しません。
+          撥音「ん」と長音符「ー」は他のどの行と段にも一致しません。「ゔ」は他のどの行にも一致しません。
         </p>
 
         <p className="local-font text-lg leading-6 font-medium text-gray-900 dark:text-gray-100 mt-2 md:mt-4 mb-2">
@@ -316,7 +316,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
           Each ROW contains kana that have the matching vowel, e.g. both UPPER row う く す つ ぬ ふ む ゆ る and LOWER row ぅ ぐ ず づ っ ぶ ぷ ゅ ゔ are treated as the SAME row with the matching vowel U.
         </p>
         <p className="text-left text-sm text-gray-500 dark:text-gray-300">
-          Both the kana ん and the long sound mark ー do not have any matching rows or columns.
+          Both the kana ん and the long sound mark ー do not have any matching rows or columns. And the kana ゔ does not have matching columns.
         </p>
 
         <p className="local-font text-lg leading-6 font-medium text-gray-900 dark:text-gray-100 mt-2 md:mt-4 mb-2">

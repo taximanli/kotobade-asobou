@@ -1,3 +1,7 @@
+import {
+  EmojiHappyIcon,
+  EmojiSadIcon,
+} from '@heroicons/react/outline'
 import classnames from 'classnames'
 import Countdown from 'react-countdown'
 import { DateTime } from 'luxon'
@@ -5,7 +9,7 @@ import { StatBar } from '../stats/StatBar'
 import { Histogram } from '../stats/Histogram'
 import { GameStats, getStoredIsHighContrastMode, getStoredDisplayLanguage, getStoredTimezone } from '../../lib/localStorage'
 import { shareStatus } from '../../lib/share'
-import { yesterdaySolution, yesterdaySolutionIndex, solutionIndex, tomorrow } from '../../lib/words'
+import { yesterdaySolution, yesterdaySolutionIndex, solution, solutionIndex, tomorrow } from '../../lib/words'
 import { BaseModal } from './BaseModal'
 import { t, JISHO_SEARCH_LINK } from '../../constants/strings';
 import { PREFERRED_DISPLAY_LANGUAGE } from '../../constants/settings'
@@ -56,7 +60,22 @@ export const StatsModal = ({
     statsModalTitle = 'Game #' + solutionIndex.toString() + ' on ' + now.setLocale('en-US').toLocaleString(DateTime.DATE_FULL)
   }
 
-  const linkClassName = classnames((isHighContrast ? 'text-orange-600' : 'text-green-600'), 'underline text-sm')
+  const linkClassName = classnames((isHighContrast ? 'text-orange-600 dark:text-orange-400' : 'text-green-600 dark:text-green-400'), 'underline text-sm')
+  const correctWordClassNames = classnames(
+    'flex gap-1 justify-center text-base font-medium mx-1 mb-3',
+    {
+      'local-font': displayLanguage === PREFERRED_DISPLAY_LANGUAGE,
+      'text-red-600 dark:text-red-400': isGameLost,
+      'text-green-500 dark:text-green-400': isGameWon,
+    }
+  )
+  const correctWordSearchLinkClassNames = classnames(
+    'local-font underline text-base font-medium cursor-zoom-in',
+    {
+      'text-red-600 dark:text-red-400': isGameLost,
+      'text-green-500 dark:text-green-400': isGameWon,
+    }
+  )
   const classNames = classnames(
     'mt-1 w-full rounded-md border border-transparent shadow-sm px-4 py-2 local-font text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 sm:text-sm',
     {
@@ -85,6 +104,13 @@ export const StatsModal = ({
       isOpen={isOpen}
       handleClose={handleClose}
     >
+      {(isGameLost || isGameWon) && (
+      <div className={correctWordClassNames}>
+        {(isGameWon ? <EmojiHappyIcon className="h-6 w-6 cursor-pointer text-green-500 dark:text-green-400"/> : <EmojiSadIcon className="h-6 w-6 cursor-pointer text-red-600 dark:text-red-400"/>)}
+        {t('CORRECT_WORD_MESSAGE')}
+        <a className={correctWordSearchLinkClassNames} href={(JISHO_SEARCH_LINK + solution)} rel="noreferrer" target="_blank">{solution}</a>
+      </div>
+      )}
       <div className="flex gap-1 justify-center dark:text-white mx-1">
         <div>
           <h5>{t('NEW_WORD_TEXT')}</h5>
@@ -98,12 +124,12 @@ export const StatsModal = ({
         </div>
       </div>
       {(isGameLost || isGameWon) && (
-      <div className="flex gap-1 justify-center text-sm dark:text-white mx-1">
+      <div className="flex gap-1 justify-center text-sm dark:text-white mx-1 mb-3">
         {t('YESTERDAY_CORRECT_WORD_MESSAGE', yesterdaySolutionIndex.toString())}
         <a className="underline text-sm text-gray-600 dark:text-gray-300 cursor-zoom-in" href={(JISHO_SEARCH_LINK + yesterdaySolution)} rel="noreferrer" target="_blank">{yesterdaySolution}</a>
       </div>
       )}
-      <div className="flex justify-between items-center gap-3 mt-3">
+      <div className="flex justify-between items-center gap-3 mt-4">
         <p className="text-left text-sm dark:text-white">
           {t('If you love this game')}<br />{t('Please consider')}
           {' '}<a className={linkClassName} href={t('KOFI_LINK')} rel="noreferrer" target="_blank">{t('can you treat me')}</a>{' '}
