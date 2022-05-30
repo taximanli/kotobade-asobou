@@ -10,7 +10,8 @@ export const JISHO_SEARCH_LINK = 'https://jisho.org/search/'
 export const ENTER_TEXT = '⏎'
 export const DELETE_TEXT = '⇦'
 
-export const SUPPORTER_NAME = `Jeffrey | Rose, カリさ, TamagoGP | hostvarious, m, Yoshiyasu, Toshi | みのる, cheapshot, 良幸, keychera | Ken1, Kai, Vikki, kana, keika, neko, Katie, 東郷, Rima, あるる, のん, xipj, tosuke, Conrick, あかいと, Akitack, ユーキャン, Cheryl, zk, bree, koblf, kmaebashi, Mt4vE, kado, Michael, Kou684, karamite, Dewbs, ほしなみ, Chris, touko, hayafunakei, バンクスおんらいん, afrowagen, 14番, maman, haharesan, mudeng, 雅治, fumaruri, pan, 彰一, Vicky M, febm, mitrac, Tonya, Mitchan P, Yumi, keiichi, Shimmee, uj, Chi, kuroneko, Meri, Seth, atsushi1972, ennairda aya, ９ちゃん, み遊, Alexey ...`
+export const TOP_SUPPORTER_NAME = `briantist, Jeffrey Friedl, カリさ, Rose, TamagoGP, 長谷川, Tim, hostvarious, Keika, Alexey, mudeng, Y, Sanetomo Ninetails, Toshi, kmaebashi, Yoshiyasu, m, 平尾, Kylar, 東郷, keychera, 純友良幸, みのる, cheapshot, リアム`
+export const SUPPORTER_NAME = `Terra Powers, iwasaki, asagi, soka, Jen Chapman, かほ, 二瀬双葉, nakajio, namoken, JapaneseJuku, Schimmee, aomam, えだまめ, おとみ, fumipong, マチュ, Noya, くまぽろ, NEO, negi, 布帽子, ファット, BIRIYANI, MIDORI, エスナカモト, Someone, Niji, moo, Kana, Binkie, YUKIKO, Merja, erino, な, み遊, ９ちゃん。, ennairda aya, atsushi1972, Seth, Meri, kuroneko, Chi, uj, Shimmee, keiichi, Yumi, Mitchan P, Tonya, mitrac, febm, Vicky M, 安井彰一, pan, fumaruri, 玉木雅治, haharesan, maman (masa yan), 14番, afrowagen, バンクスおんらいん, hayafunakei, touko, Chris, ほしなみ, Dewbs, karamite, Kou684, Michael, めと, kado, Mt4vE, koblf, bree, zk, Cheryl, ユーキャン, Akitack, あかいと, tosuke, xipj, のん, あるる, Rima, Katie Fraser, neko, kana, Vikki, Kai M, Ken1 ...`
 
 interface TranslationType {
   [index: string]: string
@@ -52,7 +53,7 @@ en['massive development'] = 'and has undergone massive redevelopment with extra 
 
 en['own passion project'] = 'Kotobade Asobou went from my own passion project for learning Japanese, to becoming a popular game enjoyed by players from both inside and outside of Japan. Honestly, I\'m overwhelmed!'
 en['If you enjoy'] = 'If you enjoy the game and would like to support my work, please consider'
-en['buying me a coffee'] = 'buying me a coffee'
+en['buying me a coffee'] = 'Buying Me a Coffee'
 en['if you wish'] = '♥️'
 en['Buy me a coffee?'] = 'Buy me a coffee? ♥️ ' + KOFI_LINK
 en['do my best'] = 'I\'ll do my best to keep improving the game!'

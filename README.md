@@ -2,7 +2,7 @@
 
 This is the Japanese version of the word guessing game we all know and love. This game was forked from this [open source version](https://github.com/cwackerfuss/react-wordle) and has undergone massive redevelopment with extra game mode and new elements added to accommodate the unique features of the Japanese language.
 
-If you enjoy the game and would like to support my work, please consider [buying me a coffee](https://ko-fi.com/taximanli)  ♥️
+If you enjoy the game and would like to support my work, please consider [Buying Me a Coffee](https://ko-fi.com/taximanli)  ♥️
 
 これは、有名で人気な単語パズルゲームの 日本語版 です。このゲームは、この [オープンソース版](https://github.com/cwackerfuss/react-wordle) からフォークして大規模なソフトウェア再開発を経ています。また、日本語の特徴に合わせて、新しいモードと要素が追加されています。
 

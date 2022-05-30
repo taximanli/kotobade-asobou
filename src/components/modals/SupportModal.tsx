@@ -2,7 +2,7 @@ import classnames from 'classnames'
 import { BaseModal } from './BaseModal'
 import { PREFERRED_DISPLAY_LANGUAGE } from '../../constants/settings'
 import { getStoredIsHighContrastMode, getStoredDisplayLanguage } from '../../lib/localStorage'
-import { t, SUPPORTER_NAME } from '../../constants/strings';
+import { t, TOP_SUPPORTER_NAME, SUPPORTER_NAME } from '../../constants/strings';
 import coffeeLogo from '../../images/ko-fi-com-taximanli.png';
 
 export type shareStatusType = 'text' | 'clipboard' | 'tweet'
@@ -45,8 +45,13 @@ export const SupportModal = ({ isOpen, handleClose }: Props) => {
         </p>
       </div>
       <div className="flex mt-3">
+        <textarea className="local-font text-xs text-gray-500 dark:text-gray-400 w-full border-solid border-2 rounded bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-600"
+          rows={5}
+          value={TOP_SUPPORTER_NAME} />
+      </div>
+      <div className="flex mt-3">
         <textarea className="local-font text-xs text-gray-400 dark:text-gray-500 w-full border-solid border-2 rounded bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-600"
-          rows={8}
+          rows={6}
           value={SUPPORTER_NAME} />
       </div>
     </BaseModal>
