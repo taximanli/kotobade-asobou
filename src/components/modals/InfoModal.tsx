@@ -3,6 +3,7 @@ import { Cell } from '../grid/Cell'
 import { BaseModal } from './BaseModal'
 import { MAX_WORD_LENGTH, MAX_CHALLENGES, PREFERRED_DISPLAY_LANGUAGE } from '../../constants/settings'
 import { getStoredDisplayLanguage, getStoredIsHighContrastMode } from '../../lib/localStorage'
+import { solutionIndex } from '../../lib/words'
 
 type Props = {
   isOpen: boolean
@@ -27,6 +28,18 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
   if (displayLanguage === PREFERRED_DISPLAY_LANGUAGE) {
     return (
       <BaseModal title="更新情報" isOpen={isOpen} handleClose={handleClose}>
+        {( solutionIndex > 150
+        ?
+          <>
+            <p className="text-left local-font text-sm text-gray-500 dark:text-gray-300 mb-2">
+              日替わり単語がカタカナ語である場合、ゲームは自動的にひらがなモードからカタカナモードに切り替わります。
+            </p>
+            <hr className="mt-2 mb-2" />
+          </>
+        :
+          <>
+          </>
+        )}
         <p className="text-left local-font text-sm text-gray-500 dark:text-gray-300 mb-2">
           キーボードと音図は画面の右上に「設定 ⋮ 」でレイアウトを選択することができます。
         </p>
@@ -188,6 +201,18 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
   } else {
     return (
       <BaseModal title="Latest updates" isOpen={isOpen} handleClose={handleClose}>
+        {( solutionIndex > 150
+        ?
+          <>
+            <p className="text-left text-sm text-gray-500 dark:text-gray-300 mb-2">
+              If the word of the day is a katakana word, the game will switch from hiragana mode to katakana mode.
+            </p>
+            <hr className="mt-2 mb-2" />
+          </>
+        :
+          <>
+          </>
+        )}
         <p className="text-left text-sm text-gray-500 dark:text-gray-300 mb-2">
           You can now select the positions of text box and kana chart in Settings.
         </p>
