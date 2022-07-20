@@ -278,7 +278,7 @@ export const CONSONANT_STATUS_HIRAGANA = [
 export const VOWEL_STATUS_HIRAGANA = [
   'ぁあかさたなはまやらわがざだばぱゃ',
   'ぃいきしちにひみりぎじぢびぴ',
-  'ぅうくすつぬふむゆるゔぐずづっぶぷゅ',
+  'ぅうくすつぬふむゆるゔぐずづっぶぷゅゔ',
   'ぇえけせてねへめれげぜでべぺ',
   'ぉおこそとのほもよろをごぞどぼぽょ',  
 ]
