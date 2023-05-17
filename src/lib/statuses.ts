@@ -1,6 +1,9 @@
 import { toHiragana } from '@koozaki/romaji-conv'
-import { solution, isKatakana, unicodeSplit } from './words'
-import { getStoredIsHintMode, loadShareStatusFromLocalStorage } from './localStorage'
+import { isKatakana, unicodeSplit } from './words'
+import {
+  getStoredIsHintMode,
+  loadShareStatusFromLocalStorage,
+} from './localStorage'
 import {
   CLOSE_STATUS_KATAKANA,
   CONSONANT_STATUS_KATAKANA,
@@ -10,14 +13,36 @@ import {
   VOWEL_STATUS_HIRAGANA,
 } from '../constants/strings'
 
-export type CharStatus = 'absent' | 'vowel' | 'consonant' | 'present' | 'close' | 'correct'
+export type CharStatus =
+  | 'absent'
+  | 'vowel'
+  | 'consonant'
+  | 'present'
+  | 'close'
+  | 'correct'
 
-const closeStatusKana = (isKatakana ? CLOSE_STATUS_KATAKANA : CLOSE_STATUS_HIRAGANA)
-const consonantStatusKana = (isKatakana ? CONSONANT_STATUS_KATAKANA : CONSONANT_STATUS_HIRAGANA)
-const vowelStatusKana = (isKatakana ? VOWEL_STATUS_KATAKANA : VOWEL_STATUS_HIRAGANA)
+const charStatusRanking = {
+  correct: 5,
+  close: 4,
+  present: 3,
+  consonant: 2,
+  vowel: 2,
+  absent: 1,
+}
+
+const closeStatusKana = isKatakana
+  ? CLOSE_STATUS_KATAKANA
+  : CLOSE_STATUS_HIRAGANA
+const consonantStatusKana = isKatakana
+  ? CONSONANT_STATUS_KATAKANA
+  : CONSONANT_STATUS_HIRAGANA
+const vowelStatusKana = isKatakana
+  ? VOWEL_STATUS_KATAKANA
+  : VOWEL_STATUS_HIRAGANA
 
 export const getStatuses = (
-  guesses: string[]
+  guesses: string[],
+  solution: string
 ): { [key: string]: CharStatus } => {
   const charObj: { [key: string]: CharStatus } = {}
   const splitSolution = unicodeSplit(solution)
@@ -29,45 +54,48 @@ export const getStatuses = (
     isHintMode = loaded.isHintMode
   }
 
+  function updateCharObjectKey(letter: string, value: CharStatus) {
+    // Sets a new status of a key, only if the new status is more important than a previous status
+    // i.e. 'present' does not override 'correct', if the character appears twice
+    const currentStatusPriority = charStatusRanking[charObj[toHiragana(letter)]]
+    const newStatusPriority = charStatusRanking[value]
+    if (!currentStatusPriority || newStatusPriority > currentStatusPriority) {
+      charObj[toHiragana(letter)] = value
+    }
+  }
+
   guesses.forEach((word) => {
     unicodeSplit(word).forEach((letter, i) => {
-
       if (isHintMode) {
         vowelStatusKana.forEach((kana) => {
           if (kana.includes(letter) && kana.includes(splitSolution[i])) {
-            //make status close
-            return (charObj[toHiragana(letter)] = 'vowel')
+            updateCharObjectKey(letter, 'vowel')
           }
         })
 
         consonantStatusKana.forEach((kana) => {
           if (kana.includes(letter) && kana.includes(splitSolution[i])) {
-            //make status close
-            return (charObj[toHiragana(letter)] = 'consonant')
+            updateCharObjectKey(letter, 'consonant')
           }
         })
 
         closeStatusKana.forEach((kana) => {
           if (kana.includes(letter) && kana.includes(splitSolution[i])) {
-            //make status close
-            return (charObj[toHiragana(letter)] = 'close')
+            updateCharObjectKey(letter, 'close')
           }
         })
       }
 
-      if (!splitSolution.includes(letter) && !['vowel', 'consonant', 'present', 'close', 'correct'].includes(charObj[toHiragana(letter)])) {
-        // make status absent
-        return (charObj[toHiragana(letter)] = 'absent')
+      if (!splitSolution.includes(letter)) {
+        updateCharObjectKey(letter, 'absent')
+      }
+
+      if (splitSolution.includes(letter)) {
+        updateCharObjectKey(letter, 'present')
       }
 
       if (letter === splitSolution[i]) {
-        //make status correct
-        return (charObj[toHiragana(letter)] = 'correct')
-      }
-
-      if (splitSolution.includes(letter) && !['close', 'correct'].includes(charObj[toHiragana(letter)])) {
-        //make status present
-        return (charObj[toHiragana(letter)] = 'present')
+        updateCharObjectKey(letter, 'correct')
       }
     })
   })
@@ -75,7 +103,10 @@ export const getStatuses = (
   return charObj
 }
 
-export const getGuessStatuses = (guess: string): CharStatus[] => {
+export const getGuessStatuses = (
+  guess: string,
+  solution: string
+): CharStatus[] => {
   const splitSolution = unicodeSplit(solution)
   const splitGuess = unicodeSplit(guess)
 

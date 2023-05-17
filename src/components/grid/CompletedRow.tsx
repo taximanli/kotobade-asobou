@@ -1,6 +1,6 @@
 import { getGuessStatuses } from '../../lib/statuses'
 import { Cell } from './Cell'
-import { unicodeSplit } from '../../lib/words'
+import { solution, unicodeSplit } from '../../lib/words'
 import { JISHO_SEARCH_LINK } from '../../constants/strings'
 
 type Props = {
@@ -10,7 +10,7 @@ type Props = {
 }
 
 export const CompletedRow = ({ guess, isRevealing }: Props) => {
-  const statuses = getGuessStatuses(guess)
+  const statuses = getGuessStatuses(guess, solution)
   const splitGuess = unicodeSplit(guess)
 
   const onClick = () => {
