@@ -29,7 +29,7 @@ export const findFirstUnusedReveal = (word: string, guesses: string[]) => {
 
   const lettersLeftArray = new Array<string>()
   const guess = guesses[guesses.length - 1]
-  const statuses = getGuessStatuses(guess)
+  const statuses = getGuessStatuses(guess, solution)
   const splitWord = unicodeSplit(word)
   const splitGuess = unicodeSplit(guess)
 
