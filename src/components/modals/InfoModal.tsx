@@ -3,7 +3,6 @@ import { Cell } from '../grid/Cell'
 import { BaseModal } from './BaseModal'
 import { MAX_WORD_LENGTH, MAX_CHALLENGES, PREFERRED_DISPLAY_LANGUAGE } from '../../constants/settings'
 import { getStoredDisplayLanguage, getStoredIsHighContrastMode } from '../../lib/localStorage'
-import { solutionIndex } from '../../lib/words'
 
 type Props = {
   isOpen: boolean
