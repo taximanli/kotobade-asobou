@@ -45,6 +45,9 @@
     <meta name="twitter:image" content="%PUBLIC_URL%/kotobade-asobou_card_600x314.png" />
     <meta name="twitter:url" content="%REACT_APP_GAME_LINK%" />
 
+    <% if (process.env.NODE_ENV === 'production' && process.env.REACT_APP_GOOGLE_ADSENSE_CLIENT_ID != null) { %>
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=%REACT_APP_GOOGLE_ADSENSE_CLIENT_ID%" crossorigin="anonymous"></script>
+    <% } %>
     <% if (process.env.NODE_ENV === 'production' && process.env.REACT_APP_GOOGLE_MEASUREMENT_ID != null) { %>
       <!-- Global site tag (gtag.js) - Google Analytics -->
       <script async src="https://www.googletagmanager.com/gtag/js?id=%REACT_APP_GOOGLE_MEASUREMENT_ID%"></script>

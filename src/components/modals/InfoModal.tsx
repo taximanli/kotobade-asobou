@@ -28,6 +28,10 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
     return (
       <BaseModal title="更新情報" isOpen={isOpen} handleClose={handleClose}>
         <p className="text-left local-font text-sm text-gray-500 dark:text-gray-300 mb-2">
+          正しくないヒントが表示されるバグを修正しました。
+        </p>
+        <hr className="mt-2 mb-2" />
+        <p className="text-left local-font text-sm text-gray-500 dark:text-gray-300 mb-2">
           日替わり単語がカタカナ語である場合、ゲームは自動的にひらがなモードからカタカナモードに切り替わります。
         </p>
         <hr className="mt-2 mb-2" />
@@ -192,6 +196,10 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
   } else {
     return (
       <BaseModal title="Latest updates" isOpen={isOpen} handleClose={handleClose}>
+        <p className="text-left text-sm text-gray-500 dark:text-gray-300 mb-2">
+          Fixed a bug regarding the keyboard displaying the incorrect hints for certain guess combinations.
+        </p>
+        <hr className="mt-2 mb-2" />
         <p className="text-left text-sm text-gray-500 dark:text-gray-300 mb-2">
           If the word of the day is a katakana word, the game will switch from hiragana mode to katakana mode.
         </p>
