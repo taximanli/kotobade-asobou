@@ -15,7 +15,7 @@ import { t, JISHO_SEARCH_LINK } from '../../constants/strings';
 import { PREFERRED_DISPLAY_LANGUAGE } from '../../constants/settings'
 import coffeeLogo from '../../images/ko-fi-com-taximanli.png';
 
-export type shareStatusType = 'text' | 'clipboard' | 'tweet'
+export type shareStatusType = 'text' | 'clipboard' | 'line' | 'tweet'
 
 type Props = {
   isOpen: boolean
@@ -152,7 +152,7 @@ export const StatsModal = ({
                   handleShareToClipboard
               )} />          
           </div>
-          <div className="mb-5 sm:mb-6 grid grid-cols-2 gap-3 dark:text-white mx-1">
+          <div className="mb-5 sm:mb-6 grid grid-cols-3 gap-3 dark:text-white mx-1">
             <div>
               <button
                 type="button"
@@ -171,6 +171,26 @@ export const StatsModal = ({
                 }}
               >
                 {t('SHARE_TEXT')}
+              </button>
+            </div>
+            <div>
+              <button
+                type="button"
+                className={classNames}
+                onClick={() => {
+                  shareStatus(
+                    'line',
+                    guesses,
+                    isGameLost,
+                    isHintMode,
+                    isHardMode,
+                    isDarkMode,
+                    isHighContrastMode,
+                    handleShareToClipboard
+                  )
+                }}
+              >
+                {t('LINE_TEXT')}
               </button>
             </div>
             <div>
