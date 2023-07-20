@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Adsense } from '@ctrl/react-adsense'
 import { ITimezone } from 'react-timezone-select'
 import { toHiragana, toKatakana } from '@koozaki/romaji-conv'
 import { Grid } from './components/grid/Grid'
@@ -362,6 +363,15 @@ function App() {
 
   return (
     <div className="pt-2 pb-8 max-w-7xl mx-auto sm:px-6 lg:px-8">
+      <div className="text-center adsbygoogle mt-2">
+        <Adsense
+          client="ca-pub-1563931935433612"
+          slot="8326520188"
+          style={{ display: 'block' }}
+          layout="in-article"
+          format="fluid"
+        />
+      </div>
       <Navbar
         setIsInfoModalOpen={setIsInfoModalOpen}
         setIsSupportModalOpen={setIsSupportModalOpen}
