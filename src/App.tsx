@@ -363,14 +363,8 @@ function App() {
 
   return (
     <div className="pt-2 pb-8 max-w-7xl mx-auto sm:px-6 lg:px-8">
-      <div className="text-center adsbygoogle mt-2">
-        <Adsense
-          client="ca-pub-1563931935433612"
-          slot="8326520188"
-          style={{ display: 'block' }}
-          layout="in-article"
-          format="fluid"
-        />
+      <div className="text-center adsbygoogle mb-2">
+        <Adsense client="ca-pub-1563931935433612" slot="8326520188" />
       </div>
       <Navbar
         setIsInfoModalOpen={setIsInfoModalOpen}
