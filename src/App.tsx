@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Adsense } from '@ctrl/react-adsense'
 import { ITimezone } from 'react-timezone-select'
 import { toHiragana, toKatakana } from '@koozaki/romaji-conv'
 import { Grid } from './components/grid/Grid'
@@ -15,6 +16,9 @@ import {
   GAME_LOST_INFO_DELAY,
   WELCOME_INFO_MODAL_MS,
   PREFERRED_DISPLAY_LANGUAGE,
+  AD_CLIENT_ID,
+  AD_SLOT_TOP_BANNER_ID,
+  AD_SLOT_BOTTOM_BANNER_ID,
 } from './constants/settings'
 import {
   isWordInWordList,
@@ -362,6 +366,9 @@ function App() {
 
   return (
     <div className="pt-2 pb-8 max-w-7xl mx-auto sm:px-6 lg:px-8">
+      <div className="text-center adsbygoogle mb-2">
+        <Adsense client={AD_CLIENT_ID} slot={AD_SLOT_TOP_BANNER_ID} />
+      </div>
       <Navbar
         setIsInfoModalOpen={setIsInfoModalOpen}
         setIsSupportModalOpen={setIsSupportModalOpen}
@@ -428,8 +435,10 @@ function App() {
         activeAppArea={activeAppArea!}
         handleAppArea={handleAppArea}
       />
-
       <AlertContainer />
+      <div className="text-center adsbygoogle mb-2">
+        <Adsense client={AD_CLIENT_ID} slot={AD_SLOT_BOTTOM_BANNER_ID} />
+      </div>
     </div>
   )
 }

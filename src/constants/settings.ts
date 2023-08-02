@@ -5,3 +5,6 @@ export const ALERT_TIME_MS = 2000
 export const REVEAL_TIME_MS = 350
 export const GAME_LOST_INFO_DELAY = (MAX_WORD_LENGTH + 1) * REVEAL_TIME_MS
 export const WELCOME_INFO_MODAL_MS = 350
+export const AD_CLIENT_ID = 'ca-pub-1563931935433612'
+export const AD_SLOT_TOP_BANNER_ID = '8326520188'
+export const AD_SLOT_BOTTOM_BANNER_ID = '6822866246'
