@@ -7,6 +7,7 @@ import { AppArea } from './components/keyboard/Area'
 import { InfoModal } from './components/modals/InfoModal'
 import { SupportModal } from './components/modals/SupportModal'
 import { StatsModal } from './components/modals/StatsModal'
+import { MigrateStatsModal } from './components/modals/MigrateStatsModal'
 import { SettingsModal } from './components/modals/SettingsModal'
 import { t, WIN_MESSAGES } from './constants/strings'
 import {
@@ -69,6 +70,7 @@ function App() {
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false)
   const [isSupportModalOpen, setIsSupportModalOpen] = useState(false)
   const [isStatsModalOpen, setIsStatsModalOpen] = useState(false)
+  const [isMigrateStatsModalOpen, setIsMigrateStatsModalOpen] = useState(false)
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false)
   const [currentRowClass, setCurrentRowClass] = useState('')
   const [isGameLost, setIsGameLost] = useState(false)
@@ -411,11 +413,19 @@ function App() {
         handleShareToClipboard={() =>
           showSuccessAlert(t('GAME_COPIED_MESSAGE'))
         }
+        handleMigrateStatsButton={() => {
+          setIsStatsModalOpen(false)
+          setIsMigrateStatsModalOpen(true)
+        }}
         isHintMode={isHintMode}
         isHardMode={isHardMode}
         isDarkMode={isDarkMode}
         isHighContrastMode={isHighContrastMode}
         numberOfGuessesMade={guesses.length}
+      />
+      <MigrateStatsModal
+        isOpen={isMigrateStatsModalOpen}
+        handleClose={() => setIsMigrateStatsModalOpen(false)}
       />
       <SettingsModal
         isOpen={isSettingsModalOpen}
@@ -436,7 +446,7 @@ function App() {
         handleAppArea={handleAppArea}
       />
       <AlertContainer />
-      <div className="text-center adsbygoogle mb-2">
+      <div className="text-center adsbygoogle mt-2">
         <Adsense client={AD_CLIENT_ID} slot={AD_SLOT_BOTTOM_BANNER_ID} />
       </div>
     </div>

@@ -28,7 +28,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
     return (
       <BaseModal title="更新情報" isOpen={isOpen} handleClose={handleClose}>
         <p className="text-left local-font text-sm text-gray-500 dark:text-gray-300 mb-2">
-          正しくないヒントが表示されるバグを修正しました。
+          ゲームの統計情報を新しいデバイスに転送することができます。
         </p>
         <hr className="mt-2 mb-2" />
         <p className="text-left local-font text-sm text-gray-500 dark:text-gray-300 mb-2">
@@ -169,6 +169,10 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
         </p>
 
         <p className="text-left local-font text-sm text-gray-500 dark:text-gray-300 mb-2">
+          正しくないヒントが表示されるバグを修正しました。
+        </p>
+        <hr className="mt-2 mb-2" />
+        <p className="text-left local-font text-sm text-gray-500 dark:text-gray-300 mb-2">
           ひらがなのほかに、ローマ字やカタカナで答えをキーボード入力することもできます。入力ボタンを押すと答えは自動的にひらがなに変換されます。
         </p>
         <hr className="mt-2 mb-2" />
@@ -197,7 +201,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
     return (
       <BaseModal title="Latest updates" isOpen={isOpen} handleClose={handleClose}>
         <p className="text-left text-sm text-gray-500 dark:text-gray-300 mb-2">
-          Fixed a bug regarding the keyboard displaying the incorrect hints for certain guess combinations.
+          You can now transfer game statistics to a new device.
         </p>
         <hr className="mt-2 mb-2" />
         <p className="text-left text-sm text-gray-500 dark:text-gray-300 mb-2">
@@ -339,6 +343,10 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
           Past updates
         </p>
 
+        <p className="text-left text-sm text-gray-500 dark:text-gray-300 mb-2">
+          Fixed a bug regarding the keyboard displaying the incorrect hints for certain guess combinations.
+        </p>
+        <hr className="mt-2 mb-2" />
         <p className="text-left text-sm text-gray-500 dark:text-gray-300 mb-2">
           In addition to hiragana, now you can also directly type your guesses in romaji or katakana. Your guesses will be automatically converted to hiragana after hitting the enter button.
         </p>
