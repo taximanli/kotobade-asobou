@@ -1,6 +1,7 @@
 import { useState } from 'react'
+import classnames from 'classnames'
 
-import { GameStats, StoredGameState } from '../../lib/localStorage'
+import { GameStats, StoredGameState, getStoredIsHighContrastMode } from '../../lib/localStorage'
 import { EmigratePanel } from '../stats/EmigratePanel'
 import { ImmigratePanel } from '../stats/ImmigratePanel'
 import { BaseModal } from './BaseModal'
@@ -18,6 +19,15 @@ export type MigrationStats = {
 
 export const MigrateStatsModal = ({ isOpen, handleClose }: Props) => {
   const [isEmigrateVisible, setIsEmigrateVisible] = useState(true)
+
+  const isHighContrast = getStoredIsHighContrastMode()
+  const buttonClassNames = classnames(
+    'h-4 w-4 border-gray-300 bg-gray-100 focus:ring-2 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800',
+    {
+      'text-orange-600 focus:ring-orange-500 dark:focus:ring-orange-600': isHighContrast,
+      'text-green-600 focus:ring-green-500 dark:focus:ring-green-600': !isHighContrast,
+    }
+  )
 
   return (
     <BaseModal
@@ -44,7 +54,7 @@ export const MigrateStatsModal = ({ isOpen, handleClose }: Props) => {
             type="radio"
             value=""
             name="emigrate-radio-button"
-            className="h-4 w-4 border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600"
+            className={buttonClassNames}
           />
           <label
             htmlFor="emigrate-radio-button"
@@ -62,7 +72,7 @@ export const MigrateStatsModal = ({ isOpen, handleClose }: Props) => {
             type="radio"
             value=""
             name="immigrate-radio-button"
-            className="h-4 w-4 border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:ring-offset-gray-800 dark:focus:ring-blue-600"
+            className={buttonClassNames}
           />
           <label
             htmlFor="immigrate-radio-button"

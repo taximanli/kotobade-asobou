@@ -24,6 +24,13 @@ export const EmigratePanel = () => {
       'bg-green-500 hover:bg-green-600 focus:ring-green-400': !isHighContrast,
     }
   )
+  const textAreaClassNames = classnames(
+    'mb-2 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400',
+    {
+      'focus:border-orange-500 focus:ring-orange-500 dark:focus:border-orange-500 dark:focus:ring-orange-500': isHighContrast,
+      'focus:border-green-500 focus:ring-green-500 dark:focus:border-green-500 dark:focus:ring-green-500': !isHighContrast,
+    }
+  )
 
   const stats = loadStats()
   const gameState = loadGameStateFromLocalStorage()
@@ -53,7 +60,7 @@ export const EmigratePanel = () => {
         id="emigration-code"
         readOnly={true}
         rows={8}
-        className="mb-2 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+        className={textAreaClassNames}
         value={emigrationCode}
       />
       <button
