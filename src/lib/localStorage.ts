@@ -34,7 +34,7 @@ export const loadShareStatusFromLocalStorage = () => {
   }
 }
 
-type StoredGameState = {
+export type StoredGameState = {
   guesses: string[]
   solution: string
 }

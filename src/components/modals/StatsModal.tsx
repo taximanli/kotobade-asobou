@@ -1,7 +1,8 @@
 import {
   EmojiHappyIcon,
-  EmojiSadIcon,
+  EmojiSadIcon
 } from '@heroicons/react/outline'
+import coffeeLogo from '../../images/ko-fi-com-taximanli.png'
 import classnames from 'classnames'
 import Countdown from 'react-countdown'
 import { DateTime } from 'luxon'
@@ -13,7 +14,8 @@ import { yesterdaySolution, yesterdaySolutionIndex, solution, solutionIndex, tom
 import { BaseModal } from './BaseModal'
 import { t, JISHO_SEARCH_LINK } from '../../constants/strings';
 import { PREFERRED_DISPLAY_LANGUAGE } from '../../constants/settings'
-import coffeeLogo from '../../images/ko-fi-com-taximanli.png';
+import { MigrationIntro } from '../stats/MigrationIntro'
+import { ENABLE_MIGRATE_STATS } from '../../constants/settings'
 
 export type shareStatusType = 'text' | 'clipboard' | 'line' | 'tweet'
 
@@ -25,6 +27,7 @@ type Props = {
   isGameLost: boolean
   isGameWon: boolean
   handleShareToClipboard: () => void
+  handleMigrateStatsButton: () => void
   isHintMode: boolean
   isHardMode: boolean
   isDarkMode: boolean
@@ -40,6 +43,7 @@ export const StatsModal = ({
   isGameLost,
   isGameWon,
   handleShareToClipboard,
+  handleMigrateStatsButton,
   isHintMode,
   isHardMode,
   isDarkMode,
@@ -76,7 +80,7 @@ export const StatsModal = ({
       'text-green-500 dark:text-green-400': isGameWon,
     }
   )
-  const classNames = classnames(
+  const buttonClassNames = classnames(
     'mt-1 w-full rounded-md border border-transparent shadow-sm px-4 py-2 local-font text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 sm:text-sm',
     {
       'bg-orange-500 hover:bg-orange-600 focus:ring-orange-400': isHighContrast,
@@ -95,6 +99,9 @@ export const StatsModal = ({
           {t('STATISTICS_TITLE')}
         </h4>
         <StatBar gameStats={gameStats} />
+        {ENABLE_MIGRATE_STATS && (
+          <MigrationIntro handleMigrateStatsButton={handleMigrateStatsButton} />
+        )}
       </BaseModal>
     )
   }
@@ -156,7 +163,7 @@ export const StatsModal = ({
             <div>
               <button
                 type="button"
-                className={classNames}
+                className={buttonClassNames}
                 onClick={() => {
                   shareStatus(
                     'clipboard',
@@ -176,7 +183,7 @@ export const StatsModal = ({
             <div>
               <button
                 type="button"
-                className={classNames}
+                className={buttonClassNames}
                 onClick={() => {
                   shareStatus(
                     'line',
@@ -196,7 +203,7 @@ export const StatsModal = ({
             <div>
               <button
                 type="button"
-                className={classNames}
+                className={buttonClassNames}
                 onClick={() => {
                   shareStatus(
                     'tweet',
@@ -228,6 +235,12 @@ export const StatsModal = ({
         gameStats={gameStats}
         numberOfGuessesMade={numberOfGuessesMade}
       />
+      {ENABLE_MIGRATE_STATS && (
+        <div>
+          <hr className="mt-4 mb-3" />
+          <MigrationIntro handleMigrateStatsButton={handleMigrateStatsButton} />
+        </div>
+      )}
     </BaseModal>
   )
 }

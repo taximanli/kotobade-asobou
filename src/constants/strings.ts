@@ -77,7 +77,7 @@ en['NOT_CONTAINED_MESSAGE'] = 'Guess must contain $text1.'
 
 en['SUPPORT_TITLE'] = 'Support'
 en['STATISTICS_TITLE'] = 'Statistics'
-en['GUESS_DISTRIBUTION_TEXT'] = 'Guess Distribution'
+en['GUESS_DISTRIBUTION_TEXT'] = 'Guess distribution'
 en['NEW_WORD_TEXT'] = 'Next word in'
 en['SHARE_TEXT'] = 'Share'
 en['LINE_TEXT'] = 'Line'
@@ -87,7 +87,35 @@ en['SUCCESS_RATE_TEXT'] = 'Success Rate'
 en['CURRENT_STREAK_TEXT'] = 'Current Streak'
 en['BEST_STREAK_TEXT'] = 'Best Streak'
 
+en['MIGRATE_DESCRIPTION_TEXT'] = 'Click here to transfer your game statistics to a new device.'
+en['MIGRATE_BUTTON_TEXT'] = 'Transfer'
+en['Transfer your statistics'] = 'Transfer your statistics'
+en['Copy the migration code'] = 'Copy the migration code on your old device and paste into the input on the new device.'
+en['This is my'] = 'This is my'
+en['old device'] = 'old device'
+en['new device'] = 'new device'
+en['Copy your migration code'] = 'Copy your migration code'
+en['Copy'] = 'Copy'
+en['Copied'] = 'Copied!'
+en['Paste your migration code'] = 'Paste your migration code'
+en['Save'] = 'Save'
+en['override the statistics'] = 'Are you sure you want to override the game statistics on this device? This action is not reversible.'
+en['The game will now reload'] = 'The game will now reload.'
+
 export let ja = {} as TranslationType
+
+ja['Transfer your statistics'] = '統計情報の転送'
+ja['Copy the migration code'] = '古いデバイスで転送コードをコピーし、新しいデバイスの入力欄に貼り付けてください。'
+ja['This is my'] = 'これが'
+ja['old device'] = '古いデバイス'
+ja['new device'] = '新しいデバイス'
+ja['Copy your migration code'] = '転送コードをコピーしてください'
+ja['Copy'] = 'コピー'
+ja['Copied'] = 'コピーしました！'
+ja['Paste your migration code'] = '転送コードを貼り付けてください'
+ja['Save'] = '保存'
+ja['override the statistics'] = 'このデバイスのゲーム統計情報を上書きしますか？この操作を元に戻すことはできません。'
+ja['The game will now reload'] = 'このゲームがリロードされます。'
 
 ja['KOFI_LINK'] = KOFI_LINK
 ja['For keyboard input'] = 'キーボード入力用'
@@ -148,6 +176,9 @@ ja['TOTAL_TRIES_TEXT'] = 'プレイ回数'
 ja['SUCCESS_RATE_TEXT'] = '勝率'
 ja['CURRENT_STREAK_TEXT'] = '現在の連勝数'
 ja['BEST_STREAK_TEXT'] = '最大連勝数'
+
+ja['MIGRATE_DESCRIPTION_TEXT'] = '統計情報を新しいデバイスに転送するには、ここをクリックしてください。'
+ja['MIGRATE_BUTTON_TEXT'] = '転送'
 
 // export const WIN_MESSAGES = ['Great Job!', 'Awesome', 'Well done!']
 export const WIN_MESSAGES = {
