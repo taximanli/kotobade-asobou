@@ -1,21 +1,28 @@
 import {
+  ClockIcon,
   EmojiHappyIcon,
   EmojiSadIcon
 } from '@heroicons/react/outline'
 import coffeeLogo from '../../images/ko-fi-com-taximanli.png'
+
+import {
+  DATE_LOCALE,
+  ENABLE_ARCHIVED_GAMES,
+  ENABLE_MIGRATE_STATS,
+  PREFERRED_DISPLAY_LANGUAGE
+} from '../../constants/settings'
 import classnames from 'classnames'
 import Countdown from 'react-countdown'
+import { format } from 'date-fns'
 import { DateTime } from 'luxon'
 import { StatBar } from '../stats/StatBar'
 import { Histogram } from '../stats/Histogram'
 import { GameStats, getStoredIsHighContrastMode, getStoredDisplayLanguage, getStoredTimezone } from '../../lib/localStorage'
 import { shareStatus } from '../../lib/share'
-import { yesterdaySolution, yesterdaySolutionIndex, solution, solutionIndex, tomorrow } from '../../lib/words'
+import { yesterdaySolution, yesterdaySolutionIndex, solution, solutionIndex, tomorrow, solutionGameDate } from '../../lib/words'
 import { BaseModal } from './BaseModal'
-import { t, JISHO_SEARCH_LINK } from '../../constants/strings';
-import { PREFERRED_DISPLAY_LANGUAGE } from '../../constants/settings'
+import { t, JISHO_SEARCH_LINK, ARCHIVE_GAMEDATE_TEXT } from '../../constants/strings';
 import { MigrationIntro } from '../stats/MigrationIntro'
-import { ENABLE_MIGRATE_STATS } from '../../constants/settings'
 
 export type shareStatusType = 'text' | 'clipboard' | 'line' | 'tweet'
 
@@ -24,6 +31,7 @@ type Props = {
   handleClose: () => void
   guesses: string[]
   gameStats: GameStats
+  isLatestGame: boolean
   isGameLost: boolean
   isGameWon: boolean
   handleShareToClipboard: () => void
@@ -40,6 +48,7 @@ export const StatsModal = ({
   handleClose,
   guesses,
   gameStats,
+  isLatestGame,
   isGameLost,
   isGameWon,
   handleShareToClipboard,
@@ -119,16 +128,28 @@ export const StatsModal = ({
       </div>
       )}
       <div className="flex gap-1 justify-center dark:text-white mx-1">
-        <div>
-          <h5>{t('NEW_WORD_TEXT')}</h5>
-        </div>
-        <div>
-          <Countdown
-            className="local-font text-baseline font-medium text-gray-900 dark:text-gray-100"
-            date={tomorrow}
-            daysInHours={true}
-          />
-        </div>
+        {(!ENABLE_ARCHIVED_GAMES || isLatestGame) && (
+          <div>
+            <h5>{t('NEW_WORD_TEXT')}</h5>
+            <Countdown
+              className="local-font text-baseline font-medium text-gray-900 dark:text-gray-100"
+              date={tomorrow}
+              daysInHours={true}
+            />
+          </div>
+        )}
+        {ENABLE_ARCHIVED_GAMES && !isLatestGame && (
+          <div className="mt-2 inline-flex">
+            <ClockIcon className="mr-1 mt-2 mt-1 h-5 w-5 stroke-black dark:stroke-white" />
+            <div className="mt-1 ml-1 text-center text-sm sm:text-base">
+              <strong>{ARCHIVE_GAMEDATE_TEXT}:</strong>
+              <br />
+              {format(solutionGameDate, 'd MMMM yyyy', {
+                locale: DATE_LOCALE,
+              })}
+            </div>
+          </div>
+        )}
       </div>
       {(isGameLost || isGameWon) && (
       <div className="flex gap-1 justify-center text-sm dark:text-white mx-1 mb-3">
@@ -233,6 +254,8 @@ export const StatsModal = ({
       </h4>
       <Histogram
         gameStats={gameStats}
+        isLatestGame={isLatestGame}
+        isGameWon={isGameWon}
         numberOfGuessesMade={numberOfGuessesMade}
       />
       {ENABLE_MIGRATE_STATS && (

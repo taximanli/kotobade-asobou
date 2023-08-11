@@ -5,18 +5,18 @@ type Props = {
   index: number
   size: number
   label: string
-  currentDayStatRow: boolean
+  isCurrentDayStatRow: boolean
 }
 
-export const Progress = ({ index, size, label, currentDayStatRow }: Props) => {
+export const Progress = ({ index, size, label, isCurrentDayStatRow }: Props) => {
   const isHighContrast = getStoredIsHighContrastMode()
 
   const classNames = classnames(
     'text-xs font-medium text-white dark:text-gray-700 text-center p-0.5 rounded-l-full rounded-r-full',
     {
-      'bg-orange-500': currentDayStatRow && isHighContrast,
-      'bg-green-500': currentDayStatRow && !isHighContrast,
-      'bg-slate-400 dark:bg-slate-300': !currentDayStatRow
+      'bg-orange-500': isCurrentDayStatRow && isHighContrast,
+      'bg-green-500': isCurrentDayStatRow && !isHighContrast,
+      'bg-slate-400 dark:bg-slate-300': !isCurrentDayStatRow
     }
   )
 

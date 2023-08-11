@@ -33,7 +33,7 @@ export const EmigratePanel = () => {
   )
 
   const stats = loadStats()
-  const gameState = loadGameStateFromLocalStorage()
+  const gameState = loadGameStateFromLocalStorage(true)
 
   const migrationStats: MigrationStats = {
     statistics: stats,
