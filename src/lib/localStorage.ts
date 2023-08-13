@@ -1,12 +1,16 @@
+import { getToday } from './dateutils'
+import { getIndexByDate } from './words'
 import { PREFERRED_DISPLAY_LANGUAGE } from '../constants/settings'
 
 const gameStateKey = 'gameState'
+const archiveGameStateKey = 'archiveGameState'
 const shareStatusKey = 'shareStatus'
 const highContrastKey = 'highContrast'
 const hintModeKey = 'hintMode'
 const displayLanguageKey = 'displayLanguage'
 const timezoneKey = 'timezone'
 const appAreaKey = 'appArea'
+const gameIndexKey = 'gameIndex'
 
 type StoredShareStatus = {
   isHintMode: boolean
@@ -39,12 +43,17 @@ export type StoredGameState = {
   solution: string
 }
 
-export const saveGameStateToLocalStorage = (gameState: StoredGameState) => {
-  localStorage.setItem(gameStateKey, JSON.stringify(gameState))
+export const saveGameStateToLocalStorage = (
+  isLatestGame: boolean,
+  gameState: StoredGameState
+) => {
+  const key = isLatestGame ? gameStateKey : archiveGameStateKey
+  localStorage.setItem(key, JSON.stringify(gameState))
 }
 
-export const loadGameStateFromLocalStorage = () => {
-  const state = localStorage.getItem(gameStateKey)
+export const loadGameStateFromLocalStorage = (isLatestGame: boolean) => {
+  const key = isLatestGame ? gameStateKey : archiveGameStateKey
+  const state = localStorage.getItem(key)
   if (state) {
     let parsedInheritedGameState = JSON.parse(state)
     if (parsedInheritedGameState.hasOwnProperty('boardState')) {
@@ -200,4 +209,17 @@ export const getStoredAppArea = () => {
     setStoredAppArea(appArea)
   }
   return appArea
+}
+
+export const setStoredGameIndex = (gameIndex: string) => {
+  localStorage.setItem(gameIndexKey, gameIndex)
+}
+
+export const getStoredGameIndex = () => {
+  let gameIndex = localStorage.getItem(gameIndexKey)
+  if (!gameIndex) {
+    gameIndex = getIndexByDate(getToday()).toString()
+    setStoredGameIndex(gameIndex)
+  }
+  return parseInt(gameIndex)
 }

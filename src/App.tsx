@@ -1,9 +1,12 @@
+import { ClockIcon } from '@heroicons/react/outline'
 import { useState, useEffect } from 'react'
 import { Adsense } from '@ctrl/react-adsense'
+import { DateTime } from 'luxon'
 import { ITimezone } from 'react-timezone-select'
 import { toHiragana, toKatakana } from '@koozaki/romaji-conv'
 import { Grid } from './components/grid/Grid'
 import { AppArea } from './components/keyboard/Area'
+import { DatePickerModal } from './components/modals/DatePickerModal'
 import { InfoModal } from './components/modals/InfoModal'
 import { SupportModal } from './components/modals/SupportModal'
 import { StatsModal } from './components/modals/StatsModal'
@@ -27,6 +30,10 @@ import {
   solution,
   isKatakana,
   findFirstUnusedReveal,
+  getDateByIndex,
+  getIndexByDate,
+  getIsLatestGame,
+  setGameDate,
   unicodeLength,
   setWordOfDay,
 } from './lib/words'
@@ -46,7 +53,10 @@ import {
   getStoredTimezone,
   setStoredAppArea,
   getStoredAppArea,
+  setStoredGameIndex,
+  getStoredGameIndex,
 } from './lib/localStorage'
+import { getToday } from './lib/dateutils'
 import { default as GraphemeSplitter } from 'grapheme-splitter'
 
 import './App.css'
@@ -55,6 +65,7 @@ import { useAlert } from './context/AlertContext'
 import { Navbar } from './components/navbar/Navbar'
 
 function App() {
+  const isLatestGame = getIsLatestGame()
   const prefersDarkMode = window.matchMedia(
     '(prefers-color-scheme: dark)'
   ).matches
@@ -70,6 +81,7 @@ function App() {
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false)
   const [isSupportModalOpen, setIsSupportModalOpen] = useState(false)
   const [isStatsModalOpen, setIsStatsModalOpen] = useState(false)
+  const [isDatePickerModalOpen, setIsDatePickerModalOpen] = useState(false)
   const [isMigrateStatsModalOpen, setIsMigrateStatsModalOpen] = useState(false)
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false)
   const [currentRowClass, setCurrentRowClass] = useState('')
@@ -89,7 +101,7 @@ function App() {
   )
   const [isRevealing, setIsRevealing] = useState(false)
   const [guesses, setGuesses] = useState<string[]>(() => {
-    const loaded = loadGameStateFromLocalStorage()
+    const loaded = loadGameStateFromLocalStorage(isLatestGame)
     if (loaded?.solution !== solution) {
       removeShareStatusFromLocalStorage()
       return []
@@ -130,13 +142,13 @@ function App() {
     // if no game state on load,
     // show the user the how-to info modal
     //if (!loadGameStateFromLocalStorage()) {
-    if (!(isGameWon || isGameLost)) {
+    if (isLatestGame && !(isGameWon || isGameLost)) {
       setTimeout(() => {
         setIsInfoModalOpen(true)
       }, WELCOME_INFO_MODAL_MS)
     }
     //}
-  }, [isGameWon, isGameLost])
+  }, [isLatestGame, isGameWon, isGameLost])
 
   useEffect(() => {
     if (isDarkMode) {
@@ -153,11 +165,13 @@ function App() {
   }, [isDarkMode, isHighContrastMode])
 
   const handleTimezone = (timezone: ITimezone) => {
-    if (guesses.length === 0) {
+    if (isLatestGame && guesses.length === 0) {
       timezone = typeof timezone === 'string' ? timezone : timezone.value
       setTimezone(timezone)
       setStoredTimezone(timezone)
+      setStoredGameIndex(getIndexByDate(getToday()).toString())
       setWordOfDay()
+      saveGameStateToLocalStorage(getIsLatestGame(), { guesses, solution })
     } else {
       showErrorAlert(t('TIMEZONE_ALERT_MESSAGE'))
     }
@@ -216,7 +230,7 @@ function App() {
   }
 
   useEffect(() => {
-    saveGameStateToLocalStorage({ guesses, solution })
+    saveGameStateToLocalStorage(getIsLatestGame(), { guesses, solution })
   }, [guesses])
 
   useEffect(() => {
@@ -346,12 +360,16 @@ function App() {
       saveShareStatusToLocalStorage(isHintMode, isHardMode)
 
       if (winningWord) {
-        setStats(addStatsForCompletedGame(stats, guesses.length))
+        if (isLatestGame) {
+          setStats(addStatsForCompletedGame(stats, guesses.length))
+        }
         return setIsGameWon(true)
       }
 
       if (guesses.length === MAX_CHALLENGES - 1) {
-        setStats(addStatsForCompletedGame(stats, guesses.length + 1))
+        if (isLatestGame) {
+          setStats(addStatsForCompletedGame(stats, guesses.length + 1))
+        }
         setIsGameLost(true)
         /*
         showCorrectWordAlert(
@@ -374,9 +392,34 @@ function App() {
       <Navbar
         setIsInfoModalOpen={setIsInfoModalOpen}
         setIsSupportModalOpen={setIsSupportModalOpen}
+        setIsDatePickerModalOpen={setIsDatePickerModalOpen}
         setIsStatsModalOpen={setIsStatsModalOpen}
         setIsSettingsModalOpen={setIsSettingsModalOpen}
       />
+      {!isLatestGame && (
+        <div className="flex items-center justify-center mb-4">
+          <ClockIcon className="h-6 w-6 stroke-gray-600 dark:stroke-gray-300" />
+          <p
+            className="text-base text-gray-600 dark:text-gray-300 pl-2 cursor-pointer"
+            onClick={() => setIsDatePickerModalOpen(true)}
+          >
+            {displayLanguage === PREFERRED_DISPLAY_LANGUAGE &&
+              '過去の第' +
+                getStoredGameIndex().toString() +
+                '回 ' +
+                getDateByIndex(getStoredGameIndex())
+                  .setLocale('ja-JP')
+                  .toLocaleString(DateTime.DATE_MED)}
+            {displayLanguage !== PREFERRED_DISPLAY_LANGUAGE &&
+              'Past Game #' +
+                getStoredGameIndex().toString() +
+                ' on ' +
+                getDateByIndex(getStoredGameIndex())
+                  .setLocale('en-US')
+                  .toLocaleString(DateTime.DATE_MED)}
+          </p>
+        </div>
+      )}
       <Grid
         guesses={guesses}
         currentGuess={currentGuess}
@@ -408,6 +451,7 @@ function App() {
         handleClose={() => setIsStatsModalOpen(false)}
         guesses={guesses}
         gameStats={stats}
+        isLatestGame={isLatestGame}
         isGameLost={isGameLost}
         isGameWon={isGameWon}
         handleShareToClipboard={() =>
@@ -422,6 +466,15 @@ function App() {
         isDarkMode={isDarkMode}
         isHighContrastMode={isHighContrastMode}
         numberOfGuessesMade={guesses.length}
+      />
+      <DatePickerModal
+        isOpen={isDatePickerModalOpen}
+        initialDate={getDateByIndex(getStoredGameIndex())}
+        handleSelectDate={(date) => {
+          setIsDatePickerModalOpen(false)
+          setGameDate(date)
+        }}
+        handleClose={() => setIsDatePickerModalOpen(false)}
       />
       <MigrateStatsModal
         isOpen={isMigrateStatsModalOpen}

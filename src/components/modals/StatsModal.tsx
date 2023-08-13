@@ -3,19 +3,23 @@ import {
   EmojiSadIcon
 } from '@heroicons/react/outline'
 import coffeeLogo from '../../images/ko-fi-com-taximanli.png'
+
+import {
+  ENABLE_ARCHIVED_GAMES,
+  ENABLE_MIGRATE_STATS,
+  PREFERRED_DISPLAY_LANGUAGE
+} from '../../constants/settings'
 import classnames from 'classnames'
 import Countdown from 'react-countdown'
 import { DateTime } from 'luxon'
 import { StatBar } from '../stats/StatBar'
 import { Histogram } from '../stats/Histogram'
-import { GameStats, getStoredIsHighContrastMode, getStoredDisplayLanguage, getStoredTimezone } from '../../lib/localStorage'
+import { GameStats, getStoredIsHighContrastMode, getStoredDisplayLanguage } from '../../lib/localStorage'
 import { shareStatus } from '../../lib/share'
-import { yesterdaySolution, yesterdaySolutionIndex, solution, solutionIndex, tomorrow } from '../../lib/words'
+import { yesterdaySolution, yesterdaySolutionIndex, solution, solutionIndex, tomorrow, getDateByIndex } from '../../lib/words'
 import { BaseModal } from './BaseModal'
 import { t, JISHO_SEARCH_LINK } from '../../constants/strings';
-import { PREFERRED_DISPLAY_LANGUAGE } from '../../constants/settings'
 import { MigrationIntro } from '../stats/MigrationIntro'
-import { ENABLE_MIGRATE_STATS } from '../../constants/settings'
 
 export type shareStatusType = 'text' | 'clipboard' | 'line' | 'tweet'
 
@@ -24,6 +28,7 @@ type Props = {
   handleClose: () => void
   guesses: string[]
   gameStats: GameStats
+  isLatestGame: boolean
   isGameLost: boolean
   isGameWon: boolean
   handleShareToClipboard: () => void
@@ -40,6 +45,7 @@ export const StatsModal = ({
   handleClose,
   guesses,
   gameStats,
+  isLatestGame,
   isGameLost,
   isGameWon,
   handleShareToClipboard,
@@ -52,16 +58,15 @@ export const StatsModal = ({
 }: Props) => {
   const isHighContrast = getStoredIsHighContrastMode()
   const displayLanguage = getStoredDisplayLanguage()
-  const timezone = getStoredTimezone()
 
-  const now = DateTime.now().setZone(timezone)
+  const solutionGameDate = getDateByIndex(solutionIndex)
 
   let statsModalTitle = ''
 
   if (displayLanguage === PREFERRED_DISPLAY_LANGUAGE) {
-    statsModalTitle = now.setLocale('ja-JP').toLocaleString(DateTime.DATE_FULL) + ' 第' + solutionIndex.toString() + '回'
+    statsModalTitle = (isLatestGame ? '' : '過去の') + '第' + solutionIndex.toString() + '回 ' + solutionGameDate.setLocale('ja-JP').toLocaleString(DateTime.DATE_MED) + ' '
   } else {
-    statsModalTitle = 'Game #' + solutionIndex.toString() + ' on ' + now.setLocale('en-US').toLocaleString(DateTime.DATE_FULL)
+    statsModalTitle = (isLatestGame ? '' : 'Past ') + 'Game #' + solutionIndex.toString() + ' on ' + solutionGameDate.setLocale('en-US').toLocaleString(DateTime.DATE_MED)
   }
 
   const linkClassName = classnames((isHighContrast ? 'text-orange-600 dark:text-orange-400' : 'text-green-600 dark:text-green-400'), 'underline text-sm')
@@ -114,25 +119,26 @@ export const StatsModal = ({
       {(isGameLost || isGameWon) && (
       <div className={correctWordClassNames}>
         {(isGameWon ? <EmojiHappyIcon className="h-6 w-6 cursor-pointer text-green-500 dark:text-green-400"/> : <EmojiSadIcon className="h-6 w-6 cursor-pointer text-red-600 dark:text-red-400"/>)}
-        {t('CORRECT_WORD_MESSAGE')}
+        {(!ENABLE_ARCHIVED_GAMES || isLatestGame) && (t('CORRECT_WORD_MESSAGE'))}
+        {(ENABLE_ARCHIVED_GAMES && !isLatestGame) && (t('PAST_CORRECT_WORD_MESSAGE', solutionIndex.toString()))}
         <a className={correctWordSearchLinkClassNames} href={(JISHO_SEARCH_LINK + solution)} rel="noreferrer" target="_blank">{solution}</a>
       </div>
       )}
       <div className="flex gap-1 justify-center dark:text-white mx-1">
-        <div>
-          <h5>{t('NEW_WORD_TEXT')}</h5>
-        </div>
-        <div>
-          <Countdown
-            className="local-font text-baseline font-medium text-gray-900 dark:text-gray-100"
-            date={tomorrow}
-            daysInHours={true}
-          />
-        </div>
+        {(!ENABLE_ARCHIVED_GAMES || isLatestGame) && (
+          <div>
+            <h5>{t('NEW_WORD_TEXT')}</h5>
+            <Countdown
+              className="local-font text-baseline font-medium text-gray-900 dark:text-gray-100"
+              date={tomorrow}
+              daysInHours={true}
+            />
+          </div>
+        )}
       </div>
-      {(isGameLost || isGameWon) && (
+      {(!ENABLE_ARCHIVED_GAMES || isLatestGame) && (isGameLost || isGameWon) && (
       <div className="flex gap-1 justify-center text-sm dark:text-white mx-1 mb-3">
-        {t('YESTERDAY_CORRECT_WORD_MESSAGE', yesterdaySolutionIndex.toString())}
+        {t('PAST_CORRECT_WORD_MESSAGE', yesterdaySolutionIndex.toString())}
         <a className="underline text-sm text-gray-600 dark:text-gray-300 cursor-zoom-in" href={(JISHO_SEARCH_LINK + yesterdaySolution)} rel="noreferrer" target="_blank">{yesterdaySolution}</a>
       </div>
       )}
@@ -233,6 +239,8 @@ export const StatsModal = ({
       </h4>
       <Histogram
         gameStats={gameStats}
+        isLatestGame={isLatestGame}
+        isGameWon={isGameWon}
         numberOfGuessesMade={numberOfGuessesMade}
       />
       {ENABLE_MIGRATE_STATS && (

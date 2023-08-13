@@ -1,11 +1,18 @@
+import { ENABLE_ARCHIVED_GAMES } from '../constants/settings'
 import { WORDS } from '../constants/wordlist'
 import { VALID_GUESSES } from '../constants/validGuesses'
 import { t } from '../constants/strings'
+import { getToday } from './dateutils'
 import { getGuessStatuses } from './statuses'
-import { getStoredTimezone } from './localStorage'
-import { DateTime } from 'luxon'
+import { getStoredTimezone, setStoredGameIndex, getStoredGameIndex } from './localStorage'
+import { DateTime, Interval } from 'luxon'
 import { default as GraphemeSplitter } from 'grapheme-splitter'
 import { toHiragana, toKatakana } from '@koozaki/romaji-conv'
+
+// January 23, 2022 Game Epoch
+const msInDay = 86400000
+export const firstGameDate = DateTime.utc(2022, 1, 23)
+export const periodInDays = 1
 
 export const isWordInWordList = (word: string) => {
   return (
@@ -79,21 +86,26 @@ export const localeAwareUpperCase = (text: string) => {
     : text.toUpperCase()
 }
 
+export const getDateByIndex = (index: number) => {
+  return firstGameDate.plus({days: index})
+}
+
+export const getIndexByDate = (date: DateTime) => {
+  return Math.floor((date.valueOf() - firstGameDate.valueOf()) / msInDay)
+}
+
 export const getWordOfDay = () => {
-  // January 23, 2022 Game Epoch
   // To account for cases where the two dates in question span a daylight saving time (DST) change.
   // The date on which the DST change happens will have a duration in milliseconds which is != 86400000.
   // Convert the two dates to UTC time because because UTC time never observes DST.
 
-  const msInDay = 86400000
   const timezone = getStoredTimezone()
 
   const now = DateTime.now().setZone(timezone)
-  const epoch = DateTime.utc(2022, 1, 23)
   const today = DateTime.utc(now.year, now.month, now.day)
   const tomorrow = today.plus({days: 1}).minus({minutes: now.offset}).valueOf()
 
-  const index = Math.floor((today.valueOf() - epoch.valueOf()) / msInDay)
+  const index = getStoredGameIndex()
   const yesterdayIndex = (index > 0 ? index - 1 : 0)
 
   const solution = localeAwareUpperCase(WORDS[index % WORDS.length])
@@ -119,4 +131,41 @@ export const setWordOfDay = () => {
   solutionIndex = wordOfDay.solutionIndex
   tomorrow = wordOfDay.tomorrow
   isKatakana = wordOfDay.isKatakana
+}
+
+export const getLastGameDate = (today: DateTime) => {
+  const daysSinceLastGame = Interval.fromDateTimes(firstGameDate, today).length('days') % periodInDays
+  return today.minus({days: daysSinceLastGame})
+}
+
+export const getNextGameDate = (today: DateTime) => {
+  return getLastGameDate(today).plus({days: periodInDays})
+}
+
+export const isValidGameDate = (date: DateTime) => {
+  if (date < firstGameDate || date > getToday()) {
+    return false
+  }
+
+  return Interval.fromDateTimes(firstGameDate, date).length('days') % periodInDays === 0
+}
+
+export const setGameDate = (date: DateTime) => {
+  try {
+    if (date <= getToday()) {
+      setStoredGameIndex(getIndexByDate(date).toString())
+      window.location.href = '/'
+      return
+    }
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+export const getIsLatestGame = () => {
+  if (!ENABLE_ARCHIVED_GAMES) {
+    return true
+  }
+  
+  return getStoredGameIndex() === getIndexByDate(getToday())
 }

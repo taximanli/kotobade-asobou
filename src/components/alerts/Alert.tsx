@@ -19,8 +19,8 @@ export const Alert = ({
     'fixed z-20 left-1/2 transform -translate-x-1/2 max-w-sm w-4/5 shadow-lg rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5 overflow-hidden',
     {
       'bottom-14 md:bottom-20 bg-rose-500 text-white': variant === 'correct_word',
-      'top-1/4 bg-rose-500 text-white': variant === 'error',
-      'top-1/4 bg-blue-500 text-white': variant === 'success',
+      'top-1/3 bg-rose-500 text-white': variant === 'error',
+      'top-1/3 bg-blue-500 text-white': variant === 'success',
     }
   )
 

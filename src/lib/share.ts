@@ -1,5 +1,5 @@
 import { getGuessStatuses } from './statuses'
-import { solution, solutionIndex, unicodeSplit } from './words'
+import { getDateByIndex, getIsLatestGame, solution, solutionIndex, unicodeSplit } from './words'
 import { GAME_TITLE, GAME_LINK } from '../constants/strings'
 import { MAX_CHALLENGES } from '../constants/settings'
 import { UAParser } from 'ua-parser-js'
@@ -21,6 +21,7 @@ export const shareStatus = (
   isHighContrastMode: boolean,
   handleShareToClipboard: () => void
 ) => {
+  const isLatestGame = getIsLatestGame()
   const endOfLine = (shareStatusType === 'tweet' || shareStatusType === 'line' ? '%0A' : '\n')
   const loaded = loadShareStatusFromLocalStorage()
 
@@ -30,6 +31,7 @@ export const shareStatus = (
   }
 
   const textToShare = 
+  (isLatestGame ? '' : getDateByIndex(solutionIndex).toISODate() + ' 🕒' + endOfLine) +
   `${GAME_TITLE} ${solutionIndex} ${
     lost ? 'X' : guesses.length
   }/${MAX_CHALLENGES}${isHardMode ? '*' : ''}${isHintMode ? '?' : ''}` + endOfLine +
