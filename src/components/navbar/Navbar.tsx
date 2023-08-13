@@ -57,7 +57,7 @@ export const Navbar = ({
       </span>
       {ENABLE_ARCHIVED_GAMES && (
         <CalendarIcon
-          className="h-6 w-6 mr-1 sm:mr-2 cursor-pointer dark:stroke-white"
+          className="h-6 w-6 mr-1 sm:mr-2 cursor-pointer stroke-red-600 dark:stroke-red-400"
           onClick={() => setIsDatePickerModalOpen(true)}
         />
       )}

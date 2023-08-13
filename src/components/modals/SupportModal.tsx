@@ -66,6 +66,14 @@ export const SupportModal = ({ isOpen, handleClose }: Props) => {
           </p>
           <hr className="mt-2 mb-2" />
           <p className="text-left local-font text-sm text-gray-500 dark:text-gray-300 mb-2">
+            キーボードと音図は画面の右上に「設定 ⋮ 」でレイアウトを選択することができます。
+          </p>
+          <hr className="mt-2 mb-2" />
+          <p className="text-left local-font text-sm text-gray-500 dark:text-gray-300 mb-2">
+            慎重に検討した後、ゲーム体験を向上させるため、ABABパターンの単語（「われわれ」とか「そろそろ」とか）が答えに選ばれなくなりました。
+          </p>
+          <hr className="mt-2 mb-2" />
+          <p className="text-left local-font text-sm text-gray-500 dark:text-gray-300 mb-2">
             ひらがなのほかに、ローマ字やカタカナで答えをキーボード入力することもできます。入力ボタンを押すと答えは自動的にひらがなに変換されます。
           </p>
           <hr className="mt-2 mb-2" />
@@ -87,6 +95,14 @@ export const SupportModal = ({ isOpen, handleClose }: Props) => {
 
           <p className="text-left text-sm text-gray-500 dark:text-gray-300 mb-2">
             Fixed a bug regarding the keyboard displaying the incorrect hints for certain guess combinations.
+          </p>
+          <hr className="mt-2 mb-2" />
+          <p className="text-left text-sm text-gray-500 dark:text-gray-300 mb-2">
+            You can now select the positions of text box and kana chart in Settings.
+          </p>
+          <hr className="mt-2 mb-2" />
+          <p className="text-left text-sm text-gray-500 dark:text-gray-300 mb-2">
+            After careful consideration, in order to enhance the gaming experience, words in ABAB pattern (われわれ, そろそろ...) will be no longer chosen as answers.
           </p>
           <hr className="mt-2 mb-2" />
           <p className="text-left text-sm text-gray-500 dark:text-gray-300 mb-2">

@@ -10,11 +10,6 @@ export const JISHO_SEARCH_LINK = 'https://jisho.org/search/'
 export const ENTER_TEXT = '⏎'
 export const DELETE_TEXT = '⇦'
 
-export const DATEPICKER_TITLE = 'Choose a past date'
-export const DATEPICKER_CHOOSE_TEXT = 'Choose'
-export const DATEPICKER_TODAY_TEXT = 'today'
-export const ARCHIVE_GAMEDATE_TEXT = 'Game date'
-
 export const TOP_SUPPORTER_NAME = `briantist, Jeffrey Friedl, RC, Pugnator, カリさ, Rose, TamagoGP, 長谷川, Tim, hostvarious, Keika, Alexey, mudeng, Y, Sanetomo Ninetails, Toshi, kmaebashi, Yoshiyasu, m, 平尾, Kylar, 東郷, keychera, 純友良幸, みのる, cheapshot, リアム`
 export const SUPPORTER_NAME = `kwmt, krsw, Adonkomann, kssk, こみてん, jdb, Iruka, Ruth, msiyss, Tatsu, shinsuke234, Shinome, rui, yusukes, bleuleu, mame, たろー, ShinH, RXHAP(るざっぷ), nunomihiro, yoko, Hikaru, マスミ, Tyler, Konini, Mineo, Terra Powers, iwasaki, asagi, soka, Jen Chapman, かほ, 二瀬双葉, nakajio, namoken, JapaneseJuku, Schimmee, aomam, えだまめ, おとみ, fumipong, マチュ, Noya, くまぽろ, NEO, negi, 布帽子, ファット, BIRIYANI, MIDORI, エスナカモト, Someone, Niji, moo, Kana, Binkie, YUKIKO, Merja, erino, な, み遊, ９ちゃん。, ennairda aya, atsushi1972, Seth, Meri, kuroneko, Chi, uj, Shimmee, keiichi, Yumi, Mitchan P, Tonya, mitrac, febm, Vicky M, 安井彰一, pan, fumaruri, 玉木雅治, haharesan, maman (masa yan), 14番, afrowagen, バンクスおんらいん, hayafunakei, touko, Chris, ほしなみ, Dewbs, karamite, Kou684, Michael, めと, kado, Mt4vE, koblf, bree, zk, Cheryl, ユーキャン, Akitack, あかいと, tosuke, xipj, のん, あるる, Rima, Katie Fraser, neko, kana, Vikki, Kai M, Ken1 ...`
 
@@ -75,7 +70,7 @@ en['WORD_NOT_FOUND_MESSAGE'] = 'Not in word list'
 en['TIMEZONE_ALERT_MESSAGE'] = 'Timezone can only be switched at the start of the game'
 en['HINT_MODE_ALERT_MESSAGE'] = 'Hint Mode can only be turned off at the start of the game'
 en['HARD_MODE_ALERT_MESSAGE'] = 'Hard Mode can only be turned on at the start of the game'
-en['YESTERDAY_CORRECT_WORD_MESSAGE'] = 'The word for game #$text1 was '
+en['PAST_CORRECT_WORD_MESSAGE'] = 'The word for game #$text1 was '
 en['CORRECT_WORD_MESSAGE'] = 'The word for this game was '
 en['WRONG_SPOT_MESSAGE'] = 'Must use $text1 in position $text2.'
 en['NOT_CONTAINED_MESSAGE'] = 'Guess must contain $text1.'
@@ -107,20 +102,11 @@ en['Save'] = 'Save'
 en['override the statistics'] = 'Are you sure you want to override the game statistics on this device? This action is not reversible.'
 en['The game will now reload'] = 'The game will now reload.'
 
-export let ja = {} as TranslationType
+en['DATEPICKER_TITLE'] = 'Choose a past date'
+en['DATEPICKER_TODAY_TEXT'] = 'Choose today'
+en['DATEPICKER_CHOOSE_TEXT'] = 'Choose $text1'
 
-ja['Transfer your statistics'] = '統計情報の転送'
-ja['Copy the migration code'] = '古いデバイスで転送コードをコピーし、新しいデバイスの入力欄に貼り付けてください。'
-ja['This is my'] = 'これが'
-ja['old device'] = '古いデバイス'
-ja['new device'] = '新しいデバイス'
-ja['Copy your migration code'] = '転送コードをコピーしてください'
-ja['Copy'] = 'コピー'
-ja['Copied'] = 'コピーしました！'
-ja['Paste your migration code'] = '転送コードを貼り付けてください'
-ja['Save'] = '保存'
-ja['override the statistics'] = 'このデバイスのゲーム統計情報を上書きしますか？この操作を元に戻すことはできません。'
-ja['The game will now reload'] = 'このゲームがリロードされます。'
+export let ja = {} as TranslationType
 
 ja['KOFI_LINK'] = KOFI_LINK
 ja['For keyboard input'] = 'キーボード入力用'
@@ -165,7 +151,7 @@ ja['WORD_NOT_FOUND_MESSAGE'] = 'この答えは単語リストにありません
 ja['TIMEZONE_ALERT_MESSAGE'] = 'タイムゾーンをゲーム開始時にのみ設定することができます'
 ja['HINT_MODE_ALERT_MESSAGE'] = 'ヒントモードは、ゲーム開始時と終了時にのみオフにすることができます'
 ja['HARD_MODE_ALERT_MESSAGE'] = 'ハードモードは、ゲーム開始時と終了時にのみオンにすることができます'
-ja['YESTERDAY_CORRECT_WORD_MESSAGE'] = '第$text1回の正解は'
+ja['PAST_CORRECT_WORD_MESSAGE'] = '第$text1回の正解は'
 ja['CORRECT_WORD_MESSAGE'] = '今回の正解は'
 ja['WRONG_SPOT_MESSAGE'] = '$text2文字目は「$text1」でないといけません。'
 ja['NOT_CONTAINED_MESSAGE'] = '「$text1」を答えに含める必要があります。'
@@ -184,6 +170,22 @@ ja['BEST_STREAK_TEXT'] = '最大連勝数'
 
 ja['MIGRATE_DESCRIPTION_TEXT'] = '統計情報を新しいデバイスに転送するには、ここをクリックしてください。'
 ja['MIGRATE_BUTTON_TEXT'] = '転送'
+ja['Transfer your statistics'] = '統計情報の転送'
+ja['Copy the migration code'] = '古いデバイスで転送コードをコピーし、新しいデバイスの入力欄に貼り付けてください。'
+ja['This is my'] = 'これが'
+ja['old device'] = '古いデバイス'
+ja['new device'] = '新しいデバイス'
+ja['Copy your migration code'] = '転送コードをコピーしてください'
+ja['Copy'] = 'コピー'
+ja['Copied'] = 'コピーしました！'
+ja['Paste your migration code'] = '転送コードを貼り付けてください'
+ja['Save'] = '保存'
+ja['override the statistics'] = 'このデバイスのゲーム統計情報を上書きしますか？この操作を元に戻すことはできません。'
+ja['The game will now reload'] = 'このゲームがリロードされます。'
+
+ja['DATEPICKER_TITLE'] = '過去の日付選択'
+ja['DATEPICKER_TODAY_TEXT'] = '今日を選択'
+ja['DATEPICKER_CHOOSE_TEXT'] = '$text1を選択'
 
 // export const WIN_MESSAGES = ['Great Job!', 'Awesome', 'Well done!']
 export const WIN_MESSAGES = {

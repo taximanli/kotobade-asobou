@@ -27,20 +27,16 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
   if (displayLanguage === PREFERRED_DISPLAY_LANGUAGE) {
     return (
       <BaseModal title="更新情報" isOpen={isOpen} handleClose={handleClose}>
+        <p className="text-left local-font text-sm text-rose-500 dark:text-rose-300 mb-2">
+          過去の単語がすべてアンロックされます！<br />プレイするには画面の右上に「カレンダーの赤い絵文字」で過去の日付を選択してください。
+        </p>
+        <hr className="mt-2 mb-2" />
         <p className="text-left local-font text-sm text-gray-500 dark:text-gray-300 mb-2">
           ゲームの統計情報を新しいデバイスに転送することができます。
         </p>
         <hr className="mt-2 mb-2" />
         <p className="text-left local-font text-sm text-gray-500 dark:text-gray-300 mb-2">
           日替わり単語がカタカナ語である場合、ゲームは自動的にひらがなモードからカタカナモードに切り替わります。
-        </p>
-        <hr className="mt-2 mb-2" />
-        <p className="text-left local-font text-sm text-gray-500 dark:text-gray-300 mb-2">
-          キーボードと音図は画面の右上に「設定 ⋮ 」でレイアウトを選択することができます。
-        </p>
-        <hr className="mt-2 mb-2" />
-        <p className="text-left local-font text-sm text-gray-500 dark:text-gray-300 mb-2">
-          慎重に検討した後、ゲーム体験を向上させるため、ABABパターンの単語（「われわれ」とか「そろそろ」とか）が答えに選ばれなくなりました。
         </p>
         <hr className="mt-2 mb-2" />
 
@@ -180,20 +176,16 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
   } else {
     return (
       <BaseModal title="Latest updates" isOpen={isOpen} handleClose={handleClose}>
+        <p className="text-left text-sm text-rose-500 dark:text-rose-300 mb-2">
+          All past words are now unlocked!<br />Please click on the red calendar icon on the top right corner of the screen and choose a past date to play.
+        </p>
+        <hr className="mt-2 mb-2" />
         <p className="text-left text-sm text-gray-500 dark:text-gray-300 mb-2">
           You can now transfer game statistics from your old device to your new device.
         </p>
         <hr className="mt-2 mb-2" />
         <p className="text-left text-sm text-gray-500 dark:text-gray-300 mb-2">
           If the word of the day is a katakana word, the game will switch from hiragana mode to katakana mode.
-        </p>
-        <hr className="mt-2 mb-2" />
-        <p className="text-left text-sm text-gray-500 dark:text-gray-300 mb-2">
-          You can now select the positions of text box and kana chart in Settings.
-        </p>
-        <hr className="mt-2 mb-2" />
-        <p className="text-left text-sm text-gray-500 dark:text-gray-300 mb-2">
-          After careful consideration, in order to enhance the gaming experience, words in ABAB pattern (われわれ, そろそろ...) will be no longer chosen as answers.
         </p>
         <hr className="mt-2 mb-2" />
 

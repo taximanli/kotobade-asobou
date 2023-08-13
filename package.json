@@ -10,10 +10,10 @@
     "@emotion/styled": "^11.8.1",
     "@headlessui/react": "^1.4.2",
     "@heroicons/react": "^1.0.6",
-    "@tailwindcss/forms": "^0.5.2",
     "@koozaki/romaji-conv": "^2.0.17",
     "@mui/icons-material": "^5.8.0",
     "@mui/material": "^5.8.1",
+    "@tailwindcss/forms": "^0.5.2",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
@@ -27,8 +27,7 @@
     "date-fns": "^2.29.1",
     "egoroof-blowfish": "^2.2.2",
     "grapheme-splitter": "1.0.4",
-    "query-string": "^7.1.1",
-    "luxon": "^2.3.1",
+    "luxon": "^3.4.0",
     "react": "^17.0.2",
     "react-countdown": "^2.3.2",
     "react-datepicker": "^4.8.0",
@@ -49,7 +48,7 @@
     "start": "react-scripts start",
     "test": "react-scripts test",
     "prepare": "husky install"
-  },  
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -69,8 +68,8 @@
     ]
   },
   "devDependencies": {
-    "@types/react-datepicker": "^4.4.2",
     "@types/luxon": "^2.3.1",
+    "@types/react-datepicker": "^4.4.2",
     "autoprefixer": "^10.4.4",
     "gh-pages": "^3.2.3",
     "husky": "^7.0.4",

@@ -1,7 +1,7 @@
 import { ClockIcon } from '@heroicons/react/outline'
 import { useState, useEffect } from 'react'
 import { Adsense } from '@ctrl/react-adsense'
-import { format } from 'date-fns'
+import { DateTime } from 'luxon'
 import { ITimezone } from 'react-timezone-select'
 import { toHiragana, toKatakana } from '@koozaki/romaji-conv'
 import { Grid } from './components/grid/Grid'
@@ -14,7 +14,6 @@ import { MigrateStatsModal } from './components/modals/MigrateStatsModal'
 import { SettingsModal } from './components/modals/SettingsModal'
 import { t, WIN_MESSAGES } from './constants/strings'
 import {
-  DATE_LOCALE,
   MAX_WORD_LENGTH,
   MAX_CHALLENGES,
   REVEAL_TIME_MS,
@@ -29,11 +28,11 @@ import {
   isWordInWordList,
   isWinningWord,
   solution,
-  solutionGameDate,
   isKatakana,
   findFirstUnusedReveal,
+  getDateByIndex,
+  getIndexByDate,
   getIsLatestGame,
-  getGameDate,
   setGameDate,
   unicodeLength,
   setWordOfDay,
@@ -54,7 +53,10 @@ import {
   getStoredTimezone,
   setStoredAppArea,
   getStoredAppArea,
+  setStoredGameIndex,
+  getStoredGameIndex,
 } from './lib/localStorage'
+import { getToday } from './lib/dateutils'
 import { default as GraphemeSplitter } from 'grapheme-splitter'
 
 import './App.css'
@@ -64,7 +66,6 @@ import { Navbar } from './components/navbar/Navbar'
 
 function App() {
   const isLatestGame = getIsLatestGame()
-  const gameDate = getGameDate()
   const prefersDarkMode = window.matchMedia(
     '(prefers-color-scheme: dark)'
   ).matches
@@ -141,13 +142,13 @@ function App() {
     // if no game state on load,
     // show the user the how-to info modal
     //if (!loadGameStateFromLocalStorage()) {
-    if (!(isGameWon || isGameLost)) {
+    if (isLatestGame && !(isGameWon || isGameLost)) {
       setTimeout(() => {
         setIsInfoModalOpen(true)
       }, WELCOME_INFO_MODAL_MS)
     }
     //}
-  }, [isGameWon, isGameLost])
+  }, [isLatestGame, isGameWon, isGameLost])
 
   useEffect(() => {
     if (isDarkMode) {
@@ -164,11 +165,13 @@ function App() {
   }, [isDarkMode, isHighContrastMode])
 
   const handleTimezone = (timezone: ITimezone) => {
-    if (guesses.length === 0) {
+    if (isLatestGame && guesses.length === 0) {
       timezone = typeof timezone === 'string' ? timezone : timezone.value
       setTimezone(timezone)
       setStoredTimezone(timezone)
+      setStoredGameIndex(getIndexByDate(getToday()).toString())
       setWordOfDay()
+      saveGameStateToLocalStorage(getIsLatestGame(), { guesses, solution })
     } else {
       showErrorAlert(t('TIMEZONE_ALERT_MESSAGE'))
     }
@@ -394,10 +397,26 @@ function App() {
         setIsSettingsModalOpen={setIsSettingsModalOpen}
       />
       {!isLatestGame && (
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center mb-4">
           <ClockIcon className="h-6 w-6 stroke-gray-600 dark:stroke-gray-300" />
-          <p className="text-base text-gray-600 dark:text-gray-300">
-            {format(gameDate, 'd MMMM yyyy', { locale: DATE_LOCALE })}
+          <p
+            className="text-base text-gray-600 dark:text-gray-300 pl-2 cursor-pointer"
+            onClick={() => setIsDatePickerModalOpen(true)}
+          >
+            {displayLanguage === PREFERRED_DISPLAY_LANGUAGE &&
+              '過去の第' +
+                getStoredGameIndex().toString() +
+                '回 ' +
+                getDateByIndex(getStoredGameIndex())
+                  .setLocale('ja-JP')
+                  .toLocaleString(DateTime.DATE_MED)}
+            {displayLanguage !== PREFERRED_DISPLAY_LANGUAGE &&
+              'Past Game #' +
+                getStoredGameIndex().toString() +
+                ' on ' +
+                getDateByIndex(getStoredGameIndex())
+                  .setLocale('en-US')
+                  .toLocaleString(DateTime.DATE_MED)}
           </p>
         </div>
       )}
@@ -450,10 +469,10 @@ function App() {
       />
       <DatePickerModal
         isOpen={isDatePickerModalOpen}
-        initialDate={solutionGameDate}
-        handleSelectDate={(d) => {
+        initialDate={getDateByIndex(getStoredGameIndex())}
+        handleSelectDate={(date) => {
           setIsDatePickerModalOpen(false)
-          setGameDate(d)
+          setGameDate(date)
         }}
         handleClose={() => setIsDatePickerModalOpen(false)}
       />

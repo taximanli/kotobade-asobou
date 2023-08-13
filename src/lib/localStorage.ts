@@ -1,3 +1,5 @@
+import { getToday } from './dateutils'
+import { getIndexByDate } from './words'
 import { PREFERRED_DISPLAY_LANGUAGE } from '../constants/settings'
 
 const gameStateKey = 'gameState'
@@ -8,6 +10,7 @@ const hintModeKey = 'hintMode'
 const displayLanguageKey = 'displayLanguage'
 const timezoneKey = 'timezone'
 const appAreaKey = 'appArea'
+const gameIndexKey = 'gameIndex'
 
 type StoredShareStatus = {
   isHintMode: boolean
@@ -206,4 +209,17 @@ export const getStoredAppArea = () => {
     setStoredAppArea(appArea)
   }
   return appArea
+}
+
+export const setStoredGameIndex = (gameIndex: string) => {
+  localStorage.setItem(gameIndexKey, gameIndex)
+}
+
+export const getStoredGameIndex = () => {
+  let gameIndex = localStorage.getItem(gameIndexKey)
+  if (!gameIndex) {
+    gameIndex = getIndexByDate(getToday()).toString()
+    setStoredGameIndex(gameIndex)
+  }
+  return parseInt(gameIndex)
 }
