@@ -154,7 +154,7 @@ export const setGameDate = (date: DateTime) => {
   try {
     if (date <= getToday()) {
       setStoredGameIndex(getIndexByDate(date).toString())
-      window.location.href = '/'
+      window.location.href = '/kotobade-asobou/'
       return
     }
   } catch (e) {
