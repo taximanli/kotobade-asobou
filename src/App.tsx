@@ -66,7 +66,6 @@ import { useAlert } from './context/AlertContext'
 import { Navbar } from './components/navbar/Navbar'
 
 function App() {
-  removeStoredGameIndex()
   const isLatestGame = getIsLatestGame()
 
   const prefersDarkMode = window.matchMedia(
@@ -401,7 +400,10 @@ function App() {
       />
       {!isLatestGame && (
         <div className="flex items-center justify-center mb-4">
-          <ClockIcon className="h-6 w-6 stroke-gray-600 dark:stroke-gray-300" />
+          <ClockIcon
+            className="h-6 w-6 stroke-gray-600 dark:stroke-gray-300 cursor-pointer"
+            onClick={() => setIsDatePickerModalOpen(true)}
+          />
           <p
             className="text-base text-gray-600 dark:text-gray-300 pl-2 cursor-pointer"
             onClick={() => setIsDatePickerModalOpen(true)}
@@ -451,7 +453,13 @@ function App() {
       />
       <StatsModal
         isOpen={isStatsModalOpen}
-        handleClose={() => setIsStatsModalOpen(false)}
+        handleClose={() => {
+          setIsStatsModalOpen(false)
+          if (!isLatestGame && (isGameWon || isGameLost)) {
+            removeStoredGameIndex()
+            window.location.href = '/kotobade-asobou'
+          }
+        }}
         guesses={guesses}
         gameStats={stats}
         isLatestGame={isLatestGame}
