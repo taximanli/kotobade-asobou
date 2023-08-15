@@ -54,6 +54,7 @@ import {
   setStoredAppArea,
   getStoredAppArea,
   setStoredGameIndex,
+  removeStoredGameIndex,
   getStoredGameIndex,
 } from './lib/localStorage'
 import { getToday } from './lib/dateutils'
@@ -65,7 +66,9 @@ import { useAlert } from './context/AlertContext'
 import { Navbar } from './components/navbar/Navbar'
 
 function App() {
+  removeStoredGameIndex()
   const isLatestGame = getIsLatestGame()
+
   const prefersDarkMode = window.matchMedia(
     '(prefers-color-scheme: dark)'
   ).matches
@@ -404,7 +407,7 @@ function App() {
             onClick={() => setIsDatePickerModalOpen(true)}
           >
             {displayLanguage === PREFERRED_DISPLAY_LANGUAGE &&
-              '過去の第' +
+              '過去問 第' +
                 getStoredGameIndex().toString() +
                 '回 ' +
                 getDateByIndex(getStoredGameIndex())

@@ -183,7 +183,7 @@ ja['Save'] = '保存'
 ja['override the statistics'] = 'このデバイスのゲーム統計情報を上書きしますか？この操作を元に戻すことはできません。'
 ja['The game will now reload'] = 'このゲームがリロードされます。'
 
-ja['DATEPICKER_TITLE'] = '過去の日付選択'
+ja['DATEPICKER_TITLE'] = '過去問の日付選択'
 ja['DATEPICKER_TODAY_TEXT'] = '今日を選択'
 ja['DATEPICKER_CHOOSE_TEXT'] = '$text1を選択'
 

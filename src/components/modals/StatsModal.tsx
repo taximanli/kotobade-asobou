@@ -64,7 +64,7 @@ export const StatsModal = ({
   let statsModalTitle = ''
 
   if (displayLanguage === PREFERRED_DISPLAY_LANGUAGE) {
-    statsModalTitle = (isLatestGame ? '' : '過去の') + '第' + solutionIndex.toString() + '回 ' + solutionGameDate.setLocale('ja-JP').toLocaleString(DateTime.DATE_MED) + ' '
+    statsModalTitle = (isLatestGame ? '' : '過去問 ') + '第' + solutionIndex.toString() + '回 ' + solutionGameDate.setLocale('ja-JP').toLocaleString(DateTime.DATE_MED) + ' '
   } else {
     statsModalTitle = (isLatestGame ? '' : 'Past ') + 'Game #' + solutionIndex.toString() + ' on ' + solutionGameDate.setLocale('en-US').toLocaleString(DateTime.DATE_MED)
   }
