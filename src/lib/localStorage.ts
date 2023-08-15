@@ -215,6 +215,10 @@ export const setStoredGameIndex = (gameIndex: string) => {
   localStorage.setItem(gameIndexKey, gameIndex)
 }
 
+export const removeStoredGameIndex = () => {
+  localStorage.removeItem(gameIndexKey)
+}
+
 export const getStoredGameIndex = () => {
   let gameIndex = localStorage.getItem(gameIndexKey)
   if (!gameIndex) {
