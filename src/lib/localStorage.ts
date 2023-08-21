@@ -223,7 +223,6 @@ export const getStoredGameIndex = () => {
   let gameIndex = localStorage.getItem(gameIndexKey)
   if (!gameIndex) {
     gameIndex = getIndexByDate(getToday()).toString()
-    setStoredGameIndex(gameIndex)
   }
   return parseInt(gameIndex)
 }

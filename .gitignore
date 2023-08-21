@@ -14,8 +14,13 @@ BACKUP.md
 # production
 /build
 
+# ssh keys
+/.ssh
+
 # misc
-.backup
+/.backup
+/.vscode
+
 .DS_Store
 .env.local
 .env.development.local

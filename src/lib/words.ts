@@ -4,7 +4,7 @@ import { VALID_GUESSES } from '../constants/validGuesses'
 import { t } from '../constants/strings'
 import { getToday } from './dateutils'
 import { getGuessStatuses } from './statuses'
-import { getStoredTimezone, setStoredGameIndex, getStoredGameIndex } from './localStorage'
+import { getStoredTimezone, setStoredGameIndex, removeStoredGameIndex, getStoredGameIndex } from './localStorage'
 import { DateTime, Interval } from 'luxon'
 import { default as GraphemeSplitter } from 'grapheme-splitter'
 import { toHiragana, toKatakana } from '@koozaki/romaji-conv'
@@ -152,8 +152,16 @@ export const isValidGameDate = (date: DateTime) => {
 
 export const setGameDate = (date: DateTime) => {
   try {
-    if (date <= getToday()) {
-      setStoredGameIndex(getIndexByDate(date).toString())
+    const today = getToday()
+
+    if (date <= today) {
+      
+      if (getIndexByDate(date) === getIndexByDate(today)) {
+        removeStoredGameIndex()
+      } else {
+        setStoredGameIndex(getIndexByDate(date).toString())
+      }
+      
       window.location.href = '/kotobade-asobou'
       return
     }
