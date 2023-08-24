@@ -23,8 +23,6 @@ import {
   AD_CLIENT_ID,
   AD_SLOT_TOP_BANNER_ID,
   AD_SLOT_BOTTOM_BANNER_ID,
-  AD_SLOT_LEFT_SKIN_ID,
-  AD_SLOT_RIGHT_SKIN_ID,
 } from './constants/settings'
 import {
   isWordInWordList,
@@ -398,11 +396,6 @@ function App() {
         </div>
       </div>
       <div className="flex">
-        <div className="hidden md:inline grow ml-auto">
-          <div className="text-right adsbygoogle">
-            <Adsense client={AD_CLIENT_ID} slot={AD_SLOT_LEFT_SKIN_ID} />
-          </div>
-        </div>
         <div className="flex-1 pt-2 pb-8 max-w-fit mx-auto sm:px-6 lg:px-8">
           <Navbar
             setIsInfoModalOpen={setIsInfoModalOpen}
@@ -523,11 +516,6 @@ function App() {
             handleAppArea={handleAppArea}
           />
           <AlertContainer />
-        </div>
-        <div className="hidden md:inline grow mr-auto">
-          <div className="text-left adsbygoogle">
-            <Adsense client={AD_CLIENT_ID} slot={AD_SLOT_RIGHT_SKIN_ID} />
-          </div>
         </div>
       </div>
       <div className="flex">
