@@ -21,6 +21,8 @@ import {
   AD_CLIENT_ID,
   AD_SLOT_TOP_BANNER_ID,
   AD_SLOT_BOTTOM_BANNER_ID,
+  AD_SLOT_LEFT_SKIN_ID,
+  AD_SLOT_RIGHT_SKIN_ID,
 } from './constants/settings'
 import {
   isWordInWordList,
@@ -386,107 +388,121 @@ function App() {
   }
 
   return (
-    <div className="pt-2 pb-8 max-w-7xl mx-auto sm:px-6 lg:px-8">
-      <div className="text-center adsbygoogle mb-2">
+    <div className="m-0 p-0 max-w-full">
+      <div className="text-center adsbygoogle">
         <Adsense client={AD_CLIENT_ID} slot={AD_SLOT_TOP_BANNER_ID} />
       </div>
-      <Navbar
-        setIsInfoModalOpen={setIsInfoModalOpen}
-        setIsSupportModalOpen={setIsSupportModalOpen}
-        setIsDatePickerModalOpen={setIsDatePickerModalOpen}
-        setIsStatsModalOpen={setIsStatsModalOpen}
-        setIsSettingsModalOpen={setIsSettingsModalOpen}
-      />
-      <PastGameContainer
-        isLatestGame={isLatestGame}
-        setIsDatePickerModalOpen={setIsDatePickerModalOpen}
-      />
-      <Grid
-        guesses={guesses}
-        currentGuess={currentGuess}
-        isRevealing={isRevealing}
-        currentRowClassName={currentRowClass}
-      />
-      <AppArea
-        onChar={onChar}
-        onDelete={onDelete}
-        onEnter={onEnter}
-        setCurrentGuess={setCurrentGuess}
-        setCurrentInputText={setCurrentInputText}
-        currentInputText={currentInputText}
-        setActiveAppArea={setActiveAppArea}
-        activeAppArea={activeAppArea}
-        guesses={guesses}
-        isRevealing={isRevealing}
-      />
-      <InfoModal
-        isOpen={isInfoModalOpen}
-        handleClose={() => setIsInfoModalOpen(false)}
-      />
-      <SupportModal
-        isOpen={isSupportModalOpen}
-        handleClose={() => setIsSupportModalOpen(false)}
-      />
-      <StatsModal
-        isOpen={isStatsModalOpen}
-        handleClose={() => {
-          setIsStatsModalOpen(false)
-          if (!isLatestGame && (isGameWon || isGameLost)) {
-            removeStoredGameIndex()
-            window.location.href = '/kotobade-asobou'
-          }
-        }}
-        guesses={guesses}
-        gameStats={stats}
-        isLatestGame={isLatestGame}
-        isGameLost={isGameLost}
-        isGameWon={isGameWon}
-        handleShareToClipboard={() =>
-          showSuccessAlert(t('GAME_COPIED_MESSAGE'))
-        }
-        handleMigrateStatsButton={() => {
-          setIsStatsModalOpen(false)
-          setIsMigrateStatsModalOpen(true)
-        }}
-        isHintMode={isHintMode}
-        isHardMode={isHardMode}
-        isDarkMode={isDarkMode}
-        isHighContrastMode={isHighContrastMode}
-        numberOfGuessesMade={guesses.length}
-      />
-      <DatePickerModal
-        isOpen={isDatePickerModalOpen}
-        initialDate={getDateByIndex(getStoredGameIndex())}
-        handleSelectDate={(date) => {
-          setIsDatePickerModalOpen(false)
-          setGameDate(date)
-        }}
-        handleClose={() => setIsDatePickerModalOpen(false)}
-      />
-      <MigrateStatsModal
-        isOpen={isMigrateStatsModalOpen}
-        handleClose={() => setIsMigrateStatsModalOpen(false)}
-      />
-      <SettingsModal
-        isOpen={isSettingsModalOpen}
-        handleClose={() => setIsSettingsModalOpen(false)}
-        timezone={timezone}
-        handleTimezone={handleTimezone}
-        isHintMode={isHintMode}
-        handleHintMode={handleHintMode}
-        isHardMode={isHardMode}
-        handleHardMode={handleHardMode}
-        isDarkMode={isDarkMode}
-        handleDarkMode={handleDarkMode}
-        isHighContrastMode={isHighContrastMode}
-        handleHighContrastMode={handleHighContrastMode}
-        displayLanguage={displayLanguage!}
-        handleDisplayLanguage={handleDisplayLanguage}
-        activeAppArea={activeAppArea!}
-        handleAppArea={handleAppArea}
-      />
-      <AlertContainer />
-      <div className="text-center adsbygoogle mt-2">
+      <div className="pt-2 pb-3 flex max-w-full">
+        <div className="hidden md:block flex-none w-32 ml-auto mr-0">
+          <div className="text-center adsbygoogle">
+            <Adsense client={AD_CLIENT_ID} slot={AD_SLOT_LEFT_SKIN_ID} />
+          </div>
+        </div>
+        <div className="block flex-grow max-w-full mx-auto sm:px-6 lg:px-8">
+          <Navbar
+            setIsInfoModalOpen={setIsInfoModalOpen}
+            setIsSupportModalOpen={setIsSupportModalOpen}
+            setIsDatePickerModalOpen={setIsDatePickerModalOpen}
+            setIsStatsModalOpen={setIsStatsModalOpen}
+            setIsSettingsModalOpen={setIsSettingsModalOpen}
+          />
+          <PastGameContainer
+            isLatestGame={isLatestGame}
+            setIsDatePickerModalOpen={setIsDatePickerModalOpen}
+          />
+          <Grid
+            guesses={guesses}
+            currentGuess={currentGuess}
+            isRevealing={isRevealing}
+            currentRowClassName={currentRowClass}
+          />
+          <AppArea
+            onChar={onChar}
+            onDelete={onDelete}
+            onEnter={onEnter}
+            setCurrentGuess={setCurrentGuess}
+            setCurrentInputText={setCurrentInputText}
+            currentInputText={currentInputText}
+            setActiveAppArea={setActiveAppArea}
+            activeAppArea={activeAppArea}
+            guesses={guesses}
+            isRevealing={isRevealing}
+          />
+          <InfoModal
+            isOpen={isInfoModalOpen}
+            handleClose={() => setIsInfoModalOpen(false)}
+          />
+          <SupportModal
+            isOpen={isSupportModalOpen}
+            handleClose={() => setIsSupportModalOpen(false)}
+          />
+          <StatsModal
+            isOpen={isStatsModalOpen}
+            handleClose={() => {
+              setIsStatsModalOpen(false)
+              if (!isLatestGame && (isGameWon || isGameLost)) {
+                removeStoredGameIndex()
+                window.location.href = '/kotobade-asobou'
+              }
+            }}
+            guesses={guesses}
+            gameStats={stats}
+            isLatestGame={isLatestGame}
+            isGameLost={isGameLost}
+            isGameWon={isGameWon}
+            handleShareToClipboard={() =>
+              showSuccessAlert(t('GAME_COPIED_MESSAGE'))
+            }
+            handleMigrateStatsButton={() => {
+              setIsStatsModalOpen(false)
+              setIsMigrateStatsModalOpen(true)
+            }}
+            isHintMode={isHintMode}
+            isHardMode={isHardMode}
+            isDarkMode={isDarkMode}
+            isHighContrastMode={isHighContrastMode}
+            numberOfGuessesMade={guesses.length}
+          />
+          <DatePickerModal
+            isOpen={isDatePickerModalOpen}
+            initialDate={getDateByIndex(getStoredGameIndex())}
+            handleSelectDate={(date) => {
+              setIsDatePickerModalOpen(false)
+              setGameDate(date)
+            }}
+            handleClose={() => setIsDatePickerModalOpen(false)}
+          />
+          <MigrateStatsModal
+            isOpen={isMigrateStatsModalOpen}
+            handleClose={() => setIsMigrateStatsModalOpen(false)}
+          />
+          <SettingsModal
+            isOpen={isSettingsModalOpen}
+            handleClose={() => setIsSettingsModalOpen(false)}
+            timezone={timezone}
+            handleTimezone={handleTimezone}
+            isHintMode={isHintMode}
+            handleHintMode={handleHintMode}
+            isHardMode={isHardMode}
+            handleHardMode={handleHardMode}
+            isDarkMode={isDarkMode}
+            handleDarkMode={handleDarkMode}
+            isHighContrastMode={isHighContrastMode}
+            handleHighContrastMode={handleHighContrastMode}
+            displayLanguage={displayLanguage!}
+            handleDisplayLanguage={handleDisplayLanguage}
+            activeAppArea={activeAppArea!}
+            handleAppArea={handleAppArea}
+          />
+          <AlertContainer />
+        </div>
+        <div className="hidden md:block flex-none w-32 mr-auto ml-0">
+          <div className="text-center adsbygoogle">
+            <Adsense client={AD_CLIENT_ID} slot={AD_SLOT_RIGHT_SKIN_ID} />
+          </div>
+        </div>
+      </div>
+      <div className="text-center adsbygoogle">
         <Adsense client={AD_CLIENT_ID} slot={AD_SLOT_BOTTOM_BANNER_ID} />
       </div>
     </div>
