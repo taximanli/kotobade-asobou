@@ -1,7 +1,5 @@
-import { ClockIcon } from '@heroicons/react/outline'
 import { useState, useEffect } from 'react'
 import { Adsense } from '@ctrl/react-adsense'
-import { DateTime } from 'luxon'
 import { ITimezone } from 'react-timezone-select'
 import { toHiragana, toKatakana } from '@koozaki/romaji-conv'
 import { Grid } from './components/grid/Grid'
@@ -61,6 +59,7 @@ import { getToday } from './lib/dateutils'
 import { default as GraphemeSplitter } from 'grapheme-splitter'
 
 import './App.css'
+import { PastGameContainer } from './components/alerts/PastGameContainer'
 import { AlertContainer } from './components/alerts/AlertContainer'
 import { useAlert } from './context/AlertContext'
 import { Navbar } from './components/navbar/Navbar'
@@ -398,33 +397,10 @@ function App() {
         setIsStatsModalOpen={setIsStatsModalOpen}
         setIsSettingsModalOpen={setIsSettingsModalOpen}
       />
-      {!isLatestGame && (
-        <div className="flex items-center justify-center mb-4">
-          <ClockIcon
-            className="h-6 w-6 stroke-gray-600 dark:stroke-gray-300 cursor-pointer"
-            onClick={() => setIsDatePickerModalOpen(true)}
-          />
-          <p
-            className="text-base text-gray-600 dark:text-gray-300 pl-2 cursor-pointer"
-            onClick={() => setIsDatePickerModalOpen(true)}
-          >
-            {displayLanguage === PREFERRED_DISPLAY_LANGUAGE &&
-              '過去問 第' +
-                getStoredGameIndex().toString() +
-                '回 ' +
-                getDateByIndex(getStoredGameIndex())
-                  .setLocale('ja-JP')
-                  .toLocaleString(DateTime.DATE_MED)}
-            {displayLanguage !== PREFERRED_DISPLAY_LANGUAGE &&
-              'Past Game #' +
-                getStoredGameIndex().toString() +
-                ' on ' +
-                getDateByIndex(getStoredGameIndex())
-                  .setLocale('en-US')
-                  .toLocaleString(DateTime.DATE_MED)}
-          </p>
-        </div>
-      )}
+      <PastGameContainer
+        isLatestGame={isLatestGame}
+        setIsDatePickerModalOpen={setIsDatePickerModalOpen}
+      />
       <Grid
         guesses={guesses}
         currentGuess={currentGuess}
