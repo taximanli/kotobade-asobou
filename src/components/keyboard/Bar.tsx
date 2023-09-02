@@ -66,6 +66,7 @@ export const Bar = ({
             value={currentInputText}
             onChange={handleInput}
             onKeyUp={handleKeyUp}
+            autoFocus
         />
         <Key value="DELETE" onClick={onClick}>
           {DELETE_TEXT}

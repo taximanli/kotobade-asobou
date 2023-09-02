@@ -393,7 +393,7 @@ function App() {
         <Adsense client={AD_CLIENT_ID} slot={AD_SLOT_TOP_BANNER_ID} />
       </div>
       <div className="pt-2 pb-3 flex max-w-full">
-        <div className="hidden md:block flex-none w-32 lg:w-64 ml-auto mr-0">
+        <div className="hidden md:block flex-none w-32 lg:w-64 mt-3">
           <div className="text-center adsbygoogle">
             <Adsense client={AD_CLIENT_ID} slot={AD_SLOT_LEFT_SKIN_ID} />
           </div>
@@ -496,7 +496,7 @@ function App() {
           />
           <AlertContainer />
         </div>
-        <div className="hidden md:block flex-none w-32 lg:w-64 mr-auto ml-0">
+        <div className="hidden md:block flex-none w-32 lg:w-64 mt-3">
           <div className="text-center adsbygoogle">
             <Adsense client={AD_CLIENT_ID} slot={AD_SLOT_RIGHT_SKIN_ID} />
           </div>
