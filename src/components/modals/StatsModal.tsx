@@ -1,6 +1,7 @@
 import {
   EmojiHappyIcon,
-  EmojiSadIcon
+  EmojiSadIcon,
+  CalendarIcon
 } from '@heroicons/react/outline'
 import coffeeLogo from '../../images/ko-fi-com-taximanli.png'
 
@@ -31,6 +32,7 @@ type Props = {
   isLatestGame: boolean
   isGameLost: boolean
   isGameWon: boolean
+  handleCalendarIcon: () => void
   handleShareToClipboard: () => void
   handleMigrateStatsButton: () => void
   isHintMode: boolean
@@ -48,6 +50,7 @@ export const StatsModal = ({
   isLatestGame,
   isGameLost,
   isGameWon,
+  handleCalendarIcon,
   handleShareToClipboard,
   handleMigrateStatsButton,
   isHintMode,
@@ -126,17 +129,17 @@ export const StatsModal = ({
       )}
       <div className="flex gap-1 justify-center dark:text-white mx-1">
         {(!ENABLE_ARCHIVED_GAMES || isLatestGame) && (
-          <div>
-            <h5>{t('NEW_WORD_TEXT')}</h5>
-            <Countdown
-              className="local-font text-baseline font-medium text-gray-900 dark:text-gray-100"
-              date={tomorrow}
-              daysInHours={true}
-            />
-          </div>
+        <div>
+          <h5 className="whitespace-nowrap">{t('NEW_WORD_TEXT')}</h5>
+          <Countdown
+            className="local-font text-baseline font-medium text-gray-900 dark:text-gray-100"
+            date={tomorrow}
+            daysInHours={true}
+          />
+        </div>
         )}
       </div>
-      {(!ENABLE_ARCHIVED_GAMES || isLatestGame) && (isGameLost || isGameWon) && (
+      {false && (!ENABLE_ARCHIVED_GAMES || isLatestGame) && (isGameLost || isGameWon) && (
       <div className="flex gap-1 justify-center text-sm dark:text-white mx-1 mb-3">
         {t('PAST_CORRECT_WORD_MESSAGE', yesterdaySolutionIndex.toString())}
         <a className="underline text-sm text-gray-600 dark:text-gray-300 cursor-zoom-in" href={(JISHO_SEARCH_LINK + yesterdaySolution)} rel="noreferrer" target="_blank">{yesterdaySolution}</a>
@@ -151,8 +154,15 @@ export const StatsModal = ({
         <img className="w-9 h-9 wiggle cursor-pointer" src={coffeeLogo} title={t('Buy me a coffee?')} alt={t('Buy me a coffee?')} onClick={()=> window.open(t('KOFI_LINK'), "_blank")} />
       </div>
       {(isGameLost || isGameWon) && (
+        <div className="text-left text-sm dark:text-white mt-2">
+            {t('Jump to a past date 1')}
+            <CalendarIcon className="inline h-6 w-6 cursor-pointer stroke-red-600 dark:stroke-red-400" onClick={handleCalendarIcon}/>
+            {t('Jump to a past date 2')}
+        </div>
+      )}
+      {(isGameLost || isGameWon) && (
         <div>
-          <div className="mt-4 sm:mt-5 mb-1 dark:text-white mx-1">
+          <div className="mt-3 sm:mt-4 mb-1 dark:text-white mx-1">
             <textarea className="local-font text-xs w-full border-solid border-2 rounded bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-600" rows={5}
               value={shareStatus(
                   'text',

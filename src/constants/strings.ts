@@ -106,6 +106,9 @@ en['DATEPICKER_TITLE'] = 'Choose a past date'
 en['DATEPICKER_TODAY_TEXT'] = 'Choose today'
 en['DATEPICKER_CHOOSE_TEXT'] = 'Choose $text1'
 
+en['Jump to a past date 1'] = 'And jump to a past date '
+en['Jump to a past date 2'] = ' to play one more game?'
+
 export let ja = {} as TranslationType
 
 ja['KOFI_LINK'] = KOFI_LINK
@@ -186,6 +189,9 @@ ja['The game will now reload'] = 'このゲームがリロードされます。'
 ja['DATEPICKER_TITLE'] = '過去問の日付選択'
 ja['DATEPICKER_TODAY_TEXT'] = '今日を選択'
 ja['DATEPICKER_CHOOSE_TEXT'] = '$text1を選択'
+
+ja['Jump to a past date 1'] = 'もう一回？過去問の日付 '
+ja['Jump to a past date 2'] = ' を選択してください。'
 
 // export const WIN_MESSAGES = ['Great Job!', 'Awesome', 'Well done!']
 export const WIN_MESSAGES = {

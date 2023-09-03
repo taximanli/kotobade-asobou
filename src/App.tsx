@@ -450,6 +450,10 @@ function App() {
             isLatestGame={isLatestGame}
             isGameLost={isGameLost}
             isGameWon={isGameWon}
+            handleCalendarIcon={() => {
+              setIsStatsModalOpen(false)
+              setIsDatePickerModalOpen(true)
+            }}
             handleShareToClipboard={() =>
               showSuccessAlert(t('GAME_COPIED_MESSAGE'))
             }
