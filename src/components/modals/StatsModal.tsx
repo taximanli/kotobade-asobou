@@ -22,7 +22,7 @@ import { BaseModal } from './BaseModal'
 import { t, JISHO_SEARCH_LINK } from '../../constants/strings';
 import { MigrationIntro } from '../stats/MigrationIntro'
 
-export type shareStatusType = 'text' | 'clipboard' | 'line' | 'tweet'
+export type shareStatusType = 'text' | 'clipboard' | 'threads' | 'line' | 'tweet'
 
 type Props = {
   isOpen: boolean
@@ -175,7 +175,7 @@ export const StatsModal = ({
                   handleShareToClipboard
               )} />          
           </div>
-          <div className="mb-5 sm:mb-6 grid grid-cols-3 gap-3 dark:text-white mx-1">
+          <div className="mb-5 sm:mb-6 grid grid-cols-4 gap-3 dark:text-white mx-1">
             <div>
               <button
                 type="button"
@@ -194,6 +194,26 @@ export const StatsModal = ({
                 }}
               >
                 {t('SHARE_TEXT')}
+              </button>
+            </div>
+            <div>
+              <button
+                type="button"
+                className={buttonClassNames}
+                onClick={() => {
+                  shareStatus(
+                    'threads',
+                    guesses,
+                    isGameLost,
+                    isHintMode,
+                    isHardMode,
+                    isDarkMode,
+                    isHighContrastMode,
+                    handleShareToClipboard
+                  )
+                }}
+              >
+                {t('THREADS_TEXT')}
               </button>
             </div>
             <div>

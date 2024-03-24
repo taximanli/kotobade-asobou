@@ -22,7 +22,7 @@ export const shareStatus = (
   handleShareToClipboard: () => void
 ) => {
   const isLatestGame = getIsLatestGame()
-  const endOfLine = (shareStatusType === 'tweet' || shareStatusType === 'line' ? '%0A' : '\n')
+  const endOfLine = (shareStatusType === 'tweet' || shareStatusType === 'threads' || shareStatusType === 'line' ? '%0A' : '\n')
   const loaded = loadShareStatusFromLocalStorage()
 
   if (loaded) {
@@ -40,6 +40,10 @@ export const shareStatus = (
 
   if (shareStatusType === 'tweet') {
     window.open("https://twitter.com/intent/tweet?text=" + textToShare, "_blank")
+  }
+  else
+  if (shareStatusType === 'threads') {
+    window.open("https://www.threads.net/intent/post?text=" + textToShare, "_blank")
   }
   else
   if (shareStatusType === 'line') {
