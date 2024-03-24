@@ -175,7 +175,7 @@ export const StatsModal = ({
                   handleShareToClipboard
               )} />          
           </div>
-          <div className="mb-5 sm:mb-6 grid grid-cols-4 gap-3 dark:text-white mx-1">
+          <div className="mb-1 sm:mb-2 grid grid-cols-2 gap-3 dark:text-white mx-1">
             <div>
               <button
                 type="button"
@@ -202,26 +202,6 @@ export const StatsModal = ({
                 className={buttonClassNames}
                 onClick={() => {
                   shareStatus(
-                    'threads',
-                    guesses,
-                    isGameLost,
-                    isHintMode,
-                    isHardMode,
-                    isDarkMode,
-                    isHighContrastMode,
-                    handleShareToClipboard
-                  )
-                }}
-              >
-                {t('THREADS_TEXT')}
-              </button>
-            </div>
-            <div>
-              <button
-                type="button"
-                className={buttonClassNames}
-                onClick={() => {
-                  shareStatus(
                     'line',
                     guesses,
                     isGameLost,
@@ -234,6 +214,28 @@ export const StatsModal = ({
                 }}
               >
                 {t('LINE_TEXT')}
+              </button>
+            </div>
+          </div>
+          <div className="mb-5 sm:mb-6 grid grid-cols-2 gap-3 dark:text-white mx-1">
+            <div>
+              <button
+                type="button"
+                className={buttonClassNames}
+                onClick={() => {
+                  shareStatus(
+                    'threads',
+                    guesses,
+                    isGameLost,
+                    isHintMode,
+                    isHardMode,
+                    isDarkMode,
+                    isHighContrastMode,
+                    handleShareToClipboard
+                  )
+                }}
+              >
+                {t('THREADS_TEXT')}
               </button>
             </div>
             <div>
