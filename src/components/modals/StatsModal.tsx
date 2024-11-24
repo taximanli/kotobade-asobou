@@ -22,7 +22,7 @@ import { BaseModal } from './BaseModal'
 import { t, JISHO_SEARCH_LINK } from '../../constants/strings';
 import { MigrationIntro } from '../stats/MigrationIntro'
 
-export type shareStatusType = 'text' | 'clipboard' | 'threads' | 'line' | 'tweet'
+export type shareStatusType = 'text' | 'clipboard' | 'threads' | 'line' | 'tweet' | 'bluesky'
 
 type Props = {
   isOpen: boolean
@@ -175,7 +175,7 @@ export const StatsModal = ({
                   handleShareToClipboard
               )} />          
           </div>
-          <div className="mb-1 sm:mb-2 grid grid-cols-2 gap-3 dark:text-white mx-1">
+          <div className="mb-1 sm:mb-2 grid grid-cols-3 gap-3 dark:text-white mx-1">
             <div>
               <button
                 type="button"
@@ -216,6 +216,26 @@ export const StatsModal = ({
                 {t('LINE_TEXT')}
               </button>
             </div>
+            <div>
+              <button
+                type="button"
+                className={buttonClassNames}
+                onClick={() => {
+                  shareStatus(
+                    'tweet',
+                    guesses,
+                    isGameLost,
+                    isHintMode,
+                    isHardMode,
+                    isDarkMode,
+                    isHighContrastMode,
+                    handleShareToClipboard
+                  )
+                }}
+              >
+                {t('TWEET_TEXT')}
+              </button>
+            </div>
           </div>
           <div className="mb-5 sm:mb-6 grid grid-cols-2 gap-3 dark:text-white mx-1">
             <div>
@@ -244,7 +264,7 @@ export const StatsModal = ({
                 className={buttonClassNames}
                 onClick={() => {
                   shareStatus(
-                    'tweet',
+                    'bluesky',
                     guesses,
                     isGameLost,
                     isHintMode,
@@ -255,7 +275,7 @@ export const StatsModal = ({
                   )                  
                 }}
               >
-                {t('TWEET_TEXT')}
+                {t('BLUESKY_TEXT')}
               </button>
             </div>
           </div>
