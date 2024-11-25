@@ -22,7 +22,7 @@ import { BaseModal } from './BaseModal'
 import { t, JISHO_SEARCH_LINK } from '../../constants/strings';
 import { MigrationIntro } from '../stats/MigrationIntro'
 
-export type shareStatusType = 'text' | 'clipboard' | 'threads' | 'line' | 'tweet' | 'bluesky'
+export type shareStatusType = 'text' | 'clipboard' | 'line' | 'threads' | 'bluesky' | 'tweet'
 
 type Props = {
   isOpen: boolean
@@ -222,28 +222,6 @@ export const StatsModal = ({
                 className={buttonClassNames}
                 onClick={() => {
                   shareStatus(
-                    'tweet',
-                    guesses,
-                    isGameLost,
-                    isHintMode,
-                    isHardMode,
-                    isDarkMode,
-                    isHighContrastMode,
-                    handleShareToClipboard
-                  )
-                }}
-              >
-                {t('TWEET_TEXT')}
-              </button>
-            </div>
-          </div>
-          <div className="mb-5 sm:mb-6 grid grid-cols-2 gap-3 dark:text-white mx-1">
-            <div>
-              <button
-                type="button"
-                className={buttonClassNames}
-                onClick={() => {
-                  shareStatus(
                     'threads',
                     guesses,
                     isGameLost,
@@ -258,6 +236,8 @@ export const StatsModal = ({
                 {t('THREADS_TEXT')}
               </button>
             </div>
+          </div>
+          <div className="mb-5 sm:mb-6 grid grid-cols-2 gap-3 dark:text-white mx-1">
             <div>
               <button
                 type="button"
@@ -272,10 +252,30 @@ export const StatsModal = ({
                     isDarkMode,
                     isHighContrastMode,
                     handleShareToClipboard
-                  )                  
+                  )
                 }}
               >
                 {t('BLUESKY_TEXT')}
+              </button>
+            </div>
+            <div>
+              <button
+                type="button"
+                className={buttonClassNames}
+                onClick={() => {
+                  shareStatus(
+                    'tweet',
+                    guesses,
+                    isGameLost,
+                    isHintMode,
+                    isHardMode,
+                    isDarkMode,
+                    isHighContrastMode,
+                    handleShareToClipboard
+                  )                  
+                }}
+              >
+                {t('TWEET_TEXT')}
               </button>
             </div>
           </div>

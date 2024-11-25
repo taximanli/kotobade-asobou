@@ -5,8 +5,6 @@ import { getStoredIsHighContrastMode, getStoredDisplayLanguage } from '../../lib
 import { t, TOP_SUPPORTER_NAME, SUPPORTER_NAME } from '../../constants/strings';
 import coffeeLogo from '../../images/ko-fi-com-taximanli.png';
 
-export type shareStatusType = 'text' | 'clipboard' | 'threads' | 'line' | 'tweet' | 'bluesky'
-
 type Props = {
   isOpen: boolean
   handleClose: () => void

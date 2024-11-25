@@ -27,6 +27,10 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
   if (displayLanguage === PREFERRED_DISPLAY_LANGUAGE) {
     return (
       <BaseModal title="更新情報" isOpen={isOpen} handleClose={handleClose}>
+        <p className="text-left local-font text-sm text-gray-500 dark:text-gray-300 mb-2">
+          ツイートとスレッズとのラインほか、今から結果をブルースカイ (Bluesky) に直接投稿できるようになっています。
+        </p>
+        <hr className="mt-2 mb-2" />
         <p className="text-left local-font text-sm text-rose-500 dark:text-rose-300 mb-2">
           過去問がすべてアンロックされます！<br />プレイするには画面の右上に「赤いカレンダー」で過去問の日付を選択してください。
         </p>
@@ -176,6 +180,10 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
   } else {
     return (
       <BaseModal title="Latest updates" isOpen={isOpen} handleClose={handleClose}>
+        <p className="text-left text-sm text-gray-500 dark:text-gray-300 mb-2">
+          In addition to Tweet, Threads and LINE, you can now also post your results directly to Bluesky.
+        </p>
+        <hr className="mt-2 mb-2" />
         <p className="text-left text-sm text-rose-500 dark:text-rose-300 mb-2">
           All past words are now unlocked!<br />Please click on the red calendar icon on the top right corner of the screen and choose a past date to play.
         </p>
