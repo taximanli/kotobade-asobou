@@ -28,7 +28,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
     return (
       <BaseModal title="更新情報" isOpen={isOpen} handleClose={handleClose}>
         <p className="text-left local-font text-sm text-gray-500 dark:text-gray-300 mb-2">
-          ツイートとスレッズとのラインほか、今から結果をブルースカイ (Bluesky) に直接投稿できるようになっています。
+          ツイートとスレッズとラインのほか、今から結果をブルースカイ (Bluesky) に直接投稿できるようになっています。
         </p>
         <hr className="mt-2 mb-2" />
         <p className="text-left local-font text-sm text-rose-500 dark:text-rose-300 mb-2">
