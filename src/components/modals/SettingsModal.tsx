@@ -146,7 +146,7 @@ export const SettingsModal = ({
           <div className="text-left">
             <h2 className="local-font text-base text-gray-600 dark:text-gray-300">{t('Feedback')}</h2>
           </div>
-          <div className='w-48 text-right'>
+          <div className='w-40 text-right'>
             {' '}<a className="underline text-sm text-gray-600 dark:text-gray-300" href="https://github.com/taximanli/kotobade-asobou/issues" rel="noreferrer" target="_blank">Github</a>{' |'}
             {' '}<a className="underline text-sm text-gray-600 dark:text-gray-300" href="https://bsky.app/profile/taximanli.bsky.social" rel="noreferrer" target="_blank">Bluesky</a>{' |'}
             {' '}<a className="underline text-sm text-gray-600 dark:text-gray-300" href="https://twitter.com/taximanli" rel="noreferrer" target="_blank">Twitter</a>{' '}
