@@ -54,7 +54,6 @@ import {
   setStoredAppArea,
   getStoredAppArea,
   setStoredGameIndex,
-  removeStoredGameIndex,
   getStoredGameIndex,
 } from './lib/localStorage'
 import { getToday } from './lib/dateutils'
@@ -440,10 +439,6 @@ function App() {
             isOpen={isStatsModalOpen}
             handleClose={() => {
               setIsStatsModalOpen(false)
-              if (!isLatestGame && (isGameWon || isGameLost)) {
-                removeStoredGameIndex()
-                window.location.href = '/kotobade-asobou'
-              }
             }}
             guesses={guesses}
             gameStats={stats}
