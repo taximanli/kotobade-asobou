@@ -47,7 +47,10 @@
     <meta name="twitter:url" content="%REACT_APP_GAME_LINK%" />
 
     <% if (process.env.REACT_APP_GOOGLE_ADSENSE_CLIENT_ID != null) { %>
+      <!-- Google Adsense -->
       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=%REACT_APP_GOOGLE_ADSENSE_CLIENT_ID%" crossorigin="anonymous"></script>
+      <!-- Ad Blocking Recovery Message -->
+      <script async src="https://fundingchoicesmessages.google.com/i/pub-1563931935433612?ers=1"></script><script>(function() {function signalGooglefcPresent() {if (!window.frames['googlefcPresent']) {if (document.body) {const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();</script>
     <% } %>
     <% if (process.env.NODE_ENV === 'production' && process.env.REACT_APP_GOOGLE_MEASUREMENT_ID != null) { %>
       <!-- Global site tag (gtag.js) - Google Analytics -->
