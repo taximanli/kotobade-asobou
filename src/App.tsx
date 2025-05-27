@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
-import { Adsense } from '@ctrl/react-adsense'
 import { ITimezone } from 'react-timezone-select'
 import { toHiragana, toKatakana } from '@koozaki/romaji-conv'
+import { AdArea } from './components/ad/AdArea'
 import { Grid } from './components/grid/Grid'
 import { AppArea } from './components/keyboard/Area'
 import { DatePickerModal } from './components/modals/DatePickerModal'
@@ -389,14 +389,10 @@ function App() {
 
   return (
     <div className="m-0 p-0 max-w-full">
-      <div className="text-center adsbygoogle">
-        <Adsense client={AD_CLIENT_ID} slot={AD_SLOT_TOP_BANNER_ID} />
-      </div>
+      <AdArea adClientId={AD_CLIENT_ID} adSlotId={AD_SLOT_TOP_BANNER_ID} />
       <div className="pt-2 pb-3 flex max-w-full">
         <div className="hidden md:block flex-none w-32 lg:w-64 mt-3">
-          <div className="text-center adsbygoogle">
-            <Adsense client={AD_CLIENT_ID} slot={AD_SLOT_LEFT_SKIN_ID} />
-          </div>
+          <AdArea adClientId={AD_CLIENT_ID} adSlotId={AD_SLOT_LEFT_SKIN_ID} />
         </div>
         <div className="block flex-grow max-w-full mx-auto sm:px-6 lg:px-8">
           <Navbar
@@ -501,14 +497,10 @@ function App() {
           <AlertContainer />
         </div>
         <div className="hidden md:block flex-none w-32 lg:w-64 mt-3">
-          <div className="text-center adsbygoogle">
-            <Adsense client={AD_CLIENT_ID} slot={AD_SLOT_RIGHT_SKIN_ID} />
-          </div>
+          <AdArea adClientId={AD_CLIENT_ID} adSlotId={AD_SLOT_RIGHT_SKIN_ID} />
         </div>
       </div>
-      <div className="text-center adsbygoogle">
-        <Adsense client={AD_CLIENT_ID} slot={AD_SLOT_BOTTOM_BANNER_ID} />
-      </div>
+      <AdArea adClientId={AD_CLIENT_ID} adSlotId={AD_SLOT_BOTTOM_BANNER_ID} />
     </div>
   )
 }
