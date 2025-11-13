@@ -149,3 +149,12 @@ describe('getGuessStatusPure with hint mode', () => {
     expect(resultNoHint).toStrictEqual(expectedStatusNoHint)
   })
 })
+
+describe('Mixed kana support', () => {
+  test('Hiragana solution, Katakana guess', () => {
+    const solution = 'ローマじ'
+    const guesses = 'ろーまじ'
+    const expectedStatus = ['correct', 'correct', 'correct', 'correct']
+    expect(getGuessStatuses(guesses, solution)).toStrictEqual(expectedStatus)
+  })
+})

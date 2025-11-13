@@ -23,7 +23,7 @@ export const isWordInWordList = (word: string) => {
 }
 
 export const isWinningWord = (word: string) => {
-  return solution === word
+  return toHiragana(solution) === toHiragana(word)
 }
 
 // build a set of previously revealed letters - present and correct

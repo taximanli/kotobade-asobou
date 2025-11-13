@@ -44,10 +44,7 @@ export const getStatuses = (
   guesses: string[],
   solution: string
 ): { [key: string]: CharStatus } => {
-  const charObj: { [key: string]: CharStatus } = {}
-  const splitSolution = unicodeSplit(solution)
   let isHintMode = getStoredIsHintMode()
-
   const loaded = loadShareStatusFromLocalStorage()
 
   if (loaded) {
@@ -79,33 +76,33 @@ export const getStatusesPure = (
     unicodeSplit(word).forEach((letter, i) => {
       if (isHintMode) {
         vowelStatusKana.forEach((kana) => {
-          if (kana.includes(letter) && kana.includes(splitSolution[i])) {
+          if (includesMixedKana(kana, letter) && includesMixedKana(kana, splitSolution[i])) {
             updateCharObjectKey(letter, 'vowel')
           }
         })
 
         consonantStatusKana.forEach((kana) => {
-          if (kana.includes(letter) && kana.includes(splitSolution[i])) {
+          if (includesMixedKana(kana, letter) && includesMixedKana(kana, splitSolution[i])) {
             updateCharObjectKey(letter, 'consonant')
           }
         })
 
         closeStatusKana.forEach((kana) => {
-          if (kana.includes(letter) && kana.includes(splitSolution[i])) {
+          if (includesMixedKana(kana, letter) && includesMixedKana(kana, splitSolution[i])) {
             updateCharObjectKey(letter, 'close')
           }
         })
       }
 
-      if (!splitSolution.includes(letter)) {
+      if (!splitSolution.some((solLetter) => includesMixedKana(solLetter, letter))) {
         updateCharObjectKey(letter, 'absent')
       }
 
-      if (splitSolution.includes(letter)) {
+      if (splitSolution.some((solLetter) => includesMixedKana(solLetter, letter))) {
         updateCharObjectKey(letter, 'present')
       }
 
-      if (letter === splitSolution[i]) {
+      if (includesMixedKana(letter, splitSolution[i])) {
         updateCharObjectKey(letter, 'correct')
       }
     })
@@ -142,7 +139,7 @@ export const getGuessStatusesPure = (
 
   // handle all correct cases first
   splitGuess.forEach((letter, i) => {
-    if (letter === splitSolution[i]) {
+    if (includesMixedKana(letter, splitSolution[i])) {
       statuses[i] = 'correct'
       solutionCharsTaken[i] = true
       return
@@ -154,7 +151,7 @@ export const getGuessStatusesPure = (
 
     if (isHintMode) {
       closeStatusKana.forEach((kana) => {
-        if (kana.includes(letter) && kana.includes(splitSolution[i])) {
+        if (includesMixedKana(kana, letter) && includesMixedKana(kana, splitSolution[i])) {
           // handles status close
           statuses[i] = 'close'
           return
@@ -166,7 +163,7 @@ export const getGuessStatusesPure = (
 
     // now we are left with "present"s
     const indexOfPresentChar = splitSolution.findIndex(
-      (x, index) => x === letter && !solutionCharsTaken[index]
+      (x, index) => includesMixedKana(x, letter) && !solutionCharsTaken[index]
     )
 
     if (indexOfPresentChar > -1) {
@@ -179,7 +176,7 @@ export const getGuessStatusesPure = (
 
     if (isHintMode) {
       consonantStatusKana.forEach((kana) => {
-        if (kana.includes(letter) && kana.includes(splitSolution[i])) {
+        if (includesMixedKana(kana, letter) && includesMixedKana(kana, splitSolution[i])) {
           // handles status consonant
           statuses[i] = 'consonant'
           return
@@ -191,7 +188,7 @@ export const getGuessStatusesPure = (
 
     if (isHintMode) {
       vowelStatusKana.forEach((kana) => {
-        if (kana.includes(letter) && kana.includes(splitSolution[i])) {
+        if (includesMixedKana(kana, letter) && includesMixedKana(kana, splitSolution[i])) {
           // handles status vowel
           statuses[i] = 'vowel'
           return
@@ -217,4 +214,8 @@ export const getGuessStatusesPure = (
   })
 
   return statuses
+}
+
+const includesMixedKana = (kana1: string, kana2: string) => {
+  return toHiragana(kana1).includes(toHiragana(kana2))
 }
