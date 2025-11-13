@@ -54,6 +54,17 @@ export const getStatuses = (
     isHintMode = loaded.isHintMode
   }
 
+  return getStatusesPure(guesses, solution, isHintMode)
+}
+
+export const getStatusesPure = (
+  guesses: string[],
+  solution: string,
+  isHintMode: boolean
+): { [key: string]: CharStatus } => {
+  const charObj: { [key: string]: CharStatus } = {}
+  const splitSolution = unicodeSplit(solution)
+
   function updateCharObjectKey(letter: string, value: CharStatus) {
     // Sets a new status of a key, only if the new status is more important than a previous status
     // i.e. 'present' does not override 'correct', if the character appears twice
@@ -107,20 +118,27 @@ export const getGuessStatuses = (
   guess: string,
   solution: string
 ): CharStatus[] => {
+  let isHintMode = getStoredIsHintMode()
+  const loaded = loadShareStatusFromLocalStorage()
+
+  if (loaded) {
+    isHintMode = loaded.isHintMode
+  }
+
+  return getGuessStatusesPure(guess, solution, isHintMode)
+}
+
+export const getGuessStatusesPure = (
+  guess: string,
+  solution: string,
+  isHintMode: boolean
+): CharStatus[] => {
   const splitSolution = unicodeSplit(solution)
   const splitGuess = unicodeSplit(guess)
 
   const solutionCharsTaken = splitSolution.map((_) => false)
 
   const statuses: CharStatus[] = Array.from(Array(guess.length))
-
-  let isHintMode = getStoredIsHintMode()
-
-  const loaded = loadShareStatusFromLocalStorage()
-
-  if (loaded) {
-    isHintMode = loaded.isHintMode
-  }
 
   // handle all correct cases first
   splitGuess.forEach((letter, i) => {
