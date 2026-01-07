@@ -329,6 +329,13 @@ function App() {
       })
     }
 
+    if (guesses.includes(currentGuessInHiragana)) {
+      setCurrentRowClass('jiggle')
+      return showErrorAlert(t('GUESS_ALREADY_MADE_MESSAGE'), {
+        onClose: clearCurrentRowClass,
+      })
+    }
+
     // enforce hard mode - all guesses must contain all previously revealed letters
     if (isHardMode) {
       const firstMissingReveal = findFirstUnusedReveal(
